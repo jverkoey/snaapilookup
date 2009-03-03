@@ -1,0 +1,5 @@
+Dark:     				#334433
+Background 1:   	#6699aa
+Foreground: 			#88aaaa
+Light foreground: #bbcccc
+Dark foreground:	#447799

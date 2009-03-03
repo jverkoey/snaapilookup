@@ -1,0 +1,49 @@
+<?= $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="/favicon.ico" mce_href="/favicon.ico" />
+  <?= $this->headTitle() ?>
+  <? if( APPLICATION_ENVIRONMENT == 'development' ) { ?>
+  <style type="text/css">
+  .devonly {
+    border: 1px solid #ccc;
+    background-color: #ff0;
+    padding: 0.2em;
+  }
+  </style>
+  <? } ?>
+<?php  // These are in a reverse order of importance because we're prepending.
+  $this->headLink()->prependStylesheet('/css/common.css');
+  $this->headLink()->prependStylesheet('/css/global.css'); ?>
+<?= $this->headLink() ?>
+<?= $this->headScript() ?>
+</head>
+<body>
+
+<div id="content">
+<?= $this->layout()->content ?>
+</div>
+
+<div class="spacer"></div>
+
+<div id="footer">
+  <div class="wrapper">
+    <div class="links">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    </div>
+    <div class="copyright">©2009 snaapi</div>
+  </div>
+</div>
+
+<?php  // These are in a reverse order of importance because we're prepending.
+  $this->inlineScript()->prependFile('/js/jquery.js');
+?>
+<?= $this->inlineScript() ?>
+
+</body>
+</html>

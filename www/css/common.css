@@ -1,0 +1,125 @@
+/**
+ * Common styling for the snaapi main site.
+ * http://snaapi.com/*
+ */
+
+a {
+  color: #40409F;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+#content {
+  margin: 0 auto -8em;
+  width: 980px;
+  height: auto !important;
+  min-height: 100%;
+  min-width: 1000px;
+  overflow: hidden;
+  color: #333;
+}
+
+
+#content .spacer {
+  height: 8em;
+  padding-bottom: 4em;
+}
+
+#footer {
+  background: #6699aa url(/gfx/footer.png) repeat-x scroll 0 0;
+  height: 8em;
+}
+
+#footer .wrapper {
+  margin: 0 auto;
+  width: 980px;
+  min-width: 1000px;
+
+  /* Safari fix for unclickable links */
+  position: relative;
+}
+
+#footer .links {
+  padding-top: 3.5em;
+
+  text-align: center;
+}
+
+#footer .links ul {
+  padding: 5px;
+  margin: 3px;
+  height: 1em;
+}
+
+#footer .links li {
+  display: inline;
+}
+
+#footer .links li a {
+  padding: 5px;
+  margin: 3px;
+  color: #bbcccc;
+}
+
+#footer .copyright {
+  text-align: center;
+  font-size: 0.8em;
+}
+
+
+/**
+ * Forms.
+ */
+.text,
+.small_text {
+  border: 1px solid #ccc;
+  outline-style: none;
+}
+
+.text {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.small_text {
+  font-size: 1em;
+  padding: 2px;
+}
+
+.text:focus,
+.small_text:focus {
+  border: 1px solid #999;
+}
+
+.button {
+  border: 1px solid #ccc;
+  padding: 4px;
+  font-size: 16px;
+  background-color: #eee;
+  outline-style: none;
+}
+
+.button:focus {
+  border: 1px solid #999;
+}
+
+.button:active {
+  border: 1px solid #999;
+  background-color: #BFFFBF;
+}
+
+.dropdown {
+  border: 0;
+  outline-style: none;
+}
