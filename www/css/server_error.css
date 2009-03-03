@@ -1,0 +1,19 @@
+/**
+ * Stylized server errors.
+ */
+
+.server_error h1 {
+  font-size: 150%;
+  padding-bottom: 0.5em;
+}
+
+.server_error h2 {
+  padding: 1em;
+  font-size: 130%;
+  background-color: #FFBFBF;
+}
+
+.server_error h3 {
+  font-size: 110%;
+  padding: 0.3em 0;
+}

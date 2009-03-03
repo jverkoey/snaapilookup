@@ -1,0 +1,18 @@
+/**
+ * Homepage styles.
+ */
+
+.logo {
+  text-align: center;
+  font-size: 5em;
+}
+
+.logo .api {
+  color: #447799;
+}
+
+.catch-phrase {
+  text-align: center;
+  font-size: 2em;
+  color: #bbcccc;
+}
