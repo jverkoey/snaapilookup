@@ -126,7 +126,7 @@ Snap.TypeAhead.prototype = {
   _update_filter : function() {
     var trimmed_value = $.trim(this._current_value);
     if( trimmed_value == '' ) {
-      this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to type languages or frameworks.</b></div>');
+      this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks.</b></div>');
     } else {
       var results = [];
       var hash_results = {};
