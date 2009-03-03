@@ -20,18 +20,20 @@ h2 {
   font-size: 1.8em;
 }
 
-#content {
+#page {
   margin: 0 auto -8em;
   width: 980px;
   height: auto !important;
   min-height: 100%;
   min-width: 1000px;
   overflow: hidden;
+}
+
+#content {
   color: #333;
 }
 
-
-#content .spacer {
+#spacer {
   height: 8em;
   padding-bottom: 4em;
 }
@@ -51,7 +53,7 @@ h2 {
 }
 
 #footer .links {
-  padding-top: 3.5em;
+  padding-top: 3em;
 
   text-align: center;
 }

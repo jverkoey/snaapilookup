@@ -2,17 +2,32 @@
  * Homepage styles.
  */
 
-.logo {
+#logo {
   text-align: center;
   font-size: 5em;
+  padding-top: 0.3em;
 }
 
-.logo .api {
+#logo .api {
   color: #447799;
 }
 
-.catch-phrase {
+#catch-phrase {
   text-align: center;
   font-size: 2em;
   color: #bbcccc;
+}
+
+#search {
+  text-align: center;
+  padding: 1em 0;
+}
+
+#search label {
+  font-size: 16px;
+  padding-right: 0.5em;
+}
+
+#search .inactive {
+  color: #999;
 }
