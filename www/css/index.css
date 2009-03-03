@@ -38,9 +38,9 @@
 }
 
 #search .filters .header {
-  margin: 0.5em;
+  margin: 0.3em;
   font-size: 1.5em;
-  border-bottom: 1px solid #ccc;
+  color: #999;
 }
 
 #search .filters table {
@@ -71,6 +71,7 @@
   position: absolute;
   font-size: 16px;
   background-color: #fff;
+  min-width: 1000px;
 }
 
 #search .dropdown .empty {
@@ -81,11 +82,11 @@
   font-size: 16px;
   border: 1px solid #fff;
   padding: 2px 5px;
-  margin: 3px 0;
+  margin: 3px 300px;
 }
 
 #search .dropdown .result:hover {
-  border: 1px solid #60BF60;
+  border: 1px solid #6699aa;
   cursor: pointer;
 }
 
@@ -95,11 +96,11 @@
 }
 
 #search .dropdown .result em {
-  background-color: #BFFFBF;
+  background-color: #88aaaa;
 }
 
 #search .dropdown .selected {
-  background-color: #E6FFE6;
-  border: 1px solid #60BF60;
+  background-color: #bbcccc;
+  border: 1px solid #6699aa;
   cursor: pointer;
 }
