@@ -1,9 +1,11 @@
 <div id="logo"><span class="sna">sna</span><span class="api">api</span></div>
-<div id="catch-phrase">the <i>social</i> <b>API search engine</b></div>
+<div id="catch-phrase"><i>social</i> <b>API search</b></div>
 
 <div id="search">
-  <form action="post">
-    <input type="text" class="text" size="50" name="search" /><br />
+  <form action="post" onsubmit="return false">
+    <input type="text" class="text" size="50" name="search" autocomplete="off" />
+    <div class="dropdown" style="display:none"></div>
+    <div class="filters" style="display:none"></div>
   </form>
 </div>
 
@@ -17,6 +19,7 @@ if ('production' == $this->env) {
   $this->inlineScript()->appendFile('/js/snap/core/snap.js');
 
   $this->inlineScript()->appendFile('/js/snap/ui/ghost-input.js');
+  $this->inlineScript()->appendFile('/js/snap/ui/type-ahead.js');
 }
 
 $this->inlineScript()->appendFile('/js/page/dashboard.js');

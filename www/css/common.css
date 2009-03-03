@@ -21,8 +21,7 @@ h2 {
 }
 
 #page {
-  margin: 0 auto -8em;
-  width: 980px;
+  margin: 0 0 -8em;
   height: auto !important;
   min-height: 100%;
   min-width: 1000px;

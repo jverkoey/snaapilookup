@@ -31,3 +31,75 @@
 #search .inactive {
   color: #999;
 }
+
+#search .filters {
+  padding: 0.5em;
+  padding-top: 2em;
+}
+
+#search .filters .header {
+  margin: 0.5em;
+  font-size: 1.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+#search .filters table {
+  margin: 0 auto;
+  width: 800px;
+}
+
+#search .filters table td {
+  vertical-align: top;
+  width: 50%;
+}
+
+#search .filters .filter {
+  text-align: center;
+  padding: 0.3em;
+}
+
+#search .filters .filter .type {
+  font-weight: bold;
+}
+
+#search .filters .filter .item span {
+  cursor: pointer;
+}
+
+#search .dropdown {
+  width: 100%;
+  position: absolute;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+#search .dropdown .empty {
+  padding: 5px;
+}
+
+#search .dropdown .result {
+  font-size: 16px;
+  border: 1px solid #fff;
+  padding: 2px 5px;
+  margin: 3px 0;
+}
+
+#search .dropdown .result:hover {
+  border: 1px solid #60BF60;
+  cursor: pointer;
+}
+
+#search .dropdown .result .map-name {
+  font-size: 10px;
+  font-color: #999;
+}
+
+#search .dropdown .result em {
+  background-color: #BFFFBF;
+}
+
+#search .dropdown .selected {
+  background-color: #E6FFE6;
+  border: 1px solid #60BF60;
+  cursor: pointer;
+}
