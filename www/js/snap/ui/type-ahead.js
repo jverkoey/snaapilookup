@@ -251,7 +251,7 @@ Snap.TypeAhead.prototype = {
       html.push('<td class="filter"><span class="type">',filter_type,'</span>');
       for( var filter_id in filter ) {
         var item = filter[filter_id];
-        html.push('<div class="item" title="Click to remove"><span id="',filter_type,'-',filter_id,'">',item,'</span></div>');
+        html.push('<div class="item"><span id="',filter_type,'-',filter_id,'" title="Click to remove">',item,'</span></div>');
         any_filters = true;
       }
       html.push('</td>');
