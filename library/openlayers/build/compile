@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf output
+mkdir output
+rm -rf ../lib/snaapi
+mkdir ../lib/snaapi
+
+bash compile-lib core
+bash compile-lib ui
+

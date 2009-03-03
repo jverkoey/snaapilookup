@@ -1,0 +1,8 @@
+/**
+ * The snaapi js library.
+ * 
+ * Copyright 2009 snaapi.
+ * Created by Jeff Verkoeyen.
+ * jverkoey@gmail.com
+ * twitter.com/featherless
+ */

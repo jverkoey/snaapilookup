@@ -1,0 +1,17 @@
+#!/bin/bash
+
+LIB=$1
+
+echo 'Removing snaapi/'$LIB'/...'
+rm -rf ../lib/snaapi/$LIB
+
+echo 'Copying js/fur/'$LIB'/...'
+cp -r ../../../www/js/fur/$LIB/ ../lib/snaapi/$LIB/
+
+echo 'Compiling...'
+python build.py fur-$LIB.cfg output/$LIB.js ../lib/snaapi/$LIB snaapilicense.txt
+
+echo 'uncompressed: ' $(ls -l output/$LIB.js.merged.js)
+echo 'compressed:   ' $(ls -l output/$LIB.js)
+
+rm output/$LIB.js.merged.js
