@@ -72,6 +72,7 @@
   font-size: 16px;
   background-color: #ddd;
   min-width: 1000px;
+  z-index: 1000;
 }
 
 #search .dropdown .empty {
@@ -80,7 +81,7 @@
 
 #search .dropdown .result {
   font-size: 16px;
-  border: 1px solid #fff;
+  border: 1px solid #ddd;
   padding: 2px 5px;
   margin: 3px 300px;
 }
@@ -103,4 +104,28 @@
   background-color: #bbcccc;
   border: 1px solid #6699aa;
   cursor: pointer;
+}
+
+#result {
+  margin: 0 auto;
+  width: 800px;
+}
+
+#result .name {
+  font-size: 3em;
+}
+
+#result .category {
+  font-size: 0.8em;
+  color: #999;
+}
+
+#result .name a:hover {
+  text-decoration: none;
+}
+
+#result .short-description {
+  padding: 1em;
+  font-style: italic;
+  font-size: 1.5em;
 }

@@ -7,7 +7,8 @@
   new Snap.TypeAhead({
     input    : '#search .text',
     filters  : '#search .filters',
-    dropdown : '#search .dropdown'
+    dropdown : '#search .dropdown',
+    result   : '#result'
   });
   $('#search .text').focus();
 })();

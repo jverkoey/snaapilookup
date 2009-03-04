@@ -30,10 +30,19 @@ Snap.TypeAhead = function( elementIDs) {
   // all: everything else
   this._database = {filters: {}, all: []};
 
+  this._id_to_category = {};
+
   this._active_filters = [];
 
   this._list = null;
   this._selection = -1;
+
+  this._active_function = null;
+  this._function_cache = {};
+
+  this._query_timer = null;
+  this._active_search = null;
+  this._cached_query_results = null;
 
   $.ajax({
     type    : 'GET',
@@ -66,6 +75,7 @@ Snap.TypeAhead.prototype = {
       if( this._current_value != new_val ) {
         this._current_value = new_val;
         this._elements.dropdown.fadeIn('fast');
+        this._cached_query_results = null;
         this._update_filter();
       }
     }
@@ -117,10 +127,40 @@ Snap.TypeAhead.prototype = {
 
       this._render_filters();
       this.clear();
+    } else if( selection.function_id ) {
+      this._elements.dropdown.fadeOut('fast');
+
+      if( undefined == this._function_cache[selection.category] ) {
+        this._function_cache[selection.category] = {};
+      }
+
+      if( undefined == this._function_cache[selection.category][selection.function_id] ) {
+        this._function_cache[selection.category][selection.function_id] = {
+          name      : selection.name,
+          type      : selection.type,
+          category  : selection.category,
+          id        : selection.function_id,
+          loading   : true
+        };
+        $.ajax({
+          type    : 'GET',
+          url     : '/function',
+          dataType: 'json',
+          data    : {
+            category  : selection.category,
+            id        : selection.function_id
+          },
+          success : this._receive_function.bind(this),
+          failure : this._fail_to_receive_function.bind(this)
+        });
+      }
+
+      this._active_function = this._function_cache[selection.category][selection.function_id];
+
+      this._render_function();
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
-    // selection has the rest of the juicy bits
   },
 
   _update_filter : function() {
@@ -133,7 +173,27 @@ Snap.TypeAhead.prototype = {
 
       var MAX_RESULTS = 10;
 
-      if( trimmed_value[0] == '#' ) {
+      if( this._cached_query_results ) {
+        var query = trimmed_value;
+        var query_results = this._cached_query_results;
+        for( var i = 0; i < query_results.length && results.length < MAX_RESULTS; ++i ) {
+          var offset = query_results[i].name.toLowerCase().indexOf(query.toLowerCase());
+          if( offset >= 0 ) {
+            var entry = {
+              type      : this._id_to_category[query_results[i].category] || 'Loading...',
+              category  : query_results[i].category,
+              function_id : query_results[i].id,
+              name      : query_results[i].name,
+              matches   : [{word: query, offset: offset, size: query.length}],
+              score     : query.length * 100 / query_results[i].name.length * (offset == 0 ? 2 : 1)
+            };
+            var unique_id = 'query'+i;
+            hash_results[unique_id] = entry;
+            results.push(unique_id);
+          }
+        }
+
+      } else if( trimmed_value[0] == '#' ) {
         var query = trimmed_value.substr(1);
         // We're searching filters.
         if( query.length > 0 ) {
@@ -169,6 +229,13 @@ Snap.TypeAhead.prototype = {
           this._elements.dropdown.html('<div class="empty">Type a language or framework name.</div>');
           return;
         }
+      } else {
+        if( this._query_timer ) {
+          clearTimeout(this._query_timer);
+          this._query_timer = null;
+        }
+        this._query_timer = setTimeout(this._execute_query.bind(this, trimmed_value), 40);
+        return;
       }
 
       // Calculate the score for each result.
@@ -242,6 +309,97 @@ Snap.TypeAhead.prototype = {
     }
   },
 
+  _execute_query : function(query) {
+    if( this._active_search ) {
+      this._active_search.abort();
+    }
+    this._active_search = $.ajax({
+      type    : 'GET',
+      url     : '/search',
+      dataType: 'json',
+      query   : query,
+      data    : {
+        query : query
+      },
+      success : this._receive_search.bind(this),
+      failure : this._fail_to_receive_search.bind(this)
+    });
+  },
+
+  _receive_search : function(result, textStatus) {
+    this._active_search = null;
+    if( result.succeeded ) {
+      if( result.query == $.trim(this._current_value) ) {
+        this._cached_query_results = result.results;
+
+        this._update_filter();
+      }
+    } else {
+      this._cached_query_results = null;
+    }
+  },
+
+  _fail_to_receive_search : function(result, textStatus) {
+    this._active_search = null;
+  },
+
+  _render_function : function() {
+    var html = [];
+    html.push('<div class="function"><span class="name">');
+
+    if( this._active_function.url ) {
+      html.push('<a href="',this._active_function.url,'">');
+    }
+    html.push(this._active_function.name);
+    if( this._active_function.url ) {
+      html.push('</a>');
+    }
+
+    html.push('</span><span class="category">',
+      this._active_function.type,
+      '</span></div>');
+
+    if( this._active_function.url ) {
+      html.push('<div class="source"><a href="',this._active_function.url,'">',this._active_function.url,'</a></div>');
+    }
+
+    if( this._active_function.short_description ) {
+      html.push('<div class="short-description">',this._active_function.short_description,'</div>');
+    }
+
+    if( this._active_function.loading ) {
+      html.push('<div class="loading">Loading function details...</div>');
+    }
+
+    this._elements.result
+      .html(html.join(''))
+      .fadeIn('fast');
+  },
+
+  _receive_function : function(result, textStatus) {
+    if( result.succeeded ) {
+      var category = result.category;
+      var id = result.id;
+      if( undefined == this._function_cache[category] ) {
+        this._function_cache[category] = {};
+      }
+      for( var key in result.data ) {
+        this._function_cache[category][id][key] = result.data[key];
+      }
+      this._function_cache[category][id].loading = false;
+      if( this._active_function &&
+          this._active_function.category == result.category &&
+          this._active_function.id == result.id ) {
+        this._active_function = this._function_cache[category][id];
+        this._render_function();
+        console.log(this._active_function);
+      }
+    }
+  },
+
+  _fail_to_receive_function : function(result, textStatus) {
+  },
+
   _render_filters : function() {
     var html = [];
     var any_filters = false;
@@ -286,6 +444,17 @@ Snap.TypeAhead.prototype = {
 
   _receive_data : function(result, textStatus) {
     this._database.filters = result;
+
+    // Compile the data into an id=>category map for quick access.
+    for( var i = 0; i < result.length; ++i ) {
+      var data = result[i].data;
+      for( var i2 = 0; i2 < data.length; ++i2 ) {
+        var item = data[i2];
+        this._id_to_category[item.id] = item.name;
+      }
+    }
+
+    this._update_filter();
   },
 
   _fail_to_receive_data : function(result, textStatus) {

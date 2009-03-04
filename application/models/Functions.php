@@ -20,6 +20,17 @@ class Model_Functions {
   }
 
   /**
+   * Fetch a specific function.
+   */
+  public function fetch($category, $id) {
+    $table = $this->getTable();
+    $result = $table->fetchAll($table->select()->from($table, array('url', 'short_description', 'time_added', 'time_modified'))
+                                               ->where('category = ?', $category)
+                                               ->where('id = ?', $id))->toArray();
+    return empty($result) ? null : $result[0];
+  }
+
+  /**
    * Search for a function name.
    */
   public function search($name) {
@@ -47,13 +58,17 @@ class Model_Functions {
       $fields['time_added'] = new Zend_Db_Expr('NOW()');
       return $table->insert($fields);
     } else {
+      $category = $fields['category'];
       unset($fields['time_added']);
       unset($fields['category']);
       unset($fields['hierarchy']);
       unset($fields['name']);
       return $table->update(
         $fields,
-        $table->getAdapter()->quoteInto('id = ?', $result[0]['id']));
+        array(
+          $table->getAdapter()->quoteInto('category = ?', $category),
+          $table->getAdapter()->quoteInto('id = ?', $result[0]['id']),
+        ));
     }
   }
 

@@ -7,6 +7,6 @@ class Model_DbTable_Functions extends Zend_Db_Table_Abstract {
 
   /** Table name */
   protected $_name    = 'functions';
-  protected $_primary = 'id';
+  protected $_primary = array('category', 'id');
 
 }
