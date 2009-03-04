@@ -173,6 +173,7 @@ Snap.TypeAhead.prototype = {
           name      : selection.name,
           type      : selection.type,
           category  : selection.category,
+          hierarchy : selection.hierarchy,
           id        : selection.function_id,
           loading   : true
         };
@@ -216,6 +217,7 @@ Snap.TypeAhead.prototype = {
             var entry = {
               type      : this._id_to_category[query_results[i].category] || 'Loading...',
               category  : query_results[i].category,
+              hierarchy : query_results[i].hierarchy,
               function_id : query_results[i].id,
               name      : query_results[i].name,
               matches   : [{word: query, offset: offset, size: query.length}],
@@ -293,10 +295,27 @@ Snap.TypeAhead.prototype = {
       }
       results = results.sort(by);
 
-      // Render the html.
+      if( results.length > 0 ) {
+        this._list = [];
+        for( var i = 0; i < results.length; ++i ) {
+          this._list.push(hash_results[results[i]]);
+        }
+        this._selection = 0;
+      } else {
+        this._list = null;
+        this._selection = -1;
+      }
+
+      this._render_selection();
+    }
+  },
+
+  _render_selection : function() {
+    // Render the html.
+    if( this._list ) {
       var html = [];
-      for( var i = 0; i < results.length; ++i ) {
-        var entry = hash_results[results[i]];
+      for( var i = 0; i < this._list.length; ++i ) {
+        var entry = this._list[i];
         var name = entry.name;
 
         var regex = [];
@@ -310,37 +329,79 @@ Snap.TypeAhead.prototype = {
         });
 
         html.push('<div class="result');
-        if( i == 0 ) {
+        if( i == this._selection ) {
           html.push(' selected');
         }
-        html.push('">'+name+' <span class="map-name">'+entry.type+'</span></div>');
-      }
-      if( html.length == 0 ) {
-        this._elements.dropdown.html('<div class="empty">Bummer, we don\'t have an entry for that.</div>');
-      } else {
-        this._elements.dropdown.html(html.join(''));
-        var t = this;
-        this._elements.dropdown.children('.result').each(function(index) {
-          $(this).click(function() {
-            t._handle_selection.bind(t)(index);
-          });
-        });
+        html.push('">'+name+' <span class="category">'+entry.type+'</span>');
+
+        var lineage = this._render_lineage(entry.category, entry.hierarchy, false);
+        if( lineage ) {
+          html.push(' <span class="lineage">'+lineage+'</span>');
+        }
+
+        html.push('</div>');
       }
 
-      if( results.length > 0 ) {
-        this._list = [];
-        for( var i = 0; i < results.length; ++i ) {
-          var entry = hash_results[results[i]];
-          delete entry.matches;
-          delete entry.score;
-          this._list.push(entry);
+      this._elements.dropdown.html(html.join(''));
+      var t = this;
+      this._elements.dropdown.children('.result').each(function(index) {
+        $(this).click(function() {
+          t._handle_selection.bind(t)(index);
+        });
+      });
+    } else {
+      this._elements.dropdown.html('<div class="empty">Bummer, we don\'t have an entry for that.</div>');
+    }
+  },
+
+  _render_lineage : function(category, hierarchy, with_links) {
+    if( undefined != this._hierarchy_cache[category] &&
+        undefined != this._hierarchy_cache[category][hierarchy] ) {
+      var info = this._hierarchy_cache[category][hierarchy];
+      if( undefined != info.name ) {
+        var lineage = [];
+        var missing_any = false;
+        if( info.ancestors ) {
+          for( var i2 = 0; i2 < info.ancestors.length; ++i2 ) {
+            var ancestor = info.ancestors[i2];
+            if( undefined == this._hierarchy_cache[category][ancestor] ||
+                undefined == this._hierarchy_cache[category][ancestor].name ) {
+              missing_any = true;
+              break;
+            }
+          }
+
+          if( !missing_any ) {
+            for( var i2 = 0; i2 < info.ancestors.length; ++i2 ) {
+              var ancestor = this._hierarchy_cache[category][info.ancestors[i2]];
+              var step = '';
+              if( with_links ) {
+                step += '<a href="'+ancestor.source_url+'">';
+              }
+              step += ancestor.name;
+              if( with_links ) {
+                step += '</a>';
+              }
+              lineage.push(step);
+            }
+          }
         }
-        this._selection = 0;
-      } else {
-        this._list = null;
-        this._selection = -1;
+        if( !missing_any ) {
+          var step = '';
+          if( with_links ) {
+            step += '<a href="'+info.source_url+'">';
+          }  
+          step += info.name;
+          if( with_links ) {
+            step += '</a>';
+          }
+          lineage.push(step);
+          return lineage.join(' &raquo; ');
+        }
       }
     }
+
+    return null;
   },
 
   _execute_query : function(query) {
@@ -499,14 +560,19 @@ Snap.TypeAhead.prototype = {
           this._hierarchy_cache[category][id].loading = false;
         }
       }
+      this._render_selection();
+      this._render_function();
     }
-    console.log(this._hierarchy_cache);
+    
   },
 
   _fail_to_receive_hierarchies : function(result, textStatus) {
   },
 
   _render_function : function() {
+    if( !this._active_function ) {
+      return;
+    }
     var html = [];
     html.push('<div class="function"><span class="name">');
 
@@ -520,7 +586,16 @@ Snap.TypeAhead.prototype = {
 
     html.push('</span><span class="category">',
       this._active_function.type,
-      '</span></div>');
+      '</span>');
+
+    var category = this._active_function.category;
+    var hierarchy = this._active_function.hierarchy;
+    var lineage = this._render_lineage(category, hierarchy, true);
+    if( lineage ) {
+      html.push(' <span class="lineage">',lineage,'</span>');
+    }
+    
+    html.push('</div>');
 
     if( this._active_function.url ) {
       html.push('<div class="source"><a href="',this._active_function.url,'">',this._active_function.url,'</a></div>');

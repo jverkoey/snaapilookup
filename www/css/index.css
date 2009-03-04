@@ -94,9 +94,14 @@
   cursor: pointer;
 }
 
-#search .dropdown .result .map-name {
+#search .dropdown .result .category {
   font-size: 10px;
-  font-color: #999;
+  color: #999;
+}
+
+#search .dropdown .result .lineage {
+  font-size: 10px;
+  color: #999;
 }
 
 #search .dropdown .result em {
@@ -125,6 +130,10 @@
 #result .category {
   font-size: 0.8em;
   color: #999;
+}
+
+#result .lineage {
+  font-size: 0.8em;
 }
 
 #result .name a:hover {
