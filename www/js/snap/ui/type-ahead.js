@@ -44,6 +44,8 @@ Snap.TypeAhead = function( elementIDs) {
   this._active_search = null;
   this._cached_query_results = null;
 
+  this._has_changed_since_selection = null;
+
   $.ajax({
     type    : 'GET',
     url     : '/js/static/data.js?'+Revisions.static_js_build,
@@ -77,11 +79,28 @@ Snap.TypeAhead.prototype = {
         this._elements.dropdown.fadeIn('fast');
         this._cached_query_results = null;
         this._update_filter();
+        this._has_changed_since_selection = true;
       }
     }
 
     if( event.type == 'keypress' && this._list ) {
       if( event.keyCode == this.key.enter ) {
+        var do_nothing = false;
+        var selection = this._list[this._selection];
+        if( !this._has_changed_since_selection && selection.function_id ) {
+          // Go to this function's URL if we can.
+          if( undefined != this._function_cache[selection.category] &&
+              undefined != this._function_cache[selection.category][selection.function_id] ) {
+            var function_info = this._function_cache[selection.category][selection.function_id];
+            if( function_info.url ) {
+              window.location = function_info.url;
+            } else {
+              function_info.navigate_immediately = true;
+              this._render_function();
+            }
+            do_nothing = true;
+          }
+        }
         this._handle_selection(this._selection);
       } else {
         var old_selection = this._selection;
@@ -113,6 +132,8 @@ Snap.TypeAhead.prototype = {
   },
 
   _handle_selection : function(index) {
+    this._has_changed_since_selection = false;
+
     this._selection = index;
     var selection = this._list[this._selection];
 
@@ -375,7 +396,9 @@ Snap.TypeAhead.prototype = {
       html.push('<div class="short-description">',this._active_function.short_description,'</div>');
     }
 
-    if( this._active_function.loading ) {
+    if( this._active_function.navigate_immediately ) {
+      html.push('<div class="loading">Just a sec, once we\'ve loaded the details we\'ll send you off...</div>');
+    } else if( this._active_function.loading ) {
       html.push('<div class="loading">Loading function details...</div>');
     }
 
@@ -388,19 +411,23 @@ Snap.TypeAhead.prototype = {
     if( result.succeeded ) {
       var category = result.category;
       var id = result.id;
-      if( undefined == this._function_cache[category] ) {
-        this._function_cache[category] = {};
+
+      var function_info = this._function_cache[category][id];
+      if( function_info.navigate_immediately && result.data.url ) {
+        window.location = result.data.url;
+        return;
       }
+
       for( var key in result.data ) {
-        this._function_cache[category][id][key] = result.data[key];
+        function_info[key] = result.data[key];
       }
-      this._function_cache[category][id].loading = false;
+      function_info.loading = false;
+
       if( this._active_function &&
           this._active_function.category == result.category &&
           this._active_function.id == result.id ) {
-        this._active_function = this._function_cache[category][id];
+        this._active_function = function_info;
         this._render_function();
-        console.log(this._active_function);
       }
     }
   },
