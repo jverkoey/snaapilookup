@@ -20,6 +20,18 @@ class Model_Functions {
   }
 
   /**
+   * Search for a function name.
+   */
+  public function search($name) {
+    $table = $this->getTable();
+    $sql = $table->select()->from($table, array('id', 'category', 'hierarchy', 'name'))
+                           ->where('name LIKE ?', '%'.$name.'%')
+                           ->order($table->getAdapter()->quoteInto('CHAR_LENGTH(?) / CHAR_LENGTH(name) DESC', $name))
+                           ->limit(10);
+    return $table->fetchAll($sql)->toArray();
+  }
+
+  /**
    * Insert or update a function.
    */
   public function insertOrUpdateFunction($fields) {
