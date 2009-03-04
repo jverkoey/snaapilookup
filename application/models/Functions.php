@@ -34,6 +34,7 @@ class Model_Functions {
    * Search for a function name.
    */
   public function search($name, $filters) {
+    $name = str_replace('_', '\_', $name);
     $table = $this->getTable();
     $sql = $table->select()->from($table, array('id', 'category', 'hierarchy', 'name'))
                            ->where('name LIKE ?', '%'.$name.'%')
