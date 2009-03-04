@@ -313,13 +313,21 @@ Snap.TypeAhead.prototype = {
     if( this._active_search ) {
       this._active_search.abort();
     }
+    var flat_filters = [];
+    for( var filter_type in this._active_filters ) {
+      var filter = this._active_filters[filter_type];
+      for( var filter_id in filter ) {
+        flat_filters.push(filter_id);
+      }
+    }
     this._active_search = $.ajax({
       type    : 'GET',
       url     : '/search',
       dataType: 'json',
       query   : query,
       data    : {
-        query : query
+        query   : query,
+        filters : flat_filters.join(',')
       },
       success : this._receive_search.bind(this),
       failure : this._fail_to_receive_search.bind(this)

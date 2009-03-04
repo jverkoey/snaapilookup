@@ -33,12 +33,19 @@ class Model_Functions {
   /**
    * Search for a function name.
    */
-  public function search($name) {
+  public function search($name, $filters) {
     $table = $this->getTable();
     $sql = $table->select()->from($table, array('id', 'category', 'hierarchy', 'name'))
                            ->where('name LIKE ?', '%'.$name.'%')
                            ->order($table->getAdapter()->quoteInto('CHAR_LENGTH(?) / CHAR_LENGTH(name) DESC', $name))
                            ->limit(10);
+    if( count($filters) > 0 ) {
+      $filter_ary = array();
+      foreach( $filters as $filter ) {
+        $filter_ary []= $table->getAdapter()->quoteInto('category = ?', $filter);
+      }
+      $sql->where(implode(' OR ', $filter_ary));
+    }
     return $table->fetchAll($sql)->toArray();
   }
 
