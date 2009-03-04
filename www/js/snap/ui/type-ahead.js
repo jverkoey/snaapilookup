@@ -485,7 +485,22 @@ Snap.TypeAhead.prototype = {
   },
 
   _receive_hierarchies : function(result, textStatus) {
-    console.log(result);
+    if( result.succeeded ) {
+      for( var category in result.info ) {
+        var ids = result.info[category];
+        for( var id in ids ) {
+          var info = ids[id];
+          if( undefined == this._hierarchy_cache[category][id] ) {
+            this._hierarchy_cache[category][id] = {};
+          }
+          for( var key in info ) {
+            this._hierarchy_cache[category][id][key] = info[key];
+          }
+          this._hierarchy_cache[category][id].loading = false;
+        }
+      }
+    }
+    console.log(this._hierarchy_cache);
   },
 
   _fail_to_receive_hierarchies : function(result, textStatus) {
