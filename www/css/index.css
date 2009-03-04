@@ -116,6 +116,10 @@
 }
 
 #result .category {
+  margin-left: 1em;
+}
+
+#result .category {
   font-size: 0.8em;
   color: #999;
 }
