@@ -3,8 +3,7 @@
 
 class SnaapiController extends Zend_Controller_Action {
 
-  protected $_frameworksModel;
-  protected $_languagesModel;
+  protected $_categoriesModel;
   protected $_frameworklanguagesModel;
 
   public function init() {
@@ -13,20 +12,12 @@ class SnaapiController extends Zend_Controller_Action {
     $this->view->env = $this->getInvokeArg('env');
   }
 
-  protected function getFrameworksModel() {
-    if (null === $this->_frameworksModel) {
-      require_once APPLICATION_PATH . '/models/Frameworks.php';
-      $this->_frameworksModel = new Model_Frameworks();
+  protected function getCategoriesModel() {
+    if (null === $this->_categoriesModel) {
+      require_once APPLICATION_PATH . '/models/Categories.php';
+      $this->_categoriesModel = new Model_Categories();
     }
-    return $this->_frameworksModel;
-  }
-
-  protected function getLanguagesModel() {
-    if (null === $this->_languagesModel) {
-      require_once APPLICATION_PATH . '/models/Languages.php';
-      $this->_languagesModel = new Model_Languages();
-    }
-    return $this->_languagesModel;
+    return $this->_categoriesModel;
   }
 
   protected function getFrameworkLanguagesModel() {

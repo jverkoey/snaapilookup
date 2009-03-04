@@ -8,8 +8,8 @@ class BuildController extends SnaapiController {
     global $REVISIONS;
 
     if( 'development' == $this->getInvokeArg('env') ) {
-      $languages = $this->getLanguagesModel()->fetchAll();
-      $frameworks = $this->getFrameworksModel()->fetchAll();
+      $languages = $this->getCategoriesModel()->fetchAllLanguages();
+      $frameworks = $this->getCategoriesModel()->fetchAllFrameworks();
 
       $current_revision = $REVISIONS['STATIC_JS_BUILD'];
       $static_js_path = APPLICATION_PATH . '/../www/js/static/data.js';
