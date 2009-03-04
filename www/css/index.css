@@ -70,20 +70,23 @@
   width: 100%;
   position: absolute;
   font-size: 16px;
-  background-color: #ddd;
   min-width: 1000px;
   z-index: 1000;
+  text-align: left;
 }
 
 #search .dropdown .empty {
   padding: 5px;
+  text-align: center;
+  background-color: #fff;
 }
 
 #search .dropdown .result {
   font-size: 16px;
   border: 1px solid #ddd;
   padding: 2px 5px;
-  margin: 3px 300px;
+  margin: 3px 360px;
+  background-color: #fff;
 }
 
 #search .dropdown .result:hover {
