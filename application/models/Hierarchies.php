@@ -20,6 +20,21 @@ class Model_Hierarchies {
   }
 
   /**
+   * Fetch the ancestry of a category.
+   */
+  public function fetchAncestry($category, $id) {
+    $table = $this->getTable();
+    $info = $table->info();
+    $db = $table->getAdapter();
+    $sql = 'SELECT parent.id FROM '.$info['name'].' child, '.$info['name'].' parent ' .
+           'WHERE parent.lft != 1 AND parent.category = child.category AND '.
+                 'parent.lft < child.lft AND parent.rgt > child.rgt AND ' .
+           $db->quoteInto('child.category = ?', $category) . ' AND ' .
+           $db->quoteInto('child.id = ?', $id) . ';';
+    return $db->query($sql)->fetchAll();
+  }
+
+  /**
    * Fetch all scrapeable hierarchies of a category.
    */
   public function fetchAllScrapeable($category_id) {

@@ -29,6 +29,4 @@ class FunctionController extends SnaapiController {
     $this->_helper->viewRenderer->setNoRender();
   }
 
-  
-
 }

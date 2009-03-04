@@ -40,6 +40,18 @@ Snap.TypeAhead = function( elementIDs) {
   this._active_function = null;
   this._function_cache = {};
 
+  /**
+   * ['category,id':{loading:true/false}]     loading = true -> an async request is active
+   */
+  this._hierarchy_request_queue = {};
+
+  /**
+   * [category][id] => hierarchy name
+   */
+  this._hierarchy_cache = {};
+
+  this._hierarchy_timer = null;
+
   this._query_timer = null;
   this._active_search = null;
   this._cached_query_results = null;
@@ -361,6 +373,24 @@ Snap.TypeAhead.prototype = {
       if( result.query == $.trim(this._current_value) ) {
         this._cached_query_results = result.results;
 
+        for( var i = 0; i < result.results.length; ++i ) {
+          var category = result.results[i].category;
+          var hierarchy = result.results[i].hierarchy;
+          if( undefined == this._hierarchy_cache[category] ) {
+            this._hierarchy_cache[category] = {};
+          }
+
+          var key = category+','+hierarchy;
+          if( undefined == this._hierarchy_cache[category][hierarchy] &&
+              undefined == this._hierarchy_request_queue[key]) {
+            this._hierarchy_request_queue[key] = {loading: false};
+            if( this._hierarchy_timer ) {
+              clearTimeout(this._hierarchy_timer);
+            }
+            this._hierarchy_timer = setTimeout(this._request_hierarchies.bind(this), 100);
+          }
+        }
+
         this._update_filter();
       }
     } else {
@@ -369,6 +399,37 @@ Snap.TypeAhead.prototype = {
   },
 
   _fail_to_receive_search : function(result, textStatus) {
+    this._active_search = null;
+  },
+
+  _request_hierarchies : function() {
+    this._hierarchy_timer = null;
+    var query = [];
+    for( var key in this._hierarchy_request_queue ) {
+      if( !this._hierarchy_request_queue[key].loading ) {
+        query.push(key);
+        this._hierarchy_request_queue[key].loading = true;
+      }
+    }
+    if( query.length > 0 ) {
+      $.ajax({
+        type    : 'GET',
+        url     : '/hierarchy',
+        dataType: 'json',
+        data    : {
+          query  : query.join('|')
+        },
+        success : this._receive_hierarchies.bind(this),
+        failure : this._fail_to_receive_hierarchies.bind(this)
+      });
+    }
+  },
+
+  _receive_hierarchies : function(result, textStatus) {
+    console.log(result);
+  },
+
+  _fail_to_receive_hierarchies : function(result, textStatus) {
     this._active_search = null;
   },
 
