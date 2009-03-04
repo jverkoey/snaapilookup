@@ -151,7 +151,7 @@ Snap.TypeAhead.prototype = {
                   var entry = {
                     type      : filter.type,
                     filter_id : filter.data[i2].id,
-                    name      : '#'+filter.data[i2].name,
+                    name      : filter.data[i2].name,
                     matches   : [{word: query, offset: offset, size: query.length}],
                     score     : query.length * 100 / filter.data[i2].name.length * (offset == 0 ? 2 : 1)
                   };
