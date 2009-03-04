@@ -4,6 +4,8 @@
 class SnaapiController extends Zend_Controller_Action {
 
   protected $_categoriesModel;
+  protected $_hierarchiesModel;
+  protected $_functionsModel;
   protected $_frameworklanguagesModel;
 
   public function init() {
@@ -18,6 +20,22 @@ class SnaapiController extends Zend_Controller_Action {
       $this->_categoriesModel = new Model_Categories();
     }
     return $this->_categoriesModel;
+  }
+
+  protected function getHierarchiesModel() {
+    if (null === $this->_hierarchiesModel) {
+      require_once APPLICATION_PATH . '/models/Hierarchies.php';
+      $this->_hierarchiesModel = new Model_Hierarchies();
+    }
+    return $this->_hierarchiesModel;
+  }
+
+  protected function getFunctionsModel() {
+    if (null === $this->_functionsModel) {
+      require_once APPLICATION_PATH . '/models/Functions.php';
+      $this->_functionsModel = new Model_Functions();
+    }
+    return $this->_functionsModel;
   }
 
   protected function getFrameworkLanguagesModel() {
