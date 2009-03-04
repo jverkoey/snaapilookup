@@ -17,6 +17,8 @@ function msg_dev_only($msg) {
   return APPLICATION_ENVIRONMENT == 'development' ? '<span class="devonly">' . $msg . '</span>' : '';
 }
 
+include_once APPLICATION_PATH . '/revisions/all.php';
+
 // FRONT CONTROLLER - Get the front controller.
 // The Zend_Front_Controller class implements the Singleton pattern, which is a
 // design pattern used to ensure there is only one instance of

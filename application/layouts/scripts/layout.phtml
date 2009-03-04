@@ -43,6 +43,8 @@
 </div>
 
 <?php  // These are in a reverse order of importance because we're prepending.
+  global $REVISIONS;
+  $this->inlineScript()->prependFile('/js/static/revisions.js?'.$REVISIONS['ALL']);
   $this->inlineScript()->prependFile('/js/jquery.js');
 ?>
 <?= $this->inlineScript() ?>

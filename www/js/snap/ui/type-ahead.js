@@ -37,7 +37,7 @@ Snap.TypeAhead = function( elementIDs) {
 
   $.ajax({
     type    : 'GET',
-    url     : '/js/static/data.js',
+    url     : '/js/static/data.js?'+Revisions.static_js_build,
     dataType: 'json',
     success : this._receive_data.bind(this),
     failure : this._fail_to_receive_data.bind(this)
