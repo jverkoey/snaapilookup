@@ -20,6 +20,17 @@ class Model_Hierarchies {
   }
 
   /**
+   * Fetch the hierarchy info.
+   */
+  public function fetch($category_id, $id) {
+    $table = $this->getTable();
+    $result = $table->fetchAll($table->select()->from($table, array('name', 'source_url'))
+                                               ->where('category = ?', $category_id)
+                                               ->where('id = ?', $id))->toArray();
+    return empty($result) ? null : $result[0];
+  }
+
+  /**
    * Fetch the ancestry of a category.
    */
   public function fetchAncestry($category, $id) {

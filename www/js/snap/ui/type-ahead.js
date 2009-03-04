@@ -50,6 +50,7 @@ Snap.TypeAhead = function( elementIDs) {
    */
   this._hierarchy_cache = {};
 
+  this._ancestry_timer = null;
   this._hierarchy_timer = null;
 
   this._query_timer = null;
@@ -384,10 +385,10 @@ Snap.TypeAhead.prototype = {
           if( undefined == this._hierarchy_cache[category][hierarchy] &&
               undefined == this._hierarchy_request_queue[key]) {
             this._hierarchy_request_queue[key] = {loading: false};
-            if( this._hierarchy_timer ) {
-              clearTimeout(this._hierarchy_timer);
+            if( this._ancestry_timer ) {
+              clearTimeout(this._ancestry_timer);
             }
-            this._hierarchy_timer = setTimeout(this._request_hierarchies.bind(this), 100);
+            this._ancestry_timer = setTimeout(this._request_ancestries.bind(this), 100);
           }
         }
 
@@ -402,8 +403,8 @@ Snap.TypeAhead.prototype = {
     this._active_search = null;
   },
 
-  _request_hierarchies : function() {
-    this._hierarchy_timer = null;
+  _request_ancestries : function() {
+    this._ancestry_timer = null;
     var query = [];
     for( var key in this._hierarchy_request_queue ) {
       if( !this._hierarchy_request_queue[key].loading ) {
@@ -419,6 +420,64 @@ Snap.TypeAhead.prototype = {
         data    : {
           query  : query.join('|')
         },
+        success : this._receive_ancestries.bind(this),
+        failure : this._fail_to_receive_ancestries.bind(this)
+      });
+    }
+  },
+
+  _receive_ancestries : function(result, textStatus) {
+    // Now that we've received the hierarchy for this item, load its ancestors (if necessary).
+    if( result.succeeded ) {
+      for( var category in result.ancestors ) {
+        var ids = result.ancestors[category];
+        for( var id in ids ) {
+          var ancestors = ids[id];
+          if( undefined == this._hierarchy_cache[category][id] ) {
+            this._hierarchy_cache[category][id] = {};
+          }
+          this._hierarchy_cache[category][id].ancestors = ancestors;
+          for( var i = 0; i < ancestors.length; ++i ) {
+            if( undefined == this._hierarchy_cache[category][ancestors[i]] ) {
+              this._hierarchy_cache[category][ancestors[i]] = {};
+            }
+          }
+          delete this._hierarchy_request_queue[category+','+id];
+        }
+      }
+    }
+
+    if( this._hierarchy_timer ) {
+      clearTimeout(this._hierarchy_timer);
+      this._hierarchy_timer = null;
+    }
+    this._hierarchy_timer = setTimeout(this._request_hierarchy.bind(this), 100);
+  },
+
+  _fail_to_receive_ancestries : function(result, textStatus) {
+  },
+
+  _request_hierarchy : function() {
+    var query = [];
+    for( var category in this._hierarchy_cache ) {
+      var ids = this._hierarchy_cache[category];
+      for( var id in ids ) {
+        var hierarchy = ids[id];
+        if( undefined == hierarchy.name && !hierarchy.loading ) {
+          hierarchy.loading = true;
+          query.push(category+','+id);
+        }
+      }
+    }
+
+    if( query.length > 0 ) {
+      $.ajax({
+        type    : 'GET',
+        url     : '/hierarchy/info',
+        dataType: 'json',
+        data    : {
+          query  : query.join('|')
+        },
         success : this._receive_hierarchies.bind(this),
         failure : this._fail_to_receive_hierarchies.bind(this)
       });
@@ -430,7 +489,6 @@ Snap.TypeAhead.prototype = {
   },
 
   _fail_to_receive_hierarchies : function(result, textStatus) {
-    this._active_search = null;
   },
 
   _render_function : function() {
