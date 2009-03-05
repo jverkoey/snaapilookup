@@ -37,8 +37,8 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
     9, @parentRight, @parentRight + 1, 1,
-    'DOM',
-    'http://us3.php.net/manual/en/ref.dom.php');
+    'DOMText class',
+    'http://us3.php.net/manual/en/class.domtext.php');
 
   UNLOCK TABLES;
 

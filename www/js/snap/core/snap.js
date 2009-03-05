@@ -55,5 +55,5 @@ Object.extend(String.prototype, {
       }
     }
     return result;
-  },
+  }
 });
