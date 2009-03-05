@@ -56,7 +56,7 @@ class ScrapeController extends SnaapiController {
         }
 
         $line = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
-        if( !preg_match_all('/<li><a href="([a-zA-Z0-9_\-.]+)">([a-zA-Z0-9_.]+)<\/a> — ([a-zA-Z0-9 \-_,.\/\'\(\)"]+)<\/li>/', $line, $matches) ) {
+        if( !preg_match_all('/<li><a href="([a-zA-Z0-9_\-.]+)">([a-zA-Z0-9_:.\->]+)<\/a> — ([a-zA-Z0-9 \-_,.+;\[:\]<>=\/\'\(\)"#\\\\]+)<\/li>/', $line, $matches) ) {
           $this->view->results .= 'We coulnd\'t find any functions in this list, skipping...' . "\n";
           $this->view->results .= $line . "\n";
           $this->view->results .= $start_index.'-'.$end_index . "\n";
