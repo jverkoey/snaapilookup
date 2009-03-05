@@ -8,7 +8,11 @@
     input    : '#search .text',
     filters  : '#search .filters',
     dropdown : '#search .dropdown',
-    result   : '#result'
+    result   : '#result',
+    external : '#external_page',
+    catch_phrase : '#catch-phrase',
+    logo     : '#logo',
+    small_logo : '#small-logo'
   });
   $('#search .text').focus();
 })();

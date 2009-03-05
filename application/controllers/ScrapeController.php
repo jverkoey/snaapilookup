@@ -194,8 +194,6 @@ class ScrapeController extends SnaapiController {
         'id' => $function['id'],
         'data' => $line
       ));
-
-      //sleep(1);
     }
   }
 
