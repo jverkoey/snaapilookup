@@ -24,7 +24,7 @@ h2 {
   margin: 0 0 -8em;
   height: auto !important;
   min-height: 100%;
-  min-width: 1000px;
+  min-width: 700px;
   overflow: hidden;
 }
 
@@ -44,8 +44,8 @@ h2 {
 
 #footer .wrapper {
   margin: 0 auto;
-  width: 980px;
-  min-width: 1000px;
+  width: 480px;
+  min-width: 500px;
 
   /* Safari fix for unclickable links */
   position: relative;
