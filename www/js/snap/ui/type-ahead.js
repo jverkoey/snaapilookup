@@ -85,7 +85,13 @@ Snap.TypeAhead.prototype = {
   },
 
   _handle_key : function(event) {
-    if( event.type == 'keyup' || event.type == 'keypress' ) {
+
+    var keydown_type = 'keypress';
+    if( $.browser.safari ) {
+      keydown_type = 'keydown';
+    }
+
+    if( event.type == 'keyup' || event.type == keydown_type ) {
       var new_val = this._elements.input.val();
       if( this._current_value != new_val ) {
         this._current_value = new_val;
@@ -96,7 +102,7 @@ Snap.TypeAhead.prototype = {
       }
     }
 
-    if( event.type == 'keypress' && this._list ) {
+    if( event.type == keydown_type && this._list ) {
       if( event.keyCode == this.key.enter ) {
         var do_nothing = false;
         var selection = this._list[this._selection];
