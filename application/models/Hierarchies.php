@@ -31,6 +31,25 @@ class Model_Hierarchies {
   }
 
   /**
+   * Update an entry's scrape time.
+   */
+  public function touch($category, $id) {
+    $table = $this->getTable();
+    return $table->update(
+      array('last_scraped' => new Zend_Db_Expr('NOW()')),
+      array(
+        $table->getAdapter()->quoteInto('category = ?', $category),
+        $table->getAdapter()->quoteInto('id = ?', $id)
+      )
+    );
+    $table = $this->getTable();
+    $result = $table->fetchAll($table->select()->from($table, array('name', 'source_url'))
+                                               ->where('category = ?', $category_id)
+                                               ->where('id = ?', $id))->toArray();
+    return empty($result) ? null : $result[0];
+  }
+
+  /**
    * Fetch the ancestry of a category.
    */
   public function fetchAncestry($category, $id) {
@@ -48,10 +67,11 @@ class Model_Hierarchies {
   /**
    * Fetch all scrapeable hierarchies of a category.
    */
-  public function fetchAllScrapeable($category_id) {
+  public function fetchAllScrapeable($category) {
     $table = $this->getTable();
     return $table->fetchAll($table->select()->from($table, array('id', 'name', 'source_url'))
-                                            ->where('category = ?', $category_id)
+                                            ->where('category = ?', $category)
+                                            ->where('DATEDIFF(NOW(), last_scraped) IS NULL OR DATEDIFF(NOW(), last_scraped) > 2')
                                             ->where('scrapeable = 1'))->toArray();
   }
 
