@@ -71,7 +71,7 @@ class Model_Hierarchies {
     $table = $this->getTable();
     return $table->fetchAll($table->select()->from($table, array('id', 'name', 'source_url'))
                                             ->where('category = ?', $category)
-                                            ->where('DATEDIFF(NOW(), last_scraped) IS NULL OR DATEDIFF(NOW(), last_scraped) > 2')
+                                            ->where('DATEDIFF(NOW(), last_scraped) IS NULL OR DATEDIFF(NOW(), last_scraped) >= 7')
                                             ->where('scrapeable = 1'))->toArray();
   }
 
