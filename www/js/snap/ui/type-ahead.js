@@ -74,6 +74,7 @@ Snap.TypeAhead.prototype = {
 
   key : {
     enter : 13,
+    escape: 27,
     left  : 37,
     up    : 38,
     right : 39,
@@ -143,6 +144,10 @@ Snap.TypeAhead.prototype = {
           this._elements.dropdown.children('.result:eq('+this._selection+')').addClass('selected');
         }
       }
+    }
+
+    if( event.keyCode == this.key.escape && this._displaying_frame ) {
+      this._hide_iframe();
     }
 
     if( event.keyCode == this.key.down ||
@@ -282,7 +287,7 @@ Snap.TypeAhead.prototype = {
           clearTimeout(this._query_timer);
           this._query_timer = null;
         }
-        this._query_timer = setTimeout(this._execute_query.bind(this, trimmed_value), 40);
+        this._query_timer = setTimeout(this._execute_query.bind(this, trimmed_value), 10);
         return;
       }
 
@@ -627,12 +632,19 @@ Snap.TypeAhead.prototype = {
     this._elements.result
       .html(html.join(''))
       .fadeIn('fast');
+
+    var t = this;
+    $(this._elementIDs.result + ' a').click(function() {
+      t._show_iframe($(this).attr('href'));
+      return false;
+    });
   },
 
   _show_iframe : function(url) {
     this._displaying_frame = true;
     this._elements.logo.fadeOut('fast');
     this._elements.catch_phrase.fadeOut('fast');
+    this._elements.filters.fadeOut('fast');
     this._elements.small_logo.fadeIn('fast');
     this._elements.result.fadeOut('fast', function() {
       this._elements.external
@@ -645,6 +657,7 @@ Snap.TypeAhead.prototype = {
     this._displaying_frame = false;
     this._elements.logo.fadeIn('fast');
     this._elements.catch_phrase.fadeIn('fast');
+    this._elements.filters.fadeIn('fast');
     this._elements.small_logo.fadeOut('fast');
     this._elements.external.fadeOut('fast', function() {
       this._elements.result.show();

@@ -92,6 +92,7 @@
   min-width: 700px;
   z-index: 1000;
   text-align: left;
+  background-color: #bbcccc;
 }
 
 #search .dropdown .empty {
@@ -168,6 +169,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
+  z-index: 100;
 }
 
 #external_page iframe {
