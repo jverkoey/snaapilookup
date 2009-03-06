@@ -177,6 +177,7 @@ class ScrapeController extends SnaapiController {
       $line = str_replace("</b>", '', $line);
       $line = str_replace("<span class=\"methodname\">", '<sm>', $line);
       $line = str_replace("<span class=\"methodparam\">", '<smp>', $line);
+      $line = str_replace("<span class=\"initializer\">", '<si>', $line);
       $line = preg_replace("/<tt.+?>/", '<sp>', $line);
       $line = str_replace("</tt>", '</s>', $line);
       $line = str_replace("</span>", '</s>', $line);

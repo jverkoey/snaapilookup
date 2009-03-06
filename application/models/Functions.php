@@ -24,9 +24,21 @@ class Model_Functions {
    */
   public function fetch($category, $id) {
     $table = $this->getTable();
-    $result = $table->fetchAll($table->select()->from($table, array('url', 'short_description', 'time_added', 'time_modified'))
-                                               ->where('category = ?', $category)
-                                               ->where('id = ?', $id))->toArray();
+    $result = $table->fetchAll(
+      $table
+        ->select()
+        ->from(
+          $table,
+          array(
+            'url',
+            'short_description',
+            'time_added',
+            'time_modified',
+            'data'
+          ))
+        ->where('category = ?', $category)
+        ->where('id = ?', $id)
+    )->toArray();
     return empty($result) ? null : $result[0];
   }
 

@@ -622,6 +622,14 @@ Snap.TypeAhead.prototype = {
       html.push('<div class="short-description">',this._active_function.short_description,'</div>');
     }
 
+    if( this._active_function.data ) {
+      switch( this._id_to_category[this._active_function.category] ) {
+        case 'PHP':
+          html.push('<div class="signature">',this._active_function.data,'</div>');
+          break;
+      }
+    }
+
     if( this._active_function.navigate_immediately ) {
       html.push('<div class="loading">Just a sec, once we\'ve loaded the details we\'ll send you off...</div>');
     } else if( this._active_function.loading ) {
@@ -680,6 +688,20 @@ Snap.TypeAhead.prototype = {
       }
       function_info.loading = false;
 
+      console.log(function_info.data);
+      if( function_info.data ) {
+        switch( this._id_to_category[function_info.category] ) {
+          case 'PHP':
+            function_info.data = function_info.data.replace(/<\/s>/g, '</span>');
+            function_info.data = function_info.data.replace(/<st>/g, '<span class="type">');
+            function_info.data = function_info.data.replace(/<si>/g, '<span class="initializer">');
+            function_info.data = function_info.data.replace(/<sm>/g, '<span class="methodname">');
+            function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
+            function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
+            console.log(function_info.data);
+            break;
+        }
+      }
       if( this._active_function &&
           this._active_function.category == result.category &&
           this._active_function.id == result.id ) {

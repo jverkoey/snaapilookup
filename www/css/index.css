@@ -161,8 +161,32 @@
 
 #result .short-description {
   padding: 1em;
+  padding-bottom: 0.5em;
   font-style: italic;
   font-size: 1.5em;
+  color: #999;
+}
+
+#result .signature {
+  padding: 1em;
+  padding-top: 0.5em;
+  font-size: 1.5em;
+}
+
+#result .signature .type,
+#result .signature .methodparam {
+  color: #6699AA;
+}
+
+#result .signature .methodtype,
+#result .signature .methodarg {
+  color: #333;
+  font-style: italic;
+}
+
+#result .signature .initializer {
+  color: #333;
+  font-style: normal;
 }
 
 #external_page {
