@@ -59,6 +59,8 @@ Snap.TypeAhead = function( elementIDs) {
 
   this._has_changed_since_selection = null;
 
+  this._displaying_frame = false;
+
   $.ajax({
     type    : 'GET',
     url     : '/js/static/data.js?'+Revisions.static_js_build,
@@ -200,7 +202,9 @@ Snap.TypeAhead.prototype = {
 
       this._active_function = this._function_cache[selection.category][selection.function_id];
 
+      this._displaying_frame = false;
       this._render_function();
+      this._hide_iframe();
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
@@ -578,7 +582,7 @@ Snap.TypeAhead.prototype = {
   },
 
   _render_function : function() {
-    if( !this._active_function ) {
+    if( !this._active_function || this._displaying_frame ) {
       return;
     }
     var html = [];
@@ -626,6 +630,7 @@ Snap.TypeAhead.prototype = {
   },
 
   _show_iframe : function(url) {
+    this._displaying_frame = true;
     this._elements.logo.fadeOut('fast');
     this._elements.catch_phrase.fadeOut('fast');
     this._elements.small_logo.fadeIn('fast');
@@ -634,11 +639,16 @@ Snap.TypeAhead.prototype = {
         .html('<iframe src="'+url+'"></iframe>')
         .show();
     }.bind(this));
-    setTimeout(this.check_height.bind(this), 1000);
   },
 
-  check_height : function() {
-    this._elements.external.height($(this._elementIDs.external + ' iframe')[0].contentDocument.body.offsetHeight + 'px');
+  _hide_iframe : function(url) {
+    this._displaying_frame = false;
+    this._elements.logo.fadeIn('fast');
+    this._elements.catch_phrase.fadeIn('fast');
+    this._elements.small_logo.fadeOut('fast');
+    this._elements.external.fadeOut('fast', function() {
+      this._elements.result.show();
+    }.bind(this));
   },
 
   _receive_function : function(result, textStatus) {
