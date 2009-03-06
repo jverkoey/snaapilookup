@@ -20,6 +20,19 @@ class ScrapeController extends SnaapiController {
       $this->view->results = '';
       $this->_pages_scraped = 0;
 
+      /*$model = $this->getFunctionsModel();
+      $db = $model->getTable()->getAdapter();
+      $sql = "SELECT *  FROM `functions` WHERE `data` LIKE '% ,%'";
+      foreach( $db->query($sql)->fetchAll() as $result ) {
+        $result['data'] = str_replace(" ,", ',', $result['data']);
+
+        $this->getFunctionsModel()->setData(array(
+          'category' => $result['category'],
+          'id' => $result['id'],
+          'data' => $result['data']
+        ));
+      }*/
+
       $this->scrapePHPHierarchies();
       $this->scrapePHPFunctions();
     } else {
@@ -147,6 +160,16 @@ class ScrapeController extends SnaapiController {
 
       $contents = file_get_contents($source_url);
 
+      if( strpos($contents, 'classsynopsis') !== FALSE ) {
+        $this->view->results .= 'This is a class definition, skipping...' . "\n";
+        continue;
+      }
+
+      if( strpos($contents, '<span class="simpara">') !== FALSE ) {
+        $this->view->results .= 'This is not a function, skipping...' . "\n";
+        continue;
+      }
+
       $start_index = strpos($contents, '<h3 class="title">Description</h3>');
       if( $start_index === FALSE ) {
         $this->view->results .= 'We didn\'t find a Description, skipping...' . "\n";
@@ -172,9 +195,10 @@ class ScrapeController extends SnaapiController {
       }
 
       $line = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
-      $line = str_replace("<span class=\"type\">", '<st>', $line);
+      $line = str_replace("<span class=\"type.+?\">", '<st>', $line);
       $line = str_replace("<b>", '', $line);
       $line = str_replace("</b>", '', $line);
+      $line = str_replace("<span class=\"modifier\">", '<st>', $line);
       $line = str_replace("<span class=\"methodname\">", '<sm>', $line);
       $line = str_replace("<span class=\"methodparam\">", '<smp>', $line);
       $line = str_replace("<span class=\"initializer\">", '<si>', $line);
