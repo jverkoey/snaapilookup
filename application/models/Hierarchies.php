@@ -42,11 +42,6 @@ class Model_Hierarchies {
         $table->getAdapter()->quoteInto('id = ?', $id)
       )
     );
-    $table = $this->getTable();
-    $result = $table->fetchAll($table->select()->from($table, array('name', 'source_url'))
-                                               ->where('category = ?', $category_id)
-                                               ->where('id = ?', $id))->toArray();
-    return empty($result) ? null : $result[0];
   }
 
   /**

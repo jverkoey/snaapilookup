@@ -80,4 +80,59 @@ class Model_Functions {
     }
   }
 
+  /**
+   * Sets the data for a function.
+   */
+  public function setData($fields) {
+    $table = $this->getTable();
+    
+    $category = $fields['category'];
+    $id = $fields['id'];
+    $fields['time_modified'] = new Zend_Db_Expr('NOW()');
+    $fields['last_scraped'] = new Zend_Db_Expr('NOW()');
+    unset($fields['time_added']);
+    unset($fields['category']);
+    unset($fields['id']);
+    unset($fields['hierarchy']);
+    unset($fields['name']);
+    unset($fields['short_description']);
+    unset($fields['time_added']);
+    return $table->update(
+      $fields,
+      array(
+        $table->getAdapter()->quoteInto('category = ?', $category),
+        $table->getAdapter()->quoteInto('id = ?', $id),
+      )
+    );
+  }
+
+  /**
+   * Update an entry's scrape time.
+   */
+  public function touch($category, $id) {
+    $table = $this->getTable();
+    return $table->update(
+      array('last_scraped' => new Zend_Db_Expr('NOW()')),
+      array(
+        $table->getAdapter()->quoteInto('category = ?', $category),
+        $table->getAdapter()->quoteInto('id = ?', $id)
+      )
+    );
+  }
+
+  /**
+   * Fetch all scrapeable functions of a category.
+   */
+  public function fetchAllScrapeable($category) {
+    $table = $this->getTable();
+    return $table->fetchAll(
+      $table
+        ->select()
+        ->from($table, array('id', 'name', 'url'))
+        ->where('category = ?', $category)
+        ->where('DATEDIFF(NOW(), last_scraped) IS NULL OR DATEDIFF(NOW(), last_scraped) >= 7')
+        ->where('scrapeable = 1'))
+      ->toArray();
+  }
+
 }
