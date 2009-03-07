@@ -1,0 +1,62 @@
+<?php $this->headTitle('sign up'); ?>
+<div id="slimpage">
+<div id="signup">
+  <div class="preamble" title="Dive in, have some fun!">Want to create a new account?<br/>We'd love to have you.</div>
+  <div class="subpreamble" title="...and many more!">Or you can <a href="/login">sign in</a> with your existing Google or
+    myOpenID account.</div>
+
+  <div class="form">
+    <form method="post" action="/auth/signup"><fieldset>
+      <div class="loginform">
+        <table><tbody>
+          <tr class="username">
+            <th>Username:</th>
+            <td class="col-field"><input class="text" type="text" name="username" size="15" maxlength="15" autocomplete="off"<?= isset($this->create_username) ? ' value="' . $this->create_username . '"' : '' ?> /></td>
+            <td class="col-info"><div class="info"><span class="info-text"></span></div></td>
+          </tr>
+          <tr class="password">
+            <th>Password:</th>
+            <td class="col-field"><input class="text" type="password" name="password" size="15" maxlength="20" /></td>
+            <td class="col-info"><div class="info"><span class="info-text"></span></div></td>
+          </tr>
+          <tr class="email">
+            <th>Email:</th>
+            <td class="col-field"><input class="text" type="text" name="email" size="15" maxlength="50"<?= isset($this->create_email) ? ' value="' . $this->create_email . '"' : '' ?> /></td>
+            <td class="col-info"><div class="info"><span class="info-text"></span></div></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td class="col-field"><input class="button" type="submit" name="signup_action" value="sign up" /></td>
+            <td class="col-info"></td>
+          </tr>
+        </tbody></table>
+      </div>
+    </fieldset></form>
+  </div>
+
+  <? if( isset($this->signup_error) ) { ?>
+  <div class="errors">
+    <?= $this->signup_error ?>
+  </div>
+  <? } ?>
+</div>
+</div>
+
+<?php
+
+$this->headLink()->appendStylesheet('/css/signup.css');
+
+$this->inlineScript()->appendFile('/js/jquery.color.js');
+
+if ('production' == $this->env) {
+  $this->inlineScript()->appendFile('/js/snap/core.js');
+  $this->inlineScript()->appendFile('/js/snap/ui.js');
+} else {
+  $this->inlineScript()->appendFile('/js/snap/core/snap.js');
+  $this->inlineScript()->appendFile('/js/snap/core/colour-palette.js');
+  $this->inlineScript()->appendFile('/js/snap/ui/username-check.js');
+  $this->inlineScript()->appendFile('/js/snap/ui/password-check.js');
+  $this->inlineScript()->appendFile('/js/snap/ui/email-check.js');
+}
+
+$this->inlineScript()->appendFile('/js/page/signup.js');

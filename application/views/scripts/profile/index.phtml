@@ -1,0 +1,55 @@
+<div id="slimpage">
+<!--
+<div id="profile-pic">
+  <img src="/gfx/emptyprofile.png" width="193" height="193" alt="Profile picture" />
+</div>
+-->
+<div id="profile">
+  <table class="box"><tr>
+    <th class="left">
+      <div class="info">
+        <div class="edit"><a href="/profile/edit">edit your profile</a></div>
+        <h1>Your Profile</h1>
+        <table cellspacing="0" class="inner_table">
+          <tr>
+            <th><label>Name:</label></th>
+            <td>
+              <div class="data">
+                <?= isset($this->profile['fullname']) ? $this->profile['fullname'] : '' ?>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <h1>Authentication</h1>
+<?php if( $this->any_auths ) { ?>
+        <div class="subtext">You can use any number of external accounts to log in to snaapi.
+        These are the accounts we currently have listed under your name:</div>
+        <table cellspacing="0" class="auth_table">
+<?php foreach( $this->fur_auths as $account) { ?>
+          <tr><th>snaapi account</th><td><?= $account['username'] ?></td></tr>
+<?php } ?>
+<?php foreach( $this->openid_auths as $account) { ?>
+          <tr><th><?= $account['provider'] ?> account</th><td><?= $account['openid_url'] ?></td></tr>
+<?php } ?>
+        </table>
+<?php } else { ?>
+        <div class="subtext">Strange, we don't seem to have any authentication accounts registered for you.</div>
+<?php } ?>
+      </div>
+    </th>
+    <td class="right">
+      <div class="tips">
+        <h1>Stats</h1>
+        <p>You've been a member of snaapi for <b><?= $this->relativeTime()->sqlDateRelativeToNow($this->profile['signup_date']) ?></b>.</p>
+      </div>
+    </td>
+  </tr></table>
+</div>
+
+</div>
+<?php
+
+$this->headLink()->appendStylesheet('/css/profile.css');
+
+$this->inlineScript()->appendFile('/js/page/edit_profile.js');

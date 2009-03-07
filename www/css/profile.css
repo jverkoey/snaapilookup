@@ -1,0 +1,106 @@
+/**
+ * Profile stylesheet.
+ */
+
+#profile-pic {
+  float: left;
+  border: 1px solid #ccc;
+  width: 199px;
+  height: 199px;
+}
+
+#profile {
+  border: 1px solid #ccc;
+  margin: 0 200px;
+}
+
+#profile .box {
+  width: 100%;
+}
+
+#profile .box .info {
+  padding: 2em;
+}
+
+#profile .box .left {
+  width: 75%;
+  vertical-align: top;
+}
+
+#profile .box .left h1 {
+  font-size: 2em;
+}
+
+#profile .box .right {
+  border-left: 1px solid #ccc;
+  background-color: #6699AA;
+  padding: 1em;
+  vertical-align: top;
+  color: #fff;
+}
+
+#profile .box .right h1 {
+  font-weight: bold;
+  font-size: 1.2em;
+  border-bottom: 1px solid #447799;
+  margin-bottom: 0.3em;
+}
+
+#profile .box .right .tips p {
+  font-size: 0.9em;
+}
+
+#profile .inner_table {
+  width: 100%;
+}
+
+#profile .inner_table th {
+  text-align: right;
+  padding: 0.3em;
+  width: 20%;
+}
+
+#profile .inner_table td {
+  text-align: left;
+  padding: 0.3em;
+  width: 80%;
+}
+
+#profile .subtext {
+  padding: 0.5em;
+  font-size: 0.9em;
+}
+
+#profile .auth_table {
+  width: 100%;
+}
+
+#profile .auth_table th {
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+  width: 40%;
+  padding: 0.3em;
+}
+
+#profile .auth_table td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 0.3em;
+  width: 60%;
+}
+
+#profile .auth_table tr.divider {
+  border-top: 1px solid #999;
+}
+
+#profile .edit {
+  float: right;
+  padding: 0.3em;
+}
+
+#profile .inner_table .data {
+  border: 1px solid #fff;
+  font-size: 16px;
+  padding: 0.3em;
+}

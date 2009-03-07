@@ -28,6 +28,11 @@ h2 {
   overflow: hidden;
 }
 
+#slimpage {
+  margin: 0 auto;
+  width: 1000px;
+}
+
 #headerbar {
   padding-top: 18px;
   position: absolute;

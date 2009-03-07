@@ -92,7 +92,7 @@
 
 #auth .login .services .selected,
 #auth .login .services .selected:hover {
-  background-color: #BFFFBF;
+  background-color: #E6E6FF;
   color: #000;
 }
 
@@ -107,7 +107,7 @@
   padding: 0.3em;
   height: 2.4em;
 
-  background-color: #E6FFE6;
+  background-color: #E6E6FF;
   text-align: right;
 
   display: none;

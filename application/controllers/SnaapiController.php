@@ -3,6 +3,9 @@
 
 class SnaapiController extends Zend_Controller_Action {
 
+  protected $_openIDModel;
+  protected $_userIDModel;
+  protected $_usersModel;
   protected $_categoriesModel;
   protected $_hierarchiesModel;
   protected $_functionsModel;
@@ -14,6 +17,75 @@ class SnaapiController extends Zend_Controller_Action {
     $this->view->env = $this->getInvokeArg('env');
   }
 
+  protected function isLoggedIn() {
+    return Zend_Auth::getInstance()->hasIdentity();
+  }
+
+  protected function _requireLoggedIn($options = array('redirect' => true)) {
+    $auth = Zend_Auth::getInstance();
+    if( $auth->hasIdentity() ) {
+      $identity = $auth->getIdentity();
+      if( $this->_getUsersModel()->userExists($identity['id']) ) {
+        return $identity['id'];
+      } else {
+        Zend_Auth::getInstance()->clearIdentity();
+      }
+    }
+
+    if( $options['redirect'] ) {
+      $request = $this->getRequest();
+      // Fail out.
+      $this->_forward('index', 'login', null, array(
+                      'redirect' => array( 'controller' => $request->getControllerName(),
+                                           'action'     => $request->getActionName(),
+                                           'params'     => $request->getParams() ) ));
+      return null;
+    }
+
+    return null;
+  }
+
+  protected function _storeUserProfile($auth, $user_id, $profile) {
+    $safe_profile = is_array($auth->getIdentity()) ? $auth->getIdentity() : array();
+    if( isset($profile['nickname']) ) {
+      $safe_profile['nickname'] = $profile['nickname'];
+    }
+    if( isset($profile['fullname']) ) {
+      $safe_profile['fullname'] = $profile['fullname'];
+    }
+    $auth->getStorage()->write(array_merge(array('id' => $user_id), $safe_profile));
+  }
+
+  protected function _getUserProfile($user_id) {
+    return $this->_getUsersModel()->fetchUserProfile($user_id);
+  }
+
+  protected function _getOpenIDModel() {
+    if (null === $this->_openIDModel) {
+      // autoload only handles "library" components.  Since this is an 
+      // application model, we need to require it from its application 
+      // path location.
+      require_once APPLICATION_PATH . '/models/OpenID.php';
+      $this->_openIDModel = new Model_OpenID();
+    }
+    return $this->_openIDModel;
+  }
+
+  protected function _getUserIDModel() {
+    if (null === $this->_userIDModel) {
+      require_once APPLICATION_PATH . '/models/UserID.php';
+      $this->_userIDModel = new Model_userID();
+    }
+    return $this->_userIDModel;
+  }
+
+  protected function _getUsersModel() {
+    if (null === $this->_usersModel) {
+      require_once APPLICATION_PATH . '/models/Users.php';
+      $this->_usersModel = new Model_Users();
+    }
+    return $this->_usersModel;
+  }
   protected function getCategoriesModel() {
     if (null === $this->_categoriesModel) {
       require_once APPLICATION_PATH . '/models/Categories.php';

@@ -1,0 +1,106 @@
+/**
+ * Sign up with style.
+ */
+
+#signup {
+  padding: 1em;
+  margin: 0 150px;
+}
+
+#signup .button {
+  font-size: 16px;
+}
+
+#signup .text {
+  border: 1px solid #ccc;
+  padding: 5px;
+  outline-style: none;
+}
+
+#signup .text:focus {
+  border: 1px solid #999;
+}
+
+#signup .preamble {
+  font-size: 2.3em;
+  padding-bottom: 0.3em;
+  text-align: center;
+}
+
+#signup .subpreamble {
+  font-size: 1.2em;
+  font-style: italic;
+  text-align: center;
+}
+
+#signup .subpreamble a {
+  color: #40409F;
+  text-decoration: none;
+}
+
+#signup .subpreamble a:hover {
+  text-decoration: underline;
+}
+
+#signup .form {
+  padding: 1em;
+  padding-left: 7em;
+}
+
+#signup .loginform th {
+  width: 20%;
+  text-align: right;
+  font-size: 1.3em;
+  padding: 5px;
+  padding-right: 0;
+  border: 1px solid #fff;
+  vertical-align: middle;
+}
+
+#signup .loginform .col-field,
+#signup .loginform .text {
+  width: 150px;
+}
+
+#signup .loginform .col-field {
+  padding: 0.3em;
+  padding-right: 0;
+}
+
+#signup .loginform .text {
+  font-size: 16px;
+}
+
+#signup .loginform .col-info {
+  text-align: left;
+  padding: 0.3em;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#signup .loginform div.info {
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius:10px;
+  -webkit-border-bottom-right-radius:10px;
+  border: 1px solid #ccc;
+  border-left: 0;
+  padding: 5px;
+  font-size: 16px;
+  display: none;
+  background-color: #fff;
+}
+
+#signup .loginform div.info.focus {
+  border: 1px solid #999;
+  border-left: 0;
+}
+
+#signup .loginform span.info-text {
+  padding: 0;
+}
+
+#signup .errors {
+  background-color: #FFE6E6;
+  padding: 1em;
+}

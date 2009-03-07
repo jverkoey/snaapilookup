@@ -1,0 +1,51 @@
+<div id="slimpage">
+<div id="profile">
+  <table class="box"><tr>
+    <th class="left">
+      <div class="info">
+        <h1>Your Profile</h1>
+        <form action="/profile/<?= isset($this->confirmOnly) ? 'confirmupdate' : 'update' ?>"
+              enctype="multipart/form-data"
+              method="post"
+              class="form">
+          <fieldset>
+          <input type="hidden" name="user_id" value="<?= $this->profile['id'] ?>" />
+          <?= isset($this->confirmOnly) ? '<input type="hidden" name="confirmOnly" value="1" />' : '' ?>
+          <table cellspacing="0" class="inner_table">
+            <tr>
+              <th><label for="fullname">Name:</label></th>
+              <td>
+                <input id="fullname" class="text" maxlength="20" name="profile[fullname]" size="20" type="text" value="<?= isset($this->profile['fullname']) ? $this->profile['fullname'] : '' ?>" />
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <?php if( isset($this->confirmOnly) ) { ?>
+                <input id="save" class="button" name="action" type="submit" value="confirm" title="Confirm your imported profile" />
+                <?php } else { ?>
+                <input id="save" class="button" name="action" type="submit" value="save" title="Save the changes you've made" />
+                or <a href="/profile" title="Cancel any changes you've made">cancel</a>
+                <?php } ?>
+              </td>
+            </tr>
+          </table>
+          </fieldset>
+        </form>
+      </div>
+    </th>
+    <td class="right">
+      <div class="tips">
+        <h1>Profile</h1>
+        <p>Let the snaapi world know a bit more about you by filling out your profile.</p>
+      </div>
+    </td>
+  </tr></table>
+</div>
+</div>
+<?php
+
+$this->headLink()->appendStylesheet('/css/profile.css');
+$this->headLink()->appendStylesheet('/css/profile_edit.css');
+
+$this->inlineScript()->appendFile('/js/page/edit_profile.js');

@@ -1,0 +1,32 @@
+/**
+ * Edit profile stylesheet.
+ */
+
+#profile .form .text {
+  border: 1px solid #ccc;
+  padding: 0.3em;
+  outline-style: none;
+}
+
+#profile .form .text:focus {
+  border: 1px solid #999;
+}
+
+#profile .form .button {
+  padding: 0.2em;
+  border: 1px solid #ccc;
+  outline-style: none;
+}
+
+#profile .form .button:focus {
+  border: 1px solid #999;
+}
+
+#profile .form a {
+  text-decoration: none;
+  color: #6060bf;
+}
+
+#profile .form a:hover {
+  text-decoration: underline;
+}
