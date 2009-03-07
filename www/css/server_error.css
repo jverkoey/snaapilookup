@@ -2,6 +2,20 @@
  * Stylized server errors.
  */
 
+#logo {
+  text-align: center;
+  font-size: 5em;
+  padding-top: 0.3em;
+}
+
+#logo .api {
+  color: #447799;
+}
+
+.server_error {
+  padding: 3em;
+}
+
 .server_error h1 {
   font-size: 150%;
   padding-bottom: 0.5em;

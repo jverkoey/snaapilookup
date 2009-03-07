@@ -28,6 +28,35 @@ h2 {
   overflow: hidden;
 }
 
+#headerbar {
+  padding-top: 18px;
+  position: absolute;
+  width: 100%;
+}
+
+#headerbar .actions {
+  float: right;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#headerbar .actions li {
+  display: inline;
+}
+
+#headerbar .actions li a {
+  padding: 5px;
+  margin: 3px;
+  color: #FFF;
+  text-decoration: none;
+  color: #447799;
+}
+
+#headerbar .actions li:hover a {
+  background-color: #6699aa;
+  color: #fff;
+}
+
 #content {
   color: #333;
 }
