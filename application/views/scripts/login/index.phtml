@@ -1,0 +1,70 @@
+<?php $this->headTitle('log in'); ?>
+<div id="auth">
+  <table><tr>
+    <td class="login leftside">
+      <div class="preamble">Log in using Google, myOpenID, or any number of other
+        accounts you may already have.</div>
+
+      <div class="form">
+        <form method="post" action="/auth/login"><fieldset>
+          <div class="services">
+            <img src="/gfx/openidicon.gif" alt="Services" title="OpenID Services" />
+            <div class="list">
+              <div class="service google"><img width="16" height="16" src="http://www.google.ca/favicon.ico" alt="" />Google</div>
+              <div class="service yahoo"><img width="16" height="16" src="http://www.yahoo.com/favicon.ico" alt="" />Yahoo!</div>
+              <div class="service myOpenID"><img width="16" height="16" src="http://www.myopenid.com/favicon.ico" alt="" />myOpenID</div>
+              <div class="service flickr"><img width="16" height="16" src="http://flickr.com/favicon.ico" alt="" />flickr</div>
+              <div class="service blogger"><img width="16" height="16" src="http://www.aol.com/favicon.ico" alt="" />Blogger</div>
+              <div class="bottombar"><span class="servicename"></span> username: <input class="text" type="text" value="username" /></div>
+            </div>
+          </div>
+          <div class="loginform">
+            <input id="openid_url" class="text" type="text" name="openid_url" size="35" maxlength="100" autocomplete="off"value="<?= isset($this->openid_url) ? $this->openid_url : 'http://' ?>" />
+            <input class="button" type="submit" name="openid_action" value="log in" />
+          </div>
+          <? if( isset($this->error) ) { ?>
+          <div class="errors">
+            <?= $this->error ?>
+          </div>
+          <? } ?>
+        </fieldset></form>
+      </div>
+    </td>
+
+    <td class="login">
+      <div class="preamble">Log in with your snaapi account.</div>
+
+      <div class="form">
+        <form method="post" action="/auth/login"><fieldset>
+          <div class="userloginform">
+            <table><tbody>
+              <tr class="username">
+                <th>Username:</th>
+                <td class="col-field"><input class="text" type="text" name="username" size="15" maxlength="15" autocomplete="off"<?= isset($this->create_username) ? ' value="' . $this->create_username . '"' : '' ?> /></td>
+              </tr>
+              <tr class="password">
+                <th>Password:</th>
+                <td class="col-field"><input class="text" type="password" name="password" size="15" maxlength="20" /></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td class="col-field"><input class="button" type="submit" name="login_action" value="log in" /></td>
+              </tr>
+            </tbody></table>
+          </div>
+          <? if( isset($this->login_error) ) { ?>
+          <div class="errors">
+            <?= $this->login_error ?>
+          </div>
+          <? } ?>
+        </fieldset></form>
+      </div>
+    </td>
+  </tr></table>
+</div>
+
+<?php
+
+$this->headLink()->appendStylesheet('/css/login.css');
+
+$this->inlineScript()->appendFile('/js/page/login.js');

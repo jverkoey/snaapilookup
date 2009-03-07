@@ -1,0 +1,143 @@
+/**
+ * Login with style.
+ */
+
+#auth {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+#auth table {
+  width: 100%;
+}
+
+#auth table td {
+  padding: 1em;
+  vertical-align: top;
+}
+
+#auth h1 {
+  font-size: 2em;
+}
+
+#auth .preamble {
+  font-size: 1.3em;
+}
+
+/**
+ * Login
+ */
+#auth .login {
+  width: 50%;
+}
+
+#auth .leftside {
+  border-right: 2px dashed #ccc;
+}
+
+#auth .login .openidlogo {
+  vertical-align: middle;
+}
+
+#auth .login .form {
+  padding: 1em;
+}
+
+#auth .login .services {
+  border: 1px solid #ccc;
+  border-right: 0;
+  float: left;
+  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+#auth .login .services:hover {
+  border: 1px solid #999;
+  border-right: 0;
+}
+
+#auth .login .services .list {
+  position: absolute;
+  display: none;
+  width: 359px;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  background-color: #fff;
+}
+
+#auth .login .services:hover .list {
+  border: 1px solid #999;
+}
+
+#auth .login .services .service {
+  border: 1px solid #fff;
+  width: 105px;
+  margin: 0.2em;
+  padding: 0.2em;
+  font-size: 1.2em;
+  float: left;
+}
+
+#auth .login .services .service img {
+  padding: 0.2em;
+  vertical-align: bottom;
+}
+
+#auth .login .services .service:hover {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+#auth .login .services .selected,
+#auth .login .services .selected:hover {
+  background-color: #BFFFBF;
+  color: #000;
+}
+
+/**
+ * Bottom bar in the services panel.
+ * Displays text and a text box for a username.
+ */
+#auth .login .services .bottombar { 
+  clear: both;
+
+  border-top: 1px solid #999;
+  padding: 0.3em;
+  height: 2.4em;
+
+  background-color: #E6FFE6;
+  text-align: right;
+
+  display: none;
+}
+
+
+/**
+ * User login.
+ */
+#auth .login .userloginform th {
+  width: 20%;
+  text-align: right;
+  font-size: 1.3em;
+  padding: 0.3em;
+  padding-right: 0;
+  vertical-align: middle;
+}
+
+#auth .login .userloginform .col-field,
+#auth .login .userloginform .text {
+  width: 150px;
+}
+
+#auth .login .userloginform .col-field {
+  padding: 0.3em;
+  padding-right: 0;
+}
+
+
+#auth .errors {
+  background-color: #FFE6E6;
+  padding: 1em;
+}

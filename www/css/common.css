@@ -61,6 +61,25 @@ h2 {
   color: #333;
 }
 
+#logo {
+  text-align: center;
+  font-size: 5em;
+  padding-top: 0.3em;
+}
+
+#logo a {
+  color: #333;
+}
+
+#logo a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+#logo .api {
+  color: #447799;
+}
+
 #spacer {
   height: 8em;
   padding-bottom: 4em;
