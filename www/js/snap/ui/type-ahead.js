@@ -229,16 +229,16 @@ Snap.TypeAhead.prototype = {
         var query = trimmed_value;
         var query_results = this._cached_query_results;
         for( var i = 0; i < query_results.length && results.length < MAX_RESULTS; ++i ) {
-          var offset = query_results[i].name.toLowerCase().indexOf(query.toLowerCase());
+          var offset = query_results[i].n.toLowerCase().indexOf(query.toLowerCase());
           if( offset >= 0 ) {
             var entry = {
-              type      : this._id_to_category[query_results[i].category] || 'Loading...',
-              category  : query_results[i].category,
-              hierarchy : query_results[i].hierarchy,
-              function_id : query_results[i].id,
-              name      : query_results[i].name,
+              type      : this._id_to_category[query_results[i].c] || 'Loading...',
+              category  : query_results[i].c,
+              hierarchy : query_results[i].h,
+              function_id : query_results[i].i,
+              name      : query_results[i].n,
               matches   : [{word: query, offset: offset, size: query.length}],
-              score     : query.length * 100 / query_results[i].name.length * (offset == 0 ? 2 : 1)
+              score     : query.length * 100 / query_results[i].n.length * (offset == 0 ? 2 : 1)
             };
             var unique_id = 'query'+i;
             hash_results[unique_id] = entry;
@@ -448,13 +448,13 @@ Snap.TypeAhead.prototype = {
 
   _receive_search : function(result, textStatus) {
     this._active_search = null;
-    if( result.succeeded ) {
-      if( result.query == $.trim(this._current_value) ) {
-        this._cached_query_results = result.results;
+    if( result.s ) {
+      if( result.q == $.trim(this._current_value) ) {
+        this._cached_query_results = result.r;
 
-        for( var i = 0; i < result.results.length; ++i ) {
-          var category = result.results[i].category;
-          var hierarchy = result.results[i].hierarchy;
+        for( var i = 0; i < result.r.length; ++i ) {
+          var category = result.r[i].c;
+          var hierarchy = result.r[i].h;
           if( undefined == this._hierarchy_cache[category] ) {
             this._hierarchy_cache[category] = {};
           }
@@ -688,7 +688,6 @@ Snap.TypeAhead.prototype = {
       }
       function_info.loading = false;
 
-      console.log(function_info.data);
       if( function_info.data ) {
         switch( this._id_to_category[function_info.category] ) {
           case 'PHP':
@@ -698,7 +697,6 @@ Snap.TypeAhead.prototype = {
             function_info.data = function_info.data.replace(/<sm>/g, '<span class="methodname">');
             function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
             function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
-            console.log(function_info.data);
             break;
         }
       }

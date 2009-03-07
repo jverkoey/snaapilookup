@@ -18,10 +18,19 @@ class SearchController extends SnaapiController {
       $this->_helper->json(array(
         'succeeded' => false));
     } else {
+      $results = $this->getFunctionsModel()->search($query, $filters);
+      foreach( $results as &$result ) {
+        $result = array(
+          'i' => $result['id'],
+          'c' => $result['category'],
+          'h' => $result['hierarchy'],
+          'n' => $result['name']
+        );
+      }
       $this->_helper->json(array(
-        'succeeded' => true,
-        'query' => $query,
-        'results' => $this->getFunctionsModel()->search($query, $filters)));
+        's' => true,
+        'q' => $query,
+        'r' => $results));
     }
 
     $this->_helper->viewRenderer->setNoRender();
