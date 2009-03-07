@@ -1,0 +1,42 @@
+/**
+ * CSS specific to the welcome page.
+ */
+
+.info_box {
+  margin: 0 auto;
+  width: 296px;
+  border: 1px solid #bbcccc;
+}
+
+.info_box .header {
+  padding: 0.5em;
+  background-color: #88aaaa;
+  text-align: center;
+
+  font-size: 2em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.info_box .body {
+  padding: 0.5em;
+}
+
+.info_box p {
+  font-size: 1.1em;
+  padding-bottom: 1em;
+}
+
+.the-team {
+  border-top: 1px dashed #ccc;
+  margin: 1em;
+  padding: 1em;
+
+  text-align: center;
+
+  clear: both;
+}
+
+.the-team h1 {
+  padding: 0.3em;
+}

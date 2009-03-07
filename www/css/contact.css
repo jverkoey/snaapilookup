@@ -1,0 +1,24 @@
+/**
+ * /contact style
+ */
+
+h1 {
+  text-align: center;
+}
+
+.contact {
+  text-align: center;
+  padding: 1em;
+}
+
+.contact .name {
+  font-size: 1.4em;
+}
+
+.contact .position {
+  color: #777;
+}
+
+.contact .row .title {
+  font-weight: bold;
+}
