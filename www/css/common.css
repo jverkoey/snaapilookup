@@ -142,6 +142,10 @@ h2 {
   padding: 5px;
 }
 
+.inactive {
+  color: #999;
+}
+
 .small_text {
   font-size: 1em;
   padding: 2px;

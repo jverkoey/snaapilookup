@@ -185,12 +185,13 @@ Snap.TypeAhead.prototype = {
 
       if( undefined == this._function_cache[selection.category][selection.function_id] ) {
         this._function_cache[selection.category][selection.function_id] = {
-          name      : selection.name,
-          type      : selection.type,
-          category  : selection.category,
-          hierarchy : selection.hierarchy,
-          id        : selection.function_id,
-          loading   : true
+          name            : selection.name,
+          type            : selection.type,
+          category        : selection.category,
+          hierarchy       : selection.hierarchy,
+          id              : selection.function_id,
+          loading         : true,
+          loading_social  : true
         };
         $.ajax({
           type    : 'GET',
@@ -202,6 +203,18 @@ Snap.TypeAhead.prototype = {
           },
           success : this._receive_function.bind(this),
           failure : this._fail_to_receive_function.bind(this)
+        });
+
+        $.ajax({
+          type    : 'GET',
+          url     : '/function/social',
+          dataType: 'json',
+          data    : {
+            category  : selection.category,
+            id        : selection.function_id
+          },
+          success : this._receive_social.bind(this),
+          failure : this._fail_to_receive_social.bind(this)
         });
       }
 
@@ -636,10 +649,78 @@ Snap.TypeAhead.prototype = {
       html.push('<div class="loading">Loading function details...</div>');
     }
 
+    if( this._active_function.loading_social ) {
+      html.push('<div class="social">Loading snaapits...</div>');
+    } else {
+      if( this._active_function.social.length > 0 ) {
+        html.push('<div class="social">');
+        html.push('<div class="header">Suggested information</div>');
+        var social = this._active_function.social;
+        for( var i = 0; i < social.length; ++i ) {
+          html.push('<div class="row">');
+          html.push('<div class="box"><div class="score">',social[i].score,'</div>');
+          html.push('<div class="ratings"><span class="rater up">+</span><span class="rater down">-</span></div></div>');
+          html.push('<div class="data">');
+          if( social[i].type == 'link' ) {
+            html.push('<div class="link"><a href="',social[i].data,'">',social[i].data,'</a></div>');
+          }
+          html.push('</div>');
+          html.push('</div>');
+        }
+        html.push('</div>');
+      }
+    }
+
+    html.push('<div class="socialness"><div class="methods"><ul>');
+    html.push('<li>Add a link</li>');
+//    html.push('<li>Add a snippet</li>');
+    html.push('</ul></div>');
+    // Add a link
+    html.push('<div class="form" style="display:none"><form method="post" action="/function/addurl"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="url">URL:</label><input type="text" class="text" name="url" id="url" size="50" value="" /><input type="submit" class="button" value="add" /></form></div>');
+    // Add a snippet
+    html.push('<div class="form" style="display:none">Add a snippet!</div>');
+    html.push('</div>');
+
     this._elements.external.hide();
     this._elements.result
       .html(html.join(''))
       .fadeIn('fast');
+
+    new Snap.GhostInput(this._elementIDs.result+' .form:eq(0) .text', 'Web address');
+
+    var methods = [
+      // Add a link
+      function() {
+        $(this._elementIDs.result+' .form:eq(0) .text').focus();
+      }.bind(this),
+
+      // Add a snippet
+      function() {
+        
+      }.bind(this)
+    ];
+
+    // Add a link.
+    var t = this;
+    $(this._elementIDs.result + ' li').each(function(index) {
+      $(this).click(function() {
+        $(t._elementIDs.result+' .form:not(:eq('+index+'))').fadeOut('fast', function() {
+          $(t._elementIDs.result+' .form:eq('+index+')').fadeIn('fast');
+          methods[index]();
+        });
+      });
+    });
+
+    $(this._elementIDs.result + ' .up').each(function(index) {
+      $(this).click(function() {
+        
+      });
+    });
+
+    $(this._elementIDs.result + ' .down').each(function(index) {
+      $(this).click(function() {
+      });
+    });
 
     var t = this;
     $(this._elementIDs.result + ' a').click(function() {
@@ -675,6 +756,40 @@ Snap.TypeAhead.prototype = {
     }.bind(this));
   },
 
+  _receive_social : function(result, textStatus) {
+    if( result.succeeded ) {
+      var category = result.category;
+      var id = result.id;
+
+      var function_info = this._function_cache[category][id];
+
+      function_info.social = result.data;
+      function_info.loading_social = false;
+/*
+      if( function_info.data ) {
+        switch( this._id_to_category[function_info.category] ) {
+          case 'PHP':
+            function_info.data = function_info.data.replace(/<\/s>/g, '</span>');
+            function_info.data = function_info.data.replace(/<st>/g, '<span class="type">');
+            function_info.data = function_info.data.replace(/<si>/g, '<span class="initializer">');
+            function_info.data = function_info.data.replace(/<sm>/g, '<span class="methodname">');
+            function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
+            function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
+            break;
+        }
+      }*/
+      if( this._active_function &&
+          this._active_function.category == result.category &&
+          this._active_function.id == result.id ) {
+        this._render_function();
+      }
+    }
+  },
+
+  _fail_to_receive_social : function(result, textStatus) {
+    
+  },
+
   _receive_function : function(result, textStatus) {
     if( result.succeeded ) {
       var category = result.category;
@@ -706,7 +821,6 @@ Snap.TypeAhead.prototype = {
       if( this._active_function &&
           this._active_function.category == result.category &&
           this._active_function.id == result.id ) {
-        this._active_function = function_info;
         this._render_function();
       }
     }

@@ -9,6 +9,8 @@ class SnaapiController extends Zend_Controller_Action {
   protected $_categoriesModel;
   protected $_hierarchiesModel;
   protected $_functionsModel;
+  protected $_socialModel;
+  protected $_ratingsModel;
   protected $_frameworklanguagesModel;
   protected $_logsModel;
 
@@ -109,6 +111,22 @@ class SnaapiController extends Zend_Controller_Action {
       $this->_functionsModel = new Model_Functions();
     }
     return $this->_functionsModel;
+  }
+
+  protected function getSocialModel() {
+    if (null === $this->_socialModel) {
+      require_once APPLICATION_PATH . '/models/Social.php';
+      $this->_socialModel = new Model_Social();
+    }
+    return $this->_socialModel;
+  }
+
+  protected function getRatingsModel() {
+    if (null === $this->_ratingsModel) {
+      require_once APPLICATION_PATH . '/models/Ratings.php';
+      $this->_ratingsModel = new Model_Ratings();
+    }
+    return $this->_ratingsModel;
   }
 
   protected function getFrameworkLanguagesModel() {
