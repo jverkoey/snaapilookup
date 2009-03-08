@@ -67,6 +67,17 @@
     $identity = Zend_Auth::getInstance()->getIdentity();
     $this->inlineScript()->prependScript('window.user_id = '.$identity['id'].';');
   }
+
+  if( APPLICATION_ENVIRONMENT != 'development' ) {
+    $this->inlineScript()->appendScript(
+'var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src=\'" + gaJsHost + "google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));
+try {
+var pageTracker = _gat._getTracker("UA-7815583-1");
+pageTracker._trackPageview();
+} catch(err) {}'
+    );
+  }
 ?>
 <?= $this->inlineScript() ?>
 

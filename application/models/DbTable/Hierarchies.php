@@ -22,8 +22,8 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
     24, @parentRight, @parentRight + 1, 0,
-    'HtmlDiff class',
-    'http://docs.python.org/library/difflib.html#difflib.HtmlDiff');
+    'Differ Objects',
+    'http://docs.python.org/library/difflib.html#id2');
 
   UNLOCK TABLES;
   
