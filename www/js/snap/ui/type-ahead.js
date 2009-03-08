@@ -665,7 +665,10 @@ Snap.TypeAhead.prototype = {
     this._displaying_frame = false;
     this._elements.logo.fadeIn('fast');
     this._elements.catch_phrase.fadeIn('fast');
-    this._elements.filters.fadeIn('fast');
+    for( var filter in this._active_filters ) {
+      this._elements.filters.fadeIn('fast');
+      break;
+    }
     this._elements.small_logo.fadeOut('fast');
     this._elements.external.fadeOut('fast', function() {
       this._elements.result.show();
