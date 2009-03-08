@@ -18,6 +18,7 @@ class SearchController extends SnaapiController {
       $this->_helper->json(array(
         'succeeded' => false));
     } else {
+      $this->getLogsModel()->add('search', $query);
       $results = $this->getFunctionsModel()->search($query, $filters);
       foreach( $results as &$result ) {
         $result = array(

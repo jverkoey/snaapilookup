@@ -13,6 +13,7 @@ class FunctionController extends SnaapiController {
       $this->_helper->json(array(
         'succeeded' => false));
     } else {
+      $this->getLogsModel()->add('function', 'cat: '.$category.' id: '.$id);
       $data = $this->getFunctionsModel()->fetch($category, $id);
       if( $data ) {
         $this->_helper->json(array(

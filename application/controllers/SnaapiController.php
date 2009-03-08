@@ -10,6 +10,7 @@ class SnaapiController extends Zend_Controller_Action {
   protected $_hierarchiesModel;
   protected $_functionsModel;
   protected $_frameworklanguagesModel;
+  protected $_logsModel;
 
   public function init() {
     $this->view->headTitle('snaapi');
@@ -116,6 +117,14 @@ class SnaapiController extends Zend_Controller_Action {
       $this->_frameworklanguagesModel = new Model_FrameworkLanguages();
     }
     return $this->_frameworklanguagesModel;
+  }
+
+  protected function getLogsModel() {
+    if (null === $this->_logsModel) {
+      require_once APPLICATION_PATH . '/models/Logs.php';
+      $this->_logsModel = new Model_Logs();
+    }
+    return $this->_logsModel;
   }
 
 }
