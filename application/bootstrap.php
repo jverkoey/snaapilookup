@@ -44,7 +44,7 @@ foreach( $categories as $category ) {
           'action'     => $category
       )
   );
-  $router->addRoute('permalink', $route);
+  $router->addRoute($category, $route);
 }
 
 // APPLICATION ENVIRONMENT - Set the current environment.
