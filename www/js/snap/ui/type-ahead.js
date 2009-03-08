@@ -66,6 +66,7 @@ Snap.TypeAhead = function( elementIDs) {
   this._has_changed_since_selection = null;
 
   this._displaying_frame = false;
+  this._frame_url = null;
 
   $.ajax({
     type    : 'GET',
@@ -817,16 +818,19 @@ Snap.TypeAhead.prototype = {
   },
 
   _show_iframe : function(url) {
-    this._displaying_frame = true;
-    this._elements.logo.fadeOut('fast');
-    this._elements.catch_phrase.fadeOut('fast');
-    this._elements.filters.fadeOut('fast');
-    this._elements.small_logo.fadeIn('fast');
-    this._elements.result.fadeOut('fast', function() {
-      this._elements.external
-        .html('<iframe src="'+url+'"></iframe>')
-        .show();
-    }.bind(this));
+    if( !this._displaying_frame || this._frame_url != url ) {
+      this._displaying_frame = true;
+      this._frame_url = url;
+      this._elements.logo.fadeOut('fast');
+      this._elements.catch_phrase.fadeOut('fast');
+      this._elements.filters.fadeOut('fast');
+      this._elements.small_logo.fadeIn('fast');
+      this._elements.result.fadeOut('fast', function() {
+        this._elements.external
+          .html('<iframe src="'+url+'"></iframe>')
+          .show();
+      }.bind(this));
+    }
   },
 
   _hide_iframe : function(url) {
