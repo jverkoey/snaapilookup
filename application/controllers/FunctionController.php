@@ -112,14 +112,12 @@ class FunctionController extends SnaapiController {
     $id = $this->_request->getParam('id');
     $url = $this->_request->getParam('url');
 
-    if( $this->getSocialModel()->normalizeURL($url) ) {
-      $this->getSocialModel()->addURL($category, $id, $url, $user_id);
-      $this->_helper->getHelper('Redirector')
-                    ->setGotoSimple('index', 'index');
-    } else {
-      // Error!
-      echo 'Invalid url: '.$url;
+    if( !$this->getSocialModel()->normalizeURL($url) ) {
+      $url = 'http://'.$url;
     }
+    $this->getSocialModel()->addURL($category, $id, $url, $user_id);
+    $this->_helper->getHelper('Redirector')
+                  ->setGotoSimple('index', 'index');
 
     $this->_helper->viewRenderer->setNoRender();
   }

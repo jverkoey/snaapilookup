@@ -37,6 +37,7 @@ Snap.TypeAhead = function( elementIDs) {
   this._database = {filters: {}, all: []};
 
   this._id_to_category = {};
+  this._id_to_type = {};
 
   this._active_filters = [];
 
@@ -94,7 +95,6 @@ Snap.TypeAhead = function( elementIDs) {
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
   }
-
 };
 
 Snap.TypeAhead.prototype = {
@@ -201,6 +201,8 @@ Snap.TypeAhead.prototype = {
       }
       this._active_filters[selection.type][selection.filter_id] = selection.name;
 
+      this._save_active_filters();
+
       this._render_filters();
       this.clear();
     } else if( selection.function_id ) {
@@ -212,6 +214,21 @@ Snap.TypeAhead.prototype = {
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
+  },
+
+  _flatten_filters : function() {
+    var flat_filters = [];
+    for( var filter_type in this._active_filters ) {
+      var filter = this._active_filters[filter_type];
+      for( var filter_id in filter ) {
+        flat_filters.push(filter_id);
+      }
+    }
+    return flat_filters.join(',');
+  },
+
+  _save_active_filters : function() {
+    $.cookie('filters', this._flatten_filters());
   },
 
   _display_function : function(selection) {
@@ -470,13 +487,6 @@ Snap.TypeAhead.prototype = {
     if( this._active_search ) {
       this._active_search.abort();
     }
-    var flat_filters = [];
-    for( var filter_type in this._active_filters ) {
-      var filter = this._active_filters[filter_type];
-      for( var filter_id in filter ) {
-        flat_filters.push(filter_id);
-      }
-    }
     this._active_search = $.ajax({
       type    : 'GET',
       url     : '/search',
@@ -484,7 +494,7 @@ Snap.TypeAhead.prototype = {
       query   : query,
       data    : {
         query   : query,
-        filters : flat_filters.join(',')
+        filters : this._flatten_filters()
       },
       success : this._receive_search.bind(this),
       failure : this._fail_to_receive_search.bind(this)
@@ -955,6 +965,7 @@ Snap.TypeAhead.prototype = {
           delete t._active_filters[filter_type];
         }
 
+        t._save_active_filters();
         t._render_filters();
       });
     } else {
@@ -971,6 +982,7 @@ Snap.TypeAhead.prototype = {
       for( var i2 = 0; i2 < data.length; ++i2 ) {
         var item = data[i2];
         this._id_to_category[item.id] = item.name;
+        this._id_to_type[item.id] = result[i].type;
       }
     }
 
@@ -979,6 +991,17 @@ Snap.TypeAhead.prototype = {
         this._active_filters[window.sel.filter_type] = {};
       }
       this._active_filters[window.sel.filter_type][window.sel.category] = this._id_to_category[window.sel.category];
+
+      this._render_filters();
+    } else if( $.cookie('filters') ) {
+      var filters = $.cookie('filters').split(',');
+      for( var i = 0; i < filters.length; ++i ) {
+        var type = this._id_to_type[filters[i]];
+        if( undefined == this._active_filters[type] ) {
+          this._active_filters[type] = {};
+        }
+        this._active_filters[type][filters[i]] = this._id_to_category[filters[i]];
+      }
       this._render_filters();
     }
 
