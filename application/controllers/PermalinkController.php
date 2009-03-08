@@ -9,6 +9,8 @@ class PermalinkController extends SnaapiController {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);
     if( $result ) {
+      $this->view->headTitle('PHP');
+      $this->view->headTitle($function_name);
       $this->view->category = $result['category'];
       $this->view->id = $result['id'];
       $this->view->hierarchy = $result['hierarchy'];
@@ -24,6 +26,8 @@ class PermalinkController extends SnaapiController {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);
     if( $result ) {
+      $this->view->headTitle('Python');
+      $this->view->headTitle($function_name);
       $this->view->category = $result['category'];
       $this->view->id = $result['id'];
       $this->view->hierarchy = $result['hierarchy'];

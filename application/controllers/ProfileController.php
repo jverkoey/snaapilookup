@@ -9,6 +9,8 @@ class ProfileController extends SnaapiController {
     if( !$user_id ) {
       return;
     }
+    
+    $this->view->headTitle('Profile');
 
     $this->view->profile = $this->_getUserProfile($user_id);
     $this->view->openid_auths = $this->_getOpenIDModel()->fetchOpenIDsByUser($user_id);
@@ -23,6 +25,8 @@ class ProfileController extends SnaapiController {
     if( !$user_id ) {
       return;
     }
+
+    $this->view->headTitle('Edit your profile');
 
     $this->view->profile = $this->_getUserProfile($user_id);
   }
