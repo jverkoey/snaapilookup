@@ -971,10 +971,10 @@ Snap.TypeAhead.prototype = {
     }
 
     if( window.sel ) {
-      if( undefined == this._active_filters[window.sel.type] ) {
-        this._active_filters[window.sel.type] = {};
+      if( undefined == this._active_filters[window.sel.filter_type] ) {
+        this._active_filters[window.sel.filter_type] = {};
       }
-      this._active_filters[window.sel.type][window.sel.category] = this._id_to_category[window.sel.category];
+      this._active_filters[window.sel.filter_type][window.sel.category] = this._id_to_category[window.sel.category];
       this._render_filters();
     }
 
