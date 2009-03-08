@@ -76,6 +76,20 @@ Snap.TypeAhead = function( elementIDs) {
   });
 
   if( window.sel ) {
+    if( undefined == this._hierarchy_cache[window.sel.category] ) {
+      this._hierarchy_cache[window.sel.category] = {};
+    }
+
+    var key = window.sel.category+','+window.sel.hierarchy;
+    if( undefined == this._hierarchy_cache[window.sel.category][window.sel.hierarchy] &&
+        undefined == this._hierarchy_request_queue[key] ) {
+      this._hierarchy_request_queue[key] = {loading: false};
+      if( this._ancestry_timer ) {
+        clearTimeout(this._ancestry_timer);
+      }
+      this._ancestry_timer = setTimeout(this._request_ancestries.bind(this), 100);
+    }
+
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
   }
@@ -423,7 +437,7 @@ Snap.TypeAhead.prototype = {
               var ancestor = this._hierarchy_cache[category][info.ancestors[i2]];
               var step = '';
               if( with_links ) {
-                step += '<a href="'+ancestor.source_url+'">';
+                step += '<a class="external" href="'+ancestor.source_url+'">';
               }
               step += ancestor.name;
               if( with_links ) {
@@ -436,7 +450,7 @@ Snap.TypeAhead.prototype = {
         if( !missing_any ) {
           var step = '';
           if( with_links ) {
-            step += '<a href="'+info.source_url+'">';
+            step += '<a class="external" href="'+info.source_url+'">';
           }  
           step += info.name;
           if( with_links ) {
@@ -624,7 +638,7 @@ Snap.TypeAhead.prototype = {
     html.push('<div class="function"><span class="name">');
 
     if( this._active_function.url ) {
-      html.push('<a href="',this._active_function.url,'">');
+      html.push('<a class="external" href="',this._active_function.url,'">');
     }
     html.push(this._active_function.name);
     if( this._active_function.url ) {
@@ -641,12 +655,11 @@ Snap.TypeAhead.prototype = {
     if( lineage ) {
       html.push(' <span class="lineage">',lineage,'</span>');
     }
-    
+
     html.push('</div>');
 
-    if( this._active_function.url ) {
-      html.push('<div class="source"><a href="',this._active_function.url,'">',this._active_function.url,'</a></div>');
-    }
+    var permalink = '/'+this._active_function.type+'/'+this._active_function.name;
+    html.push('<div class="source"><a href="',permalink,'">snaapi.com',permalink,'</a></div>');
 
     if( this._active_function.short_description ) {
       html.push('<div class="short-description">',this._active_function.short_description,'</div>');
@@ -775,7 +788,7 @@ Snap.TypeAhead.prototype = {
     }
 
     var t = this;
-    $(this._elementIDs.result + ' a').click(function() {
+    $(this._elementIDs.result + ' a.external').click(function() {
       t._show_iframe($(this).attr('href'));
       return false;
     });

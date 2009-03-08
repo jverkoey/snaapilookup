@@ -32,7 +32,7 @@ $frontController->setControllerDirectory(APPLICATION_PATH . '/controllers');
 $router = $frontController->getRouter();
 
 $route = new Zend_Controller_Router_Route_Regex(
-    'php/(\w+)',
+    'php/((\w|:|-|>)+)',
     array(
         'controller' => 'permalink',
         'action'     => 'php'

@@ -12,7 +12,7 @@ class PermalinkController extends SnaapiController {
       $this->view->category = $result['category'];
       $this->view->id = $result['id'];
       $this->view->hierarchy = $result['hierarchy'];
-      $this->view->type = 'Language';
+      $this->view->type = 'PHP';
       $this->view->function_name = $function_name;
     }
     $this->_forward('index', 'index');
