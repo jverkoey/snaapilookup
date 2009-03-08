@@ -24,7 +24,14 @@ class Model_Logs {
    */
   public function add($type, $log) {
     $table = $this->getTable();
+    $auth = Zend_Auth::getInstance();
+    $identity = new Zend_Db_Expr('NULL');
+    if( $auth->hasIdentity() ) {
+      $identity = $auth->getIdentity();
+      $identity = $identity['id'];
+    }
     $entry = array(
+      'user' => $identity,
       'type' => $type,
       'log'  => $log,
       'time' => new Zend_Db_Expr('NOW()')
