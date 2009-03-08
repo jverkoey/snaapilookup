@@ -22,6 +22,26 @@ class Model_Functions {
   /**
    * Fetch a specific function.
    */
+  public function fetchByName($name) {
+    $table = $this->getTable();
+    $result = $table->fetchAll(
+      $table
+        ->select()
+        ->from(
+          $table,
+          array(
+            'category',
+            'id',
+            'hierarchy'
+          ))
+        ->where('name = ?', $name)
+    )->toArray();
+    return empty($result) ? null : $result[0];
+  }
+
+  /**
+   * Fetch a specific function.
+   */
   public function fetch($category, $id) {
     $table = $this->getTable();
     $result = $table->fetchAll(

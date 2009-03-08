@@ -74,6 +74,12 @@ Snap.TypeAhead = function( elementIDs) {
     success : this._receive_data.bind(this),
     failure : this._fail_to_receive_data.bind(this)
   });
+
+  if( window.sel ) {
+    this._elements.input.val(window.sel.name);
+    this._display_function(window.sel);
+  }
+
 };
 
 Snap.TypeAhead.prototype = {
@@ -185,53 +191,58 @@ Snap.TypeAhead.prototype = {
     } else if( selection.function_id ) {
       this._elements.dropdown.fadeOut('fast');
 
-      if( undefined == this._function_cache[selection.category] ) {
-        this._function_cache[selection.category] = {};
-      }
+      this._display_function(selection);
 
-      if( undefined == this._function_cache[selection.category][selection.function_id] ) {
-        this._function_cache[selection.category][selection.function_id] = {
-          name            : selection.name,
-          type            : selection.type,
-          category        : selection.category,
-          hierarchy       : selection.hierarchy,
-          id              : selection.function_id,
-          loading         : true,
-          loading_social  : true
-        };
-        $.ajax({
-          type    : 'GET',
-          url     : '/function',
-          dataType: 'json',
-          data    : {
-            category  : selection.category,
-            id        : selection.function_id
-          },
-          success : this._receive_function.bind(this),
-          failure : this._fail_to_receive_function.bind(this)
-        });
-
-        $.ajax({
-          type    : 'GET',
-          url     : '/function/social',
-          dataType: 'json',
-          data    : {
-            category  : selection.category,
-            id        : selection.function_id
-          },
-          success : this._receive_social.bind(this),
-          failure : this._fail_to_receive_social.bind(this)
-        });
-      }
-
-      this._active_function = this._function_cache[selection.category][selection.function_id];
-
-      this._displaying_frame = false;
-      this._render_function();
       this._hide_iframe();
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
+  },
+
+  _display_function : function(selection) {
+    if( undefined == this._function_cache[selection.category] ) {
+      this._function_cache[selection.category] = {};
+    }
+
+    if( undefined == this._function_cache[selection.category][selection.function_id] ) {
+      this._function_cache[selection.category][selection.function_id] = {
+        name            : selection.name,
+        type            : selection.type,
+        category        : selection.category,
+        hierarchy       : selection.hierarchy,
+        id              : selection.function_id,
+        loading         : true,
+        loading_social  : true
+      };
+      $.ajax({
+        type    : 'GET',
+        url     : '/function',
+        dataType: 'json',
+        data    : {
+          category  : selection.category,
+          id        : selection.function_id
+        },
+        success : this._receive_function.bind(this),
+        failure : this._fail_to_receive_function.bind(this)
+      });
+
+      $.ajax({
+        type    : 'GET',
+        url     : '/function/social',
+        dataType: 'json',
+        data    : {
+          category  : selection.category,
+          id        : selection.function_id
+        },
+        success : this._receive_social.bind(this),
+        failure : this._fail_to_receive_social.bind(this)
+      });
+    }
+
+    this._active_function = this._function_cache[selection.category][selection.function_id];
+
+    this._displaying_frame = false;
+    this._render_function();
   },
 
   _update_filter : function() {
@@ -944,6 +955,14 @@ Snap.TypeAhead.prototype = {
         var item = data[i2];
         this._id_to_category[item.id] = item.name;
       }
+    }
+
+    if( window.sel ) {
+      if( undefined == this._active_filters[window.sel.type] ) {
+        this._active_filters[window.sel.type] = {};
+      }
+      this._active_filters[window.sel.type][window.sel.category] = this._id_to_category[window.sel.category];
+      this._render_filters();
     }
 
     this._update_filter();

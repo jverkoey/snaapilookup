@@ -29,6 +29,17 @@ $frontController = Zend_Controller_Front::getInstance();
 // controller directory.
 $frontController->setControllerDirectory(APPLICATION_PATH . '/controllers');
 
+$router = $frontController->getRouter();
+
+$route = new Zend_Controller_Router_Route_Regex(
+    'php/(\w+)',
+    array(
+        'controller' => 'permalink',
+        'action'     => 'php'
+    )
+);
+$router->addRoute('permalink', $route);
+
 // APPLICATION ENVIRONMENT - Set the current environment.
 // Set a variable in the front controller indicating the current environment --
 // commonly one of development, staging, testing, production, but wholly
@@ -85,4 +96,4 @@ $view->setHelperPath(APPLICATION_PATH . '/helpers', 'Fur_View_Helper');
 // This will clear all our local boostrap variables from the global scope of 
 // this script (and any scripts that called bootstrap).  This will enforce 
 // object retrieval through the applications's registry.
-unset($view, $frontController, $configuration, $dbAdapter, $registry);
+unset($view, $frontController, $configuration, $dbAdapter, $registry, $router);

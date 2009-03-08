@@ -26,3 +26,14 @@ if ('production' == $this->env) {
 }
 
 $this->inlineScript()->appendFile('/js/page/dashboard.js');
+
+if( $this->category && $this->id && $this->type ) {
+  $this->inlineScript()->prependScript(
+    'window.sel = {'.
+      'category:'.$this->category.','.
+      'function_id:'.$this->id.','.
+      'name:"'.$this->function_name.'",'.
+      'type:"'.$this->type.'",'.
+      'hierarchy:'.$this->hierarchy.'};'
+  );
+}

@@ -15,5 +15,7 @@
     logo     : '#logo',
     small_logo : '#small-logo'
   });
-  $('#search .text').focus();
+  if( !window.sel ) {
+    $('#search .text').focus();
+  }
 })();
