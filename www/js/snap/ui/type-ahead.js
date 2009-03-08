@@ -651,24 +651,22 @@ Snap.TypeAhead.prototype = {
 
     if( this._active_function.loading_social ) {
       html.push('<div class="social">Loading snaapits...</div>');
-    } else {
-      if( this._active_function.social.length > 0 ) {
-        html.push('<div class="social">');
-        html.push('<div class="header">Suggested information</div>');
-        var social = this._active_function.social;
-        for( var i = 0; i < social.length; ++i ) {
-          html.push('<div class="row">');
-          html.push('<div class="box"><div class="score">',social[i].score,'</div>');
-          html.push('<div class="ratings"><span class="rater up">+</span><span class="rater down">-</span></div></div>');
-          html.push('<div class="data">');
-          if( social[i].type == 'link' ) {
-            html.push('<div class="link"><a href="',social[i].data,'">',social[i].data,'</a></div>');
-          }
-          html.push('</div>');
-          html.push('</div>');
+    } else if( this._active_function.social.length > 0 ) {
+      html.push('<div class="social">');
+      html.push('<div class="header">Suggested information</div>');
+      var social = this._active_function.social;
+      for( var i = 0; i < social.length; ++i ) {
+        html.push('<div class="row">');
+        html.push('<div class="box"><div class="score">',social[i].score,'</div>');
+        html.push('<div class="ratings"><span class="rater up">+</span><span class="rater down">-</span></div></div>');
+        html.push('<div class="data">');
+        if( social[i].type == 'link' ) {
+          html.push('<div class="link"><a href="',social[i].data,'">',social[i].data,'</a></div>');
         }
         html.push('</div>');
+        html.push('</div>');
       }
+      html.push('</div>');
     }
 
     html.push('<div class="socialness"><div class="methods"><ul>');
@@ -711,22 +709,76 @@ Snap.TypeAhead.prototype = {
       });
     });
 
-    $(this._elementIDs.result + ' .up').each(function(index) {
-      $(this).click(function() {
-        
-      });
-    });
+    if( !this._active_function.loading_social ) {
+      var fun = this._active_function;
+      var t = this;
 
-    $(this._elementIDs.result + ' .down').each(function(index) {
-      $(this).click(function() {
+      $(this._elementIDs.result + ' .up').each(function(index) {
+        $(this).click(function() {
+          $.ajax({
+            type    : 'POST',
+            url     : '/function/vote',
+            dataType: 'json',
+            data    : {
+              category  : fun.category,
+              id        : fun.id,
+              index     : social[index].ix,
+              score     : social[index].score,
+              vote      : 1
+            },
+            success : t._receive_vote_update.bind(t),
+            failure : t._fail_to_receive_vote_update.bind(t)
+          });
+        });
       });
-    });
+
+      $(this._elementIDs.result + ' .down').each(function(index) {
+        $(this).click(function() {
+          $.ajax({
+            type    : 'POST',
+            url     : '/function/vote',
+            dataType: 'json',
+            data    : {
+              category  : fun.category,
+              id        : fun.id,
+              index     : social[index].ix,
+              score     : social[index].score,
+              vote      : -1
+            },
+            success : t._receive_vote_update.bind(t),
+            failure : t._fail_to_receive_vote_update.bind(t)
+          });
+        });
+      });
+    }
 
     var t = this;
     $(this._elementIDs.result + ' a').click(function() {
       t._show_iframe($(this).attr('href'));
       return false;
     });
+  },
+
+  _receive_vote_update : function(result, textStatus) {
+    if( result.succeeded ) {
+      if( result.updated ) {
+        $.ajax({
+          type    : 'GET',
+          url     : '/function/social',
+          dataType: 'json',
+          data    : {
+            category  : result.category,
+            id        : result.id
+          },
+          success : this._receive_social.bind(this),
+          failure : this._fail_to_receive_social.bind(this)
+        });
+      }
+    }
+  },
+
+  _fail_to_receive_vote_update : function(result, textStatus) {
+    
   },
 
   _show_iframe : function(url) {

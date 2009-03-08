@@ -42,6 +42,22 @@ class Model_Social {
   }
 
   /**
+   * Update the vote.
+   */
+  public function updateVote($category, $id, $index, $delta) {
+    $table = $this->getTable();
+    return $table->update(
+      array(
+        'score' => new Zend_Db_Expr($table->getAdapter()->quoteInto('score + ?', $delta))
+      ),
+      array(
+        $table->getAdapter()->quoteInto('category = ?', $category),
+        $table->getAdapter()->quoteInto('id = ?', $id),
+        $table->getAdapter()->quoteInto('ix = ?', $index)
+      )
+    );
+  }
+  /**
    * Fetch all social data.
    */
   public function fetch($category, $id) {
@@ -49,7 +65,7 @@ class Model_Social {
     return $table->fetchAll(
       $table
         ->select()
-        ->from($table, array('index', 'score', 'type', 'data', 'user_id'))
+        ->from($table, array('ix', 'score', 'type', 'data', 'user_id'))
         ->where('category = ?', $category)
         ->where('id = ?', $id)
         ->order('score DESC'))
