@@ -63,6 +63,10 @@
   global $REVISIONS;
   $this->inlineScript()->prependFile('/js/static/revisions.js?'.$REVISIONS['ALL']);
   $this->inlineScript()->prependFile('/js/jquery.js');
+  if( Zend_Auth::getInstance()->hasIdentity() ) {
+    $identity = Zend_Auth::getInstance()->getIdentity();
+    $this->inlineScript()->prependScript('window.user_id = '.$identity['id'].';');
+  }
 ?>
 <?= $this->inlineScript() ?>
 

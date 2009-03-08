@@ -6,6 +6,7 @@
   display: inline;
   padding-top: 7px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 #small-logo .sna {
@@ -16,7 +17,8 @@
   color: #447799;
 }
 
-#small-logo a:hover {
+#small-logo:hover {
+  cursor: pointer;
   text-decoration: none;
 }
 

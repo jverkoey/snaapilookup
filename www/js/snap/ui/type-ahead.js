@@ -24,6 +24,12 @@ Snap.TypeAhead = function( elementIDs) {
     .focus(this._gain_focus.bind(this))
     .blur(this._lose_focus.bind(this));
 
+  var t = this;
+  this._elements.small_logo
+    .click(function() {
+      t._hide_iframe();
+    });
+
   this._current_value = '';
 
   // filters: #language or #framework
@@ -669,15 +675,17 @@ Snap.TypeAhead.prototype = {
       html.push('</div>');
     }
 
-    html.push('<div class="socialness"><div class="methods"><ul>');
-    html.push('<li>Add a link</li>');
-//    html.push('<li>Add a snippet</li>');
-    html.push('</ul></div>');
-    // Add a link
-    html.push('<div class="form" style="display:none"><form method="post" action="/function/addurl"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="url">URL:</label><input type="text" class="text" name="url" id="url" size="50" value="" /><input type="submit" class="button" value="add" /></form></div>');
-    // Add a snippet
-    html.push('<div class="form" style="display:none">Add a snippet!</div>');
-    html.push('</div>');
+    if( undefined != window.user_id ) {
+      html.push('<div class="socialness"><div class="methods"><ul>');
+      html.push('<li>Add a link</li>');
+  //    html.push('<li>Add a snippet</li>');
+      html.push('</ul></div>');
+      // Add a link
+      html.push('<div class="form" style="display:none"><form method="post" action="/function/addurl"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="url">URL:</label><input type="text" class="text" name="url" id="url" size="50" value="" /><input type="submit" class="button" value="add" /></form></div>');
+      // Add a snippet
+      html.push('<div class="form" style="display:none">Add a snippet!</div>');
+      html.push('</div>');
+    }
 
     this._elements.external.hide();
     this._elements.result
@@ -700,14 +708,17 @@ Snap.TypeAhead.prototype = {
 
     // Add a link.
     var t = this;
-    $(this._elementIDs.result + ' li').each(function(index) {
-      $(this).click(function() {
-        $(t._elementIDs.result+' .form:not(:eq('+index+'))').fadeOut('fast', function() {
-          $(t._elementIDs.result+' .form:eq('+index+')').fadeIn('fast');
-          methods[index]();
+    
+    if( undefined != window.user_id ) {
+      $(this._elementIDs.result + ' li').each(function(index) {
+        $(this).click(function() {
+          $(t._elementIDs.result+' .form:not(:eq('+index+'))').fadeOut('fast', function() {
+            $(t._elementIDs.result+' .form:eq('+index+')').fadeIn('fast');
+            methods[index]();
+          });
         });
       });
-    });
+    }
 
     if( !this._active_function.loading_social ) {
       var fun = this._active_function;
