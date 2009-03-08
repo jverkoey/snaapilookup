@@ -23,18 +23,16 @@
 
 <div id="page">
 
-<div id="headerbar">
-  <div class="actions">
-    <ul>
-      <? if( Zend_Auth::getInstance()->hasIdentity() ) { ?>
-      <li><a href="/profile">Profile</a></li>
-      <li><a href="/logout">Log out</a></li>
-      <? } else { ?>
-        <li><a href="/login" title="Log in to snaapi with OpenID or a snaapi account">Log in</a></li>
-        <li><a href="/signup" title="Or log in using Google, myOpenID, or a number of other services">Sign up</a></li>
-      <? } ?>
-    </ul>
-  </div>
+<div id="actions">
+  <ul>
+    <? if( Zend_Auth::getInstance()->hasIdentity() ) { ?>
+    <li><a href="/profile">Profile</a></li>
+    <li><a href="/logout">Log out</a></li>
+    <? } else { ?>
+      <li><a href="/login" title="Log in to snaapi with OpenID or a snaapi account">Log in</a></li>
+      <li><a href="/signup" title="Or log in using Google, myOpenID, or a number of other services">Sign up</a></li>
+    <? } ?>
+  </ul>
 </div>
 
 <div id="content">

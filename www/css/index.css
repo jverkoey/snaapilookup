@@ -3,18 +3,21 @@
  */
 
 #small-logo {
-  position: absolute;
-  text-align: center;
-  padding-top: 18px;
-  margin-left: -250px;
-  min-width: 700px;
+  display: inline;
+  padding-top: 7px;
   font-size: 16px;
-  width: 100%;
-  z-index: -5;
+}
+
+#small-logo .sna {
+  color: #333;
 }
 
 #small-logo .api {
   color: #447799;
+}
+
+#small-logo a:hover {
+  text-decoration: none;
 }
 
 #catch-phrase {
