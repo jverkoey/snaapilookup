@@ -40,6 +40,270 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function pythonAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      /*$model = $this->getFunctionsModel();
+      $db = $model->getTable()->getAdapter();
+      $sql = "SELECT *  FROM `functions` WHERE `data` LIKE '% ,%'";
+      foreach( $db->query($sql)->fetchAll() as $result ) {
+        $result['data'] = str_replace(" ,", ',', $result['data']);
+
+        $this->getFunctionsModel()->setData(array(
+          'category' => $result['category'],
+          'id' => $result['id'],
+          'data' => $result['data']
+        ));
+      }*/
+
+      $this->scrapePythonConstants();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapePythonConstants() {
+    $category = 'Python';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->_pages_scraped++;
+
+      if( $this->_pages_scraped > ScrapeController::MAX_PAGES_TO_SCRAPE ) {
+        $this->view->results .= 'Hit max page count for scraping.' . "\n";
+        return;
+      }
+
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      if( strpos($source_url, '#') !== FALSE ) {
+        // Cool, let's grab this section's info.
+        $parts = explode('#', $source_url);
+        $base_url = $parts[0];
+        $block = $parts[1];
+        $contents = file_get_contents($source_url);
+
+        $start_block = strpos($contents, 'id="'.$block.'"');
+        if( $start_block === FALSE ) {
+          $this->view->results .= 'We couldn\'t find the block, skipping...' . "\n";
+          continue;
+        }
+
+        $done = false;
+
+        $start = strpos($contents, '<dl class="data"', $start_block);
+        if( $start !== FALSE ) {
+          $end = strpos($contents, '</div>', $start);
+          if( $end === FALSE ) {
+            $this->view->results .= 'We couldn\'t find the end of the block, skipping...' . "\n";
+            continue;
+          }
+
+          $push_back = $start;
+          while( ($push_back = strpos($contents, '<div', $push_back)) !== FALSE ) {
+            if( $push_back > $end ) {
+              break;
+            }
+            $push_back++;
+            $end = strpos($contents, '</div>', $end + 1);
+          }
+
+          $fail = false;
+          $block_data = explode('<dl class="data">', substr($contents, $start, $end-$start));
+          foreach( $block_data as $entry ) {
+            $entry_data = explode("\n", $entry);
+            if( count($entry_data) > 1 ) {
+              $name = null;
+              $href = null;
+              $description = null;
+              if( preg_match('/<dt id="(.+?)">/', $entry_data[1], $id) ) {
+                $name = $id[1];
+              }
+              if( preg_match('/href="(#.+?)"/', $entry_data[2], $id) ) {
+                $href = $id[1];
+              }
+              if( preg_match('/<dd>(.+?)<\/dd>/', str_replace("\n", ' ', $entry), $id) ) {
+                $description = substr($id[1], 0, strpos($id[1], '</p>'));
+                $description = preg_replace('/<.+?>/', '', $description);
+              }
+
+              if( !$name || !$href ) {
+                $fail = true;
+                break;
+              }
+              $this->getFunctionsModel()->insertOrUpdateFunction(array(
+                'category' => $category_id,
+                'hierarchy' => $hierarchy['id'],
+                'name' => $name,
+                'url' => $base_url.$href,
+                'short_description' => $description
+              ));
+              $done = true;
+            }
+          }
+          if( $fail ) {
+            continue;
+          } else {  
+            $done = true;
+          }
+        }
+
+        if( !$done ) {
+          $start = strpos($contents, '<dl class="method"', $start_block);
+          if( $start !== FALSE ) {
+            $end = strpos($contents, '</div>', $start);
+            if( $end === FALSE ) {
+              $this->view->results .= 'We couldn\'t find the end of the block, skipping...' . "\n";
+              continue;
+            }
+
+            $push_back = $start;
+            while( ($push_back = strpos($contents, '<div', $push_back)) !== FALSE ) {
+              if( $push_back > $end ) {
+                break;
+              }
+              $push_back++;
+              $end = strpos($contents, '</div>', $end + 1);
+            }
+
+            $fail = false;
+            $block_data = explode('<dl class="method">', substr($contents, $start, $end-$start));
+            foreach( $block_data as $entry ) {
+              $entry_data = explode("\n", $entry);
+              if( count($entry_data) > 1 ) {
+                $name = null;
+                $href = null;
+                $description = null;
+                if( preg_match('/<dt id="(.+?)">/', $entry_data[1], $id) ) {
+                  $name = $id[1];
+                }
+                if( preg_match('/href="(#.+?)"/', $entry_data[2], $id) ) {
+                  $href = $id[1];
+                }
+                if( preg_match('/<dd>(.+?)<\/dd>/', str_replace("\n", ' ', $entry), $id) ) {
+                  $description = substr($id[1], 0, strpos($id[1], '</p>'));
+                  $description = preg_replace('/<.+?>/', '', $description);
+                }
+
+                $this->view->results .= $name."\n";
+                $this->view->results .= $href."\n";
+                $this->view->results .= $description."\n\n";
+
+                if( !$name || !$href ) {
+                  $fail = true;
+                  break;
+                }
+                $this->getFunctionsModel()->insertOrUpdateFunction(array(
+                  'category' => $category_id,
+                  'hierarchy' => $hierarchy['id'],
+                  'name' => $name,
+                  'url' => $base_url.$href,
+                  'short_description' => $description
+                ));
+              }
+            }
+            if( $fail ) {
+              continue;
+            } else {
+              $done = true;
+            }
+          }
+        }
+
+        if( !$done ) {
+          $start = strpos($contents, '<dl class="function"', $start_block);
+          if( $start === FALSE ) {
+            $this->view->results .= 'We couldn\'t find the starting entry, skipping...' . "\n";
+            continue;
+          }
+
+          $end = strpos($contents, '</div>', $start);
+          if( $end === FALSE ) {
+            $this->view->results .= 'We couldn\'t find the end of the block, skipping...' . "\n";
+            continue;
+          }
+
+          $push_back = $start;
+          while( ($push_back = strpos($contents, '<div', $push_back)) !== FALSE ) {
+            if( $push_back > $end ) {
+              break;
+            }
+            $push_back++;
+            $end = strpos($contents, '</div>', $end + 1);
+          }
+
+          $fail = false;
+          $block_data = explode('<dl class="function">', substr($contents, $start, $end-$start));
+          foreach( $block_data as $entry ) {
+            $entry_data = explode("\n", $entry);
+            if( count($entry_data) > 1 ) {
+              $name = null;
+              $href = null;
+              $description = null;
+              if( preg_match('/<dt id="(.+?)">/', $entry_data[1], $id) ) {
+                $name = $id[1];
+              }
+              if( preg_match('/href="(#.+?)"/', $entry_data[2], $id) ) {
+                $href = $id[1];
+              }
+              if( preg_match('/<dd>(.+?)<\/dd>/', str_replace("\n", ' ', $entry), $id) ) {
+                $description = substr($id[1], 0, strpos($id[1], '</p>'));
+                $description = preg_replace('/<.+?>/', '', $description);
+              }
+
+              if( !$name || !$href ) {
+                $fail = true;
+                break;
+              }
+              $this->getFunctionsModel()->insertOrUpdateFunction(array(
+                'category' => $category_id,
+                'hierarchy' => $hierarchy['id'],
+                'name' => $name,
+                'url' => $base_url.$href,
+                'short_description' => $description
+              ));
+            }
+          }
+          if( $fail ) {
+            $this->view->results .= 'We failed, skipping...' . "\n";
+            continue;
+          } else {
+            $done = true;
+          }
+        }
+
+        if( !$done ) {
+          $this->view->results .= 'We couldn\'t find the start of the block, skipping...' . "\n";
+          continue;
+        }
+
+      }
+
+      $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+    }
+  }
+
   private function scrapePHPHierarchies() {
     $category = 'PHP';
 

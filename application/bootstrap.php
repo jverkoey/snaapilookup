@@ -31,14 +31,21 @@ $frontController->setControllerDirectory(APPLICATION_PATH . '/controllers');
 
 $router = $frontController->getRouter();
 
-$route = new Zend_Controller_Router_Route_Regex(
-    'php/((\w|:|-|>)+)',
-    array(
-        'controller' => 'permalink',
-        'action'     => 'php'
-    )
+$categories = array(
+  'php',
+  'python'
 );
-$router->addRoute('permalink', $route);
+
+foreach( $categories as $category ) {
+  $route = new Zend_Controller_Router_Route_Regex(
+      $category.'/((\w|:|-|>|.)+)',
+      array(
+          'controller' => 'permalink',
+          'action'     => $category
+      )
+  );
+  $router->addRoute('permalink', $route);
+}
 
 // APPLICATION ENVIRONMENT - Set the current environment.
 // Set a variable in the front controller indicating the current environment --
