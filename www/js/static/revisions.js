@@ -1,6 +1,6 @@
 /**
  * snaapi static revisions.
- * Last updated: Monday 9th of March 2009 12:20:16 PM
- * Revision: 9
+ * Last updated: Monday 9th of March 2009 01:47:57 PM
+ * Revision: 10
  */
-var Revisions = {all:9,static_js_build:9};
+var Revisions = {all:10,static_js_build:10};

@@ -21,6 +21,10 @@ class PermalinkController extends SnaapiController {
     $this->language('Zend');
   }
 
+  public function facebookApiAction() {
+    $this->language('Facebook API');
+  }
+
   private function language($name) {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);

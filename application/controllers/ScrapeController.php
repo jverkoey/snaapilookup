@@ -73,6 +73,214 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function fbAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      $this->scrapeFacebook();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeFacebook() {
+    $category = 'Facebook API';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $functions = array(
+      array("http://wiki.developers.facebook.com/index.php/Admin.getRestrictionInfo", "admin.getRestrictionInfo",
+        "Returns the demographic restrictions for the application."),
+      array("http://wiki.developers.facebook.com/index.php/Admin.setAppProperties", "admin.setAppProperties",
+        "Sets values for properties for your applications in the Facebook Developer application."),
+      array("http://wiki.developers.facebook.com/index.php/Admin.setRestrictionInfo", "admin.setRestrictionInfo",
+        "Sets the demographic restrictions for the application."),
+      array("http://wiki.developers.facebook.com/index.php/Application.getPublicInfo", "application.getPublicInfo",
+        "Returns public information about a given application (not necessarily your own)."),
+      array("http://wiki.developers.facebook.com/index.php/Auth.createToken", "auth.createToken", 
+        "Creates an auth_token to be passed in as a parameter to login.php and then to auth.getSession after the user has logged in."),
+      array("http://wiki.developers.facebook.com/index.php/Auth.expireSession", "auth.expireSession", 
+        "Expires the session indicated in the API call, for your application."),
+      array("http://wiki.developers.facebook.com/index.php/Auth.getSession", "auth.getSession", 
+        "Returns the session key bound to an auth_token, as returned by auth.createToken or in the callback URL."),
+      array("http://wiki.developers.facebook.com/index.php/Auth.promoteSession", "auth.promoteSession", 
+        "Returns a temporary session secret associated to the current existing session, for use in a client-side component to an application."),
+      array("http://wiki.developers.facebook.com/index.php/Auth.revokeAuthorization", "auth.revokeAuthorization",
+        "If this method is called for the logged in user, then no further API calls can be made on that user's behalf until the user decides to authorize the application again."),
+      array("http://wiki.developers.facebook.com/index.php/Auth.revokeExtendedPermission", "auth.revokeExtendedPermission",
+        "Removes a specific extended permission that a user explicitly granted to your application."),
+      array("http://wiki.developers.facebook.com/index.php/Batch.run", "batch.run",
+        "Execute a list of individual API calls in a single batch."),
+      array("http://wiki.developers.facebook.com/index.php/Comments.get", "comments.get",
+      	"Returns all comments for a given xid posted through fb:comments. This method is a wrapper for the FQL query on the comment FQL table."),
+      array("http://wiki.developers.facebook.com/index.php/Data.getCookies", "data.getCookies",
+        "Returns all cookies for a given user and application."),
+      array("http://wiki.developers.facebook.com/index.php/Data.setCookie", "data.setCookie",
+        "Sets a cookie for a given user and application."),
+      array("http://wiki.developers.facebook.com/index.php/Events.cancel", "events.cancel", 
+        "Cancels an event. The application must be an admin of the event."),
+      array("http://wiki.developers.facebook.com/index.php/Events.create", "events.create", 
+        "Creates an event on behalf of the user if the application has an active session; otherwise it creates an event on behalf of the application."),
+      array("http://wiki.developers.facebook.com/index.php/Events.edit", "events.edit", 
+        "Edits an existing event. The application must be an admin of the event."),
+      array("http://wiki.developers.facebook.com/index.php/Events.get", "events.get", 
+        "Returns all visible events according to the filters specified."),
+      array("http://wiki.developers.facebook.com/index.php/Events.getMembers", "events.getMembers", 
+        "Returns membership list data associated with an event."),
+      array("http://wiki.developers.facebook.com/index.php/Events.rsvp", "events.rsvp", 
+        "Sets the attendance option for the current user."),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.deleteCustomTags", "fbml.deleteCustomTags",
+        "Deletes one or more custom tags you previously registered for the calling application with fbml.registerCustomTags"),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.getCustomTags", "fbml.getCustomTags",
+        "Returns the custom tag definitions for tags that were previously defined using fbml.registerCustomTags"),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.refreshImgSrc", "fbml.refreshImgSrc", 
+        "Fetches and re-caches the image stored at the given URL."),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.refreshRefUrl", "fbml.refreshRefUrl", 
+        "Fetches and re-caches the content stored at the given URL."),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.registerCustomTags", "fbml.registerCustomTags",
+        "Registers custom tags you can include in your that applications' FBML markup. Custom tags consist of FBML snippets that are rendered during parse time on the containing page that references the custom tag."),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.setRefHandle", "fbml.setRefHandle", 
+        "Associates a given \"handle\" with FBML markup so that the handle can be used within the fb:ref FBML tag."),
+      array("http://wiki.developers.facebook.com/index.php/Fbml.uploadNativeStrings", "fbml.uploadNativeStrings",
+        "Lets you insert text strings into the Facebook Translations database so they can be translated."),
+      array("http://wiki.developers.facebook.com/index.php/Feed.deactivateTemplateBundleByID", "feed.deactivateTemplateBundleByID",
+        "Deactivates a previously registered template bundle."),
+      array("http://wiki.developers.facebook.com/index.php/Feed.getRegisteredTemplateBundleByID", "feed.getRegisteredTemplateBundleByID",
+        "Retrieves information about a specified template bundle previously registered by the requesting application."),
+      array("http://wiki.developers.facebook.com/index.php/Feed.getRegisteredTemplateBundles", "feed.getRegisteredTemplateBundles",
+        "Retrieves the full list of all the template bundles registered by the requesting application."),
+      array("", "feed.publishActionOfUser",
+        "This method is deprecated. Please use feed.publishUserAction instead."),
+      array("", "feed.publishStoryToUser",
+        "This method is deprecated. Please use feed.publishUserAction instead."),
+      array("http://wiki.developers.facebook.com/index.php/Feed.publishTemplatizedAction", "feed.publishTemplatizedAction", 
+        "Publishes a Mini-Feed story to the Facebook Page corresponding to the page_actor_id parameter. Note: This method is deprecated for actions taken by users only; it still works for actions taken by Facebook Pages."),
+      array("http://wiki.developers.facebook.com/index.php/Feed.publishUserAction", "feed.publishUserAction",
+        "Publishes a story on behalf of the user owning the session, using the specified template bundle."),
+      array("http://wiki.developers.facebook.com/index.php/Feed.registerTemplateBundle", "feed.registerTemplateBundle",
+        "Builds a template bundle around the specified templates, registers them on Facebook, and responds with a template bundle ID that can be used to identify your template bundle to other Feed-related API calls."),
+      array("http://wiki.developers.facebook.com/index.php/Fql.query", "fql.query", 
+        "Evaluates an FQL (Facebook Query Language) query."),
+      array("http://wiki.developers.facebook.com/index.php/Friends.areFriends", "friends.areFriends", 
+        "Returns whether or not each pair of specified users is friends with each other."),
+      array("http://wiki.developers.facebook.com/index.php/Friends.get", "friends.get", 
+        "Returns the identifiers for the current user's Facebook friends."),
+      array("http://wiki.developers.facebook.com/index.php/Friends.getAppUsers", "friends.getAppUsers", 
+        "Returns the identifiers for the current user's Facebook friends who have authorized the specific calling application."),
+      array("http://wiki.developers.facebook.com/index.php/Friends.getLists", "friends.getLists", 
+        "Returns the identifiers for the current user's Facebook friend lists."),
+      array("http://wiki.developers.facebook.com/index.php/Groups.get", "groups.get", 
+        "Returns all visible groups according to the filters specified."),
+      array("http://wiki.developers.facebook.com/index.php/Groups.getMembers", "groups.getMembers", 
+        "Returns membership list data associated with a group."),
+      array("http://wiki.developers.facebook.com/index.php/Links.get", "links.get",
+        "Returns all links the user has posted on their profile through your application."),
+      array("http://wiki.developers.facebook.com/index.php/Links.post", "links.post",
+        "Lets a user post a link on their Wall through your application."),
+      array("http://wiki.developers.facebook.com/index.php/LiveMessage.send", "liveMessage.send",
+        "Sends a \"message\" directly to a user's browser, which can be handled in FBJS."),
+      array("http://wiki.developers.facebook.com/index.php/Marketplace.createListing", "marketplace.createListing", 
+        "Create or modify a listing in Marketplace."),
+      array("http://wiki.developers.facebook.com/index.php/Marketplace.getCategories", "marketplace.getCategories", 
+        "Returns all the Marketplace categories."),
+      array("http://wiki.developers.facebook.com/index.php/Marketplace.getListings", "marketplace.getListings", 
+        "Return all Marketplace listings either by listing ID or by user."),
+      array("http://wiki.developers.facebook.com/index.php/Marketplace.getSubCategories", "marketplace.getSubCategories", 
+        "Returns the Marketplace subcategories for a particular category."),
+      array("http://wiki.developers.facebook.com/index.php/Marketplace.removeListing", "marketplace.removeListing", 
+        "Remove a listing from Marketplace."),
+      array("http://wiki.developers.facebook.com/index.php/Marketplace.search", "marketplace.search", 
+        "Search Marketplace for listings filtering by category, subcategory and a query string."),
+      array("http://wiki.developers.facebook.com/index.php/Notes.create", "notes.create",
+        "Lets a user write a Facebook note through your application."),
+      array("http://wiki.developers.facebook.com/index.php/Notes.delete", "notes.delete",
+        "Lets a user delete a Facebook note that was written through your application."),
+      array("http://wiki.developers.facebook.com/index.php/Notes.edit", "notes.edit",
+        "Lets a user edit a Facebook note through your application."),
+      array("http://wiki.developers.facebook.com/index.php/Notes.get", "notes.get",
+        "Returns a list of all of the visible notes written by the specified user."),
+      array("http://wiki.developers.facebook.com/index.php/Notifications.get", "notifications.get", 
+        "Returns information on outstanding Facebook notifications for current session user."),
+      array("http://wiki.developers.facebook.com/index.php/Notifications.send", "notifications.send", 
+        "Sends a notification to a set of users."),
+      array("http://wiki.developers.facebook.com/index.php/Notifications.sendEmail", "notifications.sendEmail", 
+        "Sends an email to the specified users who have the application."),
+      array("http://wiki.developers.facebook.com/index.php/Pages.getInfo", "pages.getInfo", 
+        "Returns all visible pages to the filters specified."),
+      array("http://wiki.developers.facebook.com/index.php/Pages.isAdmin", "pages.isAdmin", 
+        "Checks whether the logged-in user is the admin for a given Page."),
+      array("http://wiki.developers.facebook.com/index.php/Pages.isAppAdded", "pages.isAppAdded", 
+        "Checks whether the Page has added the application."),
+      array("http://wiki.developers.facebook.com/index.php/Pages.isFan", "pages.isFan", 
+        "Checks whether a user is a fan of a given Page."),
+      array("http://wiki.developers.facebook.com/index.php/Photos.addTag", "photos.addTag", 
+        "Adds a tag with the given information to a photo."),
+      array("http://wiki.developers.facebook.com/index.php/Photos.createAlbum", "photos.createAlbum", 
+        "Creates and returns a new album owned by the current session user."),
+      array("http://wiki.developers.facebook.com/index.php/Photos.get", "photos.get", 
+        "Returns all visible photos according to the filters specified."),
+      array("http://wiki.developers.facebook.com/index.php/Photos.getAlbums", "photos.getAlbums", 
+        "Returns metadata about all of the photo albums uploaded by the specified user."),
+      array("http://wiki.developers.facebook.com/index.php/Photos.getTags", "photos.getTags", 
+        "Returns the set of user tags on all photos specified."),
+      array("http://wiki.developers.facebook.com/index.php/Photos.upload", "photos.upload", 
+        "Uploads a photo owned by the current session user and returns the new photo."),
+      array("http://wiki.developers.facebook.com/index.php/Profile.getFBML", "profile.getFBML", 
+        "Gets the FBML that is currently set for a user's profile."),
+      array("http://wiki.developers.facebook.com/index.php/Profile.getInfo", "profile.getInfo",
+        "Returns the specified user's application info section for the calling application."),
+      array("http://wiki.developers.facebook.com/index.php/Profile.getInfoOptions", "profile.getInfoOptions",
+        "Returns the options associated with the specified field for an application info section."),
+      array("http://wiki.developers.facebook.com/index.php/Profile.setFBML", "profile.setFBML", 
+        "Sets the FBML for a user's profile, including the content for both the profile box and the profile actions."),
+      array("http://wiki.developers.facebook.com/index.php/Profile.setInfo", "profile.setInfo",
+        "Configures an application info section that the specified user can install on the Info tab of her profile."),
+      array("http://wiki.developers.facebook.com/index.php/Profile.setInfoOptions", "profile.setInfoOptions",
+        "Specifies the objects for a field for an application info section."),
+      array("http://wiki.developers.facebook.com/index.php/Status.get", "status.get",
+        "Returns the user's current and most recent statuses. This is a streamlined version of users.setStatus."),
+      array("http://wiki.developers.facebook.com/index.php/Status.set", "status.set",
+        "Updates a user's Facebook status through your application."),
+      array("http://wiki.developers.facebook.com/index.php/Users.getInfo", "users.getInfo", 
+        "Returns a wide array of user-specific information for each user identifier passed, limited by the view of the current user."),
+      array("http://wiki.developers.facebook.com/index.php/Users.getLoggedInUser", "users.getLoggedInUser", 
+        "Gets the user ID (uid) associated with the current session."),
+      array("", "users.getStandardInfo",
+        "Returns an array of user-specific information for use by the application itself."),
+      array("http://wiki.developers.facebook.com/index.php/Users.hasAppPermission", "users.hasAppPermission", 
+        "Checks whether the user has opted in to an extended application permission."),
+      array("", "users.isAppAdded",
+        "This method is deprecated. Please use users.isAppUser instead."),
+      array("http://wiki.developers.facebook.com/index.php/Users.isAppUser", "users.isAppUser",
+        "Returns whether the user (either the session user or user specified by UID) has authorized the calling application."),
+      array("http://wiki.developers.facebook.com/index.php/Users.isVerified", "users.isVerified",
+        "Returns whether the user is a verified Facebook user."),
+      array("http://wiki.developers.facebook.com/index.php/Users.setStatus", "users.setStatus", 
+        "Updates a user's Facebook status."),
+      array("http://wiki.developers.facebook.com/index.php/Video.getUploadLimits", "video.getUploadLimits",
+        "Returns the file size and length limits for a video that the current user can upload through your application."),
+      array("http://wiki.developers.facebook.com/index.php/Video.upload", "video.upload",
+        "Uploads a video owned by the current session user and returns the video.")
+    );
+
+    for( $index = 0; $index < count($functions); ++$index ) {
+      $functions[$index][1][0] = strtoupper($functions[$index][1][0]);
+      $this->getFunctionsModel()->insertOrUpdateFunction(array(
+        'category' => $category_id,
+        'hierarchy' => 2,
+        'name' => $functions[$index][1],
+        'url' => $functions[$index][0],
+        'short_description' => $functions[$index][2]
+      ));
+    }
+  }
+
   private function scrapeZend() {
     $category = 'Zend';
 
@@ -231,6 +439,7 @@ class ScrapeController extends SnaapiController {
       $this->view->results .= $this->getHierarchiesModel()->insert($category_id, 1, $categories[$index], $urls[$index])."\n";
     }
   }
+
   private function scrapeCSSFunctions() {
     $category = 'CSS';
 

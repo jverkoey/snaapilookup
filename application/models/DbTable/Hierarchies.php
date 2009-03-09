@@ -15,15 +15,15 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 26 AND id = 11;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 27 AND id = 1;
 
   UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight;
   UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    26, @parentRight, @parentRight + 1, 0,
-    'Front Controller',
-    'http://framework.zend.com/manual/en/zend.controller.front.html');
+    27, @parentRight, @parentRight + 1, 0,
+    'REST',
+    'http://wiki.developers.facebook.com/index.php/API#REST_Interface');
 
   UNLOCK TABLES;
   
