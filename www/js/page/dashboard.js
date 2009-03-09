@@ -2,7 +2,7 @@
  * The snaapi home page.
  */
 
-(function(){
+$(function(){
   new Snap.GhostInput('#search .text', 'Languages, frameworks, or API function names');
   new Snap.TypeAhead({
     search   : '#search',
@@ -18,4 +18,4 @@
   if( !window.sel ) {
     $('#search .text').focus();
   }
-})();
+});
