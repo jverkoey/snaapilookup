@@ -20,6 +20,16 @@ class Model_Categories {
   }
 
   /**
+   * Fetch a specific category by id.
+   */
+  public function fetchName($id) {
+    $table = $this->getTable();
+    $result = $table->fetchAll($table->select()->from($table, array('name'))
+                                               ->where('id = ?', $id))->toArray();
+    return !empty($result) ? $result[0]['name'] : null;
+  }
+
+  /**
    * Fetch a specific category by name.
    */
   public function fetchCategoryByName($name) {
