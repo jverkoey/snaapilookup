@@ -2,7 +2,7 @@
  * Login actions.
  */
 
-(function(){
+$(function(){
 
   var undefined;
 
@@ -96,4 +96,4 @@
 
   });
 
-})();
+});
