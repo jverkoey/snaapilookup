@@ -95,6 +95,14 @@ class ScrapeController extends SnaapiController {
     }
 
     $functions = array(
+      array("http://wiki.developers.facebook.com/index.php/Admin.getAllocation", "admin.getAllocation",
+        "Returns the current allocation limit for your application for the specified integration point."),
+      array("http://wiki.developers.facebook.com/index.php/Admin.getAppProperties", "admin.getAppProperties",
+        "Returns values of properties for your applications from the Facebook Developer application."),
+      array("", "admin.getDailyMetrics",
+        "This method is deprecated. Please use Admin.getMetrics instead."),
+      array("http://wiki.developers.facebook.com/index.php/Admin.getMetrics", "admin.getMetrics",
+        "Returns specified metrics for your application, given a time period."),
       array("http://wiki.developers.facebook.com/index.php/Admin.getRestrictionInfo", "admin.getRestrictionInfo",
         "Returns the demographic restrictions for the application."),
       array("http://wiki.developers.facebook.com/index.php/Admin.setAppProperties", "admin.setAppProperties",
@@ -270,7 +278,6 @@ class ScrapeController extends SnaapiController {
     );
 
     for( $index = 0; $index < count($functions); ++$index ) {
-      $functions[$index][1][0] = strtoupper($functions[$index][1][0]);
       $this->getFunctionsModel()->insertOrUpdateFunction(array(
         'category' => $category_id,
         'hierarchy' => 2,

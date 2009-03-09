@@ -32,6 +32,7 @@ class Model_Logs {
     }
     $entry = array(
       'user' => $identity,
+      'ip'   => $_SERVER['REMOTE_ADDR'],
       'type' => $type,
       'log'  => $log,
       'time' => new Zend_Db_Expr('NOW()')
