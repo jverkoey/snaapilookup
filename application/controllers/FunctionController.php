@@ -110,7 +110,7 @@ class FunctionController extends SnaapiController {
 
     $category = $this->_request->getParam('category');
     $id = $this->_request->getParam('id');
-    $url = $this->_request->getParam('url');
+    $url = stripslashes($this->_request->getParam('url'));
 
     $category_name = $this->getCategoriesModel()->fetchName($category);
     $function_name = $this->getFunctionsModel()->fetchName($category, $id);
@@ -140,7 +140,7 @@ class FunctionController extends SnaapiController {
 
     $category = $this->_request->getParam('category');
     $id = $this->_request->getParam('id');
-    $snippet = $this->_request->getParam('snippet');
+    $snippet = stripslashes($this->_request->getParam('snippet'));
 
     $category_name = $this->getCategoriesModel()->fetchName($category);
     $function_name = $this->getFunctionsModel()->fetchName($category, $id);
