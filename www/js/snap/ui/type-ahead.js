@@ -738,7 +738,7 @@ Snap.TypeAhead.prototype = {
       html.push('</div>');
     }
 
-    this._elements.external.hide();
+    this._elements.external_table.hide();
     this._elements.result
       .html(html.join(''))
       .fadeIn('fast');
@@ -851,10 +851,12 @@ Snap.TypeAhead.prototype = {
       this._elements.catch_phrase.fadeOut('fast');
       this._elements.filters.fadeOut('fast');
       this._elements.small_logo.fadeIn('fast');
+      //$('body').css({overflow:'hidden'});
+      $('#footer').hide();
       this._elements.result.fadeOut('fast', function() {
         this._elements.external
-          .html('<iframe src="'+url+'"></iframe>')
-          .show();
+          .html('<div id="eww">Eww, frames</div><iframe src="'+url+'"></iframe>');
+        this._elements.external_table.show();
       }.bind(this));
     }
   },
@@ -863,12 +865,14 @@ Snap.TypeAhead.prototype = {
     this._displaying_frame = false;
     this._elements.logo.fadeIn('fast');
     this._elements.catch_phrase.fadeIn('fast');
+    //$('body').css({overflow:'visible'});
+    $('#footer').show();
     for( var filter in this._active_filters ) {
       this._elements.filters.fadeIn('fast');
       break;
     }
     this._elements.small_logo.fadeOut('fast');
-    this._elements.external.fadeOut('fast', function() {
+    this._elements.external_table.fadeOut('fast', function() {
       this._elements.result.show();
     }.bind(this));
   },

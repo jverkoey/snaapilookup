@@ -10,6 +10,7 @@ $(function(){
     filters  : '#search .filters',
     dropdown : '#search .dropdown',
     result   : '#result',
+    external_table : '#external_table',
     external : '#external_page',
     catch_phrase : '#catch-phrase',
     logo     : '#logo',
