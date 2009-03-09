@@ -718,7 +718,7 @@ Snap.TypeAhead.prototype = {
         html.push('<div class="ratings"><span class="rater up">+</span><span class="rater down">-</span></div></div>');
         html.push('<div class="data">');
         if( social[i].type == 'link' ) {
-          html.push('<div class="link"><a class="external" href="',social[i].data,'">',social[i].data,'</a></div>');
+          html.push('<div class="link"><a href="',social[i].data,'">',social[i].data,'</a></div>');
         }
         html.push('</div>');
         html.push('</div>');
