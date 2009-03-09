@@ -856,7 +856,7 @@ Snap.TypeAhead.prototype = {
       this._elements.external_table.css({position:'absolute'});
       this._elements.result.fadeOut('fast', function() {
         this._elements.external
-          .html('<div id="eww">Eww, frames</div><iframe src="'+url+'"></iframe>');
+          .html('<div id="eww">Eww, frames<br/><span class="reason">Just a sec, we\'re loading the reference page.</span></div><iframe src="'+url+'"></iframe>');
         this._elements.external.show();
       }.bind(this));
     }
