@@ -60,6 +60,14 @@ class Model_Hierarchies {
   }
 
   /**
+   * Fetch the ancestry of a category.
+   */
+  public function insert($category, $parent, $name, $url) {
+    return 'LOCK TABLE hierarchies WRITE;SELECT @parentRight := rgt FROM hierarchies WHERE category = '.$category.' AND id = '.$parent.';UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight;UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight;INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( '.
+      $category.', @parentRight, @parentRight + 1, 0, "'.$name.'", "'.$url.'");UNLOCK TABLES;';
+  }
+
+  /**
    * Fetch all scrapeable hierarchies of a category.
    */
   public function fetchAllScrapeable($category) {

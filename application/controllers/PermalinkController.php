@@ -17,6 +17,10 @@ class PermalinkController extends SnaapiController {
     $this->language('CSS');
   }
 
+  public function zendAction() {
+    $this->language('Zend');
+  }
+
   private function language($name) {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);
