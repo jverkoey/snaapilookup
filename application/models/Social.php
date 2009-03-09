@@ -40,6 +40,21 @@ class Model_Social {
     );
     return $this->getTable()->insert($entry);
   }
+ 
+  /**
+   * Add a snippet.
+   */
+  public function addSnippet($category, $id, $snippet, $user_id) {
+    $table = $this->getTable();
+    $entry = array(
+      'category'  => $category,
+      'id'        => $id,
+      'type'      => 'snippet',
+      'data'      => $snippet,
+      'user_id'   => $user_id
+    );
+    return $this->getTable()->insert($entry);
+  }
 
   /**
    * Update the vote.

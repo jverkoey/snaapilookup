@@ -142,6 +142,7 @@ Snap.TypeAhead.prototype = {
               undefined != this._function_cache[selection.category][selection.function_id] ) {
             var function_info = this._function_cache[selection.category][selection.function_id];
             if( function_info.url ) {
+              this._elements.dropdown.fadeOut('fast');
               this._show_iframe(function_info.url);
             } else {
               function_info.navigate_immediately = true;
@@ -720,6 +721,8 @@ Snap.TypeAhead.prototype = {
         html.push('<div class="data">');
         if( social[i].type == 'link' ) {
           html.push('<div class="link"><a href="',social[i].data,'">',social[i].data,'</a></div>');
+        } else if( social[i].type == 'snippet' ) {
+          html.push('<div class="snippet"><pre>',social[i].data,'</pre></div>');
         }
         html.push('</div>');
         html.push('</div>');
@@ -730,12 +733,12 @@ Snap.TypeAhead.prototype = {
     if( undefined != window.user_id ) {
       html.push('<div class="socialness"><div class="methods"><ul>');
       html.push('<li>Add a link</li>');
-  //    html.push('<li>Add a snippet</li>');
+      html.push('<li>Add a snippet</li>');
       html.push('</ul></div>');
       // Add a link
       html.push('<div class="form" style="display:none"><form method="post" action="/function/addurl"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="url">URL:</label><input type="text" class="text" name="url" id="url" size="50" value="" /><input type="submit" class="button" value="add" /></form></div>');
       // Add a snippet
-      html.push('<div class="form" style="display:none">Add a snippet!</div>');
+      html.push('<div class="form" style="display:none"><form method="post" action="/function/addsnippet"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="snippet">Snippet:</label><textarea name="snippet" id="snippet" cols="80" rows="10" wrap="off" ></textarea><input type="submit" class="button" value="add" /></form></div>');
       html.push('</div>');
     }
 

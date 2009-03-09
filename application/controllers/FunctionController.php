@@ -123,7 +123,37 @@ class FunctionController extends SnaapiController {
     if( !$this->getSocialModel()->normalizeURL($url) ) {
       $url = 'http://'.$url;
     }
+    $url = strip_tags($url);
     $this->getSocialModel()->addURL($category, $id, $url, $user_id);
+    $this->_helper->getHelper('Redirector')
+                  ->setGotoSimple($function_name, $category_name);
+
+    $this->_helper->viewRenderer->setNoRender();
+  }
+
+  public function addsnippetAction() {
+    $user_id = $this->_requireLoggedIn(array('redirect' => false));
+    if( !$user_id ) {
+      $this->_helper->json(array('succeeded' => false));
+      return;
+    }
+
+    $category = $this->_request->getParam('category');
+    $id = $this->_request->getParam('id');
+    $snippet = $this->_request->getParam('snippet');
+
+    $category_name = $this->getCategoriesModel()->fetchName($category);
+    $function_name = $this->getFunctionsModel()->fetchName($category, $id);
+
+    if( !$category_name || !$function_name ) {
+      $category_name = 'index';
+      $function_name = 'index';
+    }
+
+    $snippet = str_replace('<', '&lt;', $snippet);
+    $snippet = str_replace('>', '&gt;', $snippet);
+
+    $this->getSocialModel()->addSnippet($category, $id, $snippet, $user_id);
     $this->_helper->getHelper('Redirector')
                   ->setGotoSimple($function_name, $category_name);
 

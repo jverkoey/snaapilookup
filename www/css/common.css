@@ -4,7 +4,7 @@
  */
 
 a {
-  color: #40409F;
+  color: #447799;
   text-decoration: none;
 }
 
@@ -132,7 +132,8 @@ h2 {
  * Forms.
  */
 .text,
-.small_text {
+.small_text,
+textarea {
   border: 1px solid #ccc;
   outline-style: none;
 }
@@ -152,7 +153,8 @@ h2 {
 }
 
 .text:focus,
-.small_text:focus {
+.small_text:focus,
+textarea {
   border: 1px solid #999;
 }
 
