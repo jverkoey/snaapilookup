@@ -33,7 +33,8 @@ $router = $frontController->getRouter();
 
 $categories = array(
   'php',
-  'python'
+  'python',
+  'css'
 );
 
 foreach( $categories as $category ) {

@@ -681,6 +681,22 @@ Snap.TypeAhead.prototype = {
         case 'PHP':
           html.push('<div class="signature">',this._active_function.data,'</div>');
           break;
+        case 'CSS':
+          html.push('<div class="row"><span class="title">Default value:</span><div class="value">',this._active_function.data.d,'</div></div>');
+          html.push('<div class="row"><span class="title">Expected values:</span>');
+          var values = this._active_function.data.v;
+          for( var i = 0; i < values.length; ++i ) {
+            html.push('<div class="value">');
+            if( typeof values[i] == 'string' ) {
+              html.push(values[i]);
+            } else {
+              html.push('<span class="value_name">',values[i].n,'</span><span class="description">',values[i].d,'</span>');
+            }
+            html.push('</div>');
+          }
+          html.push('</div>');
+          html.push('<div class="row"><span class="title">Inherited:</span><div class="value">',this._active_function.data.i,'</div></div>');
+          break;
       }
     }
 
@@ -916,6 +932,15 @@ Snap.TypeAhead.prototype = {
             function_info.data = function_info.data.replace(/<sm>/g, '<span class="methodname">');
             function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
             function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
+            break;
+          case 'CSS':
+            function_info.data = window["eval"]("(" + function_info.data + ")");
+            if( !this._active_function.data.d ) {
+              this._active_function.data.d = 'Not defined';
+            }
+            if( !this._active_function.data.i ) {
+              this._active_function.data.i = 'No';
+            }
             break;
         }
       }

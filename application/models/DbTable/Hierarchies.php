@@ -15,28 +15,28 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 24 AND id = 13;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 25 AND id = 1;
 
   UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight;
   UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    24, @parentRight, @parentRight + 1, 0,
-    'Differ Objects',
-    'http://docs.python.org/library/difflib.html#id2');
+    25, @parentRight, @parentRight + 1, 0,
+    'Pseudo-elements',
+    'http://www.w3schools.com/CSS/CSS_reference.asp#pseudoel');
 
   UNLOCK TABLES;
   
   
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 24 AND id = 7;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 25 AND id = 7;
 
   UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight;
   UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    24, @parentRight, @parentRight + 1, 1,
+    25, @parentRight, @parentRight + 1, 1,
     're class',
     'http://docs.python.org/library/re.html#module-contents');
 

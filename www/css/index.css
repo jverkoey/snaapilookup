@@ -178,6 +178,27 @@
   font-style: normal;
 }
 
+#result .row {
+  padding: 0.5em;
+  font-size: 1em;
+  padding-bottom: 0;
+}
+
+#result .row .title {
+  color: #999;
+  float: left;
+}
+
+#result .row .value {
+  margin-left: 110px;
+  padding-bottom: 0.5em;
+}
+
+#result .row .value_name {
+  font-weight: bold;
+  margin-right: 0.5em;
+}
+
 #result .social {
   font-size: 1.5em;
   padding: 0.5em;
