@@ -1,1 +1,1 @@
-[{"type":"Framework","data":[{"id":"28","name":"django"},{"id":"27","name":"Facebook API"},{"id":"26","name":"Zend"}]},{"type":"Language","data":[{"id":"9","name":"PHP"},{"id":"25","name":"CSS"},{"id":"24","name":"Python"}]}]
+[{"t":"Framework","d":[{i:28,n:"django"},{i:27,n:"Facebook API"},{i:26,n:"Zend"}]},{"t":"Language","d":[{i:9,n:"PHP"},{i:25,n:"CSS"},{i:24,n:"Python"}]}]

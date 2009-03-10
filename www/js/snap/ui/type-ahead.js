@@ -318,18 +318,18 @@ Snap.TypeAhead.prototype = {
             for( var i = 0; i < filters.length && results.length < MAX_RESULTS; ++i ) {
               var filter = filters[i];
               var active_filter = this._active_filters[filter.type];
-              for( var i2 = 0; i2 < filter.data.length && results.length < MAX_RESULTS; ++i2 ) {
-                if( undefined != active_filter && undefined != active_filter[filter.data[i2].id] ) {
+              for( var i2 = 0; i2 < filter.d.length && results.length < MAX_RESULTS; ++i2 ) {
+                if( undefined != active_filter && undefined != active_filter[filter.d[i2].i] ) {
                   continue;
                 }
-                var offset = filter.data[i2].name.toLowerCase().indexOf(query.toLowerCase());
+                var offset = filter.d[i2].n.toLowerCase().indexOf(query.toLowerCase());
                 if( offset >= 0 ) {
                   var entry = {
-                    type      : filter.type,
-                    filter_id : filter.data[i2].id,
-                    name      : filter.data[i2].name,
+                    type      : filter.t,
+                    filter_id : filter.d[i2].i,
+                    name      : filter.d[i2].n,
                     matches   : [{word: query, offset: offset, size: query.length}],
-                    score     : query.length * 100 / filter.data[i2].name.length * (offset == 0 ? 2 : 1)
+                    score     : query.length * 100 / filter.d[i2].n.length * (offset == 0 ? 2 : 1)
                   };
                   var unique_id = 'filter'+i+'-'+i2;
                   hash_results[unique_id] = entry;
@@ -984,9 +984,10 @@ Snap.TypeAhead.prototype = {
     }
     html.push('</tr></tbody></table>');
     if( any_filters ) {
-      this._elements.filters
-        .html(html.join(''))
-        .show();
+      this._elements.filters.html(html.join(''));
+      if( !this._displaying_frame ) {
+        this._elements.filters.show();
+      }
 
       var t = this;
       $(this._elementIDs.filters+' .filter .item span').click(function() {
@@ -1016,11 +1017,11 @@ Snap.TypeAhead.prototype = {
 
     // Compile the data into an id=>category map for quick access.
     for( var i = 0; i < result.length; ++i ) {
-      var data = result[i].data;
+      var data = result[i].d;
       for( var i2 = 0; i2 < data.length; ++i2 ) {
         var item = data[i2];
-        this._id_to_category[item.id] = item.name;
-        this._id_to_type[item.id] = result[i].type;
+        this._id_to_category[item.i] = item.n;
+        this._id_to_type[item.i] = result[i].t;
       }
     }
 

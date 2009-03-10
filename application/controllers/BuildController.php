@@ -15,9 +15,14 @@ class BuildController extends SnaapiController {
       $static_js_path = APPLICATION_PATH . '/../www/js/static/data.js';
       $contents = file_get_contents($static_js_path);
       $new_contents = Zend_Json::encode(array(
-        array('type'=>'Framework', 'data'=>$frameworks),
-        array('type'=>'Language', 'data'=>$languages))
+        array('t'=>'Framework', 'd'=>$frameworks),
+        array('t'=>'Language', 'd'=>$languages))
       );
+      $new_contents = str_replace('"id"', 'i', $new_contents);
+      $new_contents = str_replace('"name"', 'n', $new_contents);
+      $new_contents = preg_replace('/"([0-9]+)"/', '$1', $new_contents);
+
+      $revisions_changed = false;
       if( $contents != $new_contents ) {
         $new_revision = $current_revision + 1;
         file_put_contents($static_js_path, $new_contents);
@@ -30,6 +35,15 @@ $REVISIONS[\'STATIC_JS_BUILD\'] = '.$new_revision.';');
         $this->view->new_revision = $new_revision;
         $REVISIONS['STATIC_JS_BUILD'] = $new_revision;
 
+        $revisions_changed = true;
+      }
+
+      foreach( $languages as $language ) {
+        
+      }
+
+
+      if( $revisions_changed ) {
         $this->updateRevisionFile();
       }
     } else {
