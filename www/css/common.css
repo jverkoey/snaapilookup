@@ -87,7 +87,7 @@ h2 {
 }
 
 #footer {
-  background: #6699aa url(/gfx/footer.png) repeat-x scroll 0 0;
+  background-color: #6699aa;
   height: 8em;
 }
 

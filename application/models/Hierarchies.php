@@ -22,11 +22,33 @@ class Model_Hierarchies {
   /**
    * Fetch the hierarchy info.
    */
+  public function fetchAll($category_id) {
+    $table = $this->getTable();
+    $info = $table->info();
+    $db = $table->getAdapter();
+    $sql = 'SELECT COUNT(parent.name)-1 AS depth, node.name AS name, node.id as id '.
+           'FROM '.$info['name'].' AS node, '.
+           $info['name'].' AS parent '.
+           $db->quoteInto('WHERE parent.category = ?', $category_id).' AND '.
+           $db->quoteInto('node.category = ?', $category_id).' AND '.
+           'node.lft BETWEEN parent.lft AND parent.rgt '.
+           'GROUP BY node.name '.
+           'ORDER BY node.lft;';
+    return $db->query($sql)->fetchAll();
+  }
+
+  /**
+   * Fetch the hierarchy info.
+   */
   public function fetch($category_id, $id) {
     $table = $this->getTable();
-    $result = $table->fetchAll($table->select()->from($table, array('name', 'source_url'))
-                                               ->where('category = ?', $category_id)
-                                               ->where('id = ?', $id))->toArray();
+    $result = $table->fetchAll(
+      $table
+        ->select()
+        ->from($table, array('name', 'source_url'))
+        ->where('category = ?', $category_id)
+        ->where('id = ?', $id)
+    )->toArray();
     return empty($result) ? null : $result[0];
   }
 

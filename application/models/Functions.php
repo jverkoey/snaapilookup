@@ -55,6 +55,23 @@ class Model_Functions {
   }
 
   /**
+   * Fetch all functions in a category.
+   */
+  public function fetchAll($category) {
+    $table = $this->getTable();
+    $result = $table->fetchAll(
+      $table
+        ->select()
+        ->from($table, array(
+            'id',
+            'name'
+          ))
+        ->where('category = ?', $category)
+    )->toArray();
+    return $result;
+  }
+
+  /**
    * Fetch a specific function.
    */
   public function fetch($category, $id) {
