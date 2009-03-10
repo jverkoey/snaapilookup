@@ -84,6 +84,186 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function djangoAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      //$this->scrapeDjango1();
+      $this->scrapeDjango2();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeDjango2() {
+    $category = 'django';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $functions = array(
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#date-hierarchy", "admin.ModelAdmin.date_hierarchy"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#form", "admin.ModelAdmin.form"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#fieldsets", "admin.ModelAdmin.fieldsets"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#fields", "admin.ModelAdmin.fields"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#exclude", "admin.ModelAdmin.exclude"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#filter-horizontal", "admin.ModelAdmin.filter_horizontal"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#filter-vertical", "admin.ModelAdmin.filter_vertical"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#list-display", "admin.ModelAdmin.list_display"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#list-display-links", "admin.ModelAdmin.list_display_links"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#list-filter", "admin.ModelAdmin.list_filter"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#list-per-page", "admin.ModelAdmin.list_per_page"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#list-select-related", "admin.ModelAdmin.list_select_related"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#inlines", "admin.ModelAdmin.inlines"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#ordering", "admin.ModelAdmin.ordering"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#prepopulated-fields", "admin.ModelAdmin.prepopulated_fields"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#radio-fields", "admin.ModelAdmin.radio_fields"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#raw-id-fields", "admin.ModelAdmin.raw_id_fields"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#save-as", "admin.ModelAdmin.save_as"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#save-on-top", "admin.ModelAdmin.save_on_top"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#search-fields", "admin.ModelAdmin.search_fields"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#formfield-overrides", "admin.ModelAdmin.formfield_overrides"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#save-model-self-request-obj-form-change", "admin.ModelAdmin.save_model", "save_model(self, request, obj, form, change)"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#save-formset-self-request-form-formset-change", "admin.ModelAdmin.save_formset", "save_formset(self, request, form, formset, change)"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#get-urls-self", "admin.ModelAdmin.get_urls", "get_urls(self)"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#formfield-for-foreignkey-self-db-field-request-kwargs", "admin.ModelAdmin.formfield_for_foreignkey", "formfield_for_foreignkey(self, db_field, request, **kwargs)")
+    );
+
+    for( $index = 0; $index < count($functions); ++$index ) {
+      $data = '';
+      if( count($functions[$index]) > 2 ) {
+        $data = $functions[$index][2];
+      }
+      $this->getFunctionsModel()->insertOrUpdateFunction(array(
+        'category' => $category_id,
+        'hierarchy' => 2,
+        'name' => $functions[$index][1],
+        'url' => $functions[$index][0],
+        'short_description' => "",
+        'data' => $data
+      ));
+    }
+  }
+
+  private function scrapeDjango1() {
+    $category = 'django';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $categories = array(
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/admin/#module-django.contrib.admin", "django.contrib.admin",
+        "Django's admin site."),
+      array("http://docs.djangoproject.com/en/dev/topics/auth/#module-django.contrib.auth", "django.contrib.auth",
+        "Django's authentication framework."),
+      array("http://docs.djangoproject.com/en/dev/topics/auth/#module-django.contrib.auth.forms", "django.contrib.auth.forms",
+        ""),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.contrib.auth.middleware", "django.contrib.auth.middleware",
+        "Authentication middleware."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/comments/#module-django.contrib.comments", "django.contrib.comments",
+        "Django's comment framework"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/comments/signals/#module-django.contrib.comments.signals", "django.contrib.comments.signals",
+        "Signals sent by the comment module."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/contenttypes/#module-django.contrib.contenttypes", "django.contrib.contenttypes",
+        "Provides generic interface to installed models."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/csrf/#module-django.contrib.csrf", "django.contrib.csrf",
+        "Protects against Cross Site Request Forgeries"),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.contrib.csrf.middleware", "django.contrib.csrf.middleware",
+        "Middleware adding protection against Cross Site Request Forgeries."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/databrowse/#module-django.contrib.databrowse", "django.contrib.databrowse",
+        "Databrowse is a Django application that lets you browse your data."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/flatpages/#module-django.contrib.flatpages", "django.contrib.flatpages",
+        "A framework for managing simple ?flat? HTML content in a database."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/formtools/form-preview/#module-django.contrib.formtools", "django.contrib.formtools",
+        "Displays an HTML form, forces a preview, then does something with the submission."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/formtools/form-wizard/#module-django.contrib.formtools.wizard", "django.contrib.formtools.wizard",
+        "Splits forms across multiple Web pages."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/humanize/#module-django.contrib.humanize", "django.contrib.humanize",
+        "A set of Django template filters useful for adding a \"human touch\" to data."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/localflavor/#module-django.contrib.localflavor", "django.contrib.localflavor",
+        "A collection of various Django snippets that are useful only for a particular country or culture."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/redirects/#module-django.contrib.redirects", "django.contrib.redirects",
+        "A framework for managing redirects."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.contrib.sessions.middleware", "django.contrib.sessions.middleware",
+        "Session middleware."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/sitemaps/#module-django.contrib.sitemaps", "django.contrib.sitemaps",
+        "A framework for generating Google sitemap XML files."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/sites/#module-django.contrib.sites", "django.contrib.sites",
+        "Lets you operate multiple web sites from the same database and Django project"),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/syndication/#module-django.contrib.syndication", "django.contrib.syndication",
+        "A framework for generating syndication feeds, in RSS and Atom, quite easily."),
+      array("http://docs.djangoproject.com/en/dev/ref/contrib/webdesign/#module-django.contrib.webdesign", "django.contrib.webdesign",
+        "Helpers and utilities targeted primarily at Web *designers* rather than Web *developers*."),
+      array("http://docs.djangoproject.com/en/dev/ref/files/#module-django.core.files", "django.core.files",
+        "File handling and storage"),
+      array("http://docs.djangoproject.com/en/dev/topics/email/#module-django.core.mail", "django.core.mail",
+        "Helpers to easily send e-mail."),
+      array("http://docs.djangoproject.com/en/dev/topics/pagination/#module-django.core.paginator", "django.core.paginator",
+        "Classes to help you easily manage paginated data."),
+      array("http://docs.djangoproject.com/en/dev/ref/signals/#module-django.core.signals", "django.core.signals",
+        "Core signals sent by the request/response system."),
+      array("http://docs.djangoproject.com/en/dev/topics/db/models/#module-django.db.models", "django.db.models",
+        ""),
+      array("http://docs.djangoproject.com/en/dev/ref/models/fields/#module-django.db.models.fields", "django.db.models.fields",
+        "Built-in field types."),
+      array("http://docs.djangoproject.com/en/dev/ref/models/fields/#module-django.db.models.fields.related", "django.db.models.fields.related",
+        "Related field types"),
+      array("http://docs.djangoproject.com/en/dev/ref/signals/#module-django.db.models.signals", "django.db.models.signals",
+        "Signals sent by the model system."),
+      array("http://docs.djangoproject.com/en/dev/topics/signals/#module-django.dispatch", "django.dispatch",
+        "Signal dispatch"),
+      array("http://docs.djangoproject.com/en/dev/ref/forms/fields/#module-django.forms.fields", "django.forms.fields",
+        "Django's built-in form fields."),
+      array("http://docs.djangoproject.com/en/dev/ref/forms/widgets/#module-django.forms.widgets", "django.forms.widgets",
+        "Django's built-in form widgets."),
+      array("http://docs.djangoproject.com/en/dev/ref/request-response/#module-django.http", "django.http",
+        "Classes dealing with HTTP requests and responses."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware", "django.middleware",
+        "Django's built-in middleware classes."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.cache", "django.middleware.cache",
+        "Middleware for the site-wide cache."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.common", "django.middleware.common",
+        "Middleware adding \"common\" conveniences for perfectionists."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.doc", "django.middleware.doc",
+        "Middleware to help your app self-document."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.gzip", "django.middleware.gzip",
+        "Middleware to serve gziped content for performance."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.http", "django.middleware.http",
+        "Middleware handling advanced HTTP features."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.locale", "django.middleware.locale",
+        "Middleware to enable language selection based on the request."),
+      array("http://docs.djangoproject.com/en/dev/ref/middleware/#module-django.middleware.transaction", "django.middleware.transaction",
+        "Middleware binding a database transaction to each web request."),
+      array("http://docs.djangoproject.com/en/dev/topics/testing/#module-django.test", "django.test",
+        "Testing tools for Django applications."),
+      array("http://docs.djangoproject.com/en/dev/topics/testing/#module-django.test.client", "django.test.client",
+        "Django's test client."),
+      array("http://docs.djangoproject.com/en/dev/ref/signals/#module-django.test.signals", "django.test.signals",
+        "Signals sent during testing."),
+      array("http://docs.djangoproject.com/en/dev/topics/testing/#module-django.test.utils", "django.test.utils",
+        "Helpers to write custom test runners."),
+      array("http://docs.djangoproject.com/en/dev/howto/static-files/#module-django.views.static", "django.views.static",
+        "Serving of static files during development.")
+    );
+
+    for( $index = 0; $index < count($categories); ++$index ) {
+      $this->view->results .= $this->getHierarchiesModel()->insert(
+        $category_id,
+        1,
+        $categories[$index][1],
+        $categories[$index][0])."\n";
+    }
+  }
+
   private function scrapeFacebook() {
     $category = 'Facebook API';
 

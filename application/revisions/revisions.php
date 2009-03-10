@@ -1,3 +1,3 @@
 <?php
 
-$REVISIONS['ALL'] = 10;
+$REVISIONS['ALL'] = 11;

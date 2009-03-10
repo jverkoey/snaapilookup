@@ -680,6 +680,7 @@ Snap.TypeAhead.prototype = {
     if( this._active_function.data ) {
       switch( this._id_to_category[this._active_function.category] ) {
         case 'PHP':
+        case 'django':
         case 'Zend':
           html.push('<div class="signature">',this._active_function.data,'</div>');
           break;
@@ -936,6 +937,7 @@ Snap.TypeAhead.prototype = {
       if( function_info.data ) {
         switch( this._id_to_category[function_info.category] ) {
           case 'PHP':
+          case 'django':
           case 'Zend':
             function_info.data = function_info.data.replace(/<\/s>/g, '</span>');
             function_info.data = function_info.data.replace(/<st>/g, '<span class="type">');
