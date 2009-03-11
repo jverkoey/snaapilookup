@@ -45,36 +45,25 @@ class HierarchyController extends SnaapiController {
   }
 
   public function infoAction() {
-    $query = trim($this->_request->getParam('query'));
+    $category = trim($this->_request->getParam('c'));
+    $hierarchies = trim($this->_request->getParam('h'));
 
-    if( empty($query) ) {
+    if( empty($category) || empty($hierarchies) ) {
       // Nothing to search!
       $this->_helper->json(array(
-        'succeeded' => false));
+        's' => false));
     } else {
-      $pairs = explode('|', $query);
+      $hierarchies = explode(',', $hierarchies);
 
-      if( count($pairs) ) {
-        $info = array();
-        foreach( $pairs as &$pair ) {
-          $pair = explode(',', $pair);
-          $category = $pair[0];
-          $id = $pair[1];
-
-          if( !isset($info[$category]) ) {
-            $info[$category] = array();
-          }
-          $info[$category][$id] = $this->getHierarchiesModel()->fetch($category, $id);
-        }
-
-        $this->_helper->json(array(
-          'succeeded' => true,
-          'info' => $info
-        ));
-      } else {
-        $this->_helper->json(array(
-          'succeeded' => false));
+      $info = array($category=>array());
+      foreach( $hierarchies as $id ) {
+        $info[$category][$id] = $this->getHierarchiesModel()->fetch($category, $id);
       }
+
+      $this->_helper->json(array(
+        's' => true,
+        'i' => $info
+      ));
     }
 
     $this->_helper->viewRenderer->setNoRender();

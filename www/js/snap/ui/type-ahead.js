@@ -48,11 +48,6 @@ Snap.TypeAhead = function( elementIDs) {
   this._function_cache = {};
 
   /**
-   * ['category,id':{loading:true/false}]     loading = true -> an async request is active
-   */
-  this._hierarchy_request_queue = {};
-
-  /**
    * [category][id] => hierarchy name
    */
   this._hierarchy_cache = {};
@@ -77,25 +72,33 @@ Snap.TypeAhead = function( elementIDs) {
     failure : this._fail_to_receive_data.bind(this)
   });
 
+  $.ajax({
+    type    : 'GET',
+    url     : '/js/static/hier.js?'+Revisions.static_hier_build,
+    dataType: 'json',
+    success : this._receive_hier.bind(this),
+    failure : this._fail_to_receive_hier.bind(this)
+  });
+
+  for( var key in Revisions.static_fun_build ) {
+    var revision = Revisions.static_fun_build[key];
+
+    $.ajax({
+      type    : 'GET',
+      url     : '/js/static/fun/'+key+'.js?'+revision,
+      dataType: 'script'
+    });
+  }
+
   if( window.sel ) {
-    if( undefined == this._hierarchy_cache[window.sel.category] ) {
-      this._hierarchy_cache[window.sel.category] = {};
-    }
-
-    var key = window.sel.category+','+window.sel.hierarchy;
-    if( undefined == this._hierarchy_cache[window.sel.category][window.sel.hierarchy] &&
-        undefined == this._hierarchy_request_queue[key] ) {
-      this._hierarchy_request_queue[key] = {loading: false};
-      if( this._ancestry_timer ) {
-        clearTimeout(this._ancestry_timer);
-      }
-      this._ancestry_timer = setTimeout(this._request_ancestries.bind(this), 100);
-    }
-
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
   }
+
+  Snap.TypeAhead.singleton = this;
 };
+
+Snap.TypeAhead.singleton = null;
 
 Snap.TypeAhead.prototype = {
 
@@ -112,6 +115,10 @@ Snap.TypeAhead.prototype = {
     this._current_value = '';
     this._elements.input.val('');
     this._update_filter();
+  },
+
+  register : function(i, d) {
+    this._database.all[i] = d;
   },
 
   _handle_key : function(event) {
@@ -259,6 +266,37 @@ Snap.TypeAhead.prototype = {
         failure : this._fail_to_receive_function.bind(this)
       });
 
+      // TODO: replace with "is hierarchy loaded".
+      if( this._hierarchy_cache[selection.category] &&
+          this._hierarchy_cache[selection.category][selection.hierarchy] ) {
+        var hierarchy = this._hierarchy_cache[selection.category][selection.hierarchy];
+        var to_request = [];
+        if( undefined == hierarchy.source_url ) {
+          to_request.push(selection.hierarchy);
+        }
+        if( hierarchy.ancestors ) {
+          for( var i = 0; i < hierarchy.ancestors.length; ++i ) {
+            if( undefined == this._hierarchy_cache[selection.category][hierarchy.ancestors[i]].source_url ) {
+              to_request.push(hierarchy.ancestors[i]);
+            }
+          }
+        }
+
+        if( to_request.length ) {
+          $.ajax({
+            type    : 'GET',
+            url     : '/hierarchy/info',
+            dataType: 'json',
+            data    : {
+              c : selection.category,
+              h : to_request.join(',')
+            },
+            success : this._receive_hierarchy.bind(this),
+            failure : this._fail_to_receive_hierarchy.bind(this)
+          });
+        }
+      }
+
       $.ajax({
         type    : 'GET',
         url     : '/function/social',
@@ -278,6 +316,21 @@ Snap.TypeAhead.prototype = {
     this._render_function();
   },
 
+  _receive_hierarchy : function(result, textStatus) {
+    if( result.s ) {
+      for( var category in result.i ) {
+        var hierarchies = result.i[category];
+        for( var hierarchy in hierarchies ) {
+          this._hierarchy_cache[category][hierarchy].source_url = hierarchies[hierarchy].source_url;
+        }
+      }
+      this._render_function();
+    }
+  },
+
+  _fail_to_receive_hierarchy : function(result, textStatus) {
+  },
+
   _update_filter : function() {
     var trimmed_value = $.trim(this._current_value);
     if( trimmed_value == '' ) {
@@ -288,37 +341,16 @@ Snap.TypeAhead.prototype = {
 
       var MAX_RESULTS = 10;
 
-      if( this._cached_query_results ) {
-        var query = trimmed_value;
-        var query_results = this._cached_query_results;
-        for( var i = 0; i < query_results.length && results.length < MAX_RESULTS; ++i ) {
-          var offset = query_results[i].n.toLowerCase().indexOf(query.toLowerCase());
-          if( offset >= 0 ) {
-            var entry = {
-              type      : this._id_to_category[query_results[i].c] || 'Loading...',
-              category  : query_results[i].c,
-              hierarchy : query_results[i].h,
-              function_id : query_results[i].i,
-              name      : query_results[i].n,
-              matches   : [{word: query, offset: offset, size: query.length}],
-              score     : query.length * 100 / query_results[i].n.length * (offset == 0 ? 2 : 1)
-            };
-            var unique_id = 'query'+i;
-            hash_results[unique_id] = entry;
-            results.push(unique_id);
-          }
-        }
-
-      } else if( trimmed_value[0] == '#' ) {
+      if( trimmed_value[0] == '#' ) {
         var query = trimmed_value.substr(1);
         // We're searching filters.
         if( query.length > 0 ) {
           if( this._database.filters.length > 0 ) {
             var filters = this._database.filters;
-            for( var i = 0; i < filters.length && results.length < MAX_RESULTS; ++i ) {
+            for( var i = 0; i < filters.length; ++i ) {
               var filter = filters[i];
               var active_filter = this._active_filters[filter.type];
-              for( var i2 = 0; i2 < filter.d.length && results.length < MAX_RESULTS; ++i2 ) {
+              for( var i2 = 0; i2 < filter.d.length; ++i2 ) {
                 if( undefined != active_filter && undefined != active_filter[filter.d[i2].i] ) {
                   continue;
                 }
@@ -344,6 +376,48 @@ Snap.TypeAhead.prototype = {
         } else {
           this._elements.dropdown.html('<div class="empty">Type a language or framework name.</div>');
           return;
+        }
+      } else if( this._database.all.length > 0 ) {
+        var all = this._database.all;
+        for( var category in all ) {
+          var list = all[category];
+          for( var i = 0; i < list.length; ++i ) {
+            var offset = list[i].n.toLowerCase().indexOf(trimmed_value.toLowerCase());
+            if( offset >= 0 ) {
+              var entry = {
+                type      : this._id_to_category[category] || 'Loading...',
+                category  : category,
+                hierarchy : list[i].h,
+                function_id : list[i].i,
+                name      : list[i].n,
+                matches   : [{word: trimmed_value, offset: offset, size: trimmed_value.length}],
+                score     : trimmed_value.length * 100 / list[i].n.length * (offset == 0 ? 2 : 1)
+              };
+              var unique_id = 'function'+category+'-'+i;
+              hash_results[unique_id] = entry;
+              results.push(unique_id);
+            }
+          }
+        }
+      } else if( this._cached_query_results ) {
+        var query = trimmed_value;
+        var query_results = this._cached_query_results;
+        for( var i = 0; i < query_results.length; ++i ) {
+          var offset = query_results[i].n.toLowerCase().indexOf(query.toLowerCase());
+          if( offset >= 0 ) {
+            var entry = {
+              type      : this._id_to_category[query_results[i].c] || 'Loading...',
+              category  : query_results[i].c,
+              hierarchy : query_results[i].h,
+              function_id : query_results[i].i,
+              name      : query_results[i].n,
+              matches   : [{word: query, offset: offset, size: query.length}],
+              score     : query.length * 100 / query_results[i].n.length * (offset == 0 ? 2 : 1)
+            };
+            var unique_id = 'query'+i;
+            hash_results[unique_id] = entry;
+            results.push(unique_id);
+          }
         }
       } else {
         if( this._query_timer ) {
@@ -374,6 +448,8 @@ Snap.TypeAhead.prototype = {
         return right_entry.score - left_entry.score;
       }
       results = results.sort(by);
+
+      results = results.slice(0,10);
 
       if( results.length > 0 ) {
         this._list = [];
@@ -455,7 +531,7 @@ Snap.TypeAhead.prototype = {
             for( var i2 = 0; i2 < info.ancestors.length; ++i2 ) {
               var ancestor = this._hierarchy_cache[category][info.ancestors[i2]];
               var step = '';
-              if( with_links ) {
+              if( with_links && ancestor.source_url ) {
                 step += '<a class="external" href="'+ancestor.source_url+'">';
               }
               step += ancestor.name;
@@ -468,7 +544,7 @@ Snap.TypeAhead.prototype = {
         }
         if( !missing_any ) {
           var step = '';
-          if( with_links ) {
+          if( with_links && info.source_url ) {
             step += '<a class="external" href="'+info.source_url+'">';
           }  
           step += info.name;
@@ -507,25 +583,6 @@ Snap.TypeAhead.prototype = {
     if( result.s ) {
       if( result.q == $.trim(this._current_value) ) {
         this._cached_query_results = result.r;
-
-        for( var i = 0; i < result.r.length; ++i ) {
-          var category = result.r[i].c;
-          var hierarchy = result.r[i].h;
-          if( undefined == this._hierarchy_cache[category] ) {
-            this._hierarchy_cache[category] = {};
-          }
-
-          var key = category+','+hierarchy;
-          if( undefined == this._hierarchy_cache[category][hierarchy] &&
-              undefined == this._hierarchy_request_queue[key]) {
-            this._hierarchy_request_queue[key] = {loading: false};
-            if( this._ancestry_timer ) {
-              clearTimeout(this._ancestry_timer);
-            }
-            this._ancestry_timer = setTimeout(this._request_ancestries.bind(this), 100);
-          }
-        }
-
         this._update_filter();
       }
     } else {
@@ -535,111 +592,6 @@ Snap.TypeAhead.prototype = {
 
   _fail_to_receive_search : function(result, textStatus) {
     this._active_search = null;
-  },
-
-  _request_ancestries : function() {
-    this._ancestry_timer = null;
-    var query = [];
-    for( var key in this._hierarchy_request_queue ) {
-      if( !this._hierarchy_request_queue[key].loading ) {
-        query.push(key);
-        this._hierarchy_request_queue[key].loading = true;
-      }
-    }
-    if( query.length > 0 ) {
-      $.ajax({
-        type    : 'GET',
-        url     : '/hierarchy',
-        dataType: 'json',
-        data    : {
-          query  : query.join('|')
-        },
-        success : this._receive_ancestries.bind(this),
-        failure : this._fail_to_receive_ancestries.bind(this)
-      });
-    }
-  },
-
-  _receive_ancestries : function(result, textStatus) {
-    // Now that we've received the hierarchy for this item, load its ancestors (if necessary).
-    if( result.succeeded ) {
-      for( var category in result.ancestors ) {
-        var ids = result.ancestors[category];
-        for( var id in ids ) {
-          var ancestors = ids[id];
-          if( undefined == this._hierarchy_cache[category][id] ) {
-            this._hierarchy_cache[category][id] = {};
-          }
-          this._hierarchy_cache[category][id].ancestors = ancestors;
-          for( var i = 0; i < ancestors.length; ++i ) {
-            if( undefined == this._hierarchy_cache[category][ancestors[i]] ) {
-              this._hierarchy_cache[category][ancestors[i]] = {};
-            }
-          }
-          delete this._hierarchy_request_queue[category+','+id];
-        }
-      }
-    }
-
-    if( this._hierarchy_timer ) {
-      clearTimeout(this._hierarchy_timer);
-      this._hierarchy_timer = null;
-    }
-    this._hierarchy_timer = setTimeout(this._request_hierarchy.bind(this), 100);
-  },
-
-  _fail_to_receive_ancestries : function(result, textStatus) {
-  },
-
-  _request_hierarchy : function() {
-    var query = [];
-    for( var category in this._hierarchy_cache ) {
-      var ids = this._hierarchy_cache[category];
-      for( var id in ids ) {
-        var hierarchy = ids[id];
-        if( undefined == hierarchy.name && !hierarchy.loading ) {
-          hierarchy.loading = true;
-          query.push(category+','+id);
-        }
-      }
-    }
-
-    if( query.length > 0 ) {
-      $.ajax({
-        type    : 'GET',
-        url     : '/hierarchy/info',
-        dataType: 'json',
-        data    : {
-          query  : query.join('|')
-        },
-        success : this._receive_hierarchies.bind(this),
-        failure : this._fail_to_receive_hierarchies.bind(this)
-      });
-    }
-  },
-
-  _receive_hierarchies : function(result, textStatus) {
-    if( result.succeeded ) {
-      for( var category in result.info ) {
-        var ids = result.info[category];
-        for( var id in ids ) {
-          var info = ids[id];
-          if( undefined == this._hierarchy_cache[category][id] ) {
-            this._hierarchy_cache[category][id] = {};
-          }
-          for( var key in info ) {
-            this._hierarchy_cache[category][id][key] = info[key];
-          }
-          this._hierarchy_cache[category][id].loading = false;
-        }
-      }
-      this._render_selection();
-      this._render_function();
-    }
-    
-  },
-
-  _fail_to_receive_hierarchies : function(result, textStatus) {
   },
 
   _render_function : function() {
@@ -1048,6 +1000,32 @@ Snap.TypeAhead.prototype = {
   },
 
   _fail_to_receive_data : function(result, textStatus) {
+  },
+
+  _receive_hier : function(result, textStatus) {
+    for( var category in result ) {
+      if( undefined == this._hierarchy_cache[category] ) {
+        this._hierarchy_cache[category] = {};
+      }
+
+      function process_children(hierarchy) {
+        for( var i = 0; i < hierarchy.length; ++i ) {
+          var item = hierarchy[i];
+          if( undefined == this._hierarchy_cache[category][item.d.i] ) {
+            this._hierarchy_cache[category][item.d.i] = {};
+          }
+          this._hierarchy_cache[category][item.d.i].name = item.d.n;
+          this._hierarchy_cache[category][item.d.i].ancestors = item.d.h;
+          if( undefined != item.c ) {
+            process_children.bind(this)(item.c);
+          }
+        }
+      }
+      process_children.bind(this)(result[category]);
+    }
+  },
+
+  _fail_to_receive_hier : function(result, textStatus) {
   },
 
   _gain_focus : function() {

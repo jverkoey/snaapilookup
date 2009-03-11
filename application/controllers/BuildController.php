@@ -87,10 +87,18 @@ $REVISIONS[\'STATIC_HIER_BUILD\'] = '.$new_revision.';');
         $static_fun_path = APPLICATION_PATH . '/../www/js/static/fun/'.$key.'.js';
         $contents = @file_get_contents($static_fun_path);
 
-        $new_contents = Zend_Json::encode($value);
+        $new_contents = 'var i='.$key.';';
+        $json = Zend_Json::encode($value);
+        $json = substr($json, 1, strlen($json) - 2);
+        $new_contents.= 'var d=new Array('.$json.');';
+        $new_contents.= 'Snap.TypeAhead.singleton.register(i,d);';
+
         $new_contents = preg_replace('/"([0-9]+)"/', '$1', $new_contents);
+        $new_contents = str_replace('"i"', 'i', $new_contents);
+        $new_contents = str_replace('"d"', 'd', $new_contents);
         $new_contents = str_replace('"id"', 'i', $new_contents);
         $new_contents = str_replace('"name"', 'n', $new_contents);
+        $new_contents = str_replace('"hierarchy"', 'h', $new_contents);
 
         if( $contents != $new_contents ) {
           $new_revision = $current_revision + 1;
@@ -124,8 +132,12 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
     }
   }
 
-  private function get_children($hierarchies, &$index) {
+  private function get_children($hierarchies, &$index, $lineage = array()) {
     $parent_depth = $hierarchies[$index]['depth'];
+    if( $hierarchies[$index]['id'] != 1 ) {
+      $lineage []= $hierarchies[$index]['id'];
+    }
+
     ++$index;
 
     $children = array();
@@ -134,15 +146,26 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
       $delta = $hierarchies[$index]['depth'] - $parent_depth;
       if( $delta == 1 ) {
         $current_index = $index;
-        $children [] = array(
-          'c' => $this->get_children($hierarchies, $index),
+        $children []= array(
+          'c' => $this->get_children($hierarchies, $index, $lineage),
           'd' => array(
+            'h' => $lineage,
             'n' => $hierarchies[$current_index]['name'],
             'i' => $hierarchies[$current_index]['id']
           )
         );
-      } else if( $delta <= 0 ) {
+        --$index;
+      } else if( $delta < 0 ) {
         return $children;
+      } else {
+        $children []= array(
+          'c' => array(),
+          'd' => array(
+            'h' => $lineage,
+            'n' => $hierarchies[$index]['name'],
+            'i' => $hierarchies[$index]['id']
+          )
+        );
       }
     }
 

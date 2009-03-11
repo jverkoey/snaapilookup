@@ -3721,7 +3721,7 @@ jQuery.extend({
 				jQuery.globalEval( data );
 
 			// Get the JavaScript object, if JSON is used.
-			if ( type == "json" )
+			if ( type == "json" ) 
 				data = window["eval"]("(" + data + ")");
 		}
 		

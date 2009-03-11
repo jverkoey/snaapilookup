@@ -45,7 +45,7 @@ class Model_Hierarchies {
     $result = $table->fetchAll(
       $table
         ->select()
-        ->from($table, array('name', 'source_url'))
+        ->from($table, array('source_url'))
         ->where('category = ?', $category_id)
         ->where('id = ?', $id)
     )->toArray();

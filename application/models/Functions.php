@@ -64,7 +64,8 @@ class Model_Functions {
         ->select()
         ->from($table, array(
             'id',
-            'name'
+            'name',
+            'hierarchy'
           ))
         ->where('category = ?', $category)
     )->toArray();
