@@ -25,6 +25,10 @@ class PermalinkController extends SnaapiController {
     $this->language('Facebook API');
   }
 
+  public function djangoAction() {
+    $this->language('django');
+  }
+
   private function language($name) {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);

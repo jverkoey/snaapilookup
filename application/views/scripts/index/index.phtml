@@ -13,8 +13,10 @@
 <div id="result" style="display:none"></div></td></tr>
 <tr><td id="external_page" style="display:none"></td></tr></tbody></table>
 
-<? if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
-<div id="whyjoin">
+<?
+$hide = ($this->category && $this->id && $this->type) ? ' style="display:none"' : '';
+if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
+<div id="whyjoin"<?=$hide?>>
 <div class="rhetorical">Why should you <a href="/signup">sign up</a>?</div>
 <div class="answer">Because snaapi's about to make your life <i>easier</i>.</div>
 <div class="more-details"><p>The idea behind snaapi is simple: to <b>provide a simple interface for
@@ -57,7 +59,7 @@
 
 </div>
 <? } else { ?>
-<div id="whyjoin">
+<div id="whyjoin"<?=$hide?>>
   <div class="rhetorical">Welcome to snaapi!</div>
   <div class="more-details"><p>How do you use this thing? <b>Type the name of a function you want to find.</b></p>
     <p>By

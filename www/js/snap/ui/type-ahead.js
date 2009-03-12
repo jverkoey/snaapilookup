@@ -98,9 +98,6 @@ Snap.TypeAhead = function( elementIDs) {
   if( window.sel ) {
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
-    if( this._elements.whyjoin ) {
-      this._elements.whyjoin.hide();
-    }
   }
 
   Snap.TypeAhead.singleton = this;

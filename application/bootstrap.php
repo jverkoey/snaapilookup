@@ -36,7 +36,8 @@ $categories = array(
   'python',
   'css',
   'zend',
-  'facebook api'
+  'facebook api',
+  'django'
 );
 
 foreach( $categories as $category ) {
