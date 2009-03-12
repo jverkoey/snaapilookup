@@ -389,7 +389,7 @@ Snap.TypeAhead.prototype = {
   _update_filter : function() {
     var trimmed_value = $.trim(this._current_value);
     if( trimmed_value == '' ) {
-      this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks.</b></div>');
+      this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks. Click the filter or hit enter to add it to the list.</b></div>');
     } else {
       var results = [];
       var hash_results = {};
@@ -404,7 +404,7 @@ Snap.TypeAhead.prototype = {
             var filters = this._database.filters;
             for( var i = 0; i < filters.length; ++i ) {
               var filter = filters[i];
-              var active_filter = this._active_filters[filter.type];
+              var active_filter = this._active_filters[filter.t];
               for( var i2 = 0; i2 < filter.d.length; ++i2 ) {
                 if( undefined != active_filter && undefined != active_filter[filter.d[i2].i] ) {
                   continue;
@@ -728,7 +728,7 @@ Snap.TypeAhead.prototype = {
       html.push('<div class="social">Loading snaapits...</div>');
     } else if( this._active_function.social.length > 0 ) {
       html.push('<div class="social">');
-      html.push('<div class="header">Suggested information</div>');
+      html.push('<div class="header">snaapits</div>');
       var social = this._active_function.social;
       for( var i = 0; i < social.length; ++i ) {
         html.push('<div class="row">');
@@ -993,18 +993,36 @@ Snap.TypeAhead.prototype = {
   _render_filters : function() {
     var html = [];
     var any_filters = false;
-    html.push('<div class="header">Filters</div><table><tbody><tr>');
+    html.push('<div class="header">Filtering by ');
+    var type_set = [];
     for( var filter_type in this._active_filters ) {
       var filter = this._active_filters[filter_type];
-      html.push('<td class="filter"><span class="type">',filter_type,'</span>');
+      var this_type = [];
+      this_type.push('<span class="type">',filter_type);
+      var filter_set = [];
+      var count = 0;
       for( var filter_id in filter ) {
         var item = filter[filter_id];
-        html.push('<div class="item"><span id="',filter_type,'-',filter_id,'" title="Click to remove">',item,'</span></div>');
+        filter_set.push('<span class="filter" id="'+filter_type+'-'+filter_id+'" title="Click to remove">'+item+'</span>');
         any_filters = true;
+        count++;
       }
-      html.push('</td>');
+      if( count > 1 ) {
+        this_type.push('s');
+      }
+      this_type.push(': </span>');
+      if( filter_set.length > 2 ) {
+        var last = filter_set.splice(filter_set.length - 1);
+        this_type.push(filter_set.join(', '));
+        this_type.push(' and ',last);
+      } else if( filter_set.length == 2 ) {  
+        this_type.push(filter_set.join(' and '));
+      } else {
+        this_type.push(filter_set[0]);
+      }
+      type_set.push(this_type.join(''));
     }
-    html.push('</tr></tbody></table>');
+    html.push(type_set.join(' and '),'</div>');
     if( any_filters ) {
       this._elements.filters.html(html.join(''));
       if( !this._displaying_frame ) {
@@ -1012,7 +1030,7 @@ Snap.TypeAhead.prototype = {
       }
 
       var t = this;
-      $(this._elementIDs.filters+' .filter .item span').click(function() {
+      $(this._elementIDs.filters+' .filter').click(function() {
         var filter_type = this.id.substr(0, this.id.indexOf('-'));
         var filter_id = this.id.substr(this.id.indexOf('-') + 1);
 

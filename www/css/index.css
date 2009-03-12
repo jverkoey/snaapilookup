@@ -36,37 +36,19 @@
 }
 
 #search .filters {
-  padding: 0.5em;
   padding-top: 2em;
 }
 
 #search .filters .header {
   margin: 0.3em;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #999;
 }
 
-#search .filters table {
-  margin: 0 auto;
-  width: 500px;
-}
-
-#search .filters table td {
-  vertical-align: top;
-  width: 50%;
-}
-
 #search .filters .filter {
-  text-align: center;
-  padding: 0.3em;
-}
-
-#search .filters .filter .type {
   font-weight: bold;
-}
-
-#search .filters .filter .item span {
   cursor: pointer;
+  color: #333;
 }
 
 #search .dropdown {
