@@ -3,7 +3,7 @@
 <table id="external_table"><tbody><tr id="topbar"><td>
 <div id="search">
   <form action="post" onsubmit="return false">
-    <div id="small-logo" style="display:none">sna<span class="snaapi">api</span></div>
+    <span id="small-logo" style="display:none" title="Return to the short description">sna<span class="snaapi">api</span></span>
     <input type="text" class="text" size="50" name="search" autocomplete="off" />
     <div class="dropdown" style="display:none"></div>
     <div class="filters" style="display:none"></div>
@@ -15,20 +15,63 @@
 
 <? if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
 <div id="whyjoin">
-<div class="rhetorical">Why should you <a href="/signup">sign up</a> with snaapi?</div>
-<div class="answer">Because it's about to make your life <i>easier</i>,
-  but <b>we need your help</b>.</div>
+<div class="rhetorical">Why should you <a href="/signup">sign up</a>?</div>
+<div class="answer">Because snaapi's about to make your life <i>easier</i>.</div>
 <div class="more-details"><p>The idea behind snaapi is simple: to <b>provide a simple interface for
   common programming APIs</b>.</p>
   <p>We've built spiders that scour popular API documentations, index their functions, and make
     them available in the snaapi index.</p>
   <p><b>But here's the cool part</b>. Once
     an API is listed in the database, <i>anyone</i> can add snippets of code and links to websites
-    that dive deeper into the function's use. </p></div>
+    that dive deeper into the function's use. <b>This lets snaapi not only index APIs, but also the
+    useful, community-created content that surrounds them</b>.</p>
+  <p>Did we mention that <b>we support OpenID</b>?</p>
+
+  <div id="auth"><div class="login">
+    <div class="form">
+      <form method="post" action="/auth/login"><fieldset>
+        <div class="services">
+          <img src="/gfx/openidicon.gif" alt="Services" title="OpenID Services" />
+          <div class="list">
+            <div class="service google"><img width="16" height="16" src="http://www.google.ca/favicon.ico" alt="" />Google</div>
+            <div class="service yahoo"><img width="16" height="16" src="http://www.yahoo.com/favicon.ico" alt="" />Yahoo!</div>
+            <div class="service myOpenID"><img width="16" height="16" src="http://www.myopenid.com/favicon.ico" alt="" />myOpenID</div>
+            <div class="service flickr"><img width="16" height="16" src="http://flickr.com/favicon.ico" alt="" />flickr</div>
+            <div class="service blogger"><img width="16" height="16" src="http://www.aol.com/favicon.ico" alt="" />Blogger</div>
+            <div class="bottombar"><span class="servicename"></span> username: <input class="text" type="text" value="username" /></div>
+          </div>
+        </div>
+        <div class="loginform">
+          <input id="openid_url" class="text" type="text" name="openid_url" size="35" maxlength="100" autocomplete="off"value="<?= isset($this->openid_url) ? $this->openid_url : 'http://' ?>" />
+          <input class="button" type="submit" name="openid_action" value="log in" />
+        </div>
+        <? if( isset($this->error) ) { ?>
+        <div class="errors">
+          <?= $this->error ?>
+        </div>
+        <? } ?>
+      </fieldset></form>
+    </div>
+  </div></div>
+</div>
+
+</div>
+<? } else { ?>
+<div id="whyjoin">
+  <div class="rhetorical">Welcome to snaapi!</div>
+  <div class="more-details"><p>How do you use this thing? <b>Type the name of a function you want to find.</b></p>
+    <p>By
+    default snaapi searches <i>all</i> languages and frameworks, but if you want to be more specific just
+    type <tt>#<i>language</i></tt>. If the language you want is indexed it'll show up in the list
+    for you to select.</p>
+    <p>tip: We're hoping to make <tt>#<i>language</i> <i>function name</i></tt> work soon,
+    but for the time being you'll have to hit enter after selecting your language.</p>
+    <p>If you have any questions, <a href="/contact">drop us a line</a>.</p></div>
 </div>
 <? } ?>
 
 <?php
+$this->headLink()->appendStylesheet('/css/openid.css');
 $this->headLink()->appendStylesheet('/css/index.css');
 
 $this->inlineScript()->appendFile('/js/jquery.cookie.js');
@@ -41,6 +84,7 @@ if ('production' == $this->env) {
 
   $this->inlineScript()->appendFile('/js/snap/ui/ghost-input.js');
   $this->inlineScript()->appendFile('/js/snap/ui/type-ahead.js');
+  $this->inlineScript()->appendFile('/js/snap/ui/openid-login.js');
 }
 
 $this->inlineScript()->appendFile('/js/page/dashboard.js');

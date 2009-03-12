@@ -3,7 +3,6 @@
  */
 
 #small-logo {
-  display: inline;
   padding-top: 7px;
   font-size: 16px;
   cursor: pointer;
@@ -320,11 +319,13 @@
   font-size: 0.5em;
 }
 
-#whyjoin {
+#whyjoin,
+#welcome {
   padding: 2em;
 }
 
-#whyjoin .rhetorical {
+#whyjoin .rhetorical,
+#welcome .salutation {
   font-size: 2em;
   text-align: center;
 }
@@ -334,13 +335,21 @@
   text-align: center;
 }
 
-#whyjoin .more-details {
+#whyjoin .more-details,
+#welcome .howto {
   padding: 1em;
   font-size: 1.1em;
   width: 500px;
   margin: 0 auto;
 }
 
-#whyjoin p {
+#whyjoin p,
+#welcome p {
   margin-bottom: 1em;
+}
+
+#auth .login .form {
+  padding: 0.2em;
+  width: 400px;
+  margin: 0 auto;
 }

@@ -14,8 +14,12 @@ $(function(){
     external : '#external_page',
     catch_phrase : '#catch-phrase',
     logo     : '#logo',
-    small_logo : '#small-logo'
+    small_logo : '#small-logo',
+    whyjoin  : '#whyjoin'
   });
+  if( !window.user_id ) {
+    new Snap.OpenIdLogin('#auth .login');
+  }
   if( !window.sel ) {
     $('#search .text').focus();
   }

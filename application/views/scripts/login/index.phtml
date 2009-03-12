@@ -66,5 +66,15 @@
 <?php
 
 $this->headLink()->appendStylesheet('/css/login.css');
+$this->headLink()->appendStylesheet('/css/openid.css');
+
+if ('production' == $this->env) {
+  $this->inlineScript()->appendFile('/js/snap/core.js');
+  $this->inlineScript()->appendFile('/js/snap/ui.js');
+} else {
+  $this->inlineScript()->appendFile('/js/snap/core/snap.js');
+
+  $this->inlineScript()->appendFile('/js/snap/ui/openid-login.js');
+}
 
 $this->inlineScript()->appendFile('/js/page/login.js');

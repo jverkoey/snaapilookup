@@ -98,6 +98,9 @@ Snap.TypeAhead = function( elementIDs) {
   if( window.sel ) {
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
+    if( this._elements.whyjoin ) {
+      this._elements.whyjoin.hide();
+    }
   }
 
   Snap.TypeAhead.singleton = this;
@@ -291,6 +294,38 @@ Snap.TypeAhead.prototype = {
     $.cookie('filters', this._flatten_filters());
   },
 
+  _ensure_hierarchy_loaded : function(category, child) {
+    if( this._hierarchy_cache[category] &&
+        this._hierarchy_cache[category][child] ) {
+      var hierarchy = this._hierarchy_cache[category][child];
+      var to_request = [];
+      if( undefined == hierarchy.source_url ) {
+        to_request.push(child);
+      }
+      if( hierarchy.ancestors ) {
+        for( var i = 0; i < hierarchy.ancestors.length; ++i ) {
+          if( undefined == this._hierarchy_cache[category][hierarchy.ancestors[i]].source_url ) {
+            to_request.push(hierarchy.ancestors[i]);
+          }
+        }
+      }
+
+      if( to_request.length ) {
+        $.ajax({
+          type    : 'GET',
+          url     : '/hierarchy/info',
+          dataType: 'json',
+          data    : {
+            c : category,
+            h : to_request.join(',')
+          },
+          success : this._receive_hierarchy.bind(this),
+          failure : this._fail_to_receive_hierarchy.bind(this)
+        });
+      }
+    }
+  },
+
   _display_function : function(selection, silent) {
     if( undefined == this._function_cache[selection.category] ) {
       this._function_cache[selection.category] = {};
@@ -319,36 +354,7 @@ Snap.TypeAhead.prototype = {
         failure : this._fail_to_receive_function.bind(this)
       });
 
-      // TODO: replace with "is hierarchy loaded".
-      if( this._hierarchy_cache[selection.category] &&
-          this._hierarchy_cache[selection.category][selection.hierarchy] ) {
-        var hierarchy = this._hierarchy_cache[selection.category][selection.hierarchy];
-        var to_request = [];
-        if( undefined == hierarchy.source_url ) {
-          to_request.push(selection.hierarchy);
-        }
-        if( hierarchy.ancestors ) {
-          for( var i = 0; i < hierarchy.ancestors.length; ++i ) {
-            if( undefined == this._hierarchy_cache[selection.category][hierarchy.ancestors[i]].source_url ) {
-              to_request.push(hierarchy.ancestors[i]);
-            }
-          }
-        }
-
-        if( to_request.length ) {
-          $.ajax({
-            type    : 'GET',
-            url     : '/hierarchy/info',
-            dataType: 'json',
-            data    : {
-              c : selection.category,
-              h : to_request.join(',')
-            },
-            success : this._receive_hierarchy.bind(this),
-            failure : this._fail_to_receive_hierarchy.bind(this)
-          });
-        }
-      }
+      this._ensure_hierarchy_loaded(selection.category, selection.hierarchy);
 
       $.ajax({
         type    : 'GET',
@@ -766,6 +772,9 @@ Snap.TypeAhead.prototype = {
     }
 
     this._elements.external.hide();
+    if( this._elements.whyjoin ) {
+      this._elements.whyjoin.hide('fast');
+    }
     this._elements.result
       .html(html.join(''))
       .fadeIn('fast');
@@ -900,7 +909,7 @@ Snap.TypeAhead.prototype = {
       this._elements.filters.fadeIn('fast');
       break;
     }
-    this._elements.small_logo.fadeOut('fast');
+    this._elements.small_logo.hide();
     this._elements.external.fadeOut('fast', function() {
       this._elements.result.show();
     }.bind(this));
@@ -1111,6 +1120,9 @@ Snap.TypeAhead.prototype = {
         }
       }
       process_children.bind(this)(result[category]);
+    }
+    if( window.sel ) {
+      this._ensure_hierarchy_loaded(window.sel.category, window.sel.hierarchy);
     }
   },
 
