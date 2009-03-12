@@ -11,8 +11,11 @@
   border-right: 0;
   float: left;
   padding: 5px;
-  padding-top: 6px;
-  padding-bottom: 4px;
+}
+
+#auth .login .services img {
+  position: relative;
+  top: 2px;
 }
 
 #auth .login .services:hover {
@@ -57,6 +60,10 @@
 #auth .login .services .selected:hover {
   background-color: #E6E6FF;
   color: #000;
+}
+
+#openid_url {
+  width: 280px;
 }
 
 /**
