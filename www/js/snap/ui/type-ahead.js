@@ -50,6 +50,8 @@ Snap.TypeAhead = function( elementIDs) {
   this._active_function = null;
   this._function_cache = {};
 
+  this._hover_timer = null;
+
   /**
    * [category][id] => hierarchy name
    */
@@ -134,6 +136,10 @@ Snap.TypeAhead.prototype = {
     if( event.type == 'keyup' || event.type == keydown_type ) {
       var new_val = this._elements.input.val();
       if( this._current_value != new_val ) {
+        if( this._hover_timer ) {
+          clearTimeout(this._hover_timer);
+        }
+        this._hover_timer = setTimeout(this._hover.bind(this), 1000);
         this._current_value = new_val;
         this._elements.dropdown.fadeIn('fast');
         this._cached_query_results = null;
@@ -178,6 +184,10 @@ Snap.TypeAhead.prototype = {
           this._selection = 0;
         }
         if( old_selection != this._selection ) {
+          if( this._hover_timer ) {
+            clearTimeout(this._hover_timer);
+          }
+          this._hover_timer = setTimeout(this._hover.bind(this), 1000);
           this._elements.dropdown.children('.selected').removeClass('selected');
           this._elements.dropdown.children('.result:eq('+this._selection+')').addClass('selected');
         }
@@ -195,6 +205,10 @@ Snap.TypeAhead.prototype = {
     }
 
     return true;
+  },
+
+  _hover : function() {
+    //console.log('hovered!');
   },
 
   _handle_selection : function(index) {
@@ -1026,6 +1040,7 @@ Snap.TypeAhead.prototype = {
   },
 
   _receive_hier : function(result, textStatus) {
+    console.log(result);
     for( var category in result ) {
       if( undefined == this._hierarchy_cache[category] ) {
         this._hierarchy_cache[category] = {};

@@ -46,7 +46,6 @@ $REVISIONS[\'STATIC_JS_BUILD\'] = '.$new_revision.';');
       $this->scrape_set($languages, $all_hierarchies);
       $this->scrape_set($frameworks, $all_hierarchies);
 
-
       $current_revision = $REVISIONS['STATIC_HIER_BUILD'];
       $static_hier_path = APPLICATION_PATH . '/../www/js/static/hier.js';
       $contents = file_get_contents($static_hier_path);
@@ -132,40 +131,49 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
     }
   }
 
-  private function get_children($hierarchies, &$index, $lineage = array()) {
-    $parent_depth = $hierarchies[$index]['depth'];
-    if( $hierarchies[$index]['id'] != 1 ) {
-      $lineage []= $hierarchies[$index]['id'];
+  private function get_children($hierarchies, $parent_index, &$num_at_level, $lineage = array()) {
+    $parent_depth = $hierarchies[$parent_index]['depth'];
+    if( $hierarchies[$parent_index]['id'] != 1 ) {
+      $lineage []= $hierarchies[$parent_index]['id'];
     }
-
-    ++$index;
 
     $children = array();
 
-    for(; $index < count($hierarchies); ++$index ) {
+    $index = $parent_index + 1;
+
+    // Depth:
+    //  0   - root: starting point
+    //  1   - ^- delta 1: get children and add this 
+    //  2   -    ^- delta 1: get children and add this
+    //  2   -      ^ delta zero, no children, return without adding anything
+    //           ^- delta 1: get children and add this
+    //  1   -    ^ delta -, no children, return without adding anything
+    //        ^- delta 1: get children and add this
+    //  1
+    //  2
+    //  2
+    //  2
+    //  3
+    //  3
+    //  3
+    //  1
+
+    while( $index < count($hierarchies) ) {
       $delta = $hierarchies[$index]['depth'] - $parent_depth;
       if( $delta == 1 ) {
-        $current_index = $index;
+        $num_added = 0;
         $children []= array(
-          'c' => $this->get_children($hierarchies, $index, $lineage),
-          'd' => array(
-            'h' => $lineage,
-            'n' => $hierarchies[$current_index]['name'],
-            'i' => $hierarchies[$current_index]['id']
-          )
-        );
-        --$index;
-      } else if( $delta < 0 ) {
-        return $children;
-      } else {
-        $children []= array(
-          'c' => array(),
+          'c' => $this->get_children($hierarchies, $index, $num_added, $lineage),
           'd' => array(
             'h' => $lineage,
             'n' => $hierarchies[$index]['name'],
             'i' => $hierarchies[$index]['id']
           )
         );
+        $index += $num_added + 1;
+        $num_at_level+=$num_added+1;
+      } else if( $delta <= 0 ) {
+        return $children;
       }
     }
 
@@ -173,13 +181,47 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
   }
 
   private function scrape_set($set, &$result) {
+    static $count = 0;
+    $count++;
+    $i = 0;
     foreach( $set as $item ) {
       $category = $item['id'];
 
       $hierarchies = $this->getHierarchiesModel()->fetchAll($category);
+/*
+      $hierarchies = array(
+        array(
+          'id'    => 1,
+          'depth' => 0,
+          'name'  => 'root'
+        ),
+        array(
+          'id'    => 2,
+          'depth' => 1,
+          'name'  => 'top'
+        ),
+        array(
+          'id'    => 3,
+          'depth' => 2,
+          'name'  => 'middle'
+        ),
+        array(
+          'id'    => 4,
+          'depth' => 3,
+          'name'  => 'lowest'
+        ),
+        array(
+          'id'    => 5,
+          'depth' => 1,
+          'name'  => 'top'
+        ),
+      );*/
 
       $index = 0;
-      $result[$category] = $this->get_children($hierarchies, $index);
+      $num_added = 0;
+      $result[$category] = $this->get_children($hierarchies, $index, $num_added);
+      
+      $i++;
     }
   }
 
