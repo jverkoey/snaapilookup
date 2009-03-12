@@ -7,14 +7,7 @@
   padding-top: 7px;
   font-size: 16px;
   cursor: pointer;
-}
-
-#small-logo .sna {
   color: #333;
-}
-
-#small-logo .api {
-  color: #447799;
 }
 
 #small-logo:hover {
@@ -258,6 +251,11 @@
   font-size: 1.3em;
 }
 
+#result .social .user {
+  text-align: right;
+  color: #555;
+}
+
 #result .socialness {
   border: 1px solid #bcc;
   padding-bottom: 3px;
@@ -283,15 +281,29 @@
   padding: 1em;
 }
 
+#result .socialness .row {
+  padding-left: 0;
+}
+
 #result .socialness label {
-  margin-right: 1em;
+  float: left;
 }
 
 #result .socialness textarea {
   vertical-align: top;
-  margin: 0 1em;
   padding: 0.5em;
+}
+
+#result .socialness .code {
   font-family: monospace;
+}
+
+#result .socialness .rightside {
+  margin-left: 5em;
+}
+
+#result .socialness .button {
+  margin: 0.4em 0;
 }
 
 #external_table {
@@ -324,4 +336,29 @@
 
 #eww .reason {
   font-size: 0.5em;
+}
+
+#whyjoin {
+  padding: 2em;
+}
+
+#whyjoin .rhetorical {
+  font-size: 2em;
+  text-align: center;
+}
+
+#whyjoin .answer {
+  font-size: 1.3em;
+  text-align: center;
+}
+
+#whyjoin .more-details {
+  padding: 1em;
+  font-size: 1.1em;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#whyjoin p {
+  margin-bottom: 1em;
 }

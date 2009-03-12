@@ -3,7 +3,7 @@
 <table id="external_table"><tbody><tr id="topbar"><td>
 <div id="search">
   <form action="post" onsubmit="return false">
-    <div id="small-logo" style="display:none"><span class="sna">sna</span><span class="api">api</span></div>
+    <div id="small-logo" style="display:none">sna<span class="snaapi">api</span></div>
     <input type="text" class="text" size="50" name="search" autocomplete="off" />
     <div class="dropdown" style="display:none"></div>
     <div class="filters" style="display:none"></div>
@@ -12,6 +12,21 @@
 
 <div id="result" style="display:none"></div></td></tr>
 <tr><td id="external_page" style="display:none"></td></tr></tbody></table>
+
+<? if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
+<div id="whyjoin">
+<div class="rhetorical">Why should you <a href="/signup">sign up</a> with snaapi?</div>
+<div class="answer">Because it's about to make your life <i>easier</i>,
+  but <b>we need your help</b>.</div>
+<div class="more-details"><p>The idea behind snaapi is simple: to <b>provide a simple interface for
+  common programming APIs</b>.</p>
+  <p>We've built spiders that scour popular API documentations, index their functions, and make
+    them available in the snaapi index.</p>
+  <p><b>But here's the cool part</b>. Once
+    an API is listed in the database, <i>anyone</i> can add snippets of code and links to websites
+    that dive deeper into the function's use. </p></div>
+</div>
+<? } ?>
 
 <?php
 $this->headLink()->appendStylesheet('/css/index.css');

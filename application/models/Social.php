@@ -29,13 +29,14 @@ class Model_Social {
   /**
    * Add a url.
    */
-  public function addURL($category, $id, $url, $user_id) {
+  public function addURL($category, $id, $url, $summary, $user_id) {
     $table = $this->getTable();
     $entry = array(
       'category'  => $category,
       'id'        => $id,
       'type'      => 'link',
       'data'      => $url,
+      'summary'   => $summary,
       'user_id'   => $user_id
     );
     return $this->getTable()->insert($entry);
@@ -80,7 +81,7 @@ class Model_Social {
     return $table->fetchAll(
       $table
         ->select()
-        ->from($table, array('ix', 'score', 'type', 'data', 'user_id'))
+        ->from($table, array('ix', 'user_id', 'score', 'type', 'data', 'summary', 'user_id'))
         ->where('category = ?', $category)
         ->where('id = ?', $id)
         ->order('score DESC'))

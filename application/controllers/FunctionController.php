@@ -147,6 +147,7 @@ class FunctionController extends SnaapiController {
     $category = $this->_request->getParam('category');
     $id = $this->_request->getParam('id');
     $url = stripslashes($this->_request->getParam('url'));
+    $summary = stripslashes($this->_request->getParam('summary'));
 
     $category_name = $this->getCategoriesModel()->fetchName($category);
     $function_name = $this->getFunctionsModel()->fetchName($category, $id);
@@ -159,8 +160,10 @@ class FunctionController extends SnaapiController {
     if( !$this->getSocialModel()->normalizeURL($url) ) {
       $url = 'http://'.$url;
     }
+    $url = htmlspecialchars($url);
+    $summary = strip_tags(substr($summary, 0, 1024), '<b><i>');
     $url = strip_tags($url);
-    $this->getSocialModel()->addURL($category, $id, $url, $user_id);
+    $this->getSocialModel()->addURL($category, $id, $url, $summary, $user_id);
     $this->_helper->getHelper('Redirector')
                   ->setGotoSimple($function_name, $category_name);
 
@@ -186,8 +189,7 @@ class FunctionController extends SnaapiController {
       $function_name = 'index';
     }
 
-    $snippet = str_replace('<', '&lt;', $snippet);
-    $snippet = str_replace('>', '&gt;', $snippet);
+    $snippet = htmlspecialchars($snippet);
 
     $this->getSocialModel()->addSnippet($category, $id, $snippet, $user_id);
     $this->_helper->getHelper('Redirector')

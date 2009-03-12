@@ -228,9 +228,11 @@ Snap.TypeAhead.prototype = {
   },
 
   _hover : function() {
-    var selection = this._list[this._selection];
-    if( selection.function_id ) {
-      this._display_function(this._list[this._selection], true);
+    if( this._list && this._selection >= 0 ) {
+      var selection = this._list[this._selection];
+      if( selection.function_id ) {
+        this._display_function(this._list[this._selection], true);
+      }
     }
   },
 
@@ -248,7 +250,6 @@ Snap.TypeAhead.prototype = {
         this._active_filters[selection.type] = {};
       }
       this._active_filters[selection.type][selection.filter_id] = selection.name;
-
       this._save_active_filters();
 
       this._render_filters();
@@ -739,6 +740,12 @@ Snap.TypeAhead.prototype = {
         } else if( social[i].type == 'snippet' ) {
           html.push('<div class="snippet"><pre>',social[i].data,'</pre></div>');
         }
+        if( social[i].summary ) {
+          html.push('<div class="summary">',social[i].summary,'</div>');
+        }
+        if( social[i].user_id ) {
+          html.push('<div class="user" title="Wow, no usernames? Don\'t worry, they\'re coming!">Submitted by: User #',social[i].user_id,'</div>');
+        }
         html.push('</div>');
         html.push('</div>');
       }
@@ -751,9 +758,10 @@ Snap.TypeAhead.prototype = {
       html.push('<li>Add a snippet</li>');
       html.push('</ul></div>');
       // Add a link
-      html.push('<div class="form" style="display:none"><form method="post" action="/function/addurl"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="url">URL:</label><input type="text" class="text" name="url" id="url" size="50" value="" /><input type="submit" class="button" value="add" /></form></div>');
+      html.push(
+        '<div class="form" style="display:none"><form method="post" action="/function/addurl"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><div class="row"><label for="url">URL:</label><div class="rightside"><input type="text" class="text" name="url" id="url" size="50" value="" /></div></div><div class="row"><label for="summary">Summary:</label><div class="rightside"><textarea name="summary" id="summary" cols="50" rows="5" ></textarea></div></div><div class="rightside"><input type="submit" class="button" value="add" /></div></form></div>');
       // Add a snippet
-      html.push('<div class="form" style="display:none"><form method="post" action="/function/addsnippet"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="snippet">Snippet:</label><textarea name="snippet" id="snippet" cols="80" rows="10" wrap="off" ></textarea><input type="submit" class="button" value="add" /></form></div>');
+      html.push('<div class="form" style="display:none"><form method="post" action="/function/addsnippet"><input type="hidden" name="category" value="',this._active_function.category,'" /><input type="hidden" name="id" value="',this._active_function.id,'" /><label for="snippet">Snippet:</label><div class="rightside"><textarea class="code" name="snippet" id="snippet" cols="80" rows="10" wrap="off" ></textarea></div><div class="rightside"><input type="submit" class="button" value="add" /></div></form></div>');
       html.push('</div>');
     }
 
@@ -1044,7 +1052,7 @@ Snap.TypeAhead.prototype = {
         this._active_filters[window.sel.filter_type] = {};
       }
       this._active_filters[window.sel.filter_type][window.sel.category] = this._id_to_category[window.sel.category];
-
+      this._simplify_filters();
       this._render_filters();
     } else if( $.cookie('filters') ) {
       var filters = $.cookie('filters').split(',');

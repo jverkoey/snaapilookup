@@ -20,6 +20,10 @@ h2 {
   font-size: 1.8em;
 }
 
+b {
+  color: #000;
+}
+
 #page {
   margin: 0 0 -8em;
   height: auto !important;
@@ -78,7 +82,7 @@ h2 {
   text-decoration: none;
 }
 
-#logo .api {
+.snaapi {
   color: #447799;
 }
 
@@ -174,9 +178,4 @@ textarea {
 .button:active {
   border: 1px solid #999;
   background-color: #BFFFBF;
-}
-
-.dropdown {
-  border: 0;
-  outline-style: none;
 }
