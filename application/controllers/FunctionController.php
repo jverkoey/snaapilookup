@@ -161,7 +161,7 @@ class FunctionController extends SnaapiController {
       $url = 'http://'.$url;
     }
     $url = htmlspecialchars($url);
-    $summary = strip_tags(substr($summary, 0, 1024), '<b><i>');
+    $summary = str_replace('’', "'", strip_tags(substr($summary, 0, 1024), '<b><i><pre>'));
     $url = strip_tags($url);
     $this->getSocialModel()->addURL($category, $id, $url, $summary, $user_id);
     $this->_helper->getHelper('Redirector')
