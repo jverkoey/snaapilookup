@@ -7,13 +7,17 @@ class FunctionController extends SnaapiController {
   public function indexAction() {
     $category = trim($this->_request->getParam('category'));
     $id = trim($this->_request->getParam('id'));
+    $silent = trim($this->_request->getParam('silent'));
 
     if( empty($category) || empty($id) ) {
       // Nothing to search!
       $this->_helper->json(array(
         'succeeded' => false));
     } else {
-      $this->getLogsModel()->add('function', 'cat: '.$category.' id: '.$id);
+      $this->getLogsModel()->add(
+        'function',
+        'cat: '.$category.' id: '.$id.' silent: '.($silent?'true':'false')
+      );
       $data = $this->getFunctionsModel()->fetch($category, $id);
       if( $data ) {
         $this->_helper->json(array(
@@ -26,6 +30,38 @@ class FunctionController extends SnaapiController {
         $this->_helper->json(array(
           'succeeded' => false));
       }
+    }
+
+    $this->_helper->viewRenderer->setNoRender();
+  }
+
+  public function selectAction() {
+    $category = trim($this->_request->getParam('category'));
+    $id = trim($this->_request->getParam('id'));
+
+    if( empty($category) || empty($id) ) {
+      // Nothing to search!
+    } else {
+      $this->getLogsModel()->add(
+        'function',
+        'cat: '.$category.' id: '.$id
+      );
+    }
+
+    $this->_helper->viewRenderer->setNoRender();
+  }
+
+  public function viewframeAction() {
+    $category = trim($this->_request->getParam('category'));
+    $id = trim($this->_request->getParam('id'));
+
+    if( empty($category) || empty($id) ) {
+      // Nothing to search!
+    } else {
+      $this->getLogsModel()->add(
+        'viewframe',
+        'cat: '.$category.' id: '.$id
+      );
     }
 
     $this->_helper->viewRenderer->setNoRender();

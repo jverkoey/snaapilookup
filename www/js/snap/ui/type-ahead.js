@@ -152,7 +152,7 @@ Snap.TypeAhead.prototype = {
       if( event.keyCode == this.key.enter ) {
         var do_nothing = false;
         var selection = this._list[this._selection];
-        if( !this._has_changed_since_selection && selection.function_id ) {
+        if( !this._has_changed_since_selection && this._active_function.id == selection.function_id ) {
           // Go to this function's URL if we can.
           if( undefined != this._function_cache[selection.category] &&
               undefined != this._function_cache[selection.category][selection.function_id] ) {
@@ -160,6 +160,14 @@ Snap.TypeAhead.prototype = {
             if( function_info.url ) {
               this._elements.dropdown.fadeOut('fast');
               this._show_iframe(function_info.url);
+              $.ajax({
+                type    : 'POST',
+                url     : '/function/viewframe',
+                data    : {
+                  category  : selection.category,
+                  id        : selection.function_id
+                }
+              });
             } else {
               function_info.navigate_immediately = true;
               this._render_function();
@@ -168,7 +176,19 @@ Snap.TypeAhead.prototype = {
           }
         }
         if( !do_nothing ) {
+          if( this._hover_timer ) {
+            clearTimeout(this._hover_timer);
+            this._hover_timer = null;
+          }
           this._handle_selection(this._selection);
+          $.ajax({
+            type    : 'POST',
+            url     : '/function/select',
+            data    : {
+              category  : selection.category,
+              id        : selection.function_id
+            }
+          });
         }
       } else {
         var old_selection = this._selection;
@@ -187,7 +207,7 @@ Snap.TypeAhead.prototype = {
           if( this._hover_timer ) {
             clearTimeout(this._hover_timer);
           }
-          this._hover_timer = setTimeout(this._hover.bind(this), 1000);
+          this._hover_timer = setTimeout(this._hover.bind(this), 500);
           this._elements.dropdown.children('.selected').removeClass('selected');
           this._elements.dropdown.children('.result:eq('+this._selection+')').addClass('selected');
         }
@@ -208,7 +228,10 @@ Snap.TypeAhead.prototype = {
   },
 
   _hover : function() {
-    //console.log('hovered!');
+    var selection = this._list[this._selection];
+    if( selection.function_id ) {
+      this._display_function(this._list[this._selection], true);
+    }
   },
 
   _handle_selection : function(index) {
@@ -267,7 +290,7 @@ Snap.TypeAhead.prototype = {
     $.cookie('filters', this._flatten_filters());
   },
 
-  _display_function : function(selection) {
+  _display_function : function(selection, silent) {
     if( undefined == this._function_cache[selection.category] ) {
       this._function_cache[selection.category] = {};
     }
@@ -288,7 +311,8 @@ Snap.TypeAhead.prototype = {
         dataType: 'json',
         data    : {
           category  : selection.category,
-          id        : selection.function_id
+          id        : selection.function_id,
+          silent    : silent
         },
         success : this._receive_function.bind(this),
         failure : this._fail_to_receive_function.bind(this)
@@ -338,10 +362,12 @@ Snap.TypeAhead.prototype = {
       });
     }
 
-    this._active_function = this._function_cache[selection.category][selection.function_id];
+    if( !silent ) {
+      this._active_function = this._function_cache[selection.category][selection.function_id];
 
-    this._displaying_frame = false;
-    this._render_function();
+      this._displaying_frame = false;
+      this._render_function();
+    }
   },
 
   _receive_hierarchy : function(result, textStatus) {
@@ -1040,7 +1066,6 @@ Snap.TypeAhead.prototype = {
   },
 
   _receive_hier : function(result, textStatus) {
-    console.log(result);
     for( var category in result ) {
       if( undefined == this._hierarchy_cache[category] ) {
         this._hierarchy_cache[category] = {};
@@ -1075,6 +1100,10 @@ Snap.TypeAhead.prototype = {
   },
 
   _lose_focus : function() {
+    if( this._hover_timer ) {
+      clearTimeout(this._hover_timer);
+      this._hover_timer = null;
+    }
     this._elements.dropdown.fadeOut('fast');
   }
 
