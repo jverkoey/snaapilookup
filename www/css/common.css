@@ -39,6 +39,7 @@ h2 {
   padding-top: 18px;
   padding-left: 1em;
   padding-right: 1em;
+  z-index: 100;
 }
 
 #actions li {
