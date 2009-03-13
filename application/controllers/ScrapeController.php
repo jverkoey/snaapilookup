@@ -79,7 +79,8 @@ class ScrapeController extends SnaapiController {
       $this->_pages_scraped = 0;
 
       //$this->scrapeFacebook();
-      $this->scrapeFacebookFbml();
+      //$this->scrapeFacebookFbml();
+      $this->scrapeFacebookFbmlPhase2();
     } else {
       $this->_forward('error', 'error');
     }
@@ -262,6 +263,75 @@ class ScrapeController extends SnaapiController {
         1,
         $categories[$index][1],
         $categories[$index][0])."\n";
+    }
+  }
+
+  private function scrapeFacebookFbmlPhase2() {
+    $category = 'Facebook API';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getFunctionsModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $function ) {
+      if( $function['hierarchy'] < 5 || $function['hierarchy'] > 20 ) {
+        continue;
+      }
+
+      $this->view->results .= $function['name'] . "\n";
+      if( !$function['url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $function['url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $contents = file_get_contents($source_url);
+
+      $start_index = strpos($contents, '<a name="Description">');
+      if( $start_index === FALSE ) {
+        $this->view->results .= 'We didn\'t find a description, skipping...' . "\n";
+        continue;
+      }
+      $start_index = strpos($contents, '<p>', $start_index);
+      if( $start_index === FALSE ) {
+        $this->view->results .= 'We couldn\'t find the beginning of the description, skipping...' . "\n";
+        continue;
+      }
+      
+      $end_index = strpos($contents, '</p>', $start_index);
+      if( $end_index === FALSE ) {
+        $this->view->results .= 'We couldn\'t find the end of the description, skipping...' . "\n";
+        continue;
+      }
+
+      $line = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
+      $line = strip_tags($line, '<b><code>');
+
+      $name = $this->getFunctionsModel()->fetchName($category_id, $function['id']);
+
+      $this->getFunctionsModel()->insertOrUpdateFunction(array(
+        'category'  => $category_id,
+        'hierarchy' => $function['hierarchy'],
+        'name'      => $name,
+        'short_description' => $line
+      ));
+/*
+      $this->getFunctionsModel()->setData(array(
+        'category' => $category_id,
+        'id' => $function['id'],
+        'data' => $line
+      ));*/
     }
   }
 

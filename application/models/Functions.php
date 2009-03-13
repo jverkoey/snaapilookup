@@ -193,7 +193,7 @@ class Model_Functions {
     return $table->fetchAll(
       $table
         ->select()
-        ->from($table, array('id', 'name', 'url'))
+        ->from($table, array('id', 'name', 'url', 'hierarchy'))
         ->where('category = ?', $category)
         ->where('DATEDIFF(NOW(), last_scraped) IS NULL OR DATEDIFF(NOW(), last_scraped) >= 7')
         ->where('scrapeable = 1'))
