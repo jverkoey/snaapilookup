@@ -15,15 +15,15 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 27 AND id = 4;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 29 AND id = 7;
 
-  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 27;
-  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 27;
+  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 29;
+  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 29;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    27, @parentRight, @parentRight + 1, 0,
-    'Profile-specific',
-    'http://wiki.developers.facebook.com/index.php/FBML#Profile-specific');
+    29, @parentRight, @parentRight + 1, 0,
+    'UIImage Class',
+    'https://developer.apple.com/iphone/library/documentation/UIKit/Reference/UIImage_Class/Reference/Reference.html');
 
   UNLOCK TABLES;
   

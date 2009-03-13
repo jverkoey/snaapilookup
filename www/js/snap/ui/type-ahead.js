@@ -436,6 +436,16 @@ Snap.TypeAhead.prototype = {
           return;
         }
       } else if( this._database.all.length > 0 ) {
+        var words = trimmed_value.split(' ');
+        var i = 0;
+        while( i < words.length ) {
+          if( words[i] == '' ) {
+            words.splice(i, 1);
+          } else {
+            ++i;
+          }
+        }
+
         var all = this._database.all;
         for( var category in all ) {
           var check;
@@ -446,22 +456,29 @@ Snap.TypeAhead.prototype = {
           if( check && !this._is_category_filtered[category] ) {
             continue;
           }
+
           var list = all[category];
           for( var i = 0; i < list.length; ++i ) {
-            var offset = list[i].n.toLowerCase().indexOf(trimmed_value.toLowerCase());
-            if( offset >= 0 ) {
-              var entry = {
-                type      : this._id_to_category[category] || 'Loading...',
-                category  : category,
-                hierarchy : list[i].h,
-                function_id : list[i].i,
-                name      : list[i].n,
-                matches   : [{word: trimmed_value, offset: offset, size: trimmed_value.length}],
-                score     : trimmed_value.length * 100 / list[i].n.length * (offset == 0 ? 2 : 1)
-              };
-              var unique_id = 'function'+category+'-'+i;
-              hash_results[unique_id] = entry;
-              results.push(unique_id);
+            var unique_id = 'function'+category+'-'+i;
+
+            for( var i2 = 0; i2 < words.length && results.length < MAX_RESULTS; ++i2 ) {
+              var offset = list[i].n.toLowerCase().indexOf(words[i2].toLowerCase());
+              if( offset >= 0 ) {
+                if( hash_results[unique_id] == undefined ) {
+                  var entry = {
+                    type      : this._id_to_category[category] || 'Loading...',
+                    category  : category,
+                    hierarchy : list[i].h,
+                    function_id : list[i].i,
+                    name      : list[i].n,
+                    matches   : [{word: words[i2], offset: offset, size: words[i2].length}]
+                  };
+                  hash_results[unique_id] = entry;
+                  results.push(unique_id);
+                } else {
+                  hash_results[unique_id].matches.push({word: words[i2], offset: offset, size: words[i2].length});
+                }
+              }
             }
           }
         }
@@ -498,13 +515,11 @@ Snap.TypeAhead.prototype = {
       // Score = sum total of matched characters.
       for( var i = 0; i < results.length; ++i ) {
         var entry = hash_results[results[i]];
-        if( undefined == entry.score ) {
-          entry.score = 0;
-          for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-            entry.score += entry.matches[i2].size;
-          }
-          entry.score /= entry.name.length;
+        entry.score = 0;
+        for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
+          entry.score += entry.matches[i2].size;
         }
+        entry.score /= entry.name.length;
       }
 
       // Sort by score.
