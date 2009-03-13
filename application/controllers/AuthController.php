@@ -221,7 +221,7 @@ class AuthController extends SnaapiController {
         Zend_OpenId::normalizeUrl($key);
 
         if( $normalizedUrl == $key ) {
-          $normalizedUrl = $key;
+          $normalizedUrl = $val;
           Zend_OpenId::normalizeUrl($normalizedUrl);
           break;
         }
