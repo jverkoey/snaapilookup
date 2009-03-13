@@ -38,6 +38,23 @@ class Model_Hierarchies {
   }
 
   /**
+   * Fetch the id by name.
+   */
+  public function fetchByName($category, $parent, $name) {
+    $table = $this->getTable();
+    $info = $table->info();
+    $db = $table->getAdapter();
+    $sql = 'SELECT child.id FROM '.$info['name'].' child, '.$info['name'].' parent ' .
+           'WHERE ' . $db->quoteInto('parent.id = ?', $parent) .' AND parent.category = child.category AND '.
+                  $db->quoteInto('child.category = ?', $category) . ' AND ' .
+                 'parent.lft < child.lft AND parent.rgt > child.rgt AND ' .
+           $db->quoteInto('child.category = ?', $category) . ' AND ' .
+           $db->quoteInto('child.name = ?', $name) . ';';
+    $result = $db->query($sql)->fetchAll();
+    return $result ? $result[0]['id'] : null;
+  }
+
+  /**
    * Fetch the hierarchy info.
    */
   public function fetch($category_id, $id) {
@@ -85,7 +102,12 @@ class Model_Hierarchies {
    * Fetch the ancestry of a category.
    */
   public function insert($category, $parent, $name, $url) {
-    return 'LOCK TABLE hierarchies WRITE;SELECT @parentRight := rgt FROM hierarchies WHERE category = '.$category.' AND id = '.$parent.';UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight;UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight;INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( '.
+    return
+'LOCK TABLE hierarchies WRITE;
+SELECT @parentRight := rgt FROM hierarchies WHERE category = '.$category.' AND id = '.$parent.';
+UPDATE hierarchies SET rgt = rgt + 2 WHERE category = '.$category.' AND rgt >= @parentRight;
+UPDATE hierarchies SET lft = lft + 2 WHERE category = '.$category.' AND lft > @parentRight;
+INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( '.
       $category.', @parentRight, @parentRight + 1, 0, "'.$name.'", "'.$url.'");UNLOCK TABLES;';
   }
 

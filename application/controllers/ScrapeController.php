@@ -78,7 +78,8 @@ class ScrapeController extends SnaapiController {
       $this->view->results = '';
       $this->_pages_scraped = 0;
 
-      $this->scrapeFacebook();
+      //$this->scrapeFacebook();
+      $this->scrapeFacebookFbml();
     } else {
       $this->_forward('error', 'error');
     }
@@ -261,6 +262,70 @@ class ScrapeController extends SnaapiController {
         1,
         $categories[$index][1],
         $categories[$index][0])."\n";
+    }
+  }
+
+  private function scrapeFacebookFbml() {
+    $category = 'Facebook API';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $contents = file_get_contents('http://wiki.developers.facebook.com/index.php/FBML');
+
+    $start_index = strpos($contents, '<div class="fbml_section">');
+    if( $start_index === FALSE ) {
+      $this->view->results .= 'We didn\'t find an fbml section, skipping...' . "\n";
+      return;
+    }
+
+    $end_index = strpos($contents, '<p><br clear="all"/>', $start_index);
+    if( $end_index === FALSE ) {
+      $this->view->results .= 'We couldn\'t find the end of the list, skipping...' . "\n";
+      return;
+    }
+
+    $list_data = substr($contents, $start_index, $end_index - $start_index);
+    $list = array_slice(explode('<a name="', $list_data), 1);
+
+    foreach( $list as $item ) {
+      $link = substr($item, 0, strpos($item, '"'));
+      if( !preg_match('/<span class="mw-headline">(.+?)<\/span>/', $item, $matches) ) {
+        $this->view->results .= 'We couldn\'t find the headline, skipping...' . "\n";
+        continue;
+      }
+
+      $title = trim($matches[1]);
+
+      $item = str_replace("\n", '', $item);
+      if( !preg_match_all('/<a href="(.+?)" title=".+?">(.+?)<\/a>/', $item, $matches) ) {
+        $this->view->results .= 'We couldn\'t find links, skipping...' . "\n";
+        continue;
+      }
+
+      // Scrape hierarchies.
+      /*$this->view->results .= $this->getHierarchiesModel()->insert(
+        $category_id,
+        4,
+        $title,
+        'http://wiki.developers.facebook.com/index.php/FBML#'.$link
+      )."\n";*/
+
+      // Scrape functions.
+      $hierarchy = $this->getHierarchiesModel()->fetchByName($category_id, 4, $title);
+      for( $index = 0; $index < count($matches[0]); ++$index ) {
+        echo $matches[2][$index] . "\n";
+        $this->getFunctionsModel()->insertOrUpdateFunction(array(
+          'category' => $category_id,
+          'hierarchy' => $hierarchy,
+          'name' => $matches[2][$index],
+          'url' => 'http://wiki.developers.facebook.com'.$matches[1][$index]
+        ));
+      }
     }
   }
 
