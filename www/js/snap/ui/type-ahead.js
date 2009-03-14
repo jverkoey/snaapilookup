@@ -546,6 +546,8 @@ Snap.TypeAhead.prototype = {
             entry.score++;
           }
         }
+
+        entry.score /= entry.name.length;
       }
 
       // Sort by score.

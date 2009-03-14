@@ -18,22 +18,35 @@ class PermalinkController extends SnaapiController {
   }
 
   public function zendAction() {
-    $this->language('Zend');
+    $this->framework('Zend');
   }
 
   public function facebookApiAction() {
-    $this->language('Facebook API');
+    $this->framework('Facebook API');
   }
 
   public function djangoAction() {
-    $this->language('django');
+    $this->framework('django');
   }
 
   public function firebugAction() {
-    $this->language('Firebug');
+    $this->framework('Firebug');
   }
 
+  public function iphoneAction() {
+    $this->framework('iPhone');
+  }
+
+
   private function language($name) {
+    $this->category($name, 'Language');
+  }
+
+  private function framework($name) {
+    $this->category($name, 'Framework');
+  }
+
+  private function category($name, $type) {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);
     if( $result ) {
@@ -43,7 +56,7 @@ class PermalinkController extends SnaapiController {
       $this->view->id = $result['id'];
       $this->view->hierarchy = $result['hierarchy'];
       $this->view->type = $name;
-      $this->view->filter_type = 'Language';
+      $this->view->filter_type = $type;
       $this->view->function_name = $function_name;
       $this->getLogsModel()->add(strtolower($name).'permalink', $function_name);
     }
