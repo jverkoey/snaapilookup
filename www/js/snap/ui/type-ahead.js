@@ -486,8 +486,8 @@ Snap.TypeAhead.prototype = {
             var any_succeed = false;
             var any_fail = false;
             for( var i2 = 0; i2 < words.length; ++i2 ) {
-              var offsets = list[i].l.gindexOf(words[i2]);
-              if( offsets.length > 0 ) {
+              var offset = list[i].l.indexOf(words[i2]);
+              if( offset >= 0 ) {
                 if( hash_results[unique_id] == undefined ) {
                   var entry = {
                     type      : this._id_to_category[category],
@@ -500,9 +500,7 @@ Snap.TypeAhead.prototype = {
                   hash_results[unique_id] = entry;
                 }
 
-                for( var i3 = 0; i3 < offsets.length; ++i3 ) {
-                  hash_results[unique_id].matches.push({word: words[i2], offset: offsets[i3], size: words[i2].length});
-                }
+                hash_results[unique_id].matches.push({word: words[i2], offset: offset, size: words[i2].length});
 
                 any_succeed = true;
               } else {
@@ -557,32 +555,28 @@ Snap.TypeAhead.prototype = {
         var entry = hash_results[results[i]];
 
         var joined_areas = new Array(entry.name.length);
+        for( var i2 = 0; i2 < entry.name.length; ++i2 ) {
+          joined_areas[i2] = 0;
+        }
         for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-          var match = entry.matches[i2];
-          var start = match.offset;
-          if( joined_areas[start] ) {
-            joined_areas[start].push(1);
-          } else {
-            joined_areas[start] = [1];
-          }
+          var word = entry.matches[i2].word;
+          var offsets = entry.name.gindexOf(word);
 
-          var end = start + match.size;
-          if( joined_areas[end] ) {
-            joined_areas[end].push(-1);
-          } else {
-            joined_areas[end] = [-1];
+          for( var i3 = 0; i3 < offsets.length; ++i3 ) {
+            var start = offsets[i3];
+            joined_areas[start]++;
+
+            var end = start + word.size;
+            if( end < entry.name.length ) {
+              joined_areas[end]--;
+            }
           }
         }
 
         entry.score = 0;
         var on = 0;
         for( var i2 = 0; i2 < joined_areas.length; ++i2 ) {
-          var slot = joined_areas[i2];
-          if( slot ) {
-            for( var i3 = 0; i3 < slot.length; ++i3 ) {
-              on += slot[i3];
-            }
-          }
+          on += joined_areas[i2];
           if( on ) {
             entry.score++;
           }
