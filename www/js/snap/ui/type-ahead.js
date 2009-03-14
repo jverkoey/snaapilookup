@@ -927,9 +927,11 @@ Snap.TypeAhead.prototype = {
 
         this._elements.logo.fadeIn(speed);
         this._elements.catch_phrase.fadeIn(speed);
+        this._elements.filters.fadeIn(speed);
+        this._elements.result.fadeIn(speed);
+
         this._elements.search.fadeIn(speed);
 
-        this._elements.result.fadeIn(speed);
         $('body').css({overflow:'visible'});
         $('#footer').show();
         this._elements.external_table.css({position:'static'});

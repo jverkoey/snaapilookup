@@ -1,0 +1,1502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head>
+
+
+<title>HTML DOM Style object</title>
+ 
+<link rel="shortcut icon" href="http://www.w3schools.com/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="Keywords" content="xml,tutorial,html,dhtml,css,xsl,xhtml,javascript,asp,ado,vbscript,dom,sql,colors,soap,php,authoring,programming,training,learning,beginner's guide,primer,lessons,school,howto,reference,examples,samples,source code,tags,demos,tips,links,FAQ,tag list,forms,frames,color table,w3c,cascading style sheets,active server pages,dynamic html,internet,database,development,Web building,Webmaster,html guide">
+
+<meta name="Description" content="Free HTML XHTML CSS JavaScript DHTML XML DOM XSL XSLT RSS AJAX ASP ADO PHP SQL tutorials, references, examples for web building.">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+
+<link rel="stylesheet" type="text/css" href="dom_obj_style.asp_files/stdtheme.css">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="dom_obj_style.asp_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3855518-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</head><body>
+
+<center>
+<table class="container" style="width: 904px; margin-bottom: 4px;" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="center">
+
+<a name="top"></a>
+<table style="border-bottom: 1px solid black; margin-top: 4px; background-color: rgb(96, 96, 96);" border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr>
+<td width="15">&nbsp;</td>
+<td style="height: 50px; text-align: left;" valign="middle" width="500">
+<a href="http://www.w3schools.com/">
+<img style="margin-top: 6px;" src="dom_obj_style.asp_files/h_logo.gif" alt="w3schools" title="w3schools" border="0" height="20" width="203"></a>
+</td>
+<td style="color: white; font-size: 10px; font-weight: bold;" align="right" valign="bottom">
+<form style="margin: 0px; padding: 0px;" method="get" name="searchform" action="http://www.google.com/search" target="_blank">
+Search W3Schools : <input name="sitesearch" value="www.w3schools.com" type="hidden">
+<input alt="search" style="width: 128px;" name="as_q" size="20" value="" type="text">
+<input style="margin-bottom: 10px;" src="dom_obj_style.asp_files/search.gif" align="middle" type="image">
+</form>
+</td>
+<td>&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table style="background-color: rgb(96, 96, 96);" border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr>
+<td class="blacknav" style="border-left: medium none;" width="50"><a class="m_item" href="http://www.w3schools.com/default.asp">HOME</a></td>
+<td class="blacknav" width="50"><a class="m_item" href="http://www.w3schools.com/html/default.asp">HTML</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/css/default.asp">CSS</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/xml/default.asp">XML</a></td>
+<td class="blacknav" width="90"><a class="m_item" href="http://www.w3schools.com/js/default.asp">JAVASCRIPT</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/asp/default.asp">ASP</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/php/default.asp">PHP</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/sql/default.asp">SQL</a></td>
+<td class="blacknav" width="60"><a class="m_item" href="http://www.w3schools.com/sitemap/sitemap_tutorials.asp">MORE...</a></td>
+<td class="blacknav">&nbsp;</td>
+<td class="blacknav" width="80"><a class="m_item" href="http://www.w3schools.com/sitemap/sitemap_references.asp">References</a></td>
+<td class="blacknav" width="70"><a class="m_item" href="http://www.w3schools.com/sitemap/sitemap_examples.asp">Examples</a></td>
+<td class="blacknav" width="50"><a class="m_item" target="_blank" href="http://www.w3schools.com/forum/default.asp">Forum</a></td>
+<td class="blacknav" style="border-right: medium none;" width="50"><a class="m_item" href="http://www.w3schools.com/about/default.asp">About</a></td>
+</tr>
+</tbody></table>
+
+<table class="topad" border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr>
+<td style="border: 1px solid rgb(195, 195, 195); padding-top: 5px; color: rgb(96, 96, 96); text-align: center;" valign="top" width="155">
+
+<br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.iisprotect.com/"><img src="dom_obj_style.asp_files/iisprotect.gif" alt="IISProtect" border="0" height="30" width="100"></a>
+<br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.iisprotect.com/">Password Protect<br>Your Web Pages</a>
+
+</td>
+<td width="7">&nbsp;</td>
+<td style="height: 90px; background-color: rgb(255, 255, 255);" align="center" valign="top" width="728">
+
+<iframe style="background-color: rgb(255, 255, 255);" src="dom_obj_style.asp_files/bannerframe.html" marginwidth="0" marginheight="0" frameborder="0" height="90" scrolling="no" width="728">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+</td>
+</tr>
+</tbody></table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr><td class="left_container" align="left" valign="top" width="155">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td class="content" align="left" valign="top"><h2 class="left"><span class="left_h2">HTML</span> DOM</h2>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/default.asp">DOM HOME</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_intro.asp">DOM Intro</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_nodes.asp">DOM Nodes</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_nodetree.asp">DOM Node Tree</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_methods.asp">DOM Methods</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_nodes_access.asp">DOM Node Access</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_nodes_info.asp">DOM Node Info</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_using.asp">DOM How To</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_events.asp">DOM Events</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_reference.asp">DOM Reference</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_summary.asp">DOM Summary</a><br>
+<br>
+<h2 class="left"><span class="left_h2">DOM</span> Examples</h2>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_examples.asp">DOM Examples</a><br>
+<br>
+<h2 class="left"><span class="left_h2">DOM</span> Objects</h2>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_window.asp">DOM Window</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_navigator.asp">DOM Navigator</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_screen.asp">DOM Screen</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_history.asp">DOM History</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_location.asp">DOM Location</a><br>
+<br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_document.asp">DOM Document</a><br>
+<br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_anchor.asp">DOM Anchor</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_area.asp">DOM Area</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_base.asp">DOM Base</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_body.asp">DOM Body</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_pushbutton.asp">DOM Button</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_event.asp">DOM Event</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_form.asp">DOM Form</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_frame.asp">DOM Frame</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_frameset.asp">DOM Frameset</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_iframe.asp">DOM IFrame</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_image.asp">DOM Image</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_button.asp">DOM Input Button</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_checkbox.asp">DOM Input Checkbox</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_fileupload.asp">DOM Input File</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_hidden.asp">DOM Input Hidden</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_password.asp">DOM Input Password</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_radio.asp">DOM Input Radio</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_reset.asp">DOM Input Reset</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_submit.asp">DOM Input Submit</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_text.asp">DOM Input Text</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_link.asp">DOM Link</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_meta.asp">DOM Meta</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_object.asp">DOM Object</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_option.asp">DOM Option</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_select.asp">DOM Select</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_style.asp" style="font-weight: bold;">DOM Style</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_table.asp">DOM Table</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_tabledata.asp">DOM TableCell</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_tablerow.asp">DOM TableRow</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_textarea.asp">DOM Textarea</a><br>
+
+
+<br>
+</td></tr></tbody></table>
+</td>
+<td width="6">&nbsp;</td>
+<td align="left" valign="top">
+<table class="page" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td style="width: 8px; background-image: url(/images/pagetop_topleft.gif); background-color: transparent; background-repeat: no-repeat;"></td>
+<td style="background-image: url(/images/pagetop_gradient.gif); background-color: transparent; background-repeat: repeat-x; padding-top: 10px;">
+
+<h1>HTML DOM <span class="color_h1">Style</span> Object</h1>
+<hr>
+
+<h2>Style object</h2>
+
+<p>The Style object represents an individual style statement. The Style object 
+can be accessed from the document or from the elements to which that style is 
+applied.</p>
+<p><b>Syntax for using the Style object properties:</b></p>
+
+<table class="ex" id="table2" border="1" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td>
+	<pre>document.getElementById("<i>id</i>").style.<i>property</i>="<i>value</i>"</pre>
+	</td>
+  </tr>
+</tbody></table>
+  
+<p><b>The Style object property categories:</b></p>
+<table class="ex" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td>
+<ul>
+  <li><a href="#background">Background</a></li>
+  <li><a href="#border">Border and Margin</a></li>
+  <li><a href="#layout">Layout</a></li>
+  <li><a href="#list">List</a></li>
+  <li><a href="#misc">Misc</a></li>
+</ul>
+	</td>
+    <td>
+<ul>
+  <li><a href="#positioning">Positioning</a></li>
+  <li><a href="#printing">Printing</a></li>
+  <li><a href="#scrollbar">Scrollbar</a></li>
+  <li><a href="#table">Table</a></li>
+  <li><a href="#text">Text</a></li>
+  <li><a href="#std">Standard</a></li>
+</ul>
+	</td>
+
+  </tr>
+</tbody></table>
+
+<p><b>IE:</b> Internet Explorer, <b>M:</b> Mac IE only, 
+<b>W:</b> Windows IE only, <b>F:</b> Firefox, <b>O:</b> Opera, <b>W3C:</b> 
+World Wide Web Consortium (Internet Standard).</p>
+
+<h3><a name="background">Background properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_background.asp">background</a></td>
+    <td valign="top">Sets all background properties in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundattachment.asp">backgroundAttachment</a></td>
+    <td valign="top">Sets whether a background-image is fixed or scrolls with 
+    the page</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundcolor.asp">backgroundColor</a></td>
+    <td valign="top">Sets the background-color of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundimage.asp">backgroundImage</a></td>
+    <td valign="top">Sets the background-image of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundposition.asp">backgroundPosition</a></td>
+    <td valign="top">Sets the starting position of a background-image</td>
+    <td valign="top">4</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundpositionx.asp">backgroundPositionX</a></td>
+    <td valign="top">Sets the x-coordinates of the backgroundPosition 
+    property</td>
+    <td valign="top">4</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundpositiony.asp">backgroundPositionY</a></td>
+    <td valign="top">Sets the y-coordinates of the backgroundPosition 
+    property</td>
+    <td valign="top">4</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_backgroundrepeat.asp">backgroundRepeat</a></td>
+    <td valign="top">Sets if/how a background-image will be repeated</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+</tbody></table>
+
+<h3><a name="border">Border and Margin properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_border.asp">border</a></td>
+    <td valign="top">Sets all properties for the four borders in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderbottom.asp">borderBottom</a></td>
+    <td valign="top">Sets all properties for the bottom border in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderbottomcolor.asp">borderBottomColor</a></td>
+    <td valign="top">Sets the color of the bottom border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderbottomstyle.asp">borderBottomStyle</a></td>
+    <td valign="top">Sets the style of the bottom border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderbottomwidth.asp">borderBottomWidth</a></td>
+    <td valign="top">Sets the width of the bottom border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bordercolor.asp">borderColor</a></td>
+    <td valign="top">Sets the color of all four borders (can have up to four 
+	colors)</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderleft.asp">borderLeft</a></td>
+    <td valign="top">Sets all properties for the left border in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderleftcolor.asp">borderLeftColor</a></td>
+    <td valign="top">Sets the color of the left border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderleftstyle.asp">borderLeftStyle</a></td>
+    <td valign="top">Sets the style of the left border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderleftwidth.asp">borderLeftWidth</a></td>
+    <td valign="top">Sets the width of the left border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderright.asp">borderRight</a></td>
+    <td valign="top">Sets all properties for the right border in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderrightcolor.asp">borderRightColor</a></td>
+    <td valign="top">Sets the color of the right border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderrightstyle.asp">borderRightStyle</a></td>
+    <td valign="top">Sets the style of the right border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderrightwidth.asp">borderRightWidth</a></td>
+    <td valign="top">Sets the width of the right border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderstyle.asp">borderStyle</a></td>
+    <td valign="top">Sets the style of all four borders (can have up to four 
+	styles)</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bordertop.asp">borderTop</a></td>
+    <td valign="top">Sets all properties for the top border in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bordertopcolor.asp">borderTopColor</a></td>
+    <td valign="top">Sets the color of the top border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bordertopstyle.asp">borderTopStyle</a></td>
+    <td valign="top">Sets the style of the top border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+	<tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bordertopwidth.asp">borderTopWidth</a></td>
+    <td valign="top">Sets the width of the top border</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderwidth.asp">borderWidth</a></td>
+    <td valign="top">Sets the width of all four borders (can have up to four 
+	widths)</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_margin.asp">margin</a></td>
+    <td valign="top">Sets the margins of an element (can have up to four values)</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_marginbottom.asp">marginBottom</a></td>
+    <td valign="top">Sets the bottom margin of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_marginleft.asp">marginLeft</a></td>
+    <td valign="top">Sets the left margin of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_marginright.asp">marginRight</a></td>
+    <td valign="top">Sets the right margin of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_margintop.asp">marginTop</a></td>
+    <td valign="top">Sets the top margin of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_outline.asp">outline</a></td>
+    <td valign="top">Sets all outline properties in one</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_outlinecolor.asp">outlineColor</a></td>
+    <td valign="top">Sets the color of the outline around an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_outlinestyle.asp">outlineStyle</a></td>
+    <td valign="top">Sets the style of the outline around an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_outlinewidth.asp">outlineWidth</a></td>
+    <td valign="top">Sets the width of the outline around an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_padding.asp">padding</a></td>
+    <td valign="top">Sets the padding of an element (can have up to four values)</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_paddingbottom.asp">paddingBottom</a></td>
+    <td valign="top">Sets the bottom padding of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_paddingleft.asp">paddingLeft</a></td>
+    <td valign="top">Sets the left padding of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_paddingright.asp">paddingRight</a></td>
+    <td valign="top">Sets the right padding of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_paddingtop.asp">paddingTop</a></td>
+    <td valign="top">Sets the top padding of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+</tbody></table>
+
+<h3><a name="layout">Layout properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_clear.asp">clear</a></td>
+    <td valign="top">Sets on which sides of an element other floating 
+    elements are not allowed</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_clip.asp">clip</a></td>
+    <td valign="top">Sets the shape of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">content</td>
+    <td valign="top">Sets meta-information</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">counterIncrement</td>
+    <td valign="top">Sets a list of counter names, followed by an integer. The 
+	integer indicates by how much the counter is incremented for every 
+	occurrence of the element. The default is 1</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">counterReset</td>
+    <td valign="top">Sets a list of counter names, followed by an integer. The 
+	integer gives the value that the counter is set to on each occurrence of the 
+	element. The default is 0 </td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_cssfloat.asp">cssFloat</a></td>
+    <td valign="top">Sets where an image or a text will appear (float) in 
+	another element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_cursor.asp">cursor</a></td>
+    <td valign="top">Sets the type of cursor to be displayed</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_direction.asp">direction</a></td>
+    <td valign="top">Sets the text direction of an element</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_display.asp">display</a></td>
+    <td valign="top">Sets how an element will be displayed</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_height.asp">height</a></td>
+    <td valign="top">Sets the height of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">markerOffset</td>
+    <td valign="top">Sets the distance between the nearest border edges of a 
+	marker box and its principal box</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">marks</td>
+    <td valign="top">Sets whether cross marks or crop marks should be rendered 
+	just outside the page box edge </td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_maxheight.asp">maxHeight</a></td>
+    <td valign="top">Sets the maximum height of an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_maxwidth.asp">maxWidth</a></td>
+    <td valign="top">Sets the maximum width of an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_minheight.asp">minHeight</a></td>
+    <td valign="top">Sets the minimum height of an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_minwidth.asp">minWidth</a></td>
+    <td valign="top">Sets the minimum width of an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_overflow.asp">overflow</a></td>
+    <td valign="top">Specifies what to do with content that 
+does not fit in an element box</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_verticalalign.asp">verticalAlign</a></td>
+    <td valign="top">Sets the vertical alignment of content in an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_visibility.asp">visibility</a></td>
+    <td valign="top">Sets whether or not an element should be visible</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_width.asp">width</a></td>
+    <td valign="top">Sets the width of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  </tbody></table>
+
+<h3><a name="list">List properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_liststyle.asp">listStyle</a></td>
+    <td valign="top">Sets all the properties for a list in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_liststyleimage.asp">listStyleImage</a></td>
+    <td valign="top">Sets an image as the 
+    list-item marker</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_liststyleposition.asp">listStylePosition</a></td>
+    <td valign="top">Positions the list-item marker</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_liststyletype.asp">listStyleType</a></td>
+    <td valign="top">Sets the list-item marker type</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  </tbody></table>
+
+<h3><a name="misc">Misc properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top">cssText</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">&nbsp;</td>
+  </tr>
+  </tbody></table>
+
+<h3><a name="positioning">Positioning properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bottom.asp">bottom</a></td>
+    <td valign="top">Sets how far the bottom edge of an element is above/below 
+	the bottom edge of the parent element</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_left.asp">left</a></td>
+    <td valign="top">Sets how far the left edge of an element is to the 
+	right/left of the left edge of the parent element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_position.asp">position</a></td>
+    <td valign="top">Places an element in a static, relative, absolute or fixed 
+	position</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_right.asp">right</a></td>
+    <td valign="top">Sets how far the right edge of an element is to the 
+	left/right of the right edge of the parent element</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_top.asp">top</a></td>
+    <td valign="top">Sets how far the top edge of an element is above/below the 
+	top edge of the parent element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_zindex.asp">zIndex</a></td>
+    <td valign="top">Sets the stack order of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+</tbody></table>
+
+<h3><a name="printing">Printing properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top">orphans</td>
+    <td valign="top">Sets the minimum number of lines for a paragraph that must be left at the bottom of a page</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">page</td>
+    <td valign="top">Sets a page type to use when displaying an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_pagebreakafter.asp">pageBreakAfter</a></td>
+    <td valign="top">Sets the page-breaking behavior after an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_pagebreakbefore.asp">pageBreakBefore</a></td>
+    <td valign="top">Sets the page-breaking behavior before an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_pagebreakinside.asp">pageBreakInside</a></td>
+    <td valign="top">Sets the page-breaking behavior inside an element</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">size</td>
+    <td valign="top">Sets the orientation and size of a page</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">widows</td>
+    <td valign="top">Sets the minimum number of lines for a paragraph that must be left at the
+      top of a page</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  </tbody></table>
+
+<h3><a name="scrollbar">Scrollbar properties</a> (IE-only)</h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbar3dlightcolor.asp">scrollbar3dLightColor</a></td>
+    <td valign="top">Sets the color of the left and top sides of the arrows 
+	and scroll boxes</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbararrowcolor.asp">scrollbarArrowColor</a></td>
+    <td valign="top">Sets the color of the arrows on a scroll bar</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbarbasecolor.asp">scrollbarBaseColor</a></td>
+    <td valign="top">Sets the base color of the scroll bar</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbardarkshadowcolor.asp">scrollbarDarkShadowColor</a></td>
+    <td valign="top">Sets the color of the right and bottom sides of the arrows and scroll boxes</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbarfacecolor.asp">scrollbarFaceColor</a></td>
+    <td valign="top">Sets the front color of the scroll bar</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbarhighlightcolor.asp">scrollbarHighlightColor</a></td>
+    <td valign="top">Sets the color of the left and top sides of the arrows 
+	and scroll boxes, and the background of a scroll bar</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbarshadowcolor.asp">scrollbarShadowColor</a></td>
+    <td valign="top">Sets the color of the right and bottom sides of the  
+	arrows and scroll boxes</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_scrollbartrackcolor.asp">scrollbarTrackColor</a></td>
+    <td valign="top">Sets the background color of a scroll bar</td>
+    <td valign="top">5W</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+  </tr>
+  </tbody></table>
+
+<h3><a name="table">Table properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_bordercollapse.asp">borderCollapse</a></td>
+    <td valign="top">Sets whether the table border are collapsed into a single 
+	border or detached as in standard HTML</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_borderspacing.asp">borderSpacing</a></td>
+    <td valign="top">Sets the distance that separates cell borders</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_captionside.asp">captionSide</a></td>
+    <td valign="top">Sets the position of the table caption</td>
+    <td valign="top">5M</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_emptycells.asp">emptyCells</a></td>
+    <td valign="top">Sets whether or not to show empty cells in a table</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_tablelayout.asp">tableLayout</a></td>
+    <td valign="top">Sets the algorithm used to display the table cells, rows, 
+	and columns</td>
+    <td valign="top">5</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+</tbody></table>
+
+<h3><a name="text">Text properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="30%">Property</th>
+    <th align="left" valign="top" width="50%">Description</th>
+    <th align="left" valign="top" width="5%">IE</th>
+    <th align="left" valign="top" width="4%">F</th>
+    <th align="left" valign="top" width="4%">O</th>
+    <th align="left" valign="top" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_color.asp">color</a></td>
+    <td valign="top">Sets the color of the text</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_font.asp">font</a></td>
+    <td valign="top">Sets all font properties in one</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontfamily.asp">fontFamily</a></td>
+    <td valign="top">Sets the font of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontsize.asp">fontSize</a></td>
+    <td valign="top">Sets the font-size of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontsizeadjust.asp">fontSizeAdjust</a></td>
+    <td valign="top">Sets/adjusts the size of a text</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontstretch.asp">fontStretch</a></td>
+    <td valign="top">Sets how to condense or stretch a font</td>
+    <td valign="top">5M</td>
+    <td valign="top">No</td>
+    <td valign="top">No</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontstyle.asp">fontStyle</a></td>
+    <td valign="top">Sets the font-style of an element</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontvariant.asp">fontVariant</a></td>
+    <td valign="top">Displays text in a small-caps font</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_fontweight.asp">fontWeight</a></td>
+    <td valign="top">Sets the boldness of the font</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_letterspacing.asp">letterSpacing</a></td>
+    <td valign="top">Sets the space between characters</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_lineheight.asp">lineHeight</a></td>
+    <td valign="top">Sets the distance between lines</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">quotes</td>
+    <td valign="top">Sets which quotation marks to use in a text</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_textalign.asp">textAlign</a></td>
+    <td valign="top">Aligns the text</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_textdecoration.asp">textDecoration</a></td>
+    <td valign="top">Sets the decoration of a text</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_textindent.asp">textIndent</a></td>
+    <td valign="top">Indents the first line of text</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">textShadow</td>
+    <td valign="top">Sets the shadow effect of a text</td>
+    <td valign="top">5M</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_texttransform.asp">textTransform</a></td>
+    <td valign="top">Sets capitalization effect on a text</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top">unicodeBidi</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">&nbsp;</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_whitespace.asp">whiteSpace</a></td>
+    <td valign="top">Sets how to handle line-breaks and white-space in a text</td>
+    <td valign="top">4</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_style_wordspacing.asp">wordSpacing</a></td>
+    <td valign="top">Sets the space between words in a text</td>
+    <td valign="top">6</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  </tbody></table>
+
+<h3><a name="std">Standard Properties</a></h3>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" width="30%">Property</th>
+    <th align="left" width="50%">Description</th>
+    <th align="left" width="5%">IE</th>
+    <th align="left" width="4%">F</th>
+    <th align="left" width="4%">O</th>
+    <th align="left" width="7%">W3C</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_dir.asp">dir</a></td>
+    <td valign="top">Sets or returns the direction of text</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_lang.asp">lang</a></td>
+    <td valign="top">Sets or returns the language code for an element</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/htmldom/prop_title.asp">title</a></td>
+    <td valign="top">Sets or returns an element's advisory title</td>
+    <td valign="top">5</td>
+    <td valign="top">1</td>
+    <td valign="top">9</td>
+    <td valign="top">Yes</td>
+  </tr>
+  </tbody></table>
+
+<br>
+<hr>
+
+
+<!-- **** SPOTLIGHTS 1 **** -->
+<iframe src="dom_obj_style.asp_files/aspallframe.html" marginwidth="0" marginheight="0" frameborder="0" height="120" scrolling="no" width="100%">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+<hr>
+<!-- **** SPOTLIGHTS 2 **** -->
+
+<center>
+<a href="http://www.dreamtemplate.com/?ref=w3spt" target="_blank" rel="nofollow">
+<img src="dom_obj_style.asp_files/dreamtemplate.jpg" alt="DreamTemplate" border="0"></a>
+</center>
+<hr>
+
+
+<!-- **** SPOTLIGHTS 3 **** -->
+<script type="text/javascript"><!--
+document.write('<table cellpadding="0" cellspacing="0"><tr><td width="100">&nbsp;</td><td>');
+google_ad_client = "pub-3440800076797949";
+/*txt*/
+google_ad_slot = "1699448869";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script><table cellpadding="0" cellspacing="0"><tbody><tr><td width="100">&nbsp;</td><td>
+<script type="text/javascript" src="dom_obj_style.asp_files/show_ads.js">
+</script><script src="dom_obj_style.asp_files/expansion_embed.js"></script><script src="dom_obj_style.asp_files/test_domain.js"></script><script>window.google_render_ad();</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 280px; position: relative; visibility: visible; width: 336px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 280px; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="dom_obj_style.asp_files/ads.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins>
+<script type="text/javascript">
+<!--
+document.write("</td></tr></table>");
+//-->
+</script></td></tr></tbody></table>
+
+
+<center>
+<hr>
+<iframe style="background-color: rgb(255, 255, 255);" src="dom_obj_style.asp_files/aspallbannerframe.html" marginwidth="0" marginheight="0" frameborder="0" height="60" scrolling="no" width="468">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+</center>
+
+<hr>
+<table>
+<tbody><tr>
+<td width="150"><img src="dom_obj_style.asp_files/diploma.jpg" alt="diploma"></td>
+<td valign="middle">
+<h2>W3Schools' Online Certification Program.</h2>
+<p>The perfect solution for busy professionals who need to balance work, family, and career building.</p>
+<p>More than 3000 certificates already issued!</p>
+</td>
+</tr>
+</tbody></table>
+<p>The <a href="http://www.w3schools.com/cert/default.asp">HTML Certificate</a> documents your knowledge of HTML, XHTML, and CSS.</p>
+<p>The <a href="http://www.w3schools.com/cert/default.asp">JavaScript Certificate</a> documents your knowledge of JavaScript and HTML DOM.</p>
+<p>The <a href="http://www.w3schools.com/cert/default.asp">XML Certificate</a> documents your knowledge of XML, XML DOM and XSLT.</p>
+<p>The <a href="http://www.w3schools.com/cert/default.asp">ASP Certificate</a> documents your knowledge of ASP, SQL, and ADO.</p>
+<p>The <a href="http://www.w3schools.com/cert/default.asp">PHP Certificate</a> documents your knowledge of PHP and SQL (MySQL).</p>
+
+
+</td></tr>
+</tbody></table>
+
+</td>
+
+<td style="width: 8px; background-image: url(/images/pagetop_topright.gif); background-color: transparent; background-repeat: no-repeat;"></td>
+
+<td width="6">&nbsp;</td>
+
+<td class="right_container" align="center" valign="top" width="155">
+<table class="right" style="margin-top: 0px;" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right">WEB HOSTING</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.dotdnr.com/">$15 Domain Name<br>Registration</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.lunarpages.com/">Best Web Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.eukhost.com/">PHP MySQL Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.web-hosting-top.com/">Top 10 Web Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.heartinternet.co.uk/index.shtml">UK Reseller Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.webhosting.uk.com/">Web Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.imhosted.com/">FREE Web Hosting</a><br>
+</td></tr>
+</tbody></table>
+
+<table class="right" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right">WEB BUILDING</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.trendytemplates.com/">Website Templates</a><br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.trendyflash.com/">Flash Templates</a><br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.designer360.com/">Website Builder</a><br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.sitecubeplus.com/">Internet Business Opportunity</a>
+</td></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.getafreelancer.com/">Custom Programming</a>
+</td></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.ektron.com/web-content-management-solutions.aspx?cpid=BAC-2105&amp;campaignid=2105">
+FREE Trial or Demo<br>
+Web Content Manager<br>
+Forms,Web Alerts,RSS</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.altova.com/ref/?s=w3s_text&amp;q=xmlspy">
+Download XML editor</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.wix.com/?utm_campaign=w3&amp;experiment_id=w3">FREE Flash Website</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.dreamtemplate.com/?ref=w3txt">
+FREE Web Templates</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.flashcomponents.net/?ref=w3school">Flash Components</a>
+</td></tr>
+</tbody></table>
+
+<table class="right" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right">EDUCATION</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.all-computer-schools.com/featured/web-design-development-programs?src=asd_acom_062007_00000001">US Web Design Schools</a>
+</td></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">HTML Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">JavaScript Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">XML Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">PHP Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">ASP Certification</a>
+</td></tr>
+</tbody></table>
+
+<table class="right" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right" align="center">STATISTICS</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_top" href="http://www.w3schools.com/browsers/browsers_stats.asp">Browser Statistics</a><br>
+<a class="aright" target="_top" href="http://www.w3schools.com/browsers/browsers_os.asp">Browser OS</a><br>
+<a class="aright" target="_top" href="http://www.w3schools.com/browsers/browsers_display.asp">Browser Display</a>
+</td></tr></tbody></table>
+
+
+</td>
+</tr></tbody></table>
+
+<table style="border-top: 1px solid rgb(195, 195, 195); border-bottom: 1px solid rgb(195, 195, 195); margin-top: 2px;" border="0" cellpadding="5" width="100%">
+<tbody><tr>
+<td align="left" width="30%">
+<img src="dom_obj_style.asp_files/home_icon.gif" alt="Home" align="middle" border="0" height="30" width="30">
+<a href="http://www.w3schools.com/default.asp" target="_top"><b>HOME</b></a> or
+<a href="#top" target="_top"><b>Top of Page</b></a>
+</td>
+<td align="center" width="40%">
+<a rel="nofollow" href="http://validator.w3.org/check?uri=referer" target="_blank">
+<img src="dom_obj_style.asp_files/valid-xhtml10.png" alt="Validate" border="0" height="31" width="88"></a>&nbsp;&nbsp;
+<a rel="nofollow" href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">
+<img src="dom_obj_style.asp_files/valid-css2.png" alt="Validate" border="0" height="31" width="88"></a>&nbsp;&nbsp;
+<a rel="nofollow" href="http://www.w3.org/WAI/WCAG1A-Conformance" title="Explanation of Level A Conformance" target="_blank">
+<img src="dom_obj_style.asp_files/wai.gif" alt="W3C-WAI level A conformance icon" border="0" height="31" width="88"></a>
+</td>
+<td align="right" width="30%">
+<a href="http://www.w3schools.com/htmldom/dom_obj_style.asp?output=print" target="_blank"><b>Printer Friendly</b></a>
+&nbsp;<img src="dom_obj_style.asp_files/printer_icon.gif" alt="Printer Friendly" align="middle" border="0" height="36" width="36">
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<p>W3Schools is for training only. We do not warrant the correctness of its content.
+The risk from using it lies entirely with the user.<br>
+While using this site, you agree to have read and accepted our
+<a class="black" href="http://www.w3schools.com/about/about_copyright.asp">terms of use</a> and
+<a class="black" href="http://www.w3schools.com/about/about_privacy.asp">privacy policy</a>.<br>
+<a class="black" href="http://www.w3schools.com/about/about_copyright.asp">Copyright 1999-2009</a> by Refsnes Data. All Rights Reserved.</p>
+</td>
+</tr>
+</tbody></table>
+
+</td>
+</tr></tbody></table>
+</center>
+
+</body></html>

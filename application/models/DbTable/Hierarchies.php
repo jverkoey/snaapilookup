@@ -15,14 +15,14 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 30 AND id = 1;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 31 AND id = 12;
 
-  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 30;
-  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 30;
+  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 31;
+  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 31;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    30, @parentRight, @parentRight + 1, 0,
-    'Command Line',
+    31, @parentRight, @parentRight + 1, 0,
+    'DOM',
     '');
 
   UNLOCK TABLES;

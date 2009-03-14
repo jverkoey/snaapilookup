@@ -151,7 +151,7 @@ class ScrapeController extends SnaapiController {
       if( preg_match("/<h2>The (.+?) Object<\/h2>\n<p>(.+)?<\/p>/", $contents, $matches) ) {
         $object_name = $matches[1];
         $description = $matches[2];
-        $this->view->results .= $name."\n";
+        $this->view->results .= $object_name."\n";
         $this->view->results .= $description."\n";
 
         $this->getFunctionsModel()->insertOrUpdateFunction(array(
@@ -164,23 +164,123 @@ class ScrapeController extends SnaapiController {
       } else {
         $this->view->results .= 'We couldn\'t find the description...' . "\n";
       }
+      
+      $is_dom = strpos($contents, 'HTML DOM <span class="color_h1">') !== false;
+      if( $is_dom ) {
+        $object_name = strtolower(str_replace(' ', '', $hierarchy['name']));
+      }
 
-      $properties_index = strpos($contents, 'Object Properties</h2>');
-      $methods_index = strpos($contents, 'Object Methods</h2>', $properties_index);
-      $methods_end = strpos($contents, '</table>', $methods_index);
-      if( $properties_index !== FALSE && $methods_index !== FALSE && $methods_end !== FALSE ) {
+      $properties_index = strpos($contents, 'Object Collections</h');
+      $end_index = strpos($contents, '</table>', $properties_index);
+      if( $properties_index !== FALSE && $end_index !== FALSE ) {
         $properties = array_slice(
           explode(
             '<tr>',
-            substr($contents, $properties_index, $methods_index - $properties_index)
+            substr($contents, $properties_index, $end_index - $properties_index)
           ),
           2
         );
 
         foreach( $properties as $property ) {
-          $elements = explode('<td valign="top">', $property);
+          $elements = explode('<td', $property);
           foreach( $elements as &$element ) {
-            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+            $element = trim(
+              str_replace(
+                '&nbsp;',
+                '',
+                preg_replace(
+                  '/^.+?>/',
+                  '',
+                  str_replace(
+                    "\n",
+                    '',
+                    strip_tags(
+                      $element,
+                      '<a>'
+                    )
+                  )
+                )
+              )
+            );
+          }
+          if( count($elements) <= 1 ) {
+            $this->view->results .= 'Invalid element list.'."\n";
+            $this->view->results .= print_r($property, true);
+            break;
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = str_replace('[]', '', $name);
+          $this->view->results .= $object_name.'.'.$name ." - ";
+          $this->view->results .= $link ." - ".$is_dom.' - ';
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $object_name.'.'.$name,
+            'url' => $link,
+            'short_description' => $desc
+          ));
+        }
+      }
+
+
+      $properties_index = strpos($contents, 'Object Properties</h');
+      $end_index = strpos($contents, '</table>', $properties_index);
+      if( $properties_index !== FALSE && $end_index !== FALSE ) {
+        $properties = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $properties_index, $end_index - $properties_index)
+          ),
+          2
+        );
+
+        foreach( $properties as $property ) {
+          $elements = explode('<td', $property);
+          foreach( $elements as &$element ) {
+            $element = trim(
+              str_replace(
+                '&nbsp;',
+                '',
+                preg_replace(
+                  '/^.+?>/',
+                  '',
+                  str_replace(
+                    "\n",
+                    '',
+                    strip_tags(
+                      $element,
+                      '<a>'
+                    )
+                  )
+                )
+              )
+            );
+          }
+          if( count($elements) <= 1 ) {
+            $this->view->results .= 'Invalid element list.'."\n";
+            $this->view->results .= print_r($property, true);
+            break;
           }
           $link = $elements[1];
           $desc = $elements[2];
@@ -203,7 +303,7 @@ class ScrapeController extends SnaapiController {
             }
           }
           $this->view->results .= $object_name.'.'.$name ." - ";
-          $this->view->results .= $link ." - ";
+          $this->view->results .= $link ." - ".$is_dom.' - ';
           $this->view->results .= $desc ."\n";
 
           $this->getFunctionsModel()->insertOrUpdateFunction(array(
@@ -214,11 +314,17 @@ class ScrapeController extends SnaapiController {
             'short_description' => $desc
           ));
         }
+      }
 
+      
+      $methods_index = strpos($contents, 'Object Methods</h');
+      $end_index = strpos($contents, '</table>', $methods_index);
+      
+      if( $methods_index !== FALSE && $end_index !== FALSE ) {
         $methods = array_slice(
           explode(
             '<tr>',
-            substr($contents, $methods_index, $methods_end - $methods_index)
+            substr($contents, $methods_index, $end_index - $methods_index)
           ),
           2
         );
@@ -262,9 +368,461 @@ class ScrapeController extends SnaapiController {
             'scrapeable' => 1
           ));
         }
-      } else {
-        $this->view->results .= 'We couldn\'t find the properties or methods...' . "\n";
+        continue;
       }
+
+      $start_index = strpos($contents, 'Top-level Functions</h2>');
+      $end_index = strpos($contents, '</table>', $start_index);
+      $start_prop_index = strpos($contents, 'Top-level Properties</h2>');
+      $end_prop_index = strpos($contents, '</table>', $start_prop_index);
+      if( $start_index !== false && $end_index !== false &&
+          $start_prop_index !== false && $end_prop_index !== false ) {
+        $functions = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_index, $end_index - $start_index)
+          ),
+          2
+        );
+
+        foreach( $functions as $function ) {
+          $elements = explode('<td valign="top">', $function);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          $this->view->results .= $name ." - ";
+          $this->view->results .= $link ." - ";
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+
+        $properties = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_prop_index, $end_prop_index - $start_prop_index)
+          ),
+          2
+        );
+
+        foreach( $properties as $property ) {
+          $elements = explode('<td valign="top">', $property);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          $this->view->results .= $name ." - ";
+          $this->view->results .= $link ." - ";
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+        continue;
+      }
+
+      $start_index = strpos($contents, '<h2>Event Handlers</h2>');
+      $end_index = strpos($contents, '</table>', $start_index);
+      if( $start_index !== false && $end_index !== false ) {
+        $events = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_index, $end_index - $start_index)
+          ),
+          2
+        );
+
+        foreach( $events as $event ) {
+          $elements = explode('<td valign="top">', $event);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          if( $is_dom ) {
+            $name = 'event.'.$name;
+          }
+          $this->view->results .= $name ." - ";
+          $this->view->results .= $link ." - " . $is_dom.' - ';
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+        if( !$is_dom ) {
+          continue;
+        }
+      }
+
+      $start_index = strpos($contents, 'Keyboard Attributes</h');
+      $end_index = strpos($contents, '</table>', $start_index);
+      if( $start_index !== false && $end_index !== false ) {
+        $events = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_index, $end_index - $start_index)
+          ),
+          2
+        );
+
+        foreach( $events as $event ) {
+          $elements = explode('<td valign="top">', $event);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          if( $is_dom ) {
+            $name = 'event.'.$name;
+          }
+          $this->view->results .= $name ." - ";
+          $this->view->results .= $link ." - " . $is_dom.' - ';
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+        if( !$is_dom ) {
+          continue;
+        }
+      }
+
+      $start_index = strpos($contents, 'Event Attributes</h');
+      $end_index = strpos($contents, '</table>', $start_index);
+      if( $start_index !== false && $end_index !== false ) {
+        $events = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_index, $end_index - $start_index)
+          ),
+          2
+        );
+
+        foreach( $events as $event ) {
+          $elements = explode('<td valign="top">', $event);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          if( $is_dom ) {
+            $name = 'event.'.$name;
+          }
+          $this->view->results .= $name ." - ";
+          $this->view->results .= $link ." - " . $is_dom.' - ';
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+        if( !$is_dom ) {
+          continue;
+        }
+      }
+
+      $start_index = strpos($contents, '<h3>Properties</h3>');
+      $end_index = strpos($contents, '</table>', $start_index);
+      if( $start_index !== false && $end_index !== false ) {
+        $events = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_index, $end_index - $start_index)
+          ),
+          2
+        );
+
+        foreach( $events as $event ) {
+          $elements = explode('<td valign="top">', $event);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          if( count($elements) < 2 ) {
+            $this->view->results .= 'Missing '.print_r($event);
+            continue;
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          $this->view->results .= $object_name.'.'.$name ." - ";
+          $this->view->results .= $link ." - " . $is_dom.' - ';
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $object_name.'.'.$name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+        if( !$is_dom ) {
+          continue;
+        }
+      }
+
+      $start_index = 0;
+      do {
+        $start_index = strpos($contents, 'properties</a></h3>', $start_index);
+        $end_index = strpos($contents, '</table>', $start_index);
+        if( $start_index !== false && $end_index !== false ) {
+          $events = array_slice(
+            explode(
+              '<tr>',
+              substr($contents, $start_index, $end_index - $start_index)
+            ),
+            2
+          );
+
+          foreach( $events as $event ) {
+            $elements = explode('<td valign="top">', $event);
+            foreach( $elements as &$element ) {
+              $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+            }
+            $link = $elements[1];
+            $desc = $elements[2];
+            $ff = $elements[3];
+            if( count($elements) >= 6 ) {
+              $ns = $elements[4];
+              $ie = $elements[5];
+            } else {
+              $ie = $elements[4];
+            }
+
+            $name = '';
+            if( $link ) {
+              if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+                $link = $matches[1];
+                $name = $matches[2];
+              } else {
+                $name = $link;
+                $link = '';
+              }
+            }
+            $name = preg_replace('/(\(.*?\))/', '', $name);
+            $this->view->results .= $object_name.'.'.$name ." - ";
+            $this->view->results .= $link ." - " . $is_dom.' - ';
+            $this->view->results .= $desc ."\n";
+  
+            $this->getFunctionsModel()->insertOrUpdateFunction(array(
+              'category' => $category_id,
+              'hierarchy' => $hierarchy['id'],
+              'name' => $object_name.'.'.$name,
+              'url' => $link,
+              'short_description' => $desc,
+              'scrapeable' => 1
+            ));
+          }
+          if( !$is_dom ) {
+            continue;
+          }
+        }
+        $start_index++;
+      } while( $start_index !== false );
+
+      $start_index = strpos($contents, 'Standard Properties</h3>');
+      $end_index = strpos($contents, '</table>', $start_index);
+      if( $start_index !== false && $end_index !== false ) {
+        $events = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $start_index, $end_index - $start_index)
+          ),
+          2
+        );
+
+        foreach( $events as $event ) {
+          $elements = explode('<td valign="top">', $event);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          $this->view->results .= $object_name.'.'.$name ." - ";
+          $this->view->results .= $link ." - " . $is_dom.' - ';
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $object_name.'.'.$name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+        if( !$is_dom ) {
+          continue;
+        }
+      }
+
+      $this->view->results .= 'We couldn\'t find the properties or methods...' . "\n";
 
     }
   }
