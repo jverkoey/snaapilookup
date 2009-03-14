@@ -779,7 +779,7 @@ Snap.TypeAhead.prototype = {
 
     this._elements.external.hide();
     if( this._elements.whyjoin ) {
-      this._elements.whyjoin.hide('fast');
+      this._elements.whyjoin.fadeOut('fast');
     }
     this._elements.result
       .html(html.join(''))
@@ -889,36 +889,51 @@ Snap.TypeAhead.prototype = {
     if( !this._displaying_frame || this._frame_url != url ) {
       this._displaying_frame = true;
       this._frame_url = url;
-      this._elements.logo.fadeOut('fast');
-      this._elements.catch_phrase.fadeOut('fast');
-      this._elements.filters.fadeOut('fast');
-      this._elements.small_logo.fadeIn('fast');
-      $('body').css({overflow:'hidden'});
-      $('#footer').hide();
-      this._elements.external_table.css({position:'absolute'});
-      this._elements.result.fadeOut('fast', function() {
+      var speed = 'fast';
+
+      this._elements.logo.fadeOut(speed);
+      this._elements.catch_phrase.fadeOut(speed);
+      this._elements.filters.fadeOut(speed);
+      this._elements.result.fadeOut(speed);
+
+      this._elements.search.fadeOut(speed, function() {
+        $('body').css({overflow:'hidden'});
+        $('#footer').hide();
+        this._elements.external_table.css({position:'absolute'});
+
+        // Magic number of pixels to shift thanks to "back to snaapi"
+        this._elements.dropdown.css({marginLeft:'53px'});
+
+        this._elements.search.fadeIn(speed);
+        this._elements.small_logo.fadeIn(speed);
         this._elements.external
           .html('<div id="eww">Eww, frames<br/><span class="reason">Just a sec, we\'re loading the reference page.</span></div><iframe src="'+url+'"></iframe>');
-        this._elements.external.show();
+        this._elements.external.fadeIn(speed);
       }.bind(this));
     }
   },
 
   _hide_iframe : function(url) {
-    this._displaying_frame = false;
-    this._elements.logo.fadeIn('fast');
-    this._elements.catch_phrase.fadeIn('fast');
-    $('body').css({overflow:'visible'});
-    $('#footer').show();
-    this._elements.external_table.css({position:'static'});
-    for( var filter in this._active_filters ) {
-      this._elements.filters.fadeIn('fast');
-      break;
+    if( this._displaying_frame ) {
+      this._displaying_frame = false;
+      var speed = 'fast';
+
+      this._elements.small_logo.fadeOut(speed);
+      this._elements.external.fadeOut(speed);
+
+      this._elements.search.fadeOut(speed, function() {
+
+        this._elements.logo.fadeIn(speed);
+        this._elements.catch_phrase.fadeIn(speed);
+        this._elements.search.fadeIn(speed);
+
+        this._elements.result.fadeIn(speed);
+        $('body').css({overflow:'visible'});
+        $('#footer').show();
+        this._elements.external_table.css({position:'static'});
+        this._elements.dropdown.css({marginLeft:''});
+      }.bind(this));
     }
-    this._elements.small_logo.hide();
-    this._elements.external.fadeOut('fast', function() {
-      this._elements.result.show();
-    }.bind(this));
   },
 
   _receive_social : function(result, textStatus) {
