@@ -68,6 +68,7 @@ class PermalinkController extends SnaapiController {
         $this->view->type = $name;
         $this->view->filter_type = $type;
         $this->view->function_name = $function_name;
+        $this->getLogsModel()->add(strtolower($name).'permalink', $function_name);
       }
     } else {
       $this->view->category = $category;
