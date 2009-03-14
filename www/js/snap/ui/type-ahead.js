@@ -442,6 +442,7 @@ Snap.TypeAhead.prototype = {
                     type      : filter.t,
                     filter_id : filter.d[i2].i,
                     name      : filter.d[i2].n,
+                    lower_name: filter.d[i2].n.toLowerCase(),
                     matches   : [{word: query, offset: offset, size: query.length}]
                   };
                   var unique_id = 'filter'+i+'-'+i2;
