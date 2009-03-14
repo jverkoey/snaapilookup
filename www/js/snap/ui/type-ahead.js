@@ -527,7 +527,7 @@ Snap.TypeAhead.prototype = {
         }
         for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
           var word = entry.matches[i2].word;
-          var offsets = entry.lower_name.gindexOf();
+          var offsets = entry.lower_name.gindexOf(word);
 
           for( var i3 = 0; i3 < offsets.length; ++i3 ) {
             var start = offsets[i3];
@@ -992,11 +992,11 @@ Snap.TypeAhead.prototype = {
             break;
           case 'CSS':
             function_info.data = window["eval"]("(" + function_info.data + ")");
-            if( !this._active_function.data.d ) {
-              this._active_function.data.d = 'Not defined';
+            if( !function_info.data.d ) {
+              function_info.data.d = 'Not defined';
             }
-            if( !this._active_function.data.i ) {
-              this._active_function.data.i = 'No';
+            if( !function_info.data.i ) {
+              function_info.data.i = 'No';
             }
             break;
         }
