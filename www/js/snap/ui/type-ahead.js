@@ -122,11 +122,11 @@ Snap.TypeAhead.prototype = {
     this._update_filter();
   },
 
-  register : function(i, data) {
+  register : function(index, data) {
     for( var i = 0; i < data.length; ++i ) {
       data[i].l = data[i].n.toLowerCase();
     }
-    this._database.all[i] = data;
+    this._database.all[index] = data;
 /*
     // Compile the index.
     var index = {};
