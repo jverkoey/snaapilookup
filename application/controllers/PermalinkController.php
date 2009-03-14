@@ -17,6 +17,10 @@ class PermalinkController extends SnaapiController {
     $this->language('CSS');
   }
 
+  public function javascriptAction() {
+    $this->language('Javascript');
+  }
+
   public function zendAction() {
     $this->framework('Zend');
   }
@@ -47,12 +51,13 @@ class PermalinkController extends SnaapiController {
   }
 
   private function category($name, $type) {
+    $category = $this->getCategoriesModel()->fetchCategoryByName($name);
     $function_name = $this->_request->getParam(1);
-    $result = $this->getFunctionsModel()->fetchByName($function_name);
+    $result = $this->getFunctionsModel()->fetchByName($category, $function_name);
     if( $result ) {
       $this->view->headTitle($name);
       $this->view->headTitle($function_name);
-      $this->view->category = $result['category'];
+      $this->view->category = $category;
       $this->view->id = $result['id'];
       $this->view->hierarchy = $result['hierarchy'];
       $this->view->type = $name;

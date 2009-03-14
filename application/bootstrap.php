@@ -39,7 +39,8 @@ $categories = array(
   'facebook api',
   'django',
   'firebug',
-  'iphone'
+  'iphone',
+  'javascript'
 );
 
 foreach( $categories as $category ) {

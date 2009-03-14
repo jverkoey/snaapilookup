@@ -37,7 +37,7 @@ class Model_Functions {
   /**
    * Fetch a specific function.
    */
-  public function fetchByName($name) {
+  public function fetchByName($category, $name) {
     $table = $this->getTable();
     $result = $table->fetchAll(
       $table
@@ -45,10 +45,10 @@ class Model_Functions {
         ->from(
           $table,
           array(
-            'category',
             'id',
             'hierarchy'
           ))
+        ->where('category = ?', $category)  
         ->where('name = ?', $name)
     )->toArray();
     return empty($result) ? null : $result[0];
