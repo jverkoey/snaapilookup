@@ -23,7 +23,7 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
     30, @parentRight, @parentRight + 1, 0,
     'Command Line',
-    'http://getfirebug.com/commandline.html');
+    '');
 
   UNLOCK TABLES;
   

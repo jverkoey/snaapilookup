@@ -16,7 +16,7 @@ class BuildController extends SnaapiController {
 
       $current_revision = $REVISIONS['STATIC_JS_BUILD'];
       $static_js_path = APPLICATION_PATH . '/../www/js/static/data.js';
-      $contents = file_get_contents($static_js_path);
+      $contents = @file_get_contents($static_js_path);
       $new_contents = Zend_Json::encode(array(
         array('t'=>'Framework', 'd'=>$frameworks),
         array('t'=>'Language', 'd'=>$languages))
@@ -48,7 +48,7 @@ $REVISIONS[\'STATIC_JS_BUILD\'] = '.$new_revision.';');
 
       $current_revision = $REVISIONS['STATIC_HIER_BUILD'];
       $static_hier_path = APPLICATION_PATH . '/../www/js/static/hier.js';
-      $contents = file_get_contents($static_hier_path);
+      $contents = @file_get_contents($static_hier_path);
 
       $new_contents = Zend_Json::encode($all_hierarchies);
       $new_contents = preg_replace('/"([a-z])"/', '$1', $new_contents);

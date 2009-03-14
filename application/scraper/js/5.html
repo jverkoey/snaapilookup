@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"><head>
+
+
+<title>JavaScript Math Object Reference</title>
+ 
+<link rel="shortcut icon" href="http://www.w3schools.com/favicon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="Keywords" content="xml,tutorial,html,dhtml,css,xsl,xhtml,javascript,asp,ado,vbscript,dom,sql,colors,soap,php,authoring,programming,training,learning,beginner's guide,primer,lessons,school,howto,reference,examples,samples,source code,tags,demos,tips,links,FAQ,tag list,forms,frames,color table,w3c,cascading style sheets,active server pages,dynamic html,internet,database,development,Web building,Webmaster,html guide">
+
+<meta name="Description" content="Free HTML XHTML CSS JavaScript DHTML XML DOM XSL XSLT RSS AJAX ASP ADO PHP SQL tutorials, references, examples for web building.">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+
+<link rel="stylesheet" type="text/css" href="jsref_obj_math.asp_files/stdtheme.css">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="jsref_obj_math.asp_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3855518-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</head><body>
+
+<center>
+<table class="container" style="width: 904px; margin-bottom: 4px;" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="center">
+
+<a name="top"></a>
+<table style="border-bottom: 1px solid black; margin-top: 4px; background-color: rgb(96, 96, 96);" border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr>
+<td width="15">&nbsp;</td>
+<td style="height: 50px; text-align: left;" valign="middle" width="500">
+<a href="http://www.w3schools.com/">
+<img style="margin-top: 6px;" src="jsref_obj_math.asp_files/h_logo.gif" alt="w3schools" title="w3schools" border="0" height="20" width="203"></a>
+</td>
+<td style="color: white; font-size: 10px; font-weight: bold;" align="right" valign="bottom">
+<form style="margin: 0px; padding: 0px;" method="get" name="searchform" action="http://www.google.com/search" target="_blank">
+Search W3Schools : <input name="sitesearch" value="www.w3schools.com" type="hidden">
+<input alt="search" style="width: 128px;" name="as_q" size="20" value="" type="text">
+<input style="margin-bottom: 10px;" src="jsref_obj_math.asp_files/search.gif" align="middle" type="image">
+</form>
+</td>
+<td>&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table style="background-color: rgb(96, 96, 96);" border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr>
+<td class="blacknav" style="border-left: medium none;" width="50"><a class="m_item" href="http://www.w3schools.com/default.asp">HOME</a></td>
+<td class="blacknav" width="50"><a class="m_item" href="http://www.w3schools.com/html/default.asp">HTML</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/css/default.asp">CSS</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/xml/default.asp">XML</a></td>
+<td class="blacknav" width="90"><a class="m_item" href="http://www.w3schools.com/js/default.asp">JAVASCRIPT</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/asp/default.asp">ASP</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/php/default.asp">PHP</a></td>
+<td class="blacknav" width="40"><a class="m_item" href="http://www.w3schools.com/sql/default.asp">SQL</a></td>
+<td class="blacknav" width="60"><a class="m_item" href="http://www.w3schools.com/sitemap/sitemap_tutorials.asp">MORE...</a></td>
+<td class="blacknav">&nbsp;</td>
+<td class="blacknav" width="80"><a class="m_item" href="http://www.w3schools.com/sitemap/sitemap_references.asp">References</a></td>
+<td class="blacknav" width="70"><a class="m_item" href="http://www.w3schools.com/sitemap/sitemap_examples.asp">Examples</a></td>
+<td class="blacknav" width="50"><a class="m_item" target="_blank" href="http://www.w3schools.com/forum/default.asp">Forum</a></td>
+<td class="blacknav" style="border-right: medium none;" width="50"><a class="m_item" href="http://www.w3schools.com/about/default.asp">About</a></td>
+</tr>
+</tbody></table>
+
+<table class="topad" border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr>
+<td style="border: 1px solid rgb(195, 195, 195); padding-top: 5px; color: rgb(96, 96, 96); text-align: center;" valign="top" width="155">
+
+<br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.dotnetcart.com/"><img src="jsref_obj_math.asp_files/iis_iconcart.gif" alt="Shopping Cart" border="0" height="30" width="100"></a>
+<br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.dotnetcart.com/">ASP.NET<br>Shopping Cart</a>
+
+</td>
+<td width="7">&nbsp;</td>
+<td style="height: 90px; background-color: rgb(255, 255, 255);" align="center" valign="top" width="728">
+
+<iframe style="background-color: rgb(255, 255, 255);" src="jsref_obj_math.asp_files/bannerframe.html" marginwidth="0" marginheight="0" frameborder="0" height="90" scrolling="no" width="728">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+
+</td>
+</tr>
+</tbody></table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="890">
+<tbody><tr><td class="left_container" align="left" valign="top" width="155">
+<table cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><td class="content" align="left" valign="top"><h2 class="left"><span class="left_h2">JS</span> Reference</h2>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/default.asp">JS Overview</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_array.asp">JS Array</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_boolean.asp">JS Boolean</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_date.asp">JS Date</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_math.asp" style="font-weight: bold;">JS Math</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_number.asp">JS Number</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_string.asp">JS String</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp">JS RegExp</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_obj_global.asp">JS Functions</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/jsref/jsref_events.asp">JS Events</a><br>
+<br>
+<h2 class="left"><span class="left_h2">DOM</span> Objects</h2>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_window.asp">DOM Window</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_navigator.asp">DOM Navigator</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_screen.asp">DOM Screen</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_history.asp">DOM History</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_location.asp">DOM Location</a><br>
+<br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_document.asp">DOM Document</a><br>
+<br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_anchor.asp">DOM Anchor</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_area.asp">DOM Area</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_base.asp">DOM Base</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_body.asp">DOM Body</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_pushbutton.asp">DOM Button</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_event.asp">DOM Event</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_form.asp">DOM Form</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_frame.asp">DOM Frame</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_frameset.asp">DOM Frameset</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_iframe.asp">DOM IFrame</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_image.asp">DOM Image</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_button.asp">DOM Input Button</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_checkbox.asp">DOM Input Checkbox</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_fileupload.asp">DOM Input File</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_hidden.asp">DOM Input Hidden</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_password.asp">DOM Input Password</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_radio.asp">DOM Input Radio</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_reset.asp">DOM Input Reset</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_submit.asp">DOM Input Submit</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_text.asp">DOM Input Text</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_link.asp">DOM Link</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_meta.asp">DOM Meta</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_object.asp">DOM Object</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_option.asp">DOM Option</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_select.asp">DOM Select</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_style.asp">DOM Style</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_table.asp">DOM Table</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_tabledata.asp">DOM TableCell</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_tablerow.asp">DOM TableRow</a><br>
+<a class="left" target="_top" href="http://www.w3schools.com/htmldom/dom_obj_textarea.asp">DOM Textarea</a><br>
+
+
+
+<br>
+</td></tr></tbody></table>
+</td>
+<td width="6">&nbsp;</td>
+<td align="left" valign="top">
+<table class="page" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr>
+<td style="width: 8px; background-image: url(/images/pagetop_topleft.gif); background-color: transparent; background-repeat: no-repeat;"></td>
+<td style="background-image: url(/images/pagetop_gradient.gif); background-color: transparent; background-repeat: repeat-x; padding-top: 10px;">
+
+<h1>JavaScript <span class="color_h1">Math</span> Object Reference</h1>
+<hr>
+
+<h2>The Math Object</h2>
+<p>The Math object allows you to perform mathematical tasks.</p>
+<p><b>Syntax for using properties/methods of Math:</b></p>
+<table class="ex" id="table6" border="1" cellspacing="0" width="100%">
+    <tbody><tr>
+      <td>
+        <pre>var pi_value=Math.PI;
+var sqrt_value=Math.sqrt(16);</pre>
+      </td>
+    </tr>
+</tbody></table>
+
+<p><b>Note:</b> Math is not a constructor. All properties and methods of Math 
+can be called by using Math as an object without creating it.</p>
+<h2>Math Object Properties</h2>
+<p><b>FF</b>: Firefox, <b>N</b>: Netscape, <b>IE</b>: Internet Explorer<br>
+</p>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" width="23%">Property</th>
+    <th align="left" width="70%">Description</th>
+    <th align="left" width="4%">FF</th>
+    <th align="left" width="4%">N</th>
+    <th align="left" width="4%">IE&nbsp;</th>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_e.asp">E</a></td>
+    <td valign="top">Returns Euler's constant (approx. 2.718)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_ln2.asp">LN2</a></td>
+    <td valign="top">Returns the natural logarithm of 2 (approx. 0.693)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_ln10.asp">LN10</a></td>
+    <td valign="top">Returns the natural logarithm of 10 (approx. 2.302)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_log2e.asp">LOG2E</a></td>
+    <td valign="top">Returns the base-2 logarithm of E (approx. 1.442)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_log10e.asp">LOG10E</a></td>
+    <td valign="top">Returns the base-10 logarithm of E (approx. 0.434)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_pi.asp">PI</a></td>
+    <td valign="top">Returns PI (approx. 3.14159)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_sqrt1_2.asp">SQRT1_2</a></td>
+    <td valign="top">Returns the square root of 1/2 (approx. 0.707)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_sqrt2.asp">SQRT2</a></td>
+    <td valign="top">Returns the square root of 2 (approx. 1.414)</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+</tbody></table>
+
+<h2>Math Object Methods</h2>
+<table class="reference" border="1" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <th align="left" valign="top" width="23%">Method</th>
+    <th align="left" valign="top" width="70%">Description</th>
+    <th align="left" valign="top" width="4%">FF</th>
+    <th align="left" valign="top" width="4%">N</th>
+    <th align="left" valign="top" width="4%">IE</th>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_abs.asp">abs(x)</a></td>
+    <td valign="top">Returns the absolute value of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_acos.asp">acos(x)</a></td>
+    <td valign="top">Returns the arccosine of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_asin.asp">asin(x)</a></td>
+    <td valign="top">Returns the arcsine of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_atan.asp">atan(x)</a></td>
+    <td valign="top">Returns the arctangent of x as a numeric value between 
+	-PI/2 and PI/2 radians</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_atan.asp">atan2(y,x)</a></td>
+    <td valign="top">Returns the angle theta of an (x,y) point as a numeric 
+	value between -PI and PI radians</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_ceil.asp">ceil(x)</a></td>
+    <td valign="top">Returns the value of a number rounded upwards to the 
+	nearest integer</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_cos.asp">cos(x)</a></td>
+    <td valign="top">Returns the cosine of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_exp.asp">exp(x)</a></td>
+    <td valign="top">Returns the value of E<sup>x</sup></td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_floor.asp">floor(x)</a></td>
+    <td valign="top">Returns the value of a number rounded downwards to the 
+	nearest integer</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_log.asp">log(x)</a></td>
+    <td valign="top">Returns the natural logarithm (base E) of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_max.asp">max(x,y)</a></td>
+    <td valign="top">Returns the number with the highest value of x and y</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_min.asp">min(x,y)</a></td>
+    <td valign="top">Returns the number with the lowest value of x and y</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_pow.asp">pow(x,y)</a></td>
+    <td valign="top">Returns the value of x to the power of y</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_random.asp">random()</a></td>
+    <td valign="top">Returns a random number between 0 and 1</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_round.asp">round(x)</a></td>
+    <td valign="top">Rounds a number to the nearest integer</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_sin.asp">sin(x)</a></td>
+    <td valign="top">Returns the sine of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_sqrt.asp">sqrt(x)</a></td>
+    <td valign="top">Returns the square root of a number</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a target="_top" href="http://www.w3schools.com/jsref/jsref_tan.asp">tan(x)</a></td>
+    <td valign="top">Returns the tangent of an angle</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">3</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_toSource_math.asp">toSource()</a></td>
+    <td valign="top">Represents the source code of an object</td>
+    <td valign="top">1</td>
+    <td valign="top">4</td>
+    <td valign="top">-</td>
+  </tr>
+  <tr>
+    <td valign="top"><a href="http://www.w3schools.com/jsref/jsref_valueOf_math.asp">valueOf()</a></td>
+    <td valign="top">Returns the primitive value of a Math object</td>
+    <td valign="top">1</td>
+    <td valign="top">2</td>
+    <td valign="top">4</td>
+  </tr>
+  </tbody></table>
+<br>
+
+<hr>
+
+<!-- **** SPOTLIGHTS 1 **** -->
+<iframe src="jsref_obj_math.asp_files/aspallframe.html" marginwidth="0" marginheight="0" frameborder="0" height="120" scrolling="no" width="100%">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
+<hr>
+<!-- **** SPOTLIGHTS 2 **** -->
+
+
+<!-- **** SPOTLIGHTS 3 **** -->
+<script type="text/javascript"><!--
+document.write('<table cellpadding="0" cellspacing="0"><tr><td width="100">&nbsp;</td><td>');
+google_ad_client = "pub-3440800076797949";
+/*txt*/
+google_ad_slot = "1699448869";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script><table cellpadding="0" cellspacing="0"><tbody><tr><td width="100">&nbsp;</td><td>
+<script type="text/javascript" src="jsref_obj_math.asp_files/show_ads.js">
+</script><script src="jsref_obj_math.asp_files/expansion_embed.js"></script><script src="jsref_obj_math.asp_files/test_domain.js"></script><script>window.google_render_ad();</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 280px; position: relative; visibility: visible; width: 336px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 280px; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="jsref_obj_math.asp_files/ads.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins>
+<script type="text/javascript">
+<!--
+document.write("</td></tr></table>");
+//-->
+</script></td></tr></tbody></table>
+
+
+</td></tr>
+</tbody></table>
+
+</td>
+
+<td style="width: 8px; background-image: url(/images/pagetop_topright.gif); background-color: transparent; background-repeat: no-repeat;"></td>
+
+<td width="6">&nbsp;</td>
+
+<td class="right_container" align="center" valign="top" width="155">
+<table class="right" style="margin-top: 0px;" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right">WEB HOSTING</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.dotdnr.com/">$15 Domain Name<br>Registration</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.lunarpages.com/">Best Web Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.eukhost.com/">PHP MySQL Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.web-hosting-top.com/">Top 10 Web Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.heartinternet.co.uk/index.shtml">UK Reseller Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.webhosting.uk.com/">Web Hosting</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.imhosted.com/">FREE Web Hosting</a><br>
+</td></tr>
+</tbody></table>
+
+<table class="right" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right">WEB BUILDING</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.trendytemplates.com/">Website Templates</a><br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.trendyflash.com/">Flash Templates</a><br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.designer360.com/">Website Builder</a><br>
+<a class="aright" target="_blank" rel="nofollow" href="http://www.sitecubeplus.com/">Internet Business Opportunity</a>
+</td></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.getafreelancer.com/">Custom Programming</a>
+</td></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.ektron.com/web-content-management-solutions.aspx?cpid=BAC-2105&amp;campaignid=2105">
+FREE Trial or Demo<br>
+Web Content Manager<br>
+Forms,Web Alerts,RSS</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.altova.com/ref/?s=w3s_text&amp;q=xmlspy">
+Download XML editor</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.wix.com/?utm_campaign=w3&amp;experiment_id=w3">FREE Flash Website</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.dreamtemplate.com/?ref=w3txt">
+FREE Web Templates</a>
+</td></tr>
+<tr>
+<td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.flashcomponents.net/?ref=w3school">Flash Components</a>
+</td></tr>
+</tbody></table>
+
+<table class="right" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right">EDUCATION</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" rel="nofollow" href="http://www.all-computer-schools.com/featured/web-design-development-programs?src=asd_acom_062007_00000001">US Web Design Schools</a>
+</td></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">HTML Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">JavaScript Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">XML Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">PHP Certification</a><br>
+<a class="aright" target="_blank" href="http://www.w3schools.com/cert/default.asp">ASP Certification</a>
+</td></tr>
+</tbody></table>
+
+<table class="right" cellpadding="0" cellspacing="0" width="100%">
+<tbody><tr><th class="right" align="center">STATISTICS</th></tr>
+<tr><td class="right" align="center">
+<a class="aright" target="_top" href="http://www.w3schools.com/browsers/browsers_stats.asp">Browser Statistics</a><br>
+<a class="aright" target="_top" href="http://www.w3schools.com/browsers/browsers_os.asp">Browser OS</a><br>
+<a class="aright" target="_top" href="http://www.w3schools.com/browsers/browsers_display.asp">Browser Display</a>
+</td></tr></tbody></table>
+
+
+</td>
+</tr></tbody></table>
+
+<table style="border-top: 1px solid rgb(195, 195, 195); border-bottom: 1px solid rgb(195, 195, 195); margin-top: 2px;" border="0" cellpadding="5" width="100%">
+<tbody><tr>
+<td align="left" width="30%">
+<img src="jsref_obj_math.asp_files/home_icon.gif" alt="Home" align="middle" border="0" height="30" width="30">
+<a href="http://www.w3schools.com/default.asp" target="_top"><b>HOME</b></a> or
+<a href="#top" target="_top"><b>Top of Page</b></a>
+</td>
+<td align="center" width="40%">
+<a rel="nofollow" href="http://validator.w3.org/check?uri=referer" target="_blank">
+<img src="jsref_obj_math.asp_files/valid-xhtml10.png" alt="Validate" border="0" height="31" width="88"></a>&nbsp;&nbsp;
+<a rel="nofollow" href="http://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">
+<img src="jsref_obj_math.asp_files/valid-css2.png" alt="Validate" border="0" height="31" width="88"></a>&nbsp;&nbsp;
+<a rel="nofollow" href="http://www.w3.org/WAI/WCAG1A-Conformance" title="Explanation of Level A Conformance" target="_blank">
+<img src="jsref_obj_math.asp_files/wai.gif" alt="W3C-WAI level A conformance icon" border="0" height="31" width="88"></a>
+</td>
+<td align="right" width="30%">
+<a href="http://www.w3schools.com/jsref/jsref_obj_math.asp?output=print" target="_blank"><b>Printer Friendly</b></a>
+&nbsp;<img src="jsref_obj_math.asp_files/printer_icon.gif" alt="Printer Friendly" align="middle" border="0" height="36" width="36">
+</td>
+</tr>
+<tr>
+<td colspan="3">
+<p>W3Schools is for training only. We do not warrant the correctness of its content.
+The risk from using it lies entirely with the user.<br>
+While using this site, you agree to have read and accepted our
+<a class="black" href="http://www.w3schools.com/about/about_copyright.asp">terms of use</a> and
+<a class="black" href="http://www.w3schools.com/about/about_privacy.asp">privacy policy</a>.<br>
+<a class="black" href="http://www.w3schools.com/about/about_copyright.asp">Copyright 1999-2009</a> by Refsnes Data. All Rights Reserved.</p>
+</td>
+</tr>
+</tbody></table>
+
+</td>
+</tr></tbody></table>
+</center>
+
+</body></html>

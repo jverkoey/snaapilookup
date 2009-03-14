@@ -109,6 +109,166 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function jsAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      $this->scrapeJavascript();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeJavascript() {
+    $category = 'Javascript';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $contents = file_get_contents(APPLICATION_PATH . '/scraper/js/'.$hierarchy['id'].'.html');
+
+      if( preg_match("/<h2>The (.+?) Object<\/h2>\n<p>(.+)?<\/p>/", $contents, $matches) ) {
+        $object_name = $matches[1];
+        $description = $matches[2];
+        $this->view->results .= $name."\n";
+        $this->view->results .= $description."\n";
+
+        $this->getFunctionsModel()->insertOrUpdateFunction(array(
+          'category' => $category_id,
+          'hierarchy' => $hierarchy['id'],
+          'name' => $object_name,
+          'url' => $source_url,
+          'short_description' => $description
+        ));
+      } else {
+        $this->view->results .= 'We couldn\'t find the description...' . "\n";
+      }
+
+      $properties_index = strpos($contents, 'Object Properties</h2>');
+      $methods_index = strpos($contents, 'Object Methods</h2>', $properties_index);
+      $methods_end = strpos($contents, '</table>', $methods_index);
+      if( $properties_index !== FALSE && $methods_index !== FALSE && $methods_end !== FALSE ) {
+        $properties = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $properties_index, $methods_index - $properties_index)
+          ),
+          2
+        );
+
+        foreach( $properties as $property ) {
+          $elements = explode('<td valign="top">', $property);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $this->view->results .= $object_name.'.'.$name ." - ";
+          $this->view->results .= $link ." - ";
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $object_name.'.'.$name,
+            'url' => $link,
+            'short_description' => $desc
+          ));
+        }
+
+        $methods = array_slice(
+          explode(
+            '<tr>',
+            substr($contents, $methods_index, $methods_end - $methods_index)
+          ),
+          2
+        );
+
+        foreach( $methods as $method ) {
+          $elements = explode('<td valign="top">', $method);
+          foreach( $elements as &$element ) {
+            $element = trim(str_replace('&nbsp;', '', str_replace("\n", '', strip_tags($element, '<a>'))));
+          }
+          $link = $elements[1];
+          $desc = $elements[2];
+          $ff = $elements[3];
+          if( count($elements) >= 6 ) {
+            $ns = $elements[4];
+            $ie = $elements[5];
+          } else {
+            $ie = $elements[4];
+          }
+
+          $name = '';
+          if( $link ) {
+            if( preg_match('/<a(?: target="_top")? href="(.+?)">(.+)?<\/a>/', $link, $matches) ) {
+              $link = $matches[1];
+              $name = $matches[2];
+            } else {
+              $name = $link;
+              $link = '';
+            }
+          }
+          $name = preg_replace('/(\(.*?\))/', '', $name);
+          $this->view->results .= $object_name.'.'.$name ." - ";
+          $this->view->results .= $link ." - ";
+          $this->view->results .= $desc ."\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $object_name.'.'.$name,
+            'url' => $link,
+            'short_description' => $desc,
+            'scrapeable' => 1
+          ));
+        }
+      } else {
+        $this->view->results .= 'We couldn\'t find the properties or methods...' . "\n";
+      }
+
+    }
+  }
+
   private function scrapeiPhone() {
     $category = 'iPhone';
 
