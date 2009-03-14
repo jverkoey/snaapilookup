@@ -589,7 +589,11 @@ Snap.TypeAhead.prototype = {
           regex.push(match.word);
         }
 
-        name = name.gsub(new RegExp('('+regex.join('|').replace('+', '\\+')+')','i'), function(match) {
+        name = name.gsub(new RegExp('('+regex.join('|')
+          .replace('(', '\\(')
+          .replace(')', '\\)')
+          .replace('*', '\\*')
+          .replace('+', '\\+')+')','i'), function(match) {
           return '<em>' + match[0] + '</em>';
         });
 

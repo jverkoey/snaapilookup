@@ -120,6 +120,83 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function jqueryAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      $this->scrapejQuery();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapejQuery() {
+    $category = 'jQuery';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $contents = file_get_contents($source_url);
+
+      $start_index = strpos($contents, '<div class="options list">');
+      if( $start_index === false ) {
+        $this->view->results .= 'Couldn\'t find the options list, skipping...' . "\n";
+        continue;
+      }
+
+      $end_index = strpos($contents, '<div class="printfooter">', $start_index);
+      if( $end_index === false ) {
+        $this->view->results .= 'Couldn\'t find the end of the options list, skipping...' . "\n";
+        continue;
+      }
+
+      $data = substr($contents, $start_index, $end_index - $start_index);
+
+      $elements = explode('tr class="option"', $data);
+      foreach( $elements as $element ) {
+        if( preg_match('/<a href="(.+?)" title=".+?">(.+?)<\/a><\/b>.+?<td colspan="2" class="desc">(.+?)<\/td>/', $element, $matches) ) {
+          $link = 'http://docs.jquery.com'.$matches[1];
+          $name = trim(str_replace(' )', ')', str_replace('&nbsp;', '', strip_tags($matches[2]))));
+          $desc = trim(strip_tags($matches[3], '<b>'));
+          
+          $this->view->results .= $link.' - '.$name."\n";
+          $this->view->results .= $desc."\n\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $link,
+            'short_description' => $desc
+          ));
+        } else {
+          //$this->view->results .= htmlentities($element)."\n\n";
+        }
+      }
+    }
+  }
+
   private function scrapeJavascript() {
     $category = 'Javascript';
 

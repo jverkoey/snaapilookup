@@ -41,6 +41,10 @@ class PermalinkController extends SnaapiController {
     $this->framework('iPhone');
   }
 
+  public function jqueryAction() {
+    $this->framework('jQuery');
+  }
+
 
   private function language($name) {
     $this->category($name, 'Language');

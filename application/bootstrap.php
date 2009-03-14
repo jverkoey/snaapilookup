@@ -40,7 +40,8 @@ $categories = array(
   'django',
   'firebug',
   'iphone',
-  'javascript'
+  'javascript',
+  'jquery'
 );
 
 foreach( $categories as $category ) {
