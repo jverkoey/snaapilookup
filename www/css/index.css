@@ -232,6 +232,10 @@
   font-size: 1.3em;
 }
 
+#result .social .data pre {
+  overflow: visible;
+}
+
 #result .social .user {
   text-align: right;
   color: #555;
