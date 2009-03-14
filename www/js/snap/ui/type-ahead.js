@@ -60,10 +60,6 @@ Snap.TypeAhead = function( elementIDs) {
   this._ancestry_timer = null;
   this._hierarchy_timer = null;
 
-  this._query_timer = null;
-  this._active_search = null;
-  this._cached_query_results = null;
-
   this._has_changed_since_selection = null;
 
   this._displaying_frame = false;
@@ -122,11 +118,19 @@ Snap.TypeAhead.prototype = {
     this._update_filter();
   },
 
-  register : function(index, data) {
+  register : function(category, data) {
     for( var i = 0; i < data.length; ++i ) {
       data[i].l = data[i].n.toLowerCase();
+      data[i].e = {
+          type      : this._id_to_category[category],
+          category  : category,
+          hierarchy : data[i].h,
+          function_id : data[i].i,
+          name      : data[i].n,
+          matches   : null
+      };
     }
-    this._database.all[index] = data;
+    this._database.all[category] = data;
 /*
     // Compile the index.
     var index = {};
@@ -162,7 +166,6 @@ Snap.TypeAhead.prototype = {
         this._hover_timer = setTimeout(this._hover.bind(this), 1000);
         this._current_value = new_val;
         this._elements.dropdown.fadeIn('fast');
-        this._cached_query_results = null;
         this._update_filter();
         this._has_changed_since_selection = true;
       }
@@ -438,8 +441,7 @@ Snap.TypeAhead.prototype = {
                     type      : filter.t,
                     filter_id : filter.d[i2].i,
                     name      : filter.d[i2].n,
-                    matches   : [{word: query, offset: offset, size: query.length}],
-                    score     : query.length * 100 / filter.d[i2].n.length * (offset == 0 ? 2 : 1)
+                    matches   : [{word: query, offset: offset, size: query.length}]
                   };
                   var unique_id = 'filter'+i+'-'+i2;
                   hash_results[unique_id] = entry;
@@ -467,7 +469,6 @@ Snap.TypeAhead.prototype = {
           }
         }
 
-        console.time('dbsearch');
         var all = this._database.all;
         for( var category in all ) {
           var check;
@@ -489,15 +490,8 @@ Snap.TypeAhead.prototype = {
               var offset = list[i].l.indexOf(words[i2]);
               if( offset >= 0 ) {
                 if( hash_results[unique_id] == undefined ) {
-                  var entry = {
-                    type      : this._id_to_category[category],
-                    category  : category,
-                    hierarchy : list[i].h,
-                    function_id : list[i].i,
-                    name      : list[i].n,
-                    matches   : []
-                  };
-                  hash_results[unique_id] = entry;
+                  hash_results[unique_id] = list[i].e;
+                  hash_results[unique_id].matches = [];
                 }
 
                 hash_results[unique_id].matches.push({word: words[i2], offset: offset, size: words[i2].length});
@@ -518,37 +512,8 @@ Snap.TypeAhead.prototype = {
             }
           }
         }
-        console.timeEnd('dbsearch');
-      } else if( this._cached_query_results ) {
-        var query = trimmed_value;
-        var query_results = this._cached_query_results;
-        for( var i = 0; i < query_results.length; ++i ) {
-          var offset = query_results[i].n.toLowerCase().indexOf(query.toLowerCase());
-          if( offset >= 0 ) {
-            var entry = {
-              type      : this._id_to_category[query_results[i].c] || 'Loading...',
-              category  : query_results[i].c,
-              hierarchy : query_results[i].h,
-              function_id : query_results[i].i,
-              name      : query_results[i].n,
-              matches   : [{word: query, offset: offset, size: query.length}],
-              score     : query.length * 100 / query_results[i].n.length * (offset == 0 ? 2 : 1)
-            };
-            var unique_id = 'query'+i;
-            hash_results[unique_id] = entry;
-            results.push(unique_id);
-          }
-        }
-      } else {
-        if( this._query_timer ) {
-          clearTimeout(this._query_timer);
-          this._query_timer = null;
-        }
-        this._query_timer = setTimeout(this._execute_query.bind(this, trimmed_value), 10);
-        return;
       }
 
-      console.time('calcscore');
       // Calculate the score for each result.
       // Score = sum total of matched characters.
       for( var i = 0; i < results.length; ++i ) {
@@ -582,9 +547,7 @@ Snap.TypeAhead.prototype = {
           }
         }
       }
-      console.timeEnd('calcscore');
 
-      console.time('sort');
       // Sort by score.
       function by(left, right) {
         var left_entry = hash_results[left];
@@ -592,9 +555,7 @@ Snap.TypeAhead.prototype = {
         return right_entry.score - left_entry.score;
       }
       results = results.sort(by);
-      console.timeEnd('sort');
 
-      console.time('createList');
       results = results.slice(0,10);
 
       if( results.length > 0 ) {
@@ -607,7 +568,6 @@ Snap.TypeAhead.prototype = {
         this._list = null;
         this._selection = -1;
       }
-      console.timeEnd('createList');
 
       this._render_selection();
     }
@@ -705,40 +665,6 @@ Snap.TypeAhead.prototype = {
     }
 
     return null;
-  },
-
-  _execute_query : function(query) {
-    if( this._active_search ) {
-      this._active_search.abort();
-    }
-    this._active_search = $.ajax({
-      type    : 'GET',
-      url     : '/search',
-      dataType: 'json',
-      query   : query,
-      data    : {
-        query   : query,
-        filters : this._flatten_filters()
-      },
-      success : this._receive_search.bind(this),
-      failure : this._fail_to_receive_search.bind(this)
-    });
-  },
-
-  _receive_search : function(result, textStatus) {
-    this._active_search = null;
-    if( result.s ) {
-      if( result.q == $.trim(this._current_value) ) {
-        this._cached_query_results = result.r;
-        this._update_filter();
-      }
-    } else {
-      this._cached_query_results = null;
-    }
-  },
-
-  _fail_to_receive_search : function(result, textStatus) {
-    this._active_search = null;
   },
 
   _render_function : function() {
