@@ -29,6 +29,10 @@ class PermalinkController extends SnaapiController {
     $this->language('django');
   }
 
+  public function firebugAction() {
+    $this->language('Firebug');
+  }
+
   private function language($name) {
     $function_name = $this->_request->getParam(1);
     $result = $this->getFunctionsModel()->fetchByName($function_name);

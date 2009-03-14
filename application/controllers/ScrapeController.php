@@ -98,6 +98,74 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function iphoneAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      $this->scrapeiPhone();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeiPhone() {
+    $category = 'iPhone';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $opts = array(
+        'http'=>array(
+          'method'=>"GET",
+          'header'=>"Accept-language: en\r\n"
+        )
+      );
+
+      $context = stream_context_create($opts);
+
+      $contents = file_get_contents($source_url, false, $context);
+
+      $OVERVIEW_START = '<h2>Overview</h2><p class="spaceabove">';
+      $start_index = strpos($contents, $OVERVIEW_START);
+      if( $start_index === FALSE ) {
+        $this->view->results .= 'We didn\'t find an overview, skipping...' . "\n";
+        continue;
+      }
+      $start_index += strlen($OVERVIEW_START);
+      $end_index = strpos($contents, '</p>', $start_index);
+      if( $end_index === FALSE ) {
+        $this->view->results .= 'We couldn\'t find the end of the overview, skipping...' . "\n";
+        continue;
+      }
+
+      $overview = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
+      $overview = strip_tags($overview, '<b><code>');
+
+      $this->view->results .= $overview."\n";
+    }
+  }
+
   private function scrapeDjango2() {
     $category = 'django';
 

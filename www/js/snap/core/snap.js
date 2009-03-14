@@ -55,5 +55,15 @@ Object.extend(String.prototype, {
       }
     }
     return result;
+  },
+
+  gindexOf: function(needle) {
+    var offsets = [];
+    var offset = this.indexOf(needle);
+    while( offset >= 0 ) {
+      offsets.push(offset);
+      offset = this.indexOf(needle, offset+1);
+    }
+    return offsets;
   }
 });

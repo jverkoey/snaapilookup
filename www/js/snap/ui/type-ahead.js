@@ -122,8 +122,28 @@ Snap.TypeAhead.prototype = {
     this._update_filter();
   },
 
-  register : function(i, d) {
-    this._database.all[i] = d;
+  register : function(i, data) {
+    for( var i = 0; i < data.length; ++i ) {
+      data[i].l = data[i].n.toLowerCase();
+    }
+    this._database.all[i] = data;
+/*
+    // Compile the index.
+    var index = {};
+    for( var i = 0; i < data.length; ++i ) {
+      var item = data[i];
+      for( var i2 = 0; i2 < item.length; ++i2 ) {
+        index[item[i2]]
+      }
+    }*/
+/*    
+      var entry = {
+        type      : filter.t,
+        filter_id : filter.d[i2].i,
+        name      : filter.d[i2].n,
+        matches   : [{word: query, offset: offset, size: query.length}],
+        score     : query.length * 100 / filter.d[i2].n.length * (offset == 0 ? 2 : 1)
+      };*/
   },
 
   _handle_key : function(event) {
@@ -441,11 +461,13 @@ Snap.TypeAhead.prototype = {
         while( i < words.length ) {
           if( words[i] == '' ) {
             words.splice(i, 1);
-          } else {
+          } else {  
+            words[i] = words[i].toLowerCase();
             ++i;
           }
         }
 
+        console.time('dbsearch');
         var all = this._database.all;
         for( var category in all ) {
           var check;
@@ -461,27 +483,44 @@ Snap.TypeAhead.prototype = {
           for( var i = 0; i < list.length; ++i ) {
             var unique_id = 'function'+category+'-'+i;
 
-            for( var i2 = 0; i2 < words.length && results.length < MAX_RESULTS; ++i2 ) {
-              var offset = list[i].n.toLowerCase().indexOf(words[i2].toLowerCase());
-              if( offset >= 0 ) {
+            var any_succeed = false;
+            var any_fail = false;
+            for( var i2 = 0; i2 < words.length; ++i2 ) {
+              var offsets = list[i].l.gindexOf(words[i2]);
+              if( offsets.length > 0 ) {
                 if( hash_results[unique_id] == undefined ) {
                   var entry = {
-                    type      : this._id_to_category[category] || 'Loading...',
+                    type      : this._id_to_category[category],
                     category  : category,
                     hierarchy : list[i].h,
                     function_id : list[i].i,
                     name      : list[i].n,
-                    matches   : [{word: words[i2], offset: offset, size: words[i2].length}]
+                    matches   : []
                   };
                   hash_results[unique_id] = entry;
-                  results.push(unique_id);
-                } else {
-                  hash_results[unique_id].matches.push({word: words[i2], offset: offset, size: words[i2].length});
                 }
+
+                for( var i3 = 0; i3 < offsets.length; ++i3 ) {
+                  hash_results[unique_id].matches.push({word: words[i2], offset: offsets[i3], size: words[i2].length});
+                }
+
+                any_succeed = true;
+              } else {
+                any_fail = true;
               }
+
+              if( any_fail && any_succeed ) {
+                delete hash_results[unique_id];
+                break;
+              }
+            }
+
+            if( any_succeed && !any_fail ) {
+              results.push(unique_id);
             }
           }
         }
+        console.timeEnd('dbsearch');
       } else if( this._cached_query_results ) {
         var query = trimmed_value;
         var query_results = this._cached_query_results;
@@ -511,17 +550,47 @@ Snap.TypeAhead.prototype = {
         return;
       }
 
+      console.time('calcscore');
       // Calculate the score for each result.
       // Score = sum total of matched characters.
       for( var i = 0; i < results.length; ++i ) {
         var entry = hash_results[results[i]];
-        entry.score = 0;
-        for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-          entry.score += entry.matches[i2].size;
-        }
-        entry.score /= entry.name.length;
-      }
 
+        var joined_areas = new Array(entry.name.length);
+        for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
+          var match = entry.matches[i2];
+          var start = match.offset;
+          if( joined_areas[start] ) {
+            joined_areas[start].push(1);
+          } else {
+            joined_areas[start] = [1];
+          }
+
+          var end = start + match.size;
+          if( joined_areas[end] ) {
+            joined_areas[end].push(-1);
+          } else {
+            joined_areas[end] = [-1];
+          }
+        }
+
+        entry.score = 0;
+        var on = 0;
+        for( var i2 = 0; i2 < joined_areas.length; ++i2 ) {
+          var slot = joined_areas[i2];
+          if( slot ) {
+            for( var i3 = 0; i3 < slot.length; ++i3 ) {
+              on += slot[i3];
+            }
+          }
+          if( on ) {
+            entry.score++;
+          }
+        }
+      }
+      console.timeEnd('calcscore');
+
+      console.time('sort');
       // Sort by score.
       function by(left, right) {
         var left_entry = hash_results[left];
@@ -529,7 +598,9 @@ Snap.TypeAhead.prototype = {
         return right_entry.score - left_entry.score;
       }
       results = results.sort(by);
+      console.timeEnd('sort');
 
+      console.time('createList');
       results = results.slice(0,10);
 
       if( results.length > 0 ) {
@@ -542,6 +613,7 @@ Snap.TypeAhead.prototype = {
         this._list = null;
         this._selection = -1;
       }
+      console.timeEnd('createList');
 
       this._render_selection();
     }
@@ -712,6 +784,8 @@ Snap.TypeAhead.prototype = {
 
     if( this._active_function.data ) {
       switch( this._id_to_category[this._active_function.category] ) {
+        case 'Firebug':
+        case 'iPhone':
         case 'PHP':
         case 'django':
         case 'Zend':
@@ -936,19 +1010,7 @@ Snap.TypeAhead.prototype = {
 
       function_info.social = result.data;
       function_info.loading_social = false;
-/*
-      if( function_info.data ) {
-        switch( this._id_to_category[function_info.category] ) {
-          case 'PHP':
-            function_info.data = function_info.data.replace(/<\/s>/g, '</span>');
-            function_info.data = function_info.data.replace(/<st>/g, '<span class="type">');
-            function_info.data = function_info.data.replace(/<si>/g, '<span class="initializer">');
-            function_info.data = function_info.data.replace(/<sm>/g, '<span class="methodname">');
-            function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
-            function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
-            break;
-        }
-      }*/
+
       if( this._active_function &&
           this._active_function.category == result.category &&
           this._active_function.id == result.id ) {
@@ -979,6 +1041,8 @@ Snap.TypeAhead.prototype = {
 
       if( function_info.data ) {
         switch( this._id_to_category[function_info.category] ) {
+          case 'Firebug':
+          case 'iPhone':
           case 'PHP':
           case 'django':
           case 'Zend':
