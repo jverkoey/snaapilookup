@@ -232,8 +232,8 @@ Snap.TypeAhead.prototype = {
             clearTimeout(this._hover_timer);
           }
           this._hover_timer = setTimeout(this._hover.bind(this), 500);
-          this._elements.dropdown.children('.selected').removeClass('selected');
-          this._elements.dropdown.children('.result:eq('+this._selection+')').addClass('selected');
+          this._elements.dropdown.children('.holder').children('.selected').removeClass('selected');
+          this._elements.dropdown.children('.holder').children('.result:eq('+this._selection+')').addClass('selected');
         }
       }
     }
@@ -611,9 +611,9 @@ Snap.TypeAhead.prototype = {
         html.push('</div>');
       }
 
-      this._elements.dropdown.html(html.join(''));
+      this._elements.dropdown.html('<div class="holder">'+html.join('')+'</div>');
       var t = this;
-      this._elements.dropdown.children('.result').each(function(index) {
+      this._elements.dropdown.children('.holder').children('.result').each(function(index) {
         $(this).click(function() {
           t._handle_selection.bind(t)(index);
         });
