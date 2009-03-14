@@ -127,6 +127,7 @@ Snap.TypeAhead.prototype = {
           hierarchy : data[i].h,
           function_id : data[i].i,
           name      : data[i].n,
+          lower_name: data[i].l,
           matches   : null
       };
     }
@@ -280,9 +281,9 @@ Snap.TypeAhead.prototype = {
     } else if( selection.function_id ) {
       this._elements.dropdown.fadeOut('fast');
 
-      this._display_function(selection);
-
       this._hide_iframe();
+
+      this._display_function(selection);
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
@@ -525,16 +526,14 @@ Snap.TypeAhead.prototype = {
         }
         for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
           var word = entry.matches[i2].word;
-          var offsets = entry.name.gindexOf(word);
+          var offsets = entry.lower_name.gindexOf();
 
           for( var i3 = 0; i3 < offsets.length; ++i3 ) {
             var start = offsets[i3];
             joined_areas[start]++;
 
-            var end = start + word.size;
-            if( end < entry.name.length ) {
-              joined_areas[end]--;
-            }
+            var end = start + word.size - 1;
+            joined_areas[end]--;
           }
         }
 
