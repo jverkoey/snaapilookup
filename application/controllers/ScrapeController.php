@@ -125,9 +125,165 @@ class ScrapeController extends SnaapiController {
       $this->view->results = '';
       $this->_pages_scraped = 0;
 
-      $this->scrapejQuery();
+      //$this->scrapejQuery();
+      $this->scrapejQuery2();
     } else {
       $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapejQuery2() {
+    $category = 'jQuery';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    $is_saving = true;
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $contents = file_get_contents($source_url);
+
+      $start_index = strpos($contents, '<div id="options">');
+      if( $start_index === false ) {
+        $this->view->results .= 'Couldn\'t find the options, skipping...' . "\n";
+        continue;
+      }
+
+      $end_index = strpos($contents, '<div id="', $start_index+1);
+      if( $end_index === false ) {
+        $this->view->results .= 'Couldn\'t find the end of the options, skipping...' . "\n";
+        continue;
+      }
+
+      $source_name = strtolower($hierarchy['name']);
+
+      $data = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
+
+      $elements = explode('<li class="option"', $data);
+      foreach( $elements as $element ) {
+        if( preg_match('/<h3 class="option-name"><a href="(.+?)">(.+?)<\/a><\/h3>.+?<p>(.+?)<\/p>/', $element, $matches) ) {
+          $link = $source_url.$matches[1];
+          $name = $source_name .' '.trim(str_replace(' )', ')', str_replace('&nbsp;', '', strip_tags($matches[2]))));
+          $desc = trim(strip_tags($matches[3], '<b>'));
+          
+          $this->view->results .= $link.' - '.$name."\n";
+          $this->view->results .= $desc."\n\n";
+
+          if( $is_saving ) {
+            $this->getFunctionsModel()->insertOrUpdateFunction(array(
+              'category' => $category_id,
+              'hierarchy' => $hierarchy['id'],
+              'name' => $name,
+              'url' => $link,
+              'short_description' => $desc
+            ));
+            $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+          }
+        } else {
+          //$this->view->results .= htmlentities($element)."\n\n";
+        }
+      }
+
+      $start_index = strpos($contents, '<div id="events">');
+      if( $start_index === false ) {
+        $this->view->results .= 'Couldn\'t find the events, skipping...' . "\n";
+        continue;
+      }
+
+      $end_index = strpos($contents, '<div id="', $start_index+1);
+      if( $end_index === false ) {
+        $this->view->results .= 'Couldn\'t find the end of the events, skipping...' . "\n";
+        continue;
+      }
+
+      $source_name = strtolower($hierarchy['name']);
+
+      $data = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
+
+      $elements = explode('<li class="event"', $data);
+      foreach( $elements as $element ) {
+        if( preg_match('/<h3 class="event-name"><a href="(.+?)">(.+?)<\/a><\/h3>.+?<p>(.+?)<\/p>/', $element, $matches) ) {
+          $link = $source_url.$matches[1];
+          $name = $source_name .' '.trim(str_replace(' )', ')', str_replace('&nbsp;', '', strip_tags($matches[2]))));
+          $desc = trim(strip_tags($matches[3], '<b>'));
+
+          $this->view->results .= $link.' - '.$name."\n";
+          $this->view->results .= $desc."\n\n";
+
+          if( $is_saving ) {
+            $this->getFunctionsModel()->insertOrUpdateFunction(array(
+              'category' => $category_id,
+              'hierarchy' => $hierarchy['id'],
+              'name' => $name,
+              'url' => $link,
+              'short_description' => $desc
+            ));
+            $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+          }
+        } else {
+          //$this->view->results .= htmlentities($element)."\n\n";
+        }
+      }
+
+      $start_index = strpos($contents, '<div id="methods">');
+      if( $start_index === false ) {
+        $this->view->results .= 'Couldn\'t find the methods, skipping...' . "\n";
+        continue;
+      }
+
+      $end_index = strpos($contents, '<div id="', $start_index+1);
+      if( $end_index === false ) {
+        $this->view->results .= 'Couldn\'t find the end of the methods, skipping...' . "\n";
+        continue;
+      }
+
+      $source_name = strtolower($hierarchy['name']);
+
+      $data = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
+
+      $elements = explode('<li class="method"', $data);
+      foreach( $elements as $element ) {
+        if( preg_match('/<h3 class="method-name"><a href="(.+?)">(.+?)<\/a><\/h3>.+?<p>(.+?)<\/p>/', $element, $matches) ) {
+          $link = $source_url.$matches[1];
+          $name = $source_name .'(\''.trim(str_replace(' )', ')', str_replace('&nbsp;', '', strip_tags($matches[2])))).'\')';
+          $desc = trim(strip_tags($matches[3], '<b>'));
+
+          $this->view->results .= $link.' - '.$name."\n";
+          $this->view->results .= $desc."\n\n";
+
+          if( $is_saving ) {
+            $this->getFunctionsModel()->insertOrUpdateFunction(array(
+              'category' => $category_id,
+              'hierarchy' => $hierarchy['id'],
+              'name' => $name,
+              'url' => $link,
+              'short_description' => $desc
+            ));
+            $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+          }
+        } else {
+          //$this->view->results .= htmlentities($element)."\n\n";
+        }
+      }
     }
   }
 
@@ -190,6 +346,7 @@ class ScrapeController extends SnaapiController {
             'url' => $link,
             'short_description' => $desc
           ));
+          $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
         } else {
           //$this->view->results .= htmlentities($element)."\n\n";
         }
