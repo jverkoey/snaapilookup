@@ -57,18 +57,24 @@ class PermalinkController extends SnaapiController {
   private function category($name, $type) {
     $category = $this->getCategoriesModel()->fetchCategoryByName($name);
     $function_name = $this->_request->getParam(1);
-    $result = $this->getFunctionsModel()->fetchByName($category, $function_name);
-    if( $result ) {
-      $this->view->headTitle($name);
-      $this->view->headTitle($function_name);
+    $this->view->headTitle($name);
+    if( $function_name ) {
+      $result = $this->getFunctionsModel()->fetchByName($category, $function_name);
+      if( $result ) {
+        $this->view->headTitle($function_name);
+        $this->view->category = $category;
+        $this->view->id = $result['id'];
+        $this->view->hierarchy = $result['hierarchy'];
+        $this->view->type = $name;
+        $this->view->filter_type = $type;
+        $this->view->function_name = $function_name;
+      }
+    } else {
       $this->view->category = $category;
-      $this->view->id = $result['id'];
-      $this->view->hierarchy = $result['hierarchy'];
       $this->view->type = $name;
       $this->view->filter_type = $type;
-      $this->view->function_name = $function_name;
-      $this->getLogsModel()->add(strtolower($name).'permalink', $function_name);
-    }
+      $this->getLogsModel()->add(strtolower($name).'filter', '');
+    }  
     $this->_forward('index', 'index');
   }
 

@@ -90,14 +90,23 @@ if ('production' == $this->env) {
 
 $this->inlineScript()->appendFile('/js/page/dashboard.js');
 
-if( $this->category && $this->id && $this->type ) {
-  $this->inlineScript()->prependScript(
-    'window.sel = {'.
-      'category:'.$this->category.','.
-      'function_id:'.$this->id.','.
-      'name:"'.$this->function_name.'",'.
-      'type:"'.$this->type.'",'.
-      'filter_type:"'.$this->filter_type.'",'.
-      'hierarchy:'.$this->hierarchy.'};'
-  );
+if( $this->category && $this->type && $this->filter_type ) {
+  if( $this->id ) {
+    $this->inlineScript()->prependScript(
+      'window.sel = {'.
+        'category:'.$this->category.','.
+        'function_id:'.$this->id.','.
+        'name:"'.$this->function_name.'",'.
+        'type:"'.$this->type.'",'.
+        'filter_type:"'.$this->filter_type.'",'.
+        'hierarchy:'.$this->hierarchy.'};'
+    );
+  } else {
+    $this->inlineScript()->prependScript(
+      'window.sel = {'.
+        'category:'.$this->category.','.
+        'type:"'.$this->type.'",'.
+        'filter_type:"'.$this->filter_type.'"};'
+    );
+  }
 }

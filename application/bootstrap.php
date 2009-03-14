@@ -53,6 +53,15 @@ foreach( $categories as $category ) {
       )
   );
   $router->addRoute($category, $route);
+
+  $route = new Zend_Controller_Router_Route_Regex(
+      $category,
+      array(
+          'controller' => 'permalink',
+          'action'     => $category
+      )
+  );
+  $router->addRoute($category.'simple', $route);
 }
 
 // APPLICATION ENVIRONMENT - Set the current environment.

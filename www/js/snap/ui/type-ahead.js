@@ -91,7 +91,7 @@ Snap.TypeAhead = function( elementIDs) {
     });
   }
 
-  if( window.sel ) {
+  if( window.sel && window.sel.name ) {
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
   }
@@ -1140,7 +1140,7 @@ Snap.TypeAhead.prototype = {
       }
       process_children.bind(this)(result[category]);
     }
-    if( window.sel ) {
+    if( window.sel && window.sel.hierarchy ) {
       this._ensure_hierarchy_loaded(window.sel.category, window.sel.hierarchy);
     }
   },
