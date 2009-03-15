@@ -26,13 +26,13 @@ class Model_Hierarchies {
     $table = $this->getTable();
     $info = $table->info();
     $db = $table->getAdapter();
-    $sql = 'SELECT COUNT(parent.name)-1 AS depth, node.name AS name, node.id as id '.
+    $sql = 'SELECT COUNT(parent.id)-1 AS depth, node.name AS name, node.id as id '.
            'FROM '.$info['name'].' AS node, '.
            $info['name'].' AS parent '.
            $db->quoteInto('WHERE parent.category = ?', $category_id).' AND '.
            $db->quoteInto('node.category = ?', $category_id).' AND '.
            'node.lft BETWEEN parent.lft AND parent.rgt '.
-           'GROUP BY node.name '.
+           'GROUP BY node.id '.
            'ORDER BY node.lft;';
     return $db->query($sql)->fetchAll();
   }
@@ -101,14 +101,15 @@ class Model_Hierarchies {
   /**
    * Fetch the ancestry of a category.
    */
-  public function insert($category, $parent, $name, $url) {
+  public function insert($category, $parent, $name, $url, $scrapeable = 0) {
     return
 'LOCK TABLE hierarchies WRITE;
 SELECT @parentRight := rgt FROM hierarchies WHERE category = '.$category.' AND id = '.$parent.';
 UPDATE hierarchies SET rgt = rgt + 2 WHERE category = '.$category.' AND rgt >= @parentRight;
 UPDATE hierarchies SET lft = lft + 2 WHERE category = '.$category.' AND lft > @parentRight;
 INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( '.
-      $category.', @parentRight, @parentRight + 1, 0, "'.$name.'", "'.$url.'");UNLOCK TABLES;';
+      $category.', @parentRight, @parentRight + 1, '.$scrapeable.', "'.$name.'", "'.$url.'");
+UNLOCK TABLES;';
   }
 
   /**

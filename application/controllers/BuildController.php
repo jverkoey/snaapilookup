@@ -188,6 +188,10 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
       $category = $item['id'];
 
       $hierarchies = $this->getHierarchiesModel()->fetchAll($category);
+      if( count($hierarchies) == 0 ) {
+        echo 'Invalid category #'.$category.'<br/>';
+        continue;
+      }
 /*
       $hierarchies = array(
         array(
@@ -220,7 +224,7 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
       $index = 0;
       $num_added = 0;
       $result[$category] = $this->get_children($hierarchies, $index, $num_added);
-      
+
       $i++;
     }
   }

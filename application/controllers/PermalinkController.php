@@ -9,8 +9,12 @@ class PermalinkController extends SnaapiController {
     $this->language('PHP');
   }
 
-  public function pythonAction() {
-    $this->language('Python');
+  public function python301Action() {
+    $this->language('Python 3.0.1');
+  }
+
+  public function python261Action() {
+    $this->language('Python 2.6.1');
   }
 
   public function cssAction() {

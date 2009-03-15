@@ -45,7 +45,7 @@ class ScrapeController extends SnaapiController {
       $this->view->results = '';
       $this->_pages_scraped = 0;
 
-      $this->scrapePythonConstants();
+      $this->scrapePythonModules(true);
     } else {
       $this->_forward('error', 'error');
     }
@@ -1844,8 +1844,13 @@ class ScrapeController extends SnaapiController {
     }
   }
 
-  private function scrapePythonConstants() {
-    $category = 'Python';
+  private function scrapePythonModules($createFunctions) {
+    //scrapePythonModuleVersion($createFunctions, 'Python 3.0.1', ''http://docs.python.org/3.0/');
+    $this->scrapePythonModuleVersion($createFunctions, 'Python 2.6.1', 'http://docs.python.org/');
+  }
+
+  private function scrapePythonModuleVersion($createFunctions, $version, $url_base) {
+    $category = $version;
 
     $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
 
@@ -1854,233 +1859,50 @@ class ScrapeController extends SnaapiController {
       return;
     }
 
-    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+    $contents = str_replace("\n", ' ', file_get_contents($url_base.'modindex.html'));
 
-    if( empty($scrapeable) ) {
-      $this->nothing_to_scrape($category);
-      return;
-    }
+    if( preg_match_all('/(?:<td>(?:&nbsp;&nbsp;&nbsp;)?      <a href="(.+?)"><tt class="xref">(.+?)<\/tt><\/a>(?: <em>.+?<\/em>)?<\/td><td>)|(?:     <tt class="xref">(.+?)<\/tt><\/td><td>)/', $contents, $matches) &&
+        preg_match_all('/<em>(.*?)<\/em><\/td><\/tr>/', $contents, $desc_matches) ) {
+      for( $index = 0; $index < count($matches[1]); ++$index ) {
+        $link = $url_base.$matches[1][$index];
+        $name = $matches[2][$index];
 
-    foreach( $scrapeable as $hierarchy ) {
-      $this->_pages_scraped++;
-
-      if( $this->_pages_scraped > ScrapeController::MAX_PAGES_TO_SCRAPE ) {
-        $this->view->results .= 'Hit max page count for scraping.' . "\n";
-        return;
-      }
-
-      $this->view->results .= $hierarchy['name'] . "\n";
-      if( !$hierarchy['source_url'] ) {
-        $this->view->results .= 'No source URL specified, skipping...' . "\n";
-        continue;
-      }
-      $source_url = $hierarchy['source_url'];
-      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
-
-      if( strpos($source_url, '#') !== FALSE ) {
-        // Cool, let's grab this section's info.
-        $parts = explode('#', $source_url);
-        $base_url = $parts[0];
-        $block = $parts[1];
-        $contents = file_get_contents($source_url);
-
-        $start_block = strpos($contents, 'id="'.$block.'"');
-        if( $start_block === FALSE ) {
-          $this->view->results .= 'We couldn\'t find the block, skipping...' . "\n";
-          continue;
+        if( !$name ) {
+          $link = '';
+          $name = $matches[3][$index];
         }
 
-        $done = false;
+        $desc = $desc_matches[1][$index];
 
-        $start = strpos($contents, '<dl class="data"', $start_block);
-        if( $start !== FALSE ) {
-          $end = strpos($contents, '</div>', $start);
-          if( $end === FALSE ) {
-            $this->view->results .= 'We couldn\'t find the end of the block, skipping...' . "\n";
-            continue;
-          }
-
-          $push_back = $start;
-          while( ($push_back = strpos($contents, '<div', $push_back)) !== FALSE ) {
-            if( $push_back > $end ) {
-              break;
-            }
-            $push_back++;
-            $end = strpos($contents, '</div>', $end + 1);
-          }
-
-          $fail = false;
-          $block_data = explode('<dl class="data">', substr($contents, $start, $end-$start));
-          foreach( $block_data as $entry ) {
-            $entry_data = explode("\n", $entry);
-            if( count($entry_data) > 1 ) {
-              $name = null;
-              $href = null;
-              $description = null;
-              if( preg_match('/<dt id="(.+?)">/', $entry_data[1], $id) ) {
-                $name = $id[1];
-              }
-              if( preg_match('/href="(#.+?)"/', $entry_data[2], $id) ) {
-                $href = $id[1];
-              }
-              if( preg_match('/<dd>(.+?)<\/dd>/', str_replace("\n", ' ', $entry), $id) ) {
-                $description = substr($id[1], 0, strpos($id[1], '</p>'));
-                $description = preg_replace('/<.+?>/', '', $description);
-              }
-
-              if( !$name || !$href ) {
-                $fail = true;
-                break;
-              }
+        if( $createFunctions ) {
+          if( $link ) {
+            $hierarchy_name = implode('', array_slice(explode('.', $name), 0, 1));
+            $hierarchy = $this->getHierarchiesModel()->fetchByName($category_id, 1, $hierarchy_name);
+            if( $hierarchy ) {
+              $this->view->results .= 'Adding '.$name."\n";
+              $this->view->results .= $link."\n";
+              $this->view->results .= $desc."\n\n";
               $this->getFunctionsModel()->insertOrUpdateFunction(array(
                 'category' => $category_id,
-                'hierarchy' => $hierarchy['id'],
+                'hierarchy' => $hierarchy,
                 'name' => $name,
-                'url' => $base_url.$href,
-                'short_description' => $description
-              ));
-              $done = true;
-            }
-          }
-          if( $fail ) {
-            continue;
-          } else {  
-            $done = true;
-          }
-        }
-
-        if( !$done ) {
-          $start = strpos($contents, '<dl class="method"', $start_block);
-          if( $start !== FALSE ) {
-            $end = strpos($contents, '</div>', $start);
-            if( $end === FALSE ) {
-              $this->view->results .= 'We couldn\'t find the end of the block, skipping...' . "\n";
-              continue;
-            }
-
-            $push_back = $start;
-            while( ($push_back = strpos($contents, '<div', $push_back)) !== FALSE ) {
-              if( $push_back > $end ) {
-                break;
-              }
-              $push_back++;
-              $end = strpos($contents, '</div>', $end + 1);
-            }
-
-            $fail = false;
-            $block_data = explode('<dl class="method">', substr($contents, $start, $end-$start));
-            foreach( $block_data as $entry ) {
-              $entry_data = explode("\n", $entry);
-              if( count($entry_data) > 1 ) {
-                $name = null;
-                $href = null;
-                $description = null;
-                if( preg_match('/<dt id="(.+?)">/', $entry_data[1], $id) ) {
-                  $name = $id[1];
-                }
-                if( preg_match('/href="(#.+?)"/', $entry_data[2], $id) ) {
-                  $href = $id[1];
-                }
-                if( preg_match('/<dd>(.+?)<\/dd>/', str_replace("\n", ' ', $entry), $id) ) {
-                  $description = substr($id[1], 0, strpos($id[1], '</p>'));
-                  $description = preg_replace('/<.+?>/', '', $description);
-                }
-
-                $this->view->results .= $name."\n";
-                $this->view->results .= $href."\n";
-                $this->view->results .= $description."\n\n";
-
-                if( !$name || !$href ) {
-                  $fail = true;
-                  break;
-                }
-                $this->getFunctionsModel()->insertOrUpdateFunction(array(
-                  'category' => $category_id,
-                  'hierarchy' => $hierarchy['id'],
-                  'name' => $name,
-                  'url' => $base_url.$href,
-                  'short_description' => $description
-                ));
-              }
-            }
-            if( $fail ) {
-              continue;
-            } else {
-              $done = true;
-            }
-          }
-        }
-
-        if( !$done ) {
-          $start = strpos($contents, '<dl class="function"', $start_block);
-          if( $start === FALSE ) {
-            $this->view->results .= 'We couldn\'t find the starting entry, skipping...' . "\n";
-            continue;
-          }
-
-          $end = strpos($contents, '</div>', $start);
-          if( $end === FALSE ) {
-            $this->view->results .= 'We couldn\'t find the end of the block, skipping...' . "\n";
-            continue;
-          }
-
-          $push_back = $start;
-          while( ($push_back = strpos($contents, '<div', $push_back)) !== FALSE ) {
-            if( $push_back > $end ) {
-              break;
-            }
-            $push_back++;
-            $end = strpos($contents, '</div>', $end + 1);
-          }
-
-          $fail = false;
-          $block_data = explode('<dl class="function">', substr($contents, $start, $end-$start));
-          foreach( $block_data as $entry ) {
-            $entry_data = explode("\n", $entry);
-            if( count($entry_data) > 1 ) {
-              $name = null;
-              $href = null;
-              $description = null;
-              if( preg_match('/<dt id="(.+?)">/', $entry_data[1], $id) ) {
-                $name = $id[1];
-              }
-              if( preg_match('/href="(#.+?)"/', $entry_data[2], $id) ) {
-                $href = $id[1];
-              }
-              if( preg_match('/<dd>(.+?)<\/dd>/', str_replace("\n", ' ', $entry), $id) ) {
-                $description = substr($id[1], 0, strpos($id[1], '</p>'));
-                $description = preg_replace('/<.+?>/', '', $description);
-              }
-
-              if( !$name || !$href ) {
-                $fail = true;
-                break;
-              }
-              $this->getFunctionsModel()->insertOrUpdateFunction(array(
-                'category' => $category_id,
-                'hierarchy' => $hierarchy['id'],
-                'name' => $name,
-                'url' => $base_url.$href,
-                'short_description' => $description
+                'url' => $link,
+                'short_description' => $desc,
+                'scrapeable' => 1
               ));
             }
           }
-          if( $fail ) {
-            $this->view->results .= 'We failed, skipping...' . "\n";
-            continue;
-          } else {
-            $done = true;
+        } else {
+          if( strpos($name, '.') === false ) {
+            $this->view->results .= $this->getHierarchiesModel()->insert(
+              $category_id,
+              1,
+              $name,
+              $link,
+              1)."\n";
           }
         }
-
-        if( !$done ) {
-          $this->view->results .= 'We couldn\'t find the start of the block, skipping...' . "\n";
-          continue;
-        }
-
       }
-
-      $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
     }
   }
 
