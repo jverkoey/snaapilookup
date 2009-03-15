@@ -533,7 +533,7 @@ Snap.TypeAhead.prototype = {
             var start = offsets[i3];
             joined_areas[start]++;
 
-            var end = start + word.size - 1;
+            var end = start + word.length - 1;
             joined_areas[end]--;
           }
         }
