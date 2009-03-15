@@ -67,7 +67,7 @@ Snap.TypeAhead = function( elementIDs) {
 
   $.ajax({
     type    : 'GET',
-    url     : '/js/static/data.js?'+Revisions.static_js_build,
+    url     : '/js/static/data.js?rev='+Revisions.static_js_build,
     dataType: 'json',
     success : this._receive_data.bind(this),
     failure : this._fail_to_receive_data.bind(this)
@@ -75,7 +75,7 @@ Snap.TypeAhead = function( elementIDs) {
 
   $.ajax({
     type    : 'GET',
-    url     : '/js/static/hier.js?'+Revisions.static_hier_build,
+    url     : '/js/static/hier.js?rev='+Revisions.static_hier_build,
     dataType: 'json',
     success : this._receive_hier.bind(this),
     failure : this._fail_to_receive_hier.bind(this)
@@ -86,7 +86,7 @@ Snap.TypeAhead = function( elementIDs) {
 
     $.ajax({
       type    : 'GET',
-      url     : '/js/static/fun/'+key+'.js?'+revision,
+      url     : '/js/static/fun/'+key+'.js?rev='+revision,
       dataType: 'script'
     });
   }

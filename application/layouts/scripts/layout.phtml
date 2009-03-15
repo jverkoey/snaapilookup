@@ -1,7 +1,7 @@
 <?= $this->doctype() ?>
 <?php  // These are in a reverse order of importance because we're prepending.
   global $REVISIONS;
-  $this->inlineScript()->prependFile('/js/static/revisions.js?'.$REVISIONS['ALL']);
+  $this->inlineScript()->prependFile('/js/static/revisions.js?rev='.$REVISIONS['ALL']);
   $this->inlineScript()->prependFile('/js/jquery.js');
   if( Zend_Auth::getInstance()->hasIdentity() ) {
     $identity = Zend_Auth::getInstance()->getIdentity();
