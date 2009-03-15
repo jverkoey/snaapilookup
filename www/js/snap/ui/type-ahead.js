@@ -1076,7 +1076,7 @@ Snap.TypeAhead.prototype = {
         t._render_filters();
       });
     } else {
-      this._elements.filters.hide();
+      this._elements.filters.empty().hide();
     }
   },
 
