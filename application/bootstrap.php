@@ -47,7 +47,7 @@ $categories = array(
 
 foreach( $categories as $category ) {
   $route = new Zend_Controller_Router_Route_Regex(
-      $category.'/((\w|:|-|>|.)+)',
+      $category.'/((\w|:|-|>|.|\+|\s)+)',
       array(
           'controller' => 'permalink',
           'action'     => $category

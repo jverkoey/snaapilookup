@@ -593,6 +593,7 @@ Snap.TypeAhead.prototype = {
           .replace('(', '\\(')
           .replace(')', '\\)')
           .replace('*', '\\*')
+          .replace('$', '\\$')
           .replace('+', '\\+')+')','i'), function(match) {
           return '<em>' + match[0] + '</em>';
         });
