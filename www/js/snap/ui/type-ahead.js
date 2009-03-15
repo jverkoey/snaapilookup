@@ -913,7 +913,7 @@ Snap.TypeAhead.prototype = {
         this._elements.search.fadeIn(speed);
         this._elements.small_logo.fadeIn(speed);
         this._elements.external
-          .html('<div id="eww">Eww, frames<br/><span class="reason">Just a sec, we\'re loading the reference page.</span></div><iframe src="'+url+'"></iframe>');
+          .html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.</span></div><iframe src="'+url+'"></iframe>');
         this._elements.external.fadeIn(speed);
       }.bind(this));
     }
