@@ -83,6 +83,7 @@
   width: 412px;
   margin: 3px auto;
   background-color: #fff;
+  overflow: hidden;
 }
 
 #search .dropdown .result:hover {
