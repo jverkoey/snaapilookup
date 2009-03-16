@@ -110,6 +110,12 @@
   cursor: pointer;
 }
 
+#search .dropdown .result_info {
+  text-align: right;
+  padding: 0.2em;
+  font-size: 0.8em;
+}
+
 #result {
   margin: 0 40px;
 }

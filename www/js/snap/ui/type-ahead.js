@@ -46,6 +46,8 @@ Snap.TypeAhead = function( elementIDs) {
 
   this._list = null;
   this._selection = -1;
+  this._offset = 0;
+  this._list_length = 10;
 
   this._active_function = null;
   this._function_cache = {};
@@ -104,12 +106,14 @@ Snap.TypeAhead.singleton = null;
 Snap.TypeAhead.prototype = {
 
   key : {
-    enter : 13,
-    escape: 27,
-    left  : 37,
-    up    : 38,
-    right : 39,
-    down  : 40
+    enter     : 13,
+    escape    : 27,
+    page_up   : 33,
+    page_down : 34,
+    left      : 37,
+    up        : 38,
+    right     : 39,
+    down      : 40
   },
 
   clear : function() {
@@ -132,27 +136,9 @@ Snap.TypeAhead.prototype = {
       };
     }
     this._database.all[category] = data;
-/*
-    // Compile the index.
-    var index = {};
-    for( var i = 0; i < data.length; ++i ) {
-      var item = data[i];
-      for( var i2 = 0; i2 < item.length; ++i2 ) {
-        index[item[i2]]
-      }
-    }*/
-/*    
-      var entry = {
-        type      : filter.t,
-        filter_id : filter.d[i2].i,
-        name      : filter.d[i2].n,
-        matches   : [{word: query, offset: offset, size: query.length}],
-        score     : query.length * 100 / filter.d[i2].n.length * (offset == 0 ? 2 : 1)
-      };*/
   },
 
   _handle_key : function(event) {
-
     var keydown_type = 'keypress';
     if( $.browser.safari ) {
       keydown_type = 'keydown';
@@ -220,6 +206,10 @@ Snap.TypeAhead.prototype = {
           this._selection++;
         } else if( event.keyCode == this.key.up ) {
           this._selection--;
+        } else if( event.keyCode == this.key.page_up ) {
+          this._selection -= this._list_length;
+        } else if( event.keyCode == this.key.page_down ) {
+          this._selection += this._list_length;
         }
 
         if( this._selection < 0 ) {
@@ -228,12 +218,20 @@ Snap.TypeAhead.prototype = {
           this._selection = 0;
         }
         if( old_selection != this._selection ) {
+          if( this._selection < this._offset ) {
+            this._offset = this._selection;
+            this._render_selection();
+          } else if( this._selection >= this._offset + this._list_length ) {
+            this._offset += this._selection - (this._offset + this._list_length) + 1;
+            this._render_selection();
+          } else {
+            this._elements.dropdown.children('.holder').children('.selected').removeClass('selected');
+            this._elements.dropdown.children('.holder').children('.result:eq('+(this._selection-this._offset)+')').addClass('selected');
+          }
           if( this._hover_timer ) {
             clearTimeout(this._hover_timer);
           }
           this._hover_timer = setTimeout(this._hover.bind(this), 500);
-          this._elements.dropdown.children('.holder').children('.selected').removeClass('selected');
-          this._elements.dropdown.children('.holder').children('.result:eq('+this._selection+')').addClass('selected');
         }
       }
     }
@@ -421,8 +419,6 @@ Snap.TypeAhead.prototype = {
       var results = [];
       var hash_results = {};
 
-      var MAX_RESULTS = 10;
-
       if( trimmed_value[0] == '#' ) {
         var query = trimmed_value.substr(1);
         // We're searching filters.
@@ -558,8 +554,6 @@ Snap.TypeAhead.prototype = {
         entry.score /= entry.name.length;
       }
 
-      console.log(hash_results);
-
       // Sort by score.
       function by(left, right) {
         var left_entry = hash_results[left];
@@ -567,8 +561,6 @@ Snap.TypeAhead.prototype = {
         return right_entry.score - left_entry.score;
       }
       results = results.sort(by);
-
-      results = results.slice(0,10);
 
       if( results.length > 0 ) {
         this._list = [];
@@ -579,7 +571,8 @@ Snap.TypeAhead.prototype = {
       } else {
         this._list = null;
         this._selection = -1;
-      }
+      }  
+      this._offset = 0;
 
       this._render_selection();
     }
@@ -589,7 +582,8 @@ Snap.TypeAhead.prototype = {
     // Render the html.
     if( this._list ) {
       var html = [];
-      for( var i = 0; i < this._list.length; ++i ) {
+      var end = Math.min(this._offset + this._list_length, this._list.length);
+      for( var i = this._offset; i < end; ++i ) {
         var entry = this._list[i];
         var name = entry.name;
 
@@ -621,6 +615,14 @@ Snap.TypeAhead.prototype = {
 
         html.push('</div>');
       }
+
+      html.push('<div class="result_info">');
+      if( this._list.length == 1 ) {
+        html.push('The only entry');
+      } else {
+        html.push((this._offset+1),'-',(Math.min(this._list.length, this._offset+this._list_length)),' out of ',this._list.length);
+      }
+      html.push('</div>');
 
       this._elements.dropdown.html('<div class="holder">'+html.join('')+'</div>');
       var t = this;
