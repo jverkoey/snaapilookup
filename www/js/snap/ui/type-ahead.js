@@ -533,22 +533,32 @@ Snap.TypeAhead.prototype = {
             var start = offsets[i3];
             joined_areas[start]++;
 
-            var end = start + word.length - 1;
-            joined_areas[end]--;
+            var end = start + word.length;
+            if( end < joined_areas.length ) {
+              joined_areas[end]--;
+            }
           }
         }
 
         entry.score = 0;
         var on = 0;
+        var starts_with = joined_areas[0] > 0;
         for( var i2 = 0; i2 < joined_areas.length; ++i2 ) {
           on += joined_areas[i2];
-          if( on ) {
+          if( on > 0 ) {
             entry.score++;
+            if( starts_with ) {
+              entry.score++;    // Double up entries that start with the text.
+            }
+          } else {
+            starts_with = false;
           }
         }
 
         entry.score /= entry.name.length;
       }
+
+      console.log(hash_results);
 
       // Sort by score.
       function by(left, right) {
