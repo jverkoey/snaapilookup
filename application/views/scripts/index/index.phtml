@@ -93,6 +93,12 @@ $this->inlineScript()->appendFile('/js/page/dashboard.js');
 
 if( $this->category && $this->type && $this->filter_type ) {
   if( $this->id ) {
+?>
+<div id="search_engine">
+  <h1><?= $this->function_name ?></h1>
+  <h2><?= $this->function_desc ?></h2>
+</div>
+<?php
     $this->inlineScript()->prependScript(
       'window.sel = {'.
         'category:'.$this->category.','.

@@ -404,9 +404,6 @@ Snap.Database.prototype = {
       }
       process_children.bind(this)(result[category]);
     }
-    if( window.sel && window.sel.hierarchy ) {
-      this._ensure_hierarchy_loaded(window.sel.category, window.sel.hierarchy);
-    }
   },
 
   _fail_to_receive_hier : function(result, textStatus) {

@@ -71,7 +71,8 @@ class PermalinkController extends SnaapiController {
         $this->view->hierarchy = $result['hierarchy'];
         $this->view->type = $name;
         $this->view->filter_type = $type;
-        $this->view->function_name = $function_name;
+        $this->view->function_name = $result['name'];
+        $this->view->function_desc = $result['short_description'];
         $this->getLogsModel()->add(strtolower($name).'permalink', $function_name);
       }
     } else {
@@ -79,7 +80,7 @@ class PermalinkController extends SnaapiController {
       $this->view->type = $name;
       $this->view->filter_type = $type;
       $this->getLogsModel()->add(strtolower($name).'filter', '');
-    }  
+    }
     $this->_forward('index', 'index');
   }
 

@@ -22,6 +22,17 @@ pageTracker._trackPageview();
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="API search lookup help reference social CSS Javascript Python Facebook django Firebug" />
+  <meta name="description" content="<?php
+  if( $this->type ) {
+    if( $this->id ) {
+      echo 'Information about '.$this->function_name.' from the '.$this->type.' '.strtolower($this->filter_type).'. ';
+    } else {
+      echo 'The snaapi.com search page for '.$this->type.'. ';
+    }
+  }
+  echo 'snaapi.com provides social API search for PHP, Javascript, CSS, Python, django, the iPhone SDK and many more languages and frameworks.';
+?>" />
   <link rel="shortcut icon" href="/favicon.ico" mce_href="/favicon.ico" />
   <?= $this->headTitle() ?>
   <? if( APPLICATION_ENVIRONMENT == 'development' ) { ?>

@@ -375,3 +375,7 @@
   width: 400px;
   margin: 0 auto;
 }
+
+#search_engine {
+  display: none;
+}

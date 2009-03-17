@@ -46,7 +46,9 @@ class Model_Functions {
           $table,
           array(
             'id',
-            'hierarchy'
+            'hierarchy',
+            'name',
+            'short_description'
           ))
         ->where('category = ?', $category)  
         ->where('name = ?', $name)
