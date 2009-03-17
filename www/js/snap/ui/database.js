@@ -136,7 +136,7 @@ Snap.Database.prototype = {
                     matches   : []
                   };
                 }
-                hash_results[unique_id].matches.push({word: word, offset: offset, size: word.length});
+                hash_results[unique_id].matches.push(word);
 
                 any_succeed = true;
               } else {
@@ -199,7 +199,7 @@ Snap.Database.prototype = {
                 hash_results[unique_id].matches = [];
               }
 
-              hash_results[unique_id].matches.push({word: words[i2], offset: offset, size: words[i2].length});
+              hash_results[unique_id].matches.push(words[i2]);
 
               any_succeed = true;
             } else {
@@ -229,7 +229,7 @@ Snap.Database.prototype = {
         joined_areas[i2] = 0;
       }
       for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-        var word = entry.matches[i2].word;
+        var word = entry.matches[i2];
         var offsets = entry.lower_name.gindexOf(word);
 
         for( var i3 = 0; i3 < offsets.length; ++i3 ) {

@@ -309,9 +309,9 @@ Snap.TypeAhead.prototype = {
 
         var regex = [];
         for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-          var match = entry.matches[i2];
-          if( match.word.length > 0 ) {
-            regex.push(match.word);
+          var word = entry.matches[i2];
+          if( word.length > 0 ) {
+            regex.push(word);
           }
         }
 
