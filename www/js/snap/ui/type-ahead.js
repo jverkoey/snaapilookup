@@ -628,7 +628,7 @@ Snap.TypeAhead.prototype = {
       var t = this;
       this._elements.dropdown.children('.holder').children('.result').each(function(index) {
         $(this).click(function() {
-          t._handle_selection.bind(t)(index);
+          t._handle_selection.bind(t)(index+t._offset);
         });
       });
     } else {
