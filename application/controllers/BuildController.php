@@ -90,7 +90,7 @@ $REVISIONS[\'STATIC_HIER_BUILD\'] = '.$new_revision.';');
         $json = Zend_Json::encode($value);
         $json = substr($json, 1, strlen($json) - 2);
         $new_contents.= 'var d=new Array('.$json.');';
-        $new_contents.= 'Snap.TypeAhead.singleton.register(i,d);';
+        $new_contents.= 'Snap.Database.singleton.load_functions(i,d);';
 
         $new_contents = preg_replace('/"([0-9]+)"/', '$1', $new_contents);
         $new_contents = str_replace('"i"', 'i', $new_contents);

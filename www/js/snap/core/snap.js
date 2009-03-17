@@ -59,6 +59,9 @@ Object.extend(String.prototype, {
 
   gindexOf: function(needle) {
     var offsets = [];
+    if( needle == '' ) {
+      return offsets;
+    }
     var offset = this.indexOf(needle);
     while( offset >= 0 ) {
       offsets.push(offset);

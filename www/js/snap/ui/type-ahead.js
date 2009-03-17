@@ -2,11 +2,10 @@
  * A typeahead feature specializing in searching api data.
  *
  * @require-package core
+ * @requires database.js
  */
 
-Snap.TypeAhead = function( elementIDs) {
-  // input, filters, dropdown
-
+Snap.TypeAhead = function(elementIDs) {
   this._elementIDs = elementIDs;
   this._elements = {};
   for( var key in this._elementIDs ) {
@@ -32,76 +31,37 @@ Snap.TypeAhead = function( elementIDs) {
 
   this._current_value = '';
 
-  // filters: #language or #framework
-  // all: everything else
-  this._database = {filters: {}, all: []};
-
-  this._id_to_category = {};
-  this._id_to_type = {};
-
-  // [type][category]
-  this._active_filters = {};
-  // [category]
-  this._is_category_filtered = {};
-
   this._list = null;
   this._selection = -1;
   this._offset = 0;
   this._list_length = 10;
 
   this._active_function = null;
-  this._function_cache = {};
+
+  // [type][category]
+  this._active_filters = {};
+  // [category]
+  this._is_category_filtered = {};
 
   this._hover_timer = null;
-
-  /**
-   * [category][id] => hierarchy name
-   */
-  this._hierarchy_cache = {};
-
-  this._ancestry_timer = null;
-  this._hierarchy_timer = null;
 
   this._has_changed_since_selection = null;
 
   this._displaying_frame = false;
   this._frame_url = null;
-
-  $.ajax({
-    type    : 'GET',
-    url     : '/js/static/data.js?rev='+Revisions.static_js_build,
-    dataType: 'json',
-    success : this._receive_data.bind(this),
-    failure : this._fail_to_receive_data.bind(this)
-  });
-
-  $.ajax({
-    type    : 'GET',
-    url     : '/js/static/hier.js?rev='+Revisions.static_hier_build,
-    dataType: 'json',
-    success : this._receive_hier.bind(this),
-    failure : this._fail_to_receive_hier.bind(this)
-  });
-
-  for( var key in Revisions.static_fun_build ) {
-    var revision = Revisions.static_fun_build[key];
-
-    $.ajax({
-      type    : 'GET',
-      url     : '/js/static/fun/'+key+'.js?rev='+revision,
-      dataType: 'script'
-    });
-  }
+  this._db = Snap.Database.singleton;
 
   if( window.sel && window.sel.name ) {
     this._elements.input.val(window.sel.name);
     this._display_function(window.sel);
   }
 
-  Snap.TypeAhead.singleton = this;
+  this._db.register_callbacks({
+    receive_categories: this._receive_categories.bind(this),
+    receive_function  : this._receive_function.bind(this),
+    receive_social    : this._receive_function.bind(this)
+  });
 };
-
-Snap.TypeAhead.singleton = null;
 
 Snap.TypeAhead.prototype = {
 
@@ -120,22 +80,6 @@ Snap.TypeAhead.prototype = {
     this._current_value = '';
     this._elements.input.val('');
     this._update_filter();
-  },
-
-  register : function(category, data) {
-    for( var i = 0; i < data.length; ++i ) {
-      data[i].l = data[i].n.toLowerCase();
-      data[i].e = {
-          type      : this._id_to_category[category],
-          category  : category,
-          hierarchy : data[i].h,
-          function_id : data[i].i,
-          name      : data[i].n,
-          lower_name: data[i].l,
-          matches   : null
-      };
-    }
-    this._database.all[category] = data;
   },
 
   _handle_key : function(event) {
@@ -164,9 +108,8 @@ Snap.TypeAhead.prototype = {
         var selection = this._list[this._selection];
         if( !this._has_changed_since_selection && this._active_function.id == selection.function_id ) {
           // Go to this function's URL if we can.
-          if( undefined != this._function_cache[selection.category] &&
-              undefined != this._function_cache[selection.category][selection.function_id] ) {
-            var function_info = this._function_cache[selection.category][selection.function_id];
+          if( this._db.is_function_cached(selection.category, selection.function_id) ) {
+            var function_info = this._db.get_function(selection.category, selection.function_id);
             if( function_info.url ) {
               this._elements.dropdown.fadeOut('fast');
               this._show_iframe(function_info.url);
@@ -313,102 +256,24 @@ Snap.TypeAhead.prototype = {
     $.cookie('filters', this._flatten_filters());
   },
 
-  _ensure_hierarchy_loaded : function(category, child) {
-    if( this._hierarchy_cache[category] &&
-        this._hierarchy_cache[category][child] ) {
-      var hierarchy = this._hierarchy_cache[category][child];
-      var to_request = [];
-      if( undefined == hierarchy.source_url ) {
-        to_request.push(child);
-      }
-      if( hierarchy.ancestors ) {
-        for( var i = 0; i < hierarchy.ancestors.length; ++i ) {
-          if( undefined == this._hierarchy_cache[category][hierarchy.ancestors[i]].source_url ) {
-            to_request.push(hierarchy.ancestors[i]);
-          }
-        }
-      }
-
-      if( to_request.length ) {
-        $.ajax({
-          type    : 'GET',
-          url     : '/hierarchy/info',
-          dataType: 'json',
-          data    : {
-            c : category,
-            h : to_request.join(',')
-          },
-          success : this._receive_hierarchy.bind(this),
-          failure : this._fail_to_receive_hierarchy.bind(this)
-        });
-      }
-    }
-  },
-
   _display_function : function(selection, silent) {
-    if( undefined == this._function_cache[selection.category] ) {
-      this._function_cache[selection.category] = {};
-    }
-
-    if( undefined == this._function_cache[selection.category][selection.function_id] ) {
-      this._function_cache[selection.category][selection.function_id] = {
-        name            : selection.name,
-        type            : selection.type,
-        category        : selection.category,
-        hierarchy       : selection.hierarchy,
-        id              : selection.function_id,
-        loading         : true,
-        loading_social  : true
-      };
-      $.ajax({
-        type    : 'GET',
-        url     : '/function',
-        dataType: 'json',
-        data    : {
-          category  : selection.category,
-          id        : selection.function_id,
-          silent    : silent
-        },
-        success : this._receive_function.bind(this),
-        failure : this._fail_to_receive_function.bind(this)
-      });
-
-      this._ensure_hierarchy_loaded(selection.category, selection.hierarchy);
-
-      $.ajax({
-        type    : 'GET',
-        url     : '/function/social',
-        dataType: 'json',
-        data    : {
-          category  : selection.category,
-          id        : selection.function_id
-        },
-        success : this._receive_social.bind(this),
-        failure : this._fail_to_receive_social.bind(this)
-      });
+    if( !this._db.is_function_cached(selection.category, selection.function_id) ) {
+      this._db.request_function(
+        selection.category,
+        selection.function_id,
+        selection.name,
+        selection.type,
+        selection.hierarchy,
+        silent
+      );
     }
 
     if( !silent ) {
-      this._active_function = this._function_cache[selection.category][selection.function_id];
+      this._active_function = this._db.get_function(selection.category, selection.function_id);
 
       this._displaying_frame = false;
       this._render_function();
     }
-  },
-
-  _receive_hierarchy : function(result, textStatus) {
-    if( result.s ) {
-      for( var category in result.i ) {
-        var hierarchies = result.i[category];
-        for( var hierarchy in hierarchies ) {
-          this._hierarchy_cache[category][hierarchy].source_url = hierarchies[hierarchy].source_url;
-        }
-      }
-      this._render_function();
-    }
-  },
-
-  _fail_to_receive_hierarchy : function(result, textStatus) {
   },
 
   _update_filter : function() {
@@ -416,164 +281,19 @@ Snap.TypeAhead.prototype = {
     if( trimmed_value == '' ) {
       this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks. Click the filter or hit enter to add it to the list.</b></div>');
     } else {
-      var results = [];
-      var hash_results = {};
-
-      if( trimmed_value[0] == '#' ) {
-        var query = trimmed_value.substr(1);
-        // We're searching filters.
-        if( query.length > 0 ) {
-          if( this._database.filters.length > 0 ) {
-            var filters = this._database.filters;
-            for( var i = 0; i < filters.length; ++i ) {
-              var filter = filters[i];
-              var active_filter = this._active_filters[filter.t];
-              for( var i2 = 0; i2 < filter.d.length; ++i2 ) {
-                if( undefined != active_filter && undefined != active_filter[filter.d[i2].i] ) {
-                  continue;
-                }
-                var offset = filter.d[i2].n.toLowerCase().indexOf(query.toLowerCase());
-                if( offset >= 0 ) {
-                  var entry = {
-                    type      : filter.t,
-                    filter_id : filter.d[i2].i,
-                    name      : filter.d[i2].n,
-                    lower_name: filter.d[i2].n.toLowerCase(),
-                    matches   : [{word: query, offset: offset, size: query.length}]
-                  };
-                  var unique_id = 'filter'+i+'-'+i2;
-                  hash_results[unique_id] = entry;
-                  results.push(unique_id);
-                }
-              }
-            }
-          } else {
-            this._elements.dropdown.html('<div class="empty">We\'re still loading the filters, just a sec.</div>');
-            return;
-          }
-        } else {
-          this._elements.dropdown.html('<div class="empty">Type a language or framework name.</div>');
-          return;
-        }
-      } else if( this._database.all.length > 0 ) {
-        var words = trimmed_value.split(' ');
-        var i = 0;
-        while( i < words.length ) {
-          if( words[i] == '' ) {
-            words.splice(i, 1);
-          } else {  
-            words[i] = words[i].toLowerCase();
-            ++i;
-          }
-        }
-
-        var all = this._database.all;
-        for( var category in all ) {
-          var check;
-          for( var key in this._active_filters ) {
-            check = true;
-            break;
-          }
-          if( check && !this._is_category_filtered[category] ) {
-            continue;
-          }
-
-          var list = all[category];
-          for( var i = 0; i < list.length; ++i ) {
-            var unique_id = 'function'+category+'-'+i;
-
-            var any_succeed = false;
-            var any_fail = false;
-            for( var i2 = 0; i2 < words.length; ++i2 ) {
-              var offset = list[i].l.indexOf(words[i2]);
-              if( offset >= 0 ) {
-                if( hash_results[unique_id] == undefined ) {
-                  hash_results[unique_id] = list[i].e;
-                  hash_results[unique_id].matches = [];
-                }
-
-                hash_results[unique_id].matches.push({word: words[i2], offset: offset, size: words[i2].length});
-
-                any_succeed = true;
-              } else {
-                any_fail = true;
-              }
-
-              if( any_fail && any_succeed ) {
-                delete hash_results[unique_id];
-                break;
-              }
-            }
-
-            if( any_succeed && !any_fail ) {
-              results.push(unique_id);
-            }
-          }
-        }
-      }
-
-      // Calculate the score for each result.
-      // Score = sum total of matched characters.
-      for( var i = 0; i < results.length; ++i ) {
-        var entry = hash_results[results[i]];
-
-        var joined_areas = new Array(entry.name.length);
-        for( var i2 = 0; i2 < entry.name.length; ++i2 ) {
-          joined_areas[i2] = 0;
-        }
-        for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-          var word = entry.matches[i2].word;
-          var offsets = entry.lower_name.gindexOf(word);
-
-          for( var i3 = 0; i3 < offsets.length; ++i3 ) {
-            var start = offsets[i3];
-            joined_areas[start]++;
-
-            var end = start + word.length;
-            if( end < joined_areas.length ) {
-              joined_areas[end]--;
-            }
-          }
-        }
-
-        entry.score = 0;
-        var on = 0;
-        var starts_with = joined_areas[0] > 0;
-        for( var i2 = 0; i2 < joined_areas.length; ++i2 ) {
-          on += joined_areas[i2];
-          if( on > 0 ) {
-            entry.score++;
-            if( starts_with ) {
-              entry.score++;    // Double up entries that start with the text.
-            }
-          } else {
-            starts_with = false;
-          }
-        }
-
-        entry.score /= entry.name.length;
-      }
-
-      // Sort by score.
-      function by(left, right) {
-        var left_entry = hash_results[left];
-        var right_entry = hash_results[right];
-        return right_entry.score - left_entry.score;
-      }
-      results = results.sort(by);
-
-      if( results.length > 0 ) {
-        this._list = [];
-        for( var i = 0; i < results.length; ++i ) {
-          this._list.push(hash_results[results[i]]);
-        }
-        this._selection = 0;
-      } else {
-        this._list = null;
-        this._selection = -1;
-      }  
+      this._list = this._db.search(trimmed_value, this._is_category_filtered);
+      this._selection = this._list ? 0 : -1;
       this._offset = 0;
 
+      if( this._list == -1 ) {
+        this._elements.dropdown.html('<div class="empty">We\'re still loading the filters, just a sec.</div>');
+        this._list = null;
+        this._selection = -1;
+      } else if( this._list == -2 ) {
+        this._elements.dropdown.html('<div class="empty">Type a language or framework name.</div>');
+        this._list = null;
+        this._selection = -1;
+      }
       this._render_selection();
     }
   },
@@ -590,17 +310,21 @@ Snap.TypeAhead.prototype = {
         var regex = [];
         for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
           var match = entry.matches[i2];
-          regex.push(match.word);
+          if( match.word.length > 0 ) {
+            regex.push(match.word);
+          }
         }
 
-        name = name.gsub(new RegExp('('+regex.join('|')
-          .replace('(', '\\(')
-          .replace(')', '\\)')
-          .replace('*', '\\*')
-          .replace('$', '\\$')
-          .replace('+', '\\+')+')','i'), function(match) {
-          return '<em>' + match[0] + '</em>';
-        });
+        if( regex.length > 0 ) {
+          name = name.gsub(new RegExp('('+regex.join('|')
+            .replace('(', '\\(')
+            .replace(')', '\\)')
+            .replace('*', '\\*')
+            .replace('$', '\\$')
+            .replace('+', '\\+')+')','i'), function(match) {
+            return '<em>' + match[0] + '</em>';
+          });
+        }
 
         html.push('<div class="result');
         if( i == this._selection ) {
@@ -608,9 +332,11 @@ Snap.TypeAhead.prototype = {
         }
         html.push('">'+name+' <span class="category">'+entry.type+'</span>');
 
-        var lineage = this._render_lineage(entry.category, entry.hierarchy, false);
-        if( lineage ) {
-          html.push(' <span class="lineage">'+lineage+'</span>');
+        if( undefined != entry.function_id ) {
+          var lineage = this._render_lineage(entry.category, entry.hierarchy, false);
+          if( lineage ) {
+            html.push(' <span class="lineage">'+lineage+'</span>');
+          }
         }
 
         html.push('</div>');
@@ -637,50 +363,34 @@ Snap.TypeAhead.prototype = {
   },
 
   _render_lineage : function(category, hierarchy, with_links) {
-    if( undefined != this._hierarchy_cache[category] &&
-        undefined != this._hierarchy_cache[category][hierarchy] ) {
-      var info = this._hierarchy_cache[category][hierarchy];
-      if( undefined != info.name ) {
-        var lineage = [];
-        var missing_any = false;
-        if( info.ancestors ) {
-          for( var i2 = 0; i2 < info.ancestors.length; ++i2 ) {
-            var ancestor = info.ancestors[i2];
-            if( undefined == this._hierarchy_cache[category][ancestor] ||
-                undefined == this._hierarchy_cache[category][ancestor].name ) {
-              missing_any = true;
-              break;
-            }
-          }
-
-          if( !missing_any ) {
-            for( var i2 = 0; i2 < info.ancestors.length; ++i2 ) {
-              var ancestor = this._hierarchy_cache[category][info.ancestors[i2]];
-              var step = '';
-              if( with_links && ancestor.source_url ) {
-                step += '<a class="external" href="'+ancestor.source_url+'">';
-              }
-              step += ancestor.name;
-              if( with_links ) {
-                step += '</a>';
-              }
-              lineage.push(step);
-            }
-          }
-        }
-        if( !missing_any ) {
+    if( this._db.hierarchies_loaded() ) {
+      var info = this._db.get_hierarchy(category, hierarchy);
+      var lineage = [];
+      var missing_any = false;
+      if( info.ancestors ) {
+        for( var i2 = 0; i2 < info.ancestors.length; ++i2 ) {
+          var ancestor = this._db.get_hierarchy(category, info.ancestors[i2]);
           var step = '';
-          if( with_links && info.source_url ) {
-            step += '<a class="external" href="'+info.source_url+'">';
-          }  
-          step += info.name;
+          if( with_links && ancestor.source_url ) {
+            step += '<a class="external" href="'+ancestor.source_url+'">';
+          }
+          step += ancestor.name;
           if( with_links ) {
             step += '</a>';
           }
           lineage.push(step);
-          return lineage.join(' &raquo; ');
         }
       }
+      var step = '';
+      if( with_links && info.source_url ) {
+        step += '<a class="external" href="'+info.source_url+'">';
+      }  
+      step += info.name;
+      if( with_links ) {
+        step += '</a>';
+      }
+      lineage.push(step);
+      return lineage.join(' &raquo; ');
     }
 
     return null;
@@ -705,11 +415,13 @@ Snap.TypeAhead.prototype = {
       this._active_function.type,
       '</span>');
 
-    var category = this._active_function.category;
-    var hierarchy = this._active_function.hierarchy;
-    var lineage = this._render_lineage(category, hierarchy, true);
-    if( lineage ) {
-      html.push(' <span class="lineage">',lineage,'</span>');
+    if( undefined != this._active_function.function_id ) {
+      var category = this._active_function.category;
+      var hierarchy = this._active_function.hierarchy;
+      var lineage = this._render_lineage(category, hierarchy, true);
+      if( lineage ) {
+        html.push(' <span class="lineage">',lineage,'</span>');
+      }
     }
 
     html.push('</div>');
@@ -722,7 +434,7 @@ Snap.TypeAhead.prototype = {
     }
 
     if( this._active_function.data ) {
-      switch( this._id_to_category[this._active_function.category] ) {
+      switch( this._db.id_to_category(this._active_function.category) ) {
         case 'Firebug':
         case 'iPhone':
         case 'PHP':
@@ -882,28 +594,6 @@ Snap.TypeAhead.prototype = {
     });
   },
 
-  _receive_vote_update : function(result, textStatus) {
-    if( result.succeeded ) {
-      if( result.updated ) {
-        $.ajax({
-          type    : 'GET',
-          url     : '/function/social',
-          dataType: 'json',
-          data    : {
-            category  : result.category,
-            id        : result.id
-          },
-          success : this._receive_social.bind(this),
-          failure : this._fail_to_receive_social.bind(this)
-        });
-      }
-    }
-  },
-
-  _fail_to_receive_vote_update : function(result, textStatus) {
-    
-  },
-
   _show_iframe : function(url) {
     if( !this._displaying_frame || this._frame_url != url ) {
       this._displaying_frame = true;
@@ -955,80 +645,6 @@ Snap.TypeAhead.prototype = {
         this._elements.dropdown.css({marginLeft:''});
       }.bind(this));
     }
-  },
-
-  _receive_social : function(result, textStatus) {
-    if( result.succeeded ) {
-      var category = result.category;
-      var id = result.id;
-
-      var function_info = this._function_cache[category][id];
-
-      function_info.social = result.data;
-      function_info.loading_social = false;
-
-      if( this._active_function &&
-          this._active_function.category == result.category &&
-          this._active_function.id == result.id ) {
-        this._render_function();
-      }
-    }
-  },
-
-  _fail_to_receive_social : function(result, textStatus) {
-    
-  },
-
-  _receive_function : function(result, textStatus) {
-    if( result.succeeded ) {
-      var category = result.category;
-      var id = result.id;
-
-      var function_info = this._function_cache[category][id];
-      if( function_info.navigate_immediately && result.data.url ) {
-        this._show_iframe(result.data.url);
-        return;
-      }
-
-      for( var key in result.data ) {
-        function_info[key] = result.data[key];
-      }
-      function_info.loading = false;
-
-      if( function_info.data ) {
-        switch( this._id_to_category[function_info.category] ) {
-          case 'Firebug':
-          case 'iPhone':
-          case 'PHP':
-          case 'django':
-          case 'Zend':
-            function_info.data = function_info.data.replace(/<\/s>/g, '</span>');
-            function_info.data = function_info.data.replace(/<st>/g, '<span class="type">');
-            function_info.data = function_info.data.replace(/<si>/g, '<span class="initializer">');
-            function_info.data = function_info.data.replace(/<sm>/g, '<span class="methodname">');
-            function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
-            function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
-            break;
-          case 'CSS':
-            function_info.data = window["eval"]("(" + function_info.data + ")");
-            if( !function_info.data.d ) {
-              function_info.data.d = 'Not defined';
-            }
-            if( !function_info.data.i ) {
-              function_info.data.i = 'No';
-            }
-            break;
-        }
-      }
-      if( this._active_function &&
-          this._active_function.category == result.category &&
-          this._active_function.id == result.id ) {
-        this._render_function();
-      }
-    }
-  },
-
-  _fail_to_receive_function : function(result, textStatus) {
   },
 
   _render_filters : function() {
@@ -1093,34 +709,22 @@ Snap.TypeAhead.prototype = {
     }
   },
 
-  _receive_data : function(result, textStatus) {
-    this._database.filters = result;
-
-    // Compile the data into an id=>category map for quick access.
-    for( var i = 0; i < result.length; ++i ) {
-      var data = result[i].d;
-      for( var i2 = 0; i2 < data.length; ++i2 ) {
-        var item = data[i2];
-        this._id_to_category[item.i] = item.n;
-        this._id_to_type[item.i] = result[i].t;
-      }
-    }
-
+  _receive_categories : function() {
     if( window.sel ) {
       if( undefined == this._active_filters[window.sel.filter_type] ) {
         this._active_filters[window.sel.filter_type] = {};
       }
-      this._active_filters[window.sel.filter_type][window.sel.category] = this._id_to_category[window.sel.category];
+      this._active_filters[window.sel.filter_type][window.sel.category] = this._db.id_to_category(window.sel.category);
       this._simplify_filters();
       this._render_filters();
     } else if( $.cookie('filters') ) {
       var filters = $.cookie('filters').split(',');
       for( var i = 0; i < filters.length; ++i ) {
-        var type = this._id_to_type[filters[i]];
+        var type = this._db.id_to_type(filters[i]);
         if( undefined == this._active_filters[type] ) {
           this._active_filters[type] = {};
         }
-        this._active_filters[type][filters[i]] = this._id_to_category[filters[i]];
+        this._active_filters[type][filters[i]] = this._db.id_to_category(filters[i]);
       }
       this._simplify_filters();
       this._render_filters();
@@ -1129,36 +733,12 @@ Snap.TypeAhead.prototype = {
     this._update_filter();
   },
 
-  _fail_to_receive_data : function(result, textStatus) {
-  },
-
-  _receive_hier : function(result, textStatus) {
-    for( var category in result ) {
-      if( undefined == this._hierarchy_cache[category] ) {
-        this._hierarchy_cache[category] = {};
-      }
-
-      function process_children(hierarchy) {
-        for( var i = 0; i < hierarchy.length; ++i ) {
-          var item = hierarchy[i];
-          if( undefined == this._hierarchy_cache[category][item.d.i] ) {
-            this._hierarchy_cache[category][item.d.i] = {};
-          }
-          this._hierarchy_cache[category][item.d.i].name = item.d.n;
-          this._hierarchy_cache[category][item.d.i].ancestors = item.d.h;
-          if( undefined != item.c ) {
-            process_children.bind(this)(item.c);
-          }
-        }
-      }
-      process_children.bind(this)(result[category]);
+  _receive_function : function(category, id) {
+    if( this._active_function &&
+        this._active_function.category == category &&
+        this._active_function.id == id ) {
+      this._render_function();
     }
-    if( window.sel && window.sel.hierarchy ) {
-      this._ensure_hierarchy_loaded(window.sel.category, window.sel.hierarchy);
-    }
-  },
-
-  _fail_to_receive_hier : function(result, textStatus) {
   },
 
   _gain_focus : function() {
