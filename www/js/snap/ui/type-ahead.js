@@ -342,7 +342,7 @@ Snap.TypeAhead.prototype = {
         html.push('</div>');
       }
 
-      html.push('<div class="result_info">');
+      html.push('<div class="result_info">Press enter twice to jump to the reference page - ');
       if( this._list.length == 1 ) {
         html.push('The only entry');
       } else {
@@ -616,7 +616,7 @@ Snap.TypeAhead.prototype = {
         this._elements.search.fadeIn(speed);
         this._elements.small_logo.fadeIn(speed);
         this._elements.external
-          .html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.</span></div><iframe src="'+url+'"></iframe>');
+          .html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
         this._elements.external.fadeIn(speed);
       }.bind(this));
     }

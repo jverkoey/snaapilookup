@@ -305,9 +305,10 @@ Snap.Database.prototype = {
   },
 
   is_function_cached : function(category, id) {
-    return
+    var result =
       undefined != this._function_cache[category] &&
       undefined != this._function_cache[category][id];
+    return result;
   },
 
   get_function : function(category, id) {
