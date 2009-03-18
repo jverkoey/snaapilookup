@@ -53,6 +53,7 @@ Snap.TypeAhead = function(elementIDs) {
 
   if( window.sel && window.sel.name ) {
     this._elements.input.val(window.sel.name);
+    this._load_function(window.sel);
     this._display_function(window.sel);
   }
 
@@ -116,14 +117,6 @@ Snap.TypeAhead.prototype = {
             if( function_info.url ) {
               this._elements.dropdown.fadeOut('fast');
               this._show_iframe(function_info.url);
-              $.ajax({
-                type    : 'POST',
-                url     : '/function/viewframe',
-                data    : {
-                  category  : selection.category,
-                  id        : selection.function_id
-                }
-              });
             } else {
               function_info.navigate_immediately = true;
               this._render_function();
@@ -199,7 +192,7 @@ Snap.TypeAhead.prototype = {
     if( this._list && this._selection >= 0 ) {
       var selection = this._list[this._selection];
       if( selection.function_id ) {
-        this._display_function(this._list[this._selection], true);
+        this._load_function(this._list[this._selection]);
       }
     }
   },
@@ -225,9 +218,17 @@ Snap.TypeAhead.prototype = {
     } else if( selection.function_id ) {
       this._elements.dropdown.fadeOut('fast');
 
-      this._hide_iframe();
-
-      this._display_function(selection);
+      this._load_function(selection);
+      if( !this._displaying_frame ) {
+        this._display_function(selection);
+      } else {
+        var function_info = this._db.get_function(selection.category, selection.function_id);
+        if( function_info.url ) {
+          this._show_iframe(function_info.url);
+        } else {
+          function_info.navigate_immediately = true;
+        }
+      }
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
@@ -259,7 +260,7 @@ Snap.TypeAhead.prototype = {
     $.cookie('filters', this._flatten_filters());
   },
 
-  _display_function : function(selection, silent) {
+  _load_function : function(selection) {
     if( !this._db.is_function_cached(selection.category, selection.function_id) ) {
       this._db.request_function(
         selection.category,
@@ -267,17 +268,17 @@ Snap.TypeAhead.prototype = {
         selection.name,
         selection.type,
         selection.hierarchy,
-        silent
+        false
       );
       this._db.ensure_hierarchy_loaded(selection.category, selection.hierarchy);
     }
+  },
 
-    if( !silent ) {
-      this._active_function = this._db.get_function(selection.category, selection.function_id);
+  _display_function : function(selection) {
+    this._active_function = this._db.get_function(selection.category, selection.function_id);
 
-      this._displaying_frame = false;
-      this._render_function();
-    }
+    this._displaying_frame = false;
+    this._render_function();
   },
 
   _update_filter : function() {
@@ -598,29 +599,49 @@ Snap.TypeAhead.prototype = {
 
   _show_iframe : function(url) {
     if( !this._displaying_frame || this._frame_url != url ) {
-      this._displaying_frame = true;
+      var selection = this._list[this._selection];
+      $.ajax({
+        type    : 'POST',
+        url     : '/function/viewframe',
+        data    : {
+          category  : selection.category,
+          id        : selection.function_id
+        }
+      });
+
       this._frame_url = url;
       var speed = 'fast';
 
-      this._elements.logo.fadeOut(speed);
-      this._elements.catch_phrase.fadeOut(speed);
-      this._elements.filters.fadeOut(speed);
-      this._elements.result.fadeOut(speed);
+      if( !this._displaying_frame ) {
+        this._elements.logo.fadeOut(speed);
+        this._elements.catch_phrase.fadeOut(speed);
+        this._elements.filters.fadeOut(speed);
+        this._elements.result.fadeOut(speed);
 
-      this._elements.search.fadeOut(speed, function() {
-        $('body').css({overflow:'hidden'});
-        $('#footer').hide();
-        this._elements.external_table.css({position:'absolute'});
+        this._elements.search.fadeOut(speed, function() {
+          $('body').css({overflow:'hidden'});
+          $('#footer').hide();
+          this._elements.external_table.css({position:'absolute'});
 
-        // Magic number of pixels to shift thanks to "back to snaapi"
-        this._elements.dropdown.css({marginLeft:'53px'});
+          // Magic number of pixels to shift thanks to "back to snaapi"
+          this._elements.dropdown.css({marginLeft:'53px'});
 
-        this._elements.search.fadeIn(speed);
-        this._elements.small_logo.fadeIn(speed);
-        this._elements.external
-          .html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
-        this._elements.external.fadeIn(speed);
-      }.bind(this));
+          this._elements.search.fadeIn(speed);
+          this._elements.small_logo.fadeIn(speed);
+          this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
+          this._elements.external.fadeIn(speed);
+        }.bind(this));  
+      } else {  
+        var src_iframe = this._elements.external.children('iframe');
+        var t = this;
+        src_iframe.fadeOut(speed, function() {
+          $(this).after('<iframe src="'+url+'" style="display:none"></iframe>').remove();
+          var dst_iframe = t._elements.external.children('iframe');
+          dst_iframe.fadeIn('slow');
+        });
+      }
+
+      this._displaying_frame = true;
     }
   },
 
