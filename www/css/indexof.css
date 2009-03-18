@@ -1,0 +1,28 @@
+/**
+ * Index page.
+ */
+
+#categories {
+  margin: 0 auto;
+  width: 500px;
+}
+
+#categories .category-list {
+  width: 180px;
+  padding: 10px;
+  vertical-align: top;
+}
+
+#categories .category-list .header {
+  font-size: 2em;
+}
+
+#categories .category {
+  font-size: 1.3em;
+  padding: 0.2em;
+}
+
+#categories a:hover .category {
+  background-color: #6699aa;
+  color: #fff;
+}

@@ -46,8 +46,9 @@ $categories = array(
 );
 
 foreach( $categories as $category ) {
+  // TODO: COmpress both of these routes into one.
   $route = new Zend_Controller_Router_Route_Regex(
-      $category.'/((\w|:|-|>|.|\+|\s)+)',
+      $category.'/((?:\w|:|-|>|.|\+|\s)+)',
       array(
           'controller' => 'permalink',
           'action'     => $category
@@ -64,6 +65,16 @@ foreach( $categories as $category ) {
   );
   $router->addRoute($category.'simple', $route);
 }
+
+// indexof/...
+$route = new Zend_Controller_Router_Route_Regex(
+    'indexof/((?:\w|:|-|>|.|\+|\s)+)',
+    array(
+        'controller' => 'indexof',
+        'action'     => 'index'
+    )
+);
+$router->addRoute('indexof', $route);
 
 // APPLICATION ENVIRONMENT - Set the current environment.
 // Set a variable in the front controller indicating the current environment --

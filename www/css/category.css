@@ -1,0 +1,26 @@
+/**
+ * indexof/category
+ */
+
+#category {
+  margin: 0 auto;
+  width: 500px;
+}
+
+#category .header {
+  font-size: 2em;
+  text-align: center;
+}
+
+#category .header .type {
+  color: #999;
+}
+
+#category .header .name {
+  color: #000;
+}
+
+#category .back {
+  font-size: 0.8em;
+  text-align: center;
+}

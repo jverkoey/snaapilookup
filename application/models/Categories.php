@@ -40,6 +40,16 @@ class Model_Categories {
   }
 
   /**
+   * Fetch a specific category by name.
+   */
+  public function fetchCategoryInfoByName($name) {
+    $table = $this->getTable();
+    $result = $table->fetchAll($table->select()->from($table, array('id', 'name', 'type'))
+                                               ->where('name = ?', $name))->toArray();
+    return !empty($result) ? $result[0] : null;
+  }
+
+  /**
    * Fetch all frameworks.
    */
   public function fetchAllFrameworks() {

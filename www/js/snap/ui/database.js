@@ -112,7 +112,7 @@ Snap.Database.prototype = {
             if( active_filters[filter.d[i2].i] ) {
               continue;
             }
-            
+
             var unique_id = 'filter'+i+'-'+i2;
             var any_succeed = false;
             var any_fail = false;

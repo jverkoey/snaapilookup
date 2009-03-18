@@ -65,7 +65,7 @@ class PermalinkController extends SnaapiController {
     if( $function_name ) {
       $result = $this->getFunctionsModel()->fetchByName($category, $function_name);
       if( $result ) {
-        $this->view->headTitle($function_name);
+        $this->view->headTitle($result['name']);
         $this->view->category = $category;
         $this->view->id = $result['id'];
         $this->view->hierarchy = $result['hierarchy'];

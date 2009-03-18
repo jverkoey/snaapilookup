@@ -123,6 +123,51 @@ $REVISIONS[\'STATIC_FUN_BUILD\'] = array(';
         file_put_contents(APPLICATION_PATH . '/revisions/static_fun.php', $output);
       }
 
+
+      // Build the static indices.
+
+      function sort_functions($left, $right) {
+        return strcasecmp($left['name'], $right['name']);
+      }
+      $static_indice_revisions_changed = false;
+      foreach( $all_functions as $key=>$value ) {
+        $current_revision = isset($REVISIONS['STATIC_INDICES_BUILD'][$key]) ? $REVISIONS['STATIC_INDICES_BUILD'][$key] : 0;
+        $static_fun_path = APPLICATION_PATH . '/views/scripts/indexof/cat/'.$key.'.phtml';
+        $contents = @file_get_contents($static_fun_path);
+
+        $new_contents = '<div id="listing">'."\n";
+
+        $category_name = $this->getCategoriesModel()->fetchName($key);
+        usort($value, 'sort_functions');
+        foreach( $value as $function ) {
+          $new_contents .= '<div class="function"><a href="/'.$category_name.'/'.$function['name'].'">'.$function['name'].'</a></div>'."\n";
+        }
+        $new_contents.= '</div>'."\n";
+
+        if( $contents != $new_contents ) {
+          $new_revision = $current_revision + 1;
+          file_put_contents($static_fun_path, $new_contents);
+
+          $REVISIONS['STATIC_INDICES_BUILD'][$key] = $new_revision;
+
+          $revisions_changed = true;
+          $static_indice_revisions_changed = true;
+        }
+      }
+      if( $static_indice_revisions_changed ) {
+        $output = 
+'<?php
+
+$REVISIONS[\'STATIC_INDICES_BUILD\'] = array(';
+        $values = array();
+        foreach( $REVISIONS['STATIC_INDICES_BUILD'] as $key=>$value ) {
+          $values []= '"'.$key.'"=>'.$value;
+        }
+        $output .= implode(',', $values);
+        $output .= ');';
+        file_put_contents(APPLICATION_PATH . '/revisions/static_indices.php', $output);
+      }
+
       if( $revisions_changed ) {
         $this->updateRevisionFile();
       }

@@ -1,0 +1,12 @@
+<div id="category">
+  <div class="header">
+    <span class="type"><?= $this->category_type ?> index for </span>
+    <span class="name"><?= $this->category_name ?></span>
+  </div>
+  <div class="back"><a href="/indexof">back to the list of indices</a></div>
+  <?= $this->render('indexof/cat/'.$this->category_id.'.phtml') ?>
+  <div class="back"><a href="/indexof">back to the list of indices</a></div>
+</div>
+
+<?php
+$this->headLink()->appendStylesheet('/css/category.css');

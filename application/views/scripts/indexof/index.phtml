@@ -1,0 +1,17 @@
+<table id="categories"><tbody><tr>
+  <td id="languages" class="category-list">
+    <div class="header">Languages</div>
+<? foreach($this->languages as $language ) { ?>
+  <a href="/indexof/<?= $language['name'] ?>"><div class="category"><?= $language['name'] ?></div></a>
+<? } ?>
+  </td>
+  <td id="frameworks" class="category-list">
+    <div class="header">Frameworks</div>
+<? foreach($this->frameworks as $framework ) { ?>
+  <a href="/indexof/<?= $framework['name'] ?>"><div class="category"><?= $framework['name'] ?></div></a>
+<? } ?>
+  </td>
+</tr></tbody></table>
+
+<?php
+$this->headLink()->appendStylesheet('/css/indexof.css');
