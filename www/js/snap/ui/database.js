@@ -364,8 +364,7 @@ Snap.Database.prototype = {
   },
 
   ensure_hierarchy_loaded : function(category, child) {
-    if( this._hierarchy_cache[category] &&
-        this._hierarchy_cache[category][child] ) {
+    if( this.hierarchies_loaded() ) {
       var hierarchy = this._hierarchy_cache[category][child];
       var to_request = [];
       if( undefined == hierarchy.source_url ) {
