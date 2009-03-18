@@ -121,12 +121,12 @@ class FunctionController extends SnaapiController {
       if( $rating == null ) {
         $this->getRatingsModel()->addRating($category, $id, $index, $user_id, $vote);
         $this->getSocialModel()->updateVote($category, $id, $index, $vote);
-        $this->getLogsModel()->add('voteup', 'cat: '.$category.' id: '.$id.' ix: '.$index.' v: '.$vote);
+        $this->getLogsModel()->add('vote', 'cat: '.$category.' id: '.$id.' ix: '.$index.' v: '.$vote);
         $result['new'] = true;
       } else if( $rating != $vote ) {
         $this->getRatingsModel()->updateRating($category, $id, $index, $user_id, $vote);
         $this->getSocialModel()->updateVote($category, $id, $index, $vote - $rating);
-        $this->getLogsModel()->add('voteup', 'cat: '.$category.' id: '.$id.' ix: '.$index.' v: '.$vote);
+        $this->getLogsModel()->add('vote', 'cat: '.$category.' id: '.$id.' ix: '.$index.' v: '.$vote);
         $result['new'] = false;
       } else {
         $result['updated'] = false;
