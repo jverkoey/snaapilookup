@@ -8,6 +8,7 @@ class BuildController extends SnaapiController {
     global $REVISIONS;
 
     if( 'development' == $this->getInvokeArg('env') ) {
+      date_default_timezone_set('America/Los_Angeles');
 
       // Build the categories.
 
@@ -166,6 +167,66 @@ $REVISIONS[\'STATIC_INDICES_BUILD\'] = array(';
         $output .= implode(',', $values);
         $output .= ');';
         file_put_contents(APPLICATION_PATH . '/revisions/static_indices.php', $output);
+      }
+
+      // Build the sitemap.
+
+      $current_revision = $REVISIONS['STATIC_SITEMAP_BUILD'];
+
+      $static_sitemap_path = APPLICATION_PATH . '/../www/sitemap/sitemap.xml';
+      $contents = @file_get_contents($static_sitemap_path);
+      
+      $new_contents =
+'<?xml version="1.0" encoding="UTF-8"?>
+
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>http://snaapi.com/indexof</loc>
+    <lastmod>'.date('Y-m-d').'</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://snaapi.com/contact</loc>
+    <lastmod>'.date('Y-m-d').'</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://snaapi.com/about</loc>
+    <lastmod>'.date('Y-m-d').'</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+';
+
+      foreach( $all_functions as $key=>$value ) {
+        $category_name = $this->getCategoriesModel()->fetchName($key);
+        foreach( $value as $function ) {
+          $new_contents .=
+'<url>
+  <loc>http://snaapi.com/'.$category_name.'/'.$function['name'].'</loc>
+  <lastmod>'.date('Y-m-d').'</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+';
+        }
+      }
+
+      $new_contents .= '</urlset>';
+      if( $contents != $new_contents ) {
+        $new_revision = $current_revision + 1;
+        file_put_contents($static_sitemap_path, $new_contents);
+        file_put_contents(APPLICATION_PATH . '/revisions/static_sitemap.php',
+'<?php
+
+$REVISIONS[\'STATIC_SITEMAP_BUILD\'] = '.$new_revision.';');
+
+        $REVISIONS['STATIC_SITEMAP_BUILD'] = $new_revision;
+
+        $revisions_changed = true;
       }
 
       if( $revisions_changed ) {

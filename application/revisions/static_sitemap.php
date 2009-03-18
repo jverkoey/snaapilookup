@@ -1,0 +1,3 @@
+<?php
+
+$REVISIONS['STATIC_SITEMAP_BUILD'] = 2;
