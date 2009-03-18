@@ -14,12 +14,16 @@ class IndexofController extends SnaapiController {
         $this->view->category_type = $category['type'];
         $this->view->category_id = $category['id'];
         $this->_helper->viewRenderer->setRender('category');
+        $this->getLogsModel()->add('indexof', $category['name']);
         return;
       } else {
+        $this->getLogsModel()->add('invalidlog', $category_name);
         $this->_helper->getHelper('Redirector')
                         ->setGotoSimple('index', 'indexof');
+        return;
       }
-    }
+    }  
+    $this->getLogsModel()->add('indices');
     $languages = $this->getCategoriesModel()->fetchAllLanguages();
     $frameworks = $this->getCategoriesModel()->fetchAllFrameworks();
 

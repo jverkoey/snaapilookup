@@ -22,7 +22,7 @@ class Model_Logs {
   /**
    * Add a log entry.
    */
-  public function add($type, $log) {
+  public function add($type, $log = '') {
     $table = $this->getTable();
     $auth = Zend_Auth::getInstance();
     $identity = new Zend_Db_Expr('NULL');
