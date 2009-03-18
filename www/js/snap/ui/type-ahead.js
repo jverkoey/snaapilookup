@@ -592,8 +592,8 @@ Snap.TypeAhead.prototype = {
                 score     : social[index].score,
                 vote      : 1
               },
-              success : t._db.receive_vote_update.bind(t),
-              failure : t._db.fail_to_receive_vote_update.bind(t)
+              success : t._db.receive_vote_update.bind(t._db),
+              failure : t._db.fail_to_receive_vote_update.bind(t._db)
             });
           }
         });
@@ -613,8 +613,8 @@ Snap.TypeAhead.prototype = {
                 score     : social[index].score,
                 vote      : -1
               },
-              success : t._db.receive_vote_update.bind(t),
-              failure : t._db.fail_to_receive_vote_update.bind(t)
+              success : t._db.receive_vote_update.bind(t._db),
+              failure : t._db.fail_to_receive_vote_update.bind(t._db)
             });
           }
         });
