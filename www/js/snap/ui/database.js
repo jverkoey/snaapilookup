@@ -484,10 +484,6 @@ Snap.Database.prototype = {
       var id = result.id;
 
       var function_info = this._function_cache[category][id];
-      if( function_info.navigate_immediately && result.data.url ) {
-        this._notify_callbacks('navigate_immediately', result.data.url);
-        return;
-      }
 
       for( var key in result.data ) {
         function_info[key] = result.data[key];
@@ -519,6 +515,12 @@ Snap.Database.prototype = {
             break;
         }
       }
+
+      if( function_info.navigate_immediately && result.data.url ) {
+        delete function_info.navigate_immediately;
+        this._notify_callbacks('navigate_immediately', result.data.url);
+      }
+
       this._notify_callbacks('receive_function', result.category, result.id);
     }
   },

@@ -222,6 +222,7 @@ Snap.TypeAhead.prototype = {
       if( !this._displaying_frame ) {
         this._display_function(selection);
       } else {
+        this._display_function(selection, true);
         var function_info = this._db.get_function(selection.category, selection.function_id);
         if( function_info.url ) {
           this._show_iframe(function_info.url);
@@ -274,10 +275,12 @@ Snap.TypeAhead.prototype = {
     }
   },
 
-  _display_function : function(selection) {
+  _display_function : function(selection, invisible) {
     this._active_function = this._db.get_function(selection.category, selection.function_id);
 
-    this._displaying_frame = false;
+    if( !invisible ) {
+      this._displaying_frame = false;
+    }
     this._render_function();
   },
 
@@ -402,7 +405,7 @@ Snap.TypeAhead.prototype = {
   },
 
   _render_function : function() {
-    if( !this._active_function || this._displaying_frame ) {
+    if( !this._active_function ) {
       return;
     }
     var html = [];
@@ -511,13 +514,17 @@ Snap.TypeAhead.prototype = {
       html.push('</div>');
     }
 
-    this._elements.external.hide();
-    if( this._elements.whyjoin ) {
-      this._elements.whyjoin.fadeOut('fast');
+    if( !this._displaying_frame ) {
+      this._elements.external.hide();
+      if( this._elements.whyjoin ) {
+        this._elements.whyjoin.fadeOut('fast');
+      }
+      this._elements.result
+        .html(html.join(''))
+        .fadeIn('fast');
+    } else {
+      this._elements.result.html(html.join(''));
     }
-    this._elements.result
-      .html(html.join(''))
-      .fadeIn('fast');
 
     new Snap.GhostInput(this._elementIDs.result+' .form:eq(0) .text', 'Web address');
 
@@ -654,7 +661,6 @@ Snap.TypeAhead.prototype = {
       this._elements.external.fadeOut(speed);
 
       this._elements.search.fadeOut(speed, function() {
-
         this._elements.logo.fadeIn(speed);
         this._elements.catch_phrase.fadeIn(speed);
         this._elements.filters.fadeIn(speed);
