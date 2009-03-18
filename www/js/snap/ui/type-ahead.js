@@ -523,6 +523,13 @@ Snap.TypeAhead.prototype = {
         html.push('</div>');
       }
       html.push('</div>');
+    } else if( this._active_function.social.length == 0 ) {
+      html.push('<div class="social">');
+      html.push('<div class="header">no snaapits found');
+      if( !window.user_id ) {
+        html.push(' - <a href="/login">log in</a> to submit links, comments, and code');
+      }
+      html.push('</div></div>');
     }
 
     if( undefined != window.user_id ) {
