@@ -6,7 +6,7 @@ class ContactController extends SnaapiController {
 
   public function indexAction() {
     $this->view->headTitle('Contact');
-    $this->getLogsModel()->add('about');
+    $this->getLogsModel()->add('contact');
   }
 
 }
