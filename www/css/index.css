@@ -91,6 +91,10 @@
   cursor: pointer;
 }
 
+#search .dropdown .result .remove {
+  color: #999;
+}
+
 #search .dropdown .result .category {
   font-size: 10px;
   color: #999;

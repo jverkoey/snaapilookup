@@ -112,10 +112,6 @@ Snap.Database.prototype = {
         for( var i = 0; i < filters.length; ++i ) {
           var filter = filters[i];
           for( var i2 = 0; i2 < filter.d.length; ++i2 ) {
-            if( active_filters[filter.d[i2].i] ) {
-              continue;
-            }
-
             var unique_id = 'filter'+i+'-'+i2;
             var any_succeed = false;
             var any_fail = false;

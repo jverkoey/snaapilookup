@@ -207,12 +207,16 @@ Snap.TypeAhead.prototype = {
     this._elements.input.val(selection.name);
 
     if( selection.filter_id ) {
-      if( undefined == this._active_filters[selection.type] ) {
-        this._active_filters[selection.type] = {};
+      if( this._is_category_filtered[selection.filter_id] ) {
+        this._remove_filter(selection.type, selection.filter_id);
+      } else {
+        if( undefined == this._active_filters[selection.type] ) {
+          this._active_filters[selection.type] = {};
+        }
+        this._active_filters[selection.type][selection.filter_id] = selection.name;
       }
-      this._active_filters[selection.type][selection.filter_id] = selection.name;
-      this._save_active_filters();
 
+      this._save_active_filters();
       this._render_filters();
       this.clear();
     } else if( selection.function_id ) {
@@ -311,6 +315,7 @@ Snap.TypeAhead.prototype = {
     if( this._list ) {
       var html = [];
       var end = Math.min(this._offset + this._list_length, this._list.length);
+      var is_filter_list = false;
       for( var i = this._offset; i < end; ++i ) {
         var entry = this._list[i];
         var name = entry.name;
@@ -338,7 +343,14 @@ Snap.TypeAhead.prototype = {
         if( i == this._selection ) {
           html.push(' selected');
         }
-        html.push('">'+name+' <span class="category">'+entry.type+'</span>');
+        html.push('">');
+        if( entry.filter_id ) {
+          is_filter_list = true;
+          if( this._is_category_filtered[entry.filter_id] ) {
+            html.push('<span class="remove">remove</span> ');
+          }
+        }
+        html.push(name+' <span class="category">'+entry.type+'</span>');
 
         if( undefined != entry.function_id ) {
           var lineage = this._render_lineage(entry.category, entry.hierarchy, false);
@@ -350,7 +362,12 @@ Snap.TypeAhead.prototype = {
         html.push('</div>');
       }
 
-      html.push('<div class="result_info">Press enter twice to jump to the reference page - ');
+      html.push('<div class="result_info">');
+
+      if( !is_filter_list ) {
+        html.push('Press enter twice to jump to the reference page - ');
+      }
+
       if( this._list.length == 1 ) {
         html.push('The only entry');
       } else {
@@ -719,23 +736,26 @@ Snap.TypeAhead.prototype = {
       $(this._elementIDs.filters+' .filter').click(function() {
         var filter_type = this.id.substr(0, this.id.indexOf('-'));
         var filter_id = this.id.substr(this.id.indexOf('-') + 1);
-
-        delete t._active_filters[filter_type][filter_id];
-        var any_filters_left = false;
-        for( var key in t._active_filters[filter_type] ) {
-          any_filters_left = true;
-          break;
-        }
-        if( !any_filters_left ) {
-          delete t._active_filters[filter_type];
-        }
-
-        t._save_active_filters();
-        t._render_filters();
+        t._remove_filter(filter_type, filter_id);
       });
     } else {
       this._elements.filters.empty().hide();
     }
+  },
+
+  _remove_filter : function(filter_type, filter_id) {
+    delete this._active_filters[filter_type][filter_id];
+    var any_filters_left = false;
+    for( var key in this._active_filters[filter_type] ) {
+      any_filters_left = true;
+      break;
+    }
+    if( !any_filters_left ) {
+      delete this._active_filters[filter_type];
+    }
+
+    this._save_active_filters();
+    this._render_filters();
   },
 
   _receive_categories : function() {
