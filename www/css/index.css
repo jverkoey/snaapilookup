@@ -350,6 +350,11 @@
   padding: 2em;
 }
 
+#social_sites {
+  padding: 10px;
+  text-align: center;
+}
+
 #whyjoin .rhetorical,
 #welcome .salutation {
   font-size: 2em;
