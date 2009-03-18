@@ -57,9 +57,12 @@ Snap.TypeAhead = function(elementIDs) {
   }
 
   this._db.register_callbacks({
-    receive_categories: this._receive_categories.bind(this),
-    receive_function  : this._receive_function.bind(this),
-    receive_social    : this._receive_function.bind(this)
+    receive_categories    : this._receive_categories.bind(this),
+    receive_function      : this._receive_function.bind(this),
+    receive_social        : this._receive_function.bind(this),
+    receive_hier          : this._receive_hier.bind(this),
+    receive_hierarchy     : this._receive_hierarchy.bind(this),
+    navigate_immediately  : this._navigate_immediately.bind(this)
   });
 };
 
@@ -266,6 +269,7 @@ Snap.TypeAhead.prototype = {
         selection.hierarchy,
         silent
       );
+      this._db.ensure_hierarchy_loaded(selection.category, selection.hierarchy);
     }
 
     if( !silent ) {
@@ -415,13 +419,11 @@ Snap.TypeAhead.prototype = {
       this._active_function.type,
       '</span>');
 
-    if( undefined != this._active_function.function_id ) {
-      var category = this._active_function.category;
-      var hierarchy = this._active_function.hierarchy;
-      var lineage = this._render_lineage(category, hierarchy, true);
-      if( lineage ) {
-        html.push(' <span class="lineage">',lineage,'</span>');
-      }
+    var category = this._active_function.category;
+    var hierarchy = this._active_function.hierarchy;
+    var lineage = this._render_lineage(category, hierarchy, true);
+    if( lineage ) {
+      html.push(' <span class="lineage">',lineage,'</span>');
     }
 
     html.push('</div>');
@@ -739,6 +741,20 @@ Snap.TypeAhead.prototype = {
         this._active_function.id == id ) {
       this._render_function();
     }
+  },
+
+  _receive_hier : function() {
+    if( window.sel && window.sel.hierarchy ) {
+      this._db.ensure_hierarchy_loaded(window.sel.category, window.sel.hierarchy);
+    }
+  },
+
+  _navigate_immediately : function(url) {
+    this._show_iframe(url);
+  },
+
+  _receive_hierarchy : function() {
+    this._render_function();
   },
 
   _gain_focus : function() {

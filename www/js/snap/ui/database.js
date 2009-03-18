@@ -24,9 +24,12 @@ Snap.Database = function() {
   this._function_cache = {};
 
   this._callbacks = {
-    receive_categories: [],
-    receive_function  : [],
-    receive_social    : []
+    receive_categories    : [],
+    receive_function      : [],
+    receive_social        : [],
+    receive_hier          : [],
+    receive_hierarchy     : [],
+    navigate_immediately  : []
   };
 
   Snap.Database.singleton = this;
@@ -364,6 +367,53 @@ Snap.Database.prototype = {
     }
   },
 
+  ensure_hierarchy_loaded : function(category, child) {
+    if( this._hierarchy_cache[category] &&
+        this._hierarchy_cache[category][child] ) {
+      var hierarchy = this._hierarchy_cache[category][child];
+      var to_request = [];
+      if( undefined == hierarchy.source_url ) {
+        to_request.push(child);
+      }
+      if( hierarchy.ancestors ) {
+        for( var i = 0; i < hierarchy.ancestors.length; ++i ) {
+          if( undefined == this._hierarchy_cache[category][hierarchy.ancestors[i]].source_url ) {
+            to_request.push(hierarchy.ancestors[i]);
+          }
+        }
+      }
+ 
+      if( to_request.length ) {
+        $.ajax({
+          type : 'GET',
+          url : '/hierarchy/info',
+          dataType: 'json',
+          data : {
+            c : category,
+            h : to_request.join(',')
+          },
+          success : this._receive_hierarchy.bind(this),
+          failure : this._fail_to_receive_hierarchy.bind(this)
+        });
+      }
+    }
+  },
+
+  _receive_hierarchy : function(result, textStatus) {
+    if( result.s ) {
+      for( var category in result.i ) {
+        var hierarchies = result.i[category];
+        for( var hierarchy in hierarchies ) {
+          this._hierarchy_cache[category][hierarchy].source_url = hierarchies[hierarchy].source_url;
+        }
+      }
+      this._notify_callbacks('receive_hierarchy');
+    }
+  },
+ 
+  _fail_to_receive_hierarchy : function(result, textStatus) {
+  },
+
   _receive_categories : function(result, textStatus) {
     this._database.filters = result;
 
@@ -404,7 +454,8 @@ Snap.Database.prototype = {
         }
       }
       process_children.bind(this)(result[category]);
-    }
+    }  
+    this._notify_callbacks('receive_hier');
   },
 
   _fail_to_receive_hier : function(result, textStatus) {
@@ -434,7 +485,7 @@ Snap.Database.prototype = {
 
       var function_info = this._function_cache[category][id];
       if( function_info.navigate_immediately && result.data.url ) {
-        this._show_iframe(result.data.url);
+        this._notify_callbacks('navigate_immediately', result.data.url);
         return;
       }
 
