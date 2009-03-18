@@ -580,39 +580,43 @@ Snap.TypeAhead.prototype = {
 
       $(this._elementIDs.result + ' .up').each(function(index) {
         $(this).click(function() {
-          $.ajax({
-            type    : 'POST',
-            url     : '/function/vote',
-            dataType: 'json',
-            data    : {
-              category  : fun.category,
-              id        : fun.id,
-              index     : social[index].ix,
-              score     : social[index].score,
-              vote      : 1
-            },
-            success : t._receive_vote_update.bind(t),
-            failure : t._fail_to_receive_vote_update.bind(t)
-          });
+          if( window.user_id ) {
+            $.ajax({
+              type    : 'POST',
+              url     : '/function/vote',
+              dataType: 'json',
+              data    : {
+                category  : fun.category,
+                id        : fun.id,
+                index     : social[index].ix,
+                score     : social[index].score,
+                vote      : 1
+              },
+              success : t._db.receive_vote_update.bind(t),
+              failure : t._db.fail_to_receive_vote_update.bind(t)
+            });
+          }
         });
       });
 
       $(this._elementIDs.result + ' .down').each(function(index) {
         $(this).click(function() {
-          $.ajax({
-            type    : 'POST',
-            url     : '/function/vote',
-            dataType: 'json',
-            data    : {
-              category  : fun.category,
-              id        : fun.id,
-              index     : social[index].ix,
-              score     : social[index].score,
-              vote      : -1
-            },
-            success : t._receive_vote_update.bind(t),
-            failure : t._fail_to_receive_vote_update.bind(t)
-          });
+          if( window.user_id ) {
+            $.ajax({
+              type    : 'POST',
+              url     : '/function/vote',
+              dataType: 'json',
+              data    : {
+                category  : fun.category,
+                id        : fun.id,
+                index     : social[index].ix,
+                score     : social[index].score,
+                vote      : -1
+              },
+              success : t._db.receive_vote_update.bind(t),
+              failure : t._db.fail_to_receive_vote_update.bind(t)
+            });
+          }
         });
       });
     }

@@ -523,7 +523,7 @@ Snap.Database.prototype = {
   _fail_to_receive_function : function(result, textStatus) {
   },
 
-  _receive_vote_update : function(result, textStatus) {
+  receive_vote_update : function(result, textStatus) {
     if( result.succeeded ) {
       if( result.updated ) {
         $.ajax({
@@ -541,7 +541,7 @@ Snap.Database.prototype = {
     }
   },
 
-  _fail_to_receive_vote_update : function(result, textStatus) {
+  fail_to_receive_vote_update : function(result, textStatus) {
   }
 
 };
