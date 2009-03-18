@@ -466,6 +466,9 @@ Snap.TypeAhead.prototype = {
           html.push('<div class="signature">',this._active_function.data,'</div>');
           break;
         case 'CSS':
+          if( typeof this._active_function.data == 'string' ) {
+            this._active_function.data = window["eval"]("(" + this._active_function.data + ")");
+          }
           html.push('<div class="row"><span class="title">Default value:</span><div class="value">',this._active_function.data.d,'</div></div>');
           html.push('<div class="row"><span class="title">Expected values:</span>');
           var values = this._active_function.data.v;
