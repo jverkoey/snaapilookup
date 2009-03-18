@@ -497,7 +497,11 @@ Snap.TypeAhead.prototype = {
       html.push('<div class="social">Loading snaapits...</div>');
     } else if( this._active_function.social.length > 0 ) {
       html.push('<div class="social">');
-      html.push('<div class="header">snaapits</div>');
+      html.push('<div class="header">snaapits');
+      if( !window.user_id ) {
+        html.push(' - <a href="/login">log in</a> to submit links, comments, and code');
+      }
+      html.push('</div>');
       var social = this._active_function.social;
       for( var i = 0; i < social.length; ++i ) {
         html.push('<div class="row">');
