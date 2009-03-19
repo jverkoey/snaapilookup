@@ -374,6 +374,23 @@
   margin: 0 auto;
 }
 
+#whyjoin .more-details table {
+  width: 100%;
+}
+
+#whyjoin .more-details table td {
+  vertical-align: top;
+}
+
+#whyjoin .more-details ul {
+  margin-left: 2em;
+  margin-bottom: 1em;
+}
+
+#whyjoin .more-details ul li {
+  list-style-type: square;
+}
+
 #whyjoin p,
 #welcome p {
   margin-bottom: 1em;

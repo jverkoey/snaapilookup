@@ -17,8 +17,8 @@
 $hide = ($this->category && $this->id && $this->type) ? ' style="display:none"' : '';
 if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
 <div id="whyjoin"<?=$hide?>>
-<div class="rhetorical">Why should you <a href="/signup">sign up</a>?</div>
-<div class="answer">Because snaapi's about to make your life <i>easier</i>.</div>
+<div class="rhetorical">What is snaapi?</div>
+<div class="answer">It's Javascript-powered API search with a little social <i>spice</i>.</div>
 <div class="more-details"><p>The idea behind snaapi is simple: to <b>provide a simple interface for
   common programming APIs</b>.</p>
   <p>We've built spiders that scour popular API documentations, index their functions, and make
@@ -27,6 +27,20 @@ if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
     an API is listed in the database, <i>anyone</i> can add snippets of code and links to websites
     that dive deeper into the function's use. <b>This lets snaapi not only index APIs, but also the
     useful, community-created content that surrounds them</b>.</p>
+  <p>We currently index a number of popular languages and frameworks including
+    <table><tbody><tr><td><ul>
+      <li>PHP</li>
+      <li>Python</li>
+      <li>CSS</li>
+      <li>Javascript</li>
+    </ul></td><td><ul>
+      <li>django</li>
+      <li>jQuery</li>
+      <li>Facebook API</li>
+    </ul></td></tr></tbody></table>
+  </p>
+  <p>To filter by a specific language, just type # into the search box and select your filters. You
+    can also use this to deselect a specific filter.</p>
   <p>Did we mention that <b>we support OpenID</b>?</p>
 
   <div id="auth"><div class="login">
