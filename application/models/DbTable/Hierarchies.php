@@ -15,15 +15,15 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 9 AND id = 1;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 29 AND id = 2;
 
-  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 9;
-  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 9;
+  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 29;
+  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 29;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    9, @parentRight, @parentRight + 1, 0,
-    'Predefined Exceptions',
-    'http://us2.php.net/manual/en/reserved.exceptions.php');
+    29, @parentRight, @parentRight + 1, 0,
+    'UISegmentedControl Class',
+    'http://developer.apple.com/iphone/library/documentation/UIKit/Reference/UISegmentedControl_Class/Reference/UISegmentedControl.html');
 
   UNLOCK TABLES;
   

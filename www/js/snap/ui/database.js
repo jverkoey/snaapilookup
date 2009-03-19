@@ -486,12 +486,11 @@ Snap.Database.prototype = {
       function_info.loading = false;
 
       if( function_info.data ) {
-        switch( this._id_to_category[function_info.category] ) {
-          case 'Firebug':
-          case 'iPhone':
-          case 'PHP':
-          case 'django':
-          case 'Zend':
+        switch( function_info.category ) {
+          case 30:  // Firebug
+          case 9:   // PHP
+          case 28:  // django
+          case 26:  // Zend
             function_info.data = function_info.data.replace(/<\/s>/g, '</span>');
             function_info.data = function_info.data.replace(/<st>/g, '<span class="type">');
             function_info.data = function_info.data.replace(/<si>/g, '<span class="initializer">');
@@ -499,7 +498,10 @@ Snap.Database.prototype = {
             function_info.data = function_info.data.replace(/<smp>/g, '<span class="methodparam">');
             function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
             break;
-          case 'CSS':
+          case 29:  // iPhone
+            function_info.data = window["eval"]("(" + function_info.data + ")");
+            break;
+          case 25:  // CSS
             function_info.data = window["eval"]("(" + function_info.data + ")");
             if( !function_info.data.d ) {
               function_info.data.d = 'Not defined';

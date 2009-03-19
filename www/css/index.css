@@ -174,6 +174,12 @@
   font-style: normal;
 }
 
+#result .type {
+  padding: 0.2em;
+  font-size: 1.0em;
+  color: #999;
+}
+
 #result .row {
   padding: 0.5em;
   font-size: 1em;

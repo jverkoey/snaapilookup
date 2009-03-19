@@ -457,21 +457,29 @@ Snap.TypeAhead.prototype = {
     }
 
     if( this._active_function.data ) {
-      switch( this._db.id_to_category(this._active_function.category) ) {
-        case 'Firebug':
-        case 'iPhone':
-        case 'PHP':
-        case 'django':
-        case 'Zend':
-          html.push('<div class="signature">',this._active_function.data,'</div>');
+      var data = this._active_function.data;
+      switch( this._active_function.category ) {
+        case 30:  // Firebug
+        case 9:   // PHP
+        case 28:  // django
+        case 26:  // Zend
+          html.push('<div class="signature">',data,'</div>');
           break;
-        case 'CSS':
-          if( typeof this._active_function.data == 'string' ) {
-            this._active_function.data = window["eval"]("(" + this._active_function.data + ")");
+        case 29:  // iPhone
+          if( data.i && data.t ) {
+            var types = [
+              'Property',
+              'Class Method',
+              'Instance Method'
+            ];
+            html.push('<div class="type">',types[data.t-1],'</div>');
+            html.push('<div class="signature">',data.i,'</div>');
           }
-          html.push('<div class="row"><span class="title">Default value:</span><div class="value">',this._active_function.data.d,'</div></div>');
+          break;
+        case 25:  // CSS
+          html.push('<div class="row"><span class="title">Default value:</span><div class="value">',data.d,'</div></div>');
           html.push('<div class="row"><span class="title">Expected values:</span>');
-          var values = this._active_function.data.v;
+          var values = data.v;
           for( var i = 0; i < values.length; ++i ) {
             html.push('<div class="value">');
             if( typeof values[i] == 'string' ) {
@@ -482,7 +490,7 @@ Snap.TypeAhead.prototype = {
             html.push('</div>');
           }
           html.push('</div>');
-          html.push('<div class="row"><span class="title">Inherited:</span><div class="value">',this._active_function.data.i,'</div></div>');
+          html.push('<div class="row"><span class="title">Inherited:</span><div class="value">',data.i,'</div></div>');
           break;
       }
     }

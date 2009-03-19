@@ -1079,7 +1079,8 @@ class ScrapeController extends SnaapiController {
     }
 
     foreach( $scrapeable as $hierarchy ) {
-      $this->view->results .= $hierarchy['name'] . "\n";
+      $this->view->results .= "\n".$hierarchy['name'] . "\n";
+      
       if( !$hierarchy['source_url'] ) {
         $this->view->results .= 'No source URL specified, skipping...' . "\n";
         continue;
@@ -1087,16 +1088,16 @@ class ScrapeController extends SnaapiController {
       $source_url = $hierarchy['source_url'];
       $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
 
-      $opts = array(
-        'http'=>array(
-          'method'=>"GET",
-          'header'=>"Accept-language: en\r\n"
-        )
-      );
+      $contents = file_get_contents(APPLICATION_PATH . '/scraper/iphone/'.$hierarchy['id'].'.html');
 
-      $context = stream_context_create($opts);
+      if( !preg_match('/<\/head><body onload="initialize_page\(\);" bgcolor="#ffffff"><a name=".+?" title="(.+?)"><\/a>/', $contents, $matches) ) {
+        $this->view->results .= 'We didn\'t find the name, skipping...' . "\n";
+        continue;
+      }
 
-      $contents = file_get_contents($source_url, false, $context);
+      $name = $matches[1];
+      $this->view->results .= '  name: '.$name."\n";
+      $this->view->results .= '  link: '.$source_url."\n";
 
       $OVERVIEW_START = '<h2>Overview</h2><p class="spaceabove">';
       $start_index = strpos($contents, $OVERVIEW_START);
@@ -1111,10 +1112,112 @@ class ScrapeController extends SnaapiController {
         continue;
       }
 
-      $overview = str_replace("\n", '', substr($contents, $start_index, $end_index - $start_index));
+      $overview = str_replace("\n", ' ', substr($contents, $start_index, $end_index - $start_index));
       $overview = strip_tags($overview, '<b><code>');
 
-      $this->view->results .= $overview."\n";
+      $this->view->results .= '  desc: '.$overview."\n";
+
+      $this->getFunctionsModel()->insertOrUpdateFunction(array(
+        'category' => $category_id,
+        'hierarchy' => $hierarchy['id'],
+        'name' => $name,
+        'url' => $source_url,
+        'short_description' => $overview,
+        'data' => '{}'
+      ));
+
+      $rest = substr($contents, $end_index);
+      $subsections = array_slice(explode('></a><h2>', $rest), 1);
+
+      $type_map = array(
+        'Properties'        => 1,
+        'Class Methods'     => 2,
+        'Instance Methods'  => 3
+      );
+
+      foreach( $subsections as $subsection ) {
+        $sub_name = substr($subsection, 0, strpos($subsection, '</h2>'));
+        $this->view->results .= '<b>'.$sub_name."</b>\n";
+        if( !isset($type_map[$sub_name]) ) {
+          $this->view->results .= 'Invalid type of section, skipping...'."\n";
+          continue;
+        }
+        $type = $type_map[$sub_name];
+        $this->view->results .= $type."\n";
+        $items = explode('<h3 class="verytight">', $subsection);
+        for( $index = 1; $index < count($items); ++$index ) {
+          $item = $items[$index];
+          $prev_item = $items[$index-1];
+          $iteration = 0;
+          $anchor_index = strlen($prev_item);
+          do {
+            $new_index = strrpos($prev_item, '<a name=', -(strlen($prev_item) - $anchor_index + 1));
+            if( $new_index === FALSE ) {
+              break;
+            }
+            $anchor_index = $new_index;
+            $iteration++;
+          } while( $iteration < 4 );
+          $anchor = substr($prev_item, $anchor_index, strpos($prev_item, '</a>', $anchor_index) - $anchor_index);
+          $item_name = substr($item, 0, strpos($item, '</h3>'));
+
+          if( !preg_match('/<a name="(.+?)"/', $anchor, $matches) ) {
+            $this->view->results .= 'Could\'t find anchor, skipping...'."\n\n";
+            continue;
+          }
+
+          $anchor = $source_url.'#'.trim($matches[1]);
+
+          $this->view->results .= '  Name: '.$item_name."\n";
+          $this->view->results .= '  Link: '.$anchor."\n";
+
+          if( !preg_match('/<p class="spaceabove">(.+?)<\/p>/', $item, $matches) ) {
+            $this->view->results .= 'Could\'t find item summary, skipping...'."\n\n";
+            continue;
+          }
+          $summary = trim(strip_tags($matches[1]));
+          $this->view->results .= '  Desc: '.$summary."\n";
+
+          if( !preg_match('/<p class="spaceabovemethod">(.+?)<\/p>/', $item, $matches) ) {
+            if( !preg_match('/<pre><code>(.+?)<\/code><br><\/pre>/', $item, $matches) ) {
+              $this->view->results .= 'Could\'t find method info, filling with empty string...'."\n\n";
+              $method_info = '';
+            } else {
+              $method_info = trim(strip_tags($matches[1]));
+            }
+          } else {
+            $method_info = trim(strip_tags($matches[1]));
+          }
+
+          $data = Zend_Json::encode(array(
+            'i' => $method_info,
+            't' => $type
+          ));
+          $data = preg_replace('/"([a-z])"/', '$1', $data);
+
+          $this->view->results .= '  data: '.$data."\n\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name.' '.$item_name,
+            'url' => $anchor,
+            'short_description' => $summary,
+            'data' => $data
+          ));
+        }
+      }
+//      $this->view->results .= print_r($subsections, true);
+/*      $start_index = strpos($contents, $DELIM, $start_index);
+      if( $start_index === FALSE ) {
+        $this->view->results .= 'We didn\'t find properties, skipping...' . "\n";
+        continue;
+      }
+      $methods_start_index = strpos($contents, $CLASS_METHODS_START, $props_start_index);
+      if( $methods_start_index === FALSE ) {
+        $this->view->results .= 'We couldn\'t find the start of the methods, skipping...' . "\n";
+        continue;
+      }*/
     }
   }
 
