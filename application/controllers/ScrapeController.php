@@ -104,6 +104,7 @@ class ScrapeController extends SnaapiController {
       $this->_pages_scraped = 0;
 
       $this->scrapeiPhone();
+      //$this->scrapeiPhoneDir();
     } else {
       $this->_forward('error', 'error');
     }
@@ -1061,6 +1062,79 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  private function scrapeiPhoneDir() {
+    $category = 'iPhone';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $hierarchies = array(
+      /*'6' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CocoaTouch/AddressBookUI',
+      '7' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CocoaTouch/UIKit',
+      '81' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/AudioToolbox',
+      '82' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/AudioUnit',
+      '83' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/AVFoundation',
+      '84' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/CoreAudio',
+      '85' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/CoreGraphics',
+      '86' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/MediaPlayer',
+      '87' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/OpenGLES',
+      '88' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/QuartzCore',*/
+      '110' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreServices/AddressBook',
+      '111' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreServices/CoreFoundation',
+      '112' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreServices/CoreLocation',
+      '113' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreServices/Foundation',
+      '114' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreServices/SystemConfiguration',
+      '115' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreOS/CFNetwork',
+      '116' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreOS/Security',
+      '117' => 'http://developer.apple.com/iphone/library/navigation/Frameworks/CoreOS/System',
+    );
+    foreach( $hierarchies as $parent_id => $base_url ) {
+      $contents = file_get_contents($base_url.'/docdata.js');
+      $contents = str_replace('"', '\"', $contents);
+      $contents = str_replace("'", '"', $contents);
+      $data = Zend_Json::decode($contents);
+      foreach( $data as $item ) {
+        if( strpos($item['title'], 'Class Reference') !== FALSE ||
+            strpos($item['title'], 'Protocol Reference') !== FALSE ) {
+          $name = str_replace(' Reference', '', $item['title']);
+
+          $ref_url = explode('/', $base_url);
+          $navigator = explode('/', $item['installPath']);
+          foreach( $navigator as $dir ) {
+            if( $dir == '..' ) {
+              $ref_url = array_splice($ref_url, 0, -1);
+            } else {
+              $ref_url []= $dir;
+            }
+          }
+
+          $ref_url = implode('/', $ref_url);
+          //$this->view->results .= $name."\n";
+          //$this->view->results .= $ref_url."\n";
+
+          $subdata = file_get_contents($ref_url);
+
+          if( !preg_match('/<META ID="refresh" HTTP-EQUIV=refresh CONTENT="0; URL=(.+?)">/', $subdata, $matches) ) {
+            $this->view->results .= 'Unable to get redirected link, skipping...'."\n";
+            continue;
+          }
+
+          $ref_url = str_replace('index.html', '', $ref_url).$matches[1];
+          //$this->view->results .= $ref_url."\n";
+
+          $id = $this->getHierarchiesModel()->fetchByName($category_id, $parent_id, $name);
+          if( !$id ) {
+            $this->view->results .= $this->getHierarchiesModel()->insert($category_id, $parent_id, $name, $ref_url, 1)."\n";
+          }
+        }
+      }
+    }
+  }
+
   private function scrapeiPhone() {
     $category = 'iPhone';
 
@@ -1088,9 +1162,9 @@ class ScrapeController extends SnaapiController {
       $source_url = $hierarchy['source_url'];
       $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
 
-      $contents = file_get_contents(APPLICATION_PATH . '/scraper/iphone/'.$hierarchy['id'].'.html');
+      $contents = file_get_contents($source_url);
 
-      if( !preg_match('/<\/head><body onload="initialize_page\(\);" bgcolor="#ffffff"><a name=".+?" title="(.+?)"><\/a>/', $contents, $matches) ) {
+      if( !preg_match('/<BODY bgcolor="#ffffff" onload="initialize_page\(\);"><a name=".+?" title="(.+?)"><\/a>/', $contents, $matches) ) {
         $this->view->results .= 'We didn\'t find the name, skipping...' . "\n";
         continue;
       }
@@ -1099,7 +1173,7 @@ class ScrapeController extends SnaapiController {
       $this->view->results .= '  name: '.$name."\n";
       $this->view->results .= '  link: '.$source_url."\n";
 
-      $OVERVIEW_START = '<h2>Overview</h2><p class="spaceabove">';
+      $OVERVIEW_START = '<h2>Overview</h2>';
       $start_index = strpos($contents, $OVERVIEW_START);
       if( $start_index === FALSE ) {
         $this->view->results .= 'We didn\'t find an overview, skipping...' . "\n";
@@ -1162,7 +1236,7 @@ class ScrapeController extends SnaapiController {
           $item_name = substr($item, 0, strpos($item, '</h3>'));
 
           if( !preg_match('/<a name="(.+?)"/', $anchor, $matches) ) {
-            $this->view->results .= 'Could\'t find anchor, skipping...'."\n\n";
+            $this->view->results .= 'Couldn\'t find anchor, skipping...'."\n\n";
             continue;
           }
 
@@ -1171,8 +1245,8 @@ class ScrapeController extends SnaapiController {
           $this->view->results .= '  Name: '.$item_name."\n";
           $this->view->results .= '  Link: '.$anchor."\n";
 
-          if( !preg_match('/<p class="spaceabove">(.+?)<\/p>/', $item, $matches) ) {
-            $this->view->results .= 'Could\'t find item summary, skipping...'."\n\n";
+          if( !preg_match('/<p class="spaceabove">(.+?)<\/p>/', str_replace("\n", ' ', $item), $matches) ) {
+            $this->view->results .= 'Couldn\'t find item summary, skipping...'."\n\n";
             continue;
           }
           $summary = trim(strip_tags($matches[1]));
@@ -1180,7 +1254,7 @@ class ScrapeController extends SnaapiController {
 
           if( !preg_match('/<p class="spaceabovemethod">(.+?)<\/p>/', $item, $matches) ) {
             if( !preg_match('/<pre><code>(.+?)<\/code><br><\/pre>/', $item, $matches) ) {
-              $this->view->results .= 'Could\'t find method info, filling with empty string...'."\n\n";
+              $this->view->results .= 'Couldn\'t find method info, filling with empty string...'."\n\n";
               $method_info = '';
             } else {
               $method_info = trim(strip_tags($matches[1]));
@@ -1207,17 +1281,8 @@ class ScrapeController extends SnaapiController {
           ));
         }
       }
-//      $this->view->results .= print_r($subsections, true);
-/*      $start_index = strpos($contents, $DELIM, $start_index);
-      if( $start_index === FALSE ) {
-        $this->view->results .= 'We didn\'t find properties, skipping...' . "\n";
-        continue;
-      }
-      $methods_start_index = strpos($contents, $CLASS_METHODS_START, $props_start_index);
-      if( $methods_start_index === FALSE ) {
-        $this->view->results .= 'We couldn\'t find the start of the methods, skipping...' . "\n";
-        continue;
-      }*/
+
+      $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
     }
   }
 
