@@ -421,10 +421,16 @@ Snap.TypeAhead.prototype = {
     return null;
   },
 
-  _render_function : function() {
+  _render_function : function(failed) {
     if( !this._active_function ) {
       return;
     }
+
+    if( failed ) {
+      this._elements.result.html('We couldn\'t load this function. It\'s likely that it\'s missing from the db.');
+      return;
+    }
+
     var html = [];
     html.push('<div class="function"><span class="name">');
 
@@ -808,11 +814,11 @@ Snap.TypeAhead.prototype = {
     this._update_filter();
   },
 
-  _receive_function : function(category, id) {
+  _receive_function : function(category, id, succeeded) {
     if( this._active_function &&
         this._active_function.category == category &&
         this._active_function.id == id ) {
-      this._render_function();
+      this._render_function(!succeeded);
     }
   },
 
