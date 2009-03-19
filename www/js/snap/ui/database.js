@@ -520,7 +520,7 @@ Snap.Database.prototype = {
 
       this._notify_callbacks('receive_function', result.category, result.id);
     } else {
-      this._notify_callbacks('receive_function', result.category, result.id, false);
+      this._notify_callbacks('receive_function', result.category, result.id);
     }
   },
 

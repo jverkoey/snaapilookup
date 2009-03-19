@@ -421,13 +421,8 @@ Snap.TypeAhead.prototype = {
     return null;
   },
 
-  _render_function : function(failed) {
+  _render_function : function() {
     if( !this._active_function ) {
-      return;
-    }
-
-    if( failed ) {
-      this._elements.result.html('We couldn\'t load this function. It\'s likely that it\'s missing from the db.');
       return;
     }
 
@@ -818,7 +813,7 @@ Snap.TypeAhead.prototype = {
     if( this._active_function &&
         this._active_function.category == category &&
         this._active_function.id == id ) {
-      this._render_function(!succeeded);
+      this._render_function();
     }
   },
 
