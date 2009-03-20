@@ -101,6 +101,10 @@ Snap.Database.prototype = {
     }
   },
 
+  get_filters : function() {
+    return this._database.filters;
+  },
+
   search : function(query, active_filters) {
     var results = [];
     var hash_results = {};

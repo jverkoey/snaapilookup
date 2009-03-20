@@ -7,6 +7,9 @@
 
 Snap.FilterBar = function(elementIDs) {
   this._elementIDs = elementIDs;
+  this._elementIDs.list = this._elementIDs.filters+' .list';
+  this._elementIDs.list_button = this._elementIDs.filters+' .list-button';
+  this._elementIDs.active = this._elementIDs.filters+' .active';
   this._elements = {};
   for( var key in this._elementIDs ) {
     if( key != 'canvas' ) {
@@ -16,15 +19,15 @@ Snap.FilterBar = function(elementIDs) {
     }
   }
 
-  this._elements.list = this._elements.filters.children('.list');
-  this._elements.list_button = this._elements.filters.children('.list-button');
-  this._elements.active = this._elements.filters.children('.active');
+  this._filter_list_shown = false;
 
   // [type][category]
   this._active_filters = {};
   // [category]
   this._is_category_filtered = {};
-  
+
+  this._elements.list_button.click(this._toggle_filter_list.bind(this));
+
   this._db = Snap.Database.singleton;
   this._db.register_callbacks({
     receive_categories    : this._receive_categories.bind(this)
@@ -97,6 +100,35 @@ Snap.FilterBar.prototype = {
     this._render_filters();
   },
 
+  _toggle_filter_list : function() {
+    if( this._filter_list_shown ) {
+      this._elements.list.slideUp('fast');
+      this._elements.list_button.html('View all currently supported languages and frameworks');
+    } else {
+      this._elements.list.slideDown('fast');
+      this._elements.list_button.html('Hide');
+    }
+
+    this._filter_list_shown = !this._filter_list_shown;
+  },
+
+  _render_filter_list : function() {
+    var html = [];
+    html.push('<div class="header">All languages and frameworks</div><table><tbody><tr>');
+    var filters = this._db.get_filters();
+    for( var i = 0; i < filters.length; ++i ) {
+      html.push('<td><div class="cat_header">',filters[i].t,'</div>');
+      var filter_list = filters[i].d;
+      for( var i2 = 0; i2 < filter_list.length; ++i2 ) {
+        var toggle_class = this._is_category_filtered[filter_list[i2].i] ? 'hide' : 'show';
+        html.push('<div class="filter" title="Click to toggle"><span class="',toggle_class,'">+</span>',filter_list[i2].n,'</div>');
+      }
+      html.push('</td>');
+    }
+    html.push('</tr></tbody></table>');
+    this._elements.list.html(html.join(''));
+  },
+
   _render_filters : function() {
     var html = [];
     var any_filters = false;
@@ -110,7 +142,7 @@ Snap.FilterBar.prototype = {
       for( var filter_id in filter ) {
         var item = filter[filter_id];
         filter_set.push(
-          '<span class="filter" id="'+
+          '<span class="filter" id="remove_'+
           filter_type+'-'+filter_id+
           '" title="Click to remove">'+item+'<span class="xme">X</span></span>');
         any_filters = true;
@@ -136,8 +168,8 @@ Snap.FilterBar.prototype = {
       this._elements.active.html(html.join(''));
 
       var t = this;
-      $(this._elementIDs.filters+' .filter').click(function() {
-        var filter_type = this.id.substr(0, this.id.indexOf('-'));
+      $(this._elementIDs.active+' .filter').click(function() {
+        var filter_type = this.id.substr('remove_'.length, this.id.indexOf('-') - 'remove_'.length);
         var filter_id = this.id.substr(this.id.indexOf('-') + 1);
         t._remove_filter(filter_type, filter_id);
       });
@@ -145,6 +177,7 @@ Snap.FilterBar.prototype = {
     } else {
       this._elements.active.hide();
     }
+    this._render_filter_list();
   },
 
   _remove_filter : function(filter_type, filter_id) {

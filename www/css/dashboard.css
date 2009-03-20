@@ -9,7 +9,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   border-left: 0;
   border-top: 0;
   -moz-border-radius-bottomright: 5px;
@@ -43,6 +43,64 @@
   margin-right: 140px;
 }
 
+#filters .list {
+  border: 1px solid #eee;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+#filters .list .header {
+  padding: 5px;
+  font-size: 1.3em;
+  text-align: center;
+  color: #ccc;
+}
+
+#filters .list table {
+  margin: 0 auto;
+  width: 80%;
+}
+
+#filters .list td {
+  vertical-align: top;
+  width: 50%;
+}
+
+#filters .list td .cat_header {
+  font-size: 1.2em;
+  text-align: center;
+  color: #ccc;
+}
+
+#filters .list td .filter {
+  cursor: pointer;
+  padding: 5px;
+  float: left;
+}
+
+#filters .list td .filter:hover {
+  background-color: #6699AA;
+  color: #fff;
+}
+
+#filters .list td .filter .hide,
+#filters .list td .filter .show {
+  color: #999;
+  margin-right: 4px;
+  padding: 0 3px;
+}
+
+#filters .list td .filter .hide {
+  color: #fff;
+  background-color: #6699AA;
+}
+
+#filters .list td .filter:hover .hide,
+#filters .list td .filter:hover .show {
+  color: #6699AA;
+  background-color: #eef;
+}
+
 #filters .list-button {
   font-size: 0.8em;
   text-align: center;
@@ -50,6 +108,12 @@
   color: #999;
   padding-top: 2px;
   padding-bottom: 5px;
+  border: 1px solid #eee;
+  border-top: 0;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-radius-bottomright: 5px;
 }
 
 #filters .list-button:hover {
@@ -68,7 +132,7 @@
   padding: 4px 0;
 }
 
-#filters .filter {
+#filters .active .filter {
   display: inline;
   font-weight: bold;
   cursor: pointer;
@@ -77,17 +141,17 @@
   border: 1px solid #ddd;
 }
 
-#filters .filter:hover {
+#filters .active .filter:hover {
   cursor: pointer;
   background-color: #ccc;
 }
 
-#filters .filter .xme {
+#filters .active .filter .xme {
   color: #ddd;
   margin-left: 5px;
 }
 
-#filters .filter:hover .xme {
+#filters .active .filter:hover .xme {
   color: #333;
 }
 
