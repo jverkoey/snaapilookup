@@ -511,9 +511,12 @@ Snap.TypeAhead.prototype = {
     }
 
     if( !this._displaying_frame ) {
-      this._elements.result
-        .html(html.join(''))
-        .fadeIn('fast');
+      var t = this;
+      this._elements.whyjoin.fadeOut('fast', function() {
+        t._elements.result
+          .html(html.join(''))
+          .fadeIn('fast');
+      });
     } else {
       this._elements.result.html(html.join(''));
     }

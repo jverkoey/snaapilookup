@@ -27,6 +27,96 @@
 </div>
 <div class="hr"></div>
 </td></tr><tr><td id="bottom-pane">
+  <?
+  $hide = ($this->category && $this->id && $this->type) ? ' style="display:none"' : '';
+  if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
+  <div id="whyjoin"<?=$hide?>>
+  <div class="rhetorical">What is snaapi?</div>
+  <div class="answer">It's Javascript-powered API search with a little social <i>spice</i>.</div>
+  <div class="more-details"><p>The idea behind snaapi is simple: to <b>provide a simple interface for
+    common programming APIs</b>.</p>
+    <p>We've built spiders that scour popular API documentations, index their functions, and make
+      them available in the snaapi index.</p>
+    <p><b>But here's the cool part</b>. Once
+      an API is listed in the database, <i>anyone</i> can add snippets of code and links to websites
+      that dive deeper into the function's use. <b>This lets snaapi not only index APIs, but also the
+      useful, community-created content that surrounds them</b>.</p>
+    <p>We currently index a number of popular languages and frameworks including
+      <table><tbody><tr><td><ul>
+        <li>PHP</li>
+        <li>Python</li>
+        <li>CSS</li>
+        <li>Javascript</li>
+      </ul></td><td><ul>
+        <li>django</li>
+        <li>jQuery</li>
+        <li>Facebook API</li>
+        <li>iPhone SDK</li>
+      </ul></td></tr></tbody></table>
+    </p>
+    <p>To filter by a specific language, just type # into the search box and select your filters. You
+      can also use this to deselect a specific filter.</p>
+    <p>Did we mention that <b>we support OpenID</b>?</p>
+
+    <div id="auth"><div class="login">
+      <div class="form">
+        <form method="post" action="/auth/login"><fieldset>
+          <div class="services">
+            <img src="/gfx/openidicon.gif" alt="Services" title="OpenID Services" />
+            <div class="list">
+              <div class="service myOpenID"><img width="16" height="16" src="http://www.myopenid.com/favicon.ico" alt="" />myOpenID</div>
+              <div class="service yahoo"><img width="16" height="16" src="http://www.yahoo.com/favicon.ico" alt="" />Yahoo!</div>
+              <div class="service flickr"><img width="16" height="16" src="http://flickr.com/favicon.ico" alt="" />flickr</div>
+              <div class="service blogger"><img width="16" height="16" src="http://www.aol.com/favicon.ico" alt="" />Blogger</div>
+              <div class="bottombar"><span class="servicename"></span> username: <input class="text" type="text" value="username" /></div>
+            </div>
+          </div>
+          <div class="loginform">
+            <input id="openid_url" class="text" type="text" name="openid_url" size="35" maxlength="100" autocomplete="off"value="<?= isset($this->openid_url) ? $this->openid_url : 'http://' ?>" />
+            <input class="button" type="submit" name="openid_action" value="log in" />
+          </div>
+          <? if( isset($this->error) ) { ?>
+          <div class="errors">
+            <?= $this->error ?>
+          </div>
+          <? } ?>
+        </fieldset></form>
+      </div>
+    </div></div>
+
+  <? if ('production' == $this->env) { ?>
+    <div id="social_sites">
+    <!-- AddThis Button BEGIN -->
+    <script type="text/javascript">var addthis_pub="jverkoey";</script>
+    <a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script>
+    <!-- AddThis Button END -->
+    </div>
+  <? } ?>
+  </div>
+
+  </div>
+  <? } else { ?>
+  <div id="whyjoin"<?=$hide?>>
+    <div class="rhetorical">Welcome to snaapi!</div>
+    <div class="more-details"><p>How do you use this thing? <b>Type the name of a function you want to find.</b></p>
+      <p>By
+      default snaapi searches <i>all</i> languages and frameworks, but if you want to be more specific just
+      type <tt>#<i>language</i></tt>. If the language you want is indexed it'll show up in the list
+      for you to select.</p>
+      <p>tip: We're hoping to make <tt>#<i>language</i> <i>function name</i></tt> work soon,
+      but for the time being you'll have to hit enter after selecting your language.</p>
+      <p>If you have any questions, <a href="/contact">drop us a line</a>.</p></div>
+
+  <? if ('production' == $this->env) { ?>
+      <div id="social_sites">
+      <!-- AddThis Button BEGIN -->
+      <script type="text/javascript">var addthis_pub="jverkoey";</script>
+      <a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script>
+      <!-- AddThis Button END -->
+      </div>
+  <? } ?>
+  </div>
+  <? } ?>
 
   <table id="content-table" cellpadding="0" cellspacing="0"><tbody><tr><td class="left">
     <div id="tree-view"></div>

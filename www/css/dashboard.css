@@ -41,6 +41,7 @@
 #filters {
   margin-left: 100px;
   margin-right: 140px;
+  margin-bottom: 7px;
 }
 
 #filters .list {
@@ -111,8 +112,7 @@
 }
 
 #filters .active {
-  margin: 0.3em;
-  margin-left: 0;
+  margin-top: 7px;
   font-size: 1.0em;
   color: #999;
 }
@@ -145,7 +145,7 @@
 }
 
 #search {
-  padding: 7px 0;
+  padding-bottom: 7px;
   margin-left: 100px;
 }
 
