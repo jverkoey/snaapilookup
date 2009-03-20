@@ -8,7 +8,6 @@ $(function(){
   new Snap.TypeAhead({
     search   : '#search',
     input    : '#search .text',
-    filters  : '#search .filters',
     dropdown : '#search .dropdown',
     result   : '#result',
     external_table : '#external_table',
@@ -17,7 +16,9 @@ $(function(){
     logo     : '#logo',
     small_logo : '#small-logo',
     whyjoin  : '#whyjoin'
-  });
+  }, new Snap.FilterBar({
+    filters  : '#filters'
+  }));
   if( !window.user_id ) {
     new Snap.OpenIdLogin('#auth .login');
   }

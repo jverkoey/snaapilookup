@@ -3,9 +3,10 @@
  *
  * @require-package core
  * @requires database.js
+ * @requires filter-bar.js
  */
 
-Snap.TypeAhead = function(elementIDs) {
+Snap.TypeAhead = function(elementIDs, filterbar) {
   this._elementIDs = elementIDs;
   this._elements = {};
   for( var key in this._elementIDs ) {
@@ -15,6 +16,7 @@ Snap.TypeAhead = function(elementIDs) {
       this._elements[key] = $('#'+this._elementIDs[key]);
     }
   }
+  this._filterbar = filterbar;
 
   this._elements.input
     .keydown(this._handle_key.bind(this))
@@ -37,11 +39,6 @@ Snap.TypeAhead = function(elementIDs) {
   this._list_length = 10;
 
   this._active_function = null;
-
-  // [type][category]
-  this._active_filters = {};
-  // [category]
-  this._is_category_filtered = {};
 
   this._hover_timer = null;
 
@@ -83,7 +80,7 @@ Snap.TypeAhead.prototype = {
   clear : function() {
     this._current_value = '';
     this._elements.input.val('');
-    this._update_filter();
+    this._do_search();
   },
 
   _handle_key : function(event) {
@@ -101,7 +98,7 @@ Snap.TypeAhead.prototype = {
         this._hover_timer = setTimeout(this._hover.bind(this), 1000);
         this._current_value = new_val;
         this._elements.dropdown.fadeIn('fast');
-        this._update_filter();
+        this._do_search();
         this._has_changed_since_selection = true;
       }
     }
@@ -207,17 +204,7 @@ Snap.TypeAhead.prototype = {
     this._elements.input.val(selection.name);
 
     if( selection.filter_id ) {
-      if( this._is_category_filtered[selection.filter_id] ) {
-        this._remove_filter(selection.type, selection.filter_id);
-      } else {
-        if( undefined == this._active_filters[selection.type] ) {
-          this._active_filters[selection.type] = {};
-        }
-        this._active_filters[selection.type][selection.filter_id] = selection.name;
-      }
-
-      this._save_active_filters();
-      this._render_filters();
+      this._filterbar.toggle(selection.type, selection.filter_id, selection.name);
       this.clear();
     } else if( selection.function_id ) {
       this._elements.dropdown.fadeOut('fast');
@@ -237,32 +224,6 @@ Snap.TypeAhead.prototype = {
     } else {
       this._elements.dropdown.fadeOut('fast');
     }
-  },
-
-  _flatten_filters : function() {
-    var flat_filters = [];
-    for( var filter_type in this._active_filters ) {
-      var filter = this._active_filters[filter_type];
-      for( var filter_id in filter ) {
-        flat_filters.push(filter_id);
-      }
-    }
-    return flat_filters.join(',');
-  },
-
-  _simplify_filters : function() {
-    this._is_category_filtered = {};
-    for( var filter_type in this._active_filters ) {
-      var filter = this._active_filters[filter_type];
-      for( var filter_id in filter ) {
-        this._is_category_filtered[filter_id] = true;
-      }
-    }
-  },
-
-  _save_active_filters : function() {
-    this._simplify_filters();
-    $.cookie('filters', this._flatten_filters());
   },
 
   _load_function : function(selection) {
@@ -288,12 +249,12 @@ Snap.TypeAhead.prototype = {
     this._render_function();
   },
 
-  _update_filter : function() {
+  _do_search : function() {
     var trimmed_value = $.trim(this._current_value);
     if( trimmed_value == '' ) {
       this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks. Click the filter or hit enter to add it to the list.</b></div>');
     } else {
-      this._list = this._db.search(trimmed_value, this._is_category_filtered);
+      this._list = this._db.search(trimmed_value, this._filterbar.is_filtered.bind(this._filterbar));
       this._selection = this._list ? 0 : -1;
       this._offset = 0;
 
@@ -346,7 +307,7 @@ Snap.TypeAhead.prototype = {
         html.push('">');
         if( entry.filter_id ) {
           is_filter_list = true;
-          if( this._is_category_filtered[entry.filter_id] ) {
+          if( this._filterbar.is_filtered(entry.filter_id) ) {
             html.push('<span class="remove">remove</span> ');
           }
         }
@@ -720,93 +681,8 @@ Snap.TypeAhead.prototype = {
     }
   },
 
-  _render_filters : function() {
-    var html = [];
-    var any_filters = false;
-    html.push('<div class="header">Filtering by ');
-    var type_set = [];
-    for( var filter_type in this._active_filters ) {
-      var filter = this._active_filters[filter_type];
-      var this_type = [];
-      this_type.push('<span class="type">',filter_type);
-      var filter_set = [];
-      var count = 0;
-      for( var filter_id in filter ) {
-        var item = filter[filter_id];
-        filter_set.push('<span class="filter" id="'+filter_type+'-'+filter_id+'" title="Click to remove">'+item+'</span>');
-        any_filters = true;
-        count++;
-      }
-      if( count > 1 ) {
-        this_type.push('s');
-      }
-      this_type.push(': </span>');
-      if( filter_set.length > 2 ) {
-        var last = filter_set.splice(filter_set.length - 1);
-        this_type.push(filter_set.join(', '));
-        this_type.push(' and ',last);
-      } else if( filter_set.length == 2 ) {  
-        this_type.push(filter_set.join(' and '));
-      } else {
-        this_type.push(filter_set[0]);
-      }
-      type_set.push(this_type.join(''));
-    }
-    html.push(type_set.join(' and '),'</div>');
-    if( any_filters ) {
-      this._elements.filters.html(html.join(''));
-      if( !this._displaying_frame ) {
-        this._elements.filters.show();
-      }
-
-      var t = this;
-      $(this._elementIDs.filters+' .filter').click(function() {
-        var filter_type = this.id.substr(0, this.id.indexOf('-'));
-        var filter_id = this.id.substr(this.id.indexOf('-') + 1);
-        t._remove_filter(filter_type, filter_id);
-      });
-    } else {
-      this._elements.filters.empty().hide();
-    }
-  },
-
-  _remove_filter : function(filter_type, filter_id) {
-    delete this._active_filters[filter_type][filter_id];
-    var any_filters_left = false;
-    for( var key in this._active_filters[filter_type] ) {
-      any_filters_left = true;
-      break;
-    }
-    if( !any_filters_left ) {
-      delete this._active_filters[filter_type];
-    }
-
-    this._save_active_filters();
-    this._render_filters();
-  },
-
   _receive_categories : function() {
-    if( window.sel ) {
-      if( undefined == this._active_filters[window.sel.filter_type] ) {
-        this._active_filters[window.sel.filter_type] = {};
-      }
-      this._active_filters[window.sel.filter_type][window.sel.category] = this._db.id_to_category(window.sel.category);
-      this._simplify_filters();
-      this._render_filters();
-    } else if( $.cookie('filters') ) {
-      var filters = $.cookie('filters').split(',');
-      for( var i = 0; i < filters.length; ++i ) {
-        var type = this._db.id_to_type(filters[i]);
-        if( undefined == this._active_filters[type] ) {
-          this._active_filters[type] = {};
-        }
-        this._active_filters[type][filters[i]] = this._db.id_to_category(filters[i]);
-      }
-      this._simplify_filters();
-      this._render_filters();
-    }
-
-    this._update_filter();
+    this._do_search();
   },
 
   _receive_function : function(category, id, succeeded) {
@@ -833,7 +709,7 @@ Snap.TypeAhead.prototype = {
 
   _gain_focus : function() {
     this._current_value = this._elements.input.val();
-    this._update_filter();
+    this._do_search();
 
     this._elements.dropdown.fadeIn('fast');
     this._elements.input.select();
