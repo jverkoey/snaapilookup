@@ -3,9 +3,7 @@
  */
 
 .info_box {
-  margin: 0 auto;
-  width: 400px;
-  border: 1px solid #bbcccc;
+  margin: 10px 0;
 }
 
 .info_box .header {
@@ -20,6 +18,32 @@
 
 .info_box .body {
   padding: 0.5em;
+  text-align: center;
+}
+
+.info_box .trim {
+  text-align: left;
+  width: 700px;
+  margin: 0 auto;
+}
+
+.info_box .body .version {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.info_box .body img {
+  border: 1px solid #fff;
+  padding: 5px;
+}
+
+.info_box .body a:hover img {
+  border: 1px solid #8aa;
+}
+
+.info_box .body .considerations {
+  width: 700px;
+  margin: 0 auto;
 }
 
 .info_box p {

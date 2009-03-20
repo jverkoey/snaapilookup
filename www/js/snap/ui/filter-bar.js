@@ -146,7 +146,13 @@ Snap.FilterBar.prototype = {
     for( var filter_type in this._active_filters ) {
       var filter = this._active_filters[filter_type];
       var this_type = [];
-      this_type.push('<div class="row">Filtering by <span class="type">',filter_type.toLowerCase());
+      this_type.push('<div class="row">');
+      if( any_filters ) {
+        this_type.push('and');
+      } else {
+        this_type.push('Filtering by');
+      }
+      this_type.push(' <span class="type">',filter_type.toLowerCase());
       var filter_set = [];
       var count = 0;
       for( var filter_id in filter ) {
@@ -171,9 +177,10 @@ Snap.FilterBar.prototype = {
       } else {
         this_type.push(filter_set[0]);
       }
+      this_type.push('</div>');
       type_set.push(this_type.join(''));
     }
-    html.push(type_set.join('</div><div>'));
+    html.push(type_set.join(''));
     if( any_filters ) {
       this._elements.active.html(html.join(''));
 

@@ -5,7 +5,7 @@
 new Snap.Database();
 
 $(function(){
-  new Snap.GhostInput('#search .text', 'Languages, frameworks, or API function names');
+  new Snap.GhostInput('#search .text', 'API lookups or #languages and #frameworks');
   new Snap.TypeAhead({
     search        : '#search',
     input         : '#search .text',
