@@ -1,4 +1,9 @@
 <div id="logo"><a href="/">sna<span class="snaapi">api</span></a></div>
+<div id="filters">
+  <div class="list"></div>
+  <div class="list-button">View all currently supported languages and frameworks</div>
+  <div class="active"></div>
+</div>
 
 <div id="search">
   <form action="post" onsubmit="return false">
@@ -8,11 +13,6 @@
   </form>
 </div>
 <div class="hr"></div>
-<div id="filters">
-  <div class="active"></div>
-  <div class="dropdown"></div>
-  <div class="filter-list"></div>
-</div>
 <table id="content-table" cellpadding="0" cellspacing="0"><tbody><tr><td class="left">
   <div id="tree-view"></div>
 </td><td class="right">
@@ -39,6 +39,7 @@ if ('production' == $this->env) {
 }
 
 $this->inlineScript()->appendFile('/js/page/dashboard.js');
+$this->inlineScript()->appendFile('/js/static/data.js');
 
 if( $this->category && $this->type && $this->filter_type ) {
   if( $this->id ) {

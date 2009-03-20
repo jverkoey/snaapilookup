@@ -2,9 +2,10 @@
  * The snaapi home page.
  */
 
+new Snap.Database();
+
 $(function(){
   new Snap.GhostInput('#search .text', 'Languages, frameworks, or API function names');
-  var db = new Snap.Database();
   new Snap.TypeAhead({
     search   : '#search',
     input    : '#search .text',
@@ -26,5 +27,5 @@ $(function(){
     $('#search .text').focus();
   }
 
-  db.load();
+  Snap.Database.singleton.load();
 });

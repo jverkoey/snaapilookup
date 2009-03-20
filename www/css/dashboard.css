@@ -5,10 +5,19 @@
 #logo {
   text-align: left;
   font-size: 2em;
-  padding: 7px;
+  padding: 2px 5px;
   position: absolute;
   top: 0;
   left: 0;
+  border: 1px solid #ddd;
+  border-left: 0;
+  border-top: 0;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-radius-bottomright: 5px;
+}
+
+#logo:hover {
+  background-color: #bbcccc;
 }
 
 #actions {
@@ -29,8 +38,60 @@
   border-top: 1px solid #999;
 }
 
+#filters {
+  margin-left: 100px;
+  margin-right: 140px;
+}
+
+#filters .list-button {
+  font-size: 0.8em;
+  text-align: center;
+  cursor: pointer;
+  color: #999;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
+
+#filters .list-button:hover {
+  background-color: #bbcccc;
+  color: #333;
+}
+
+#filters .active {
+  margin: 0.3em;
+  margin-left: 0;
+  font-size: 1.0em;
+  color: #999;
+}
+
+#filters .active .row {
+  padding: 4px 0;
+}
+
+#filters .filter {
+  display: inline;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  padding: 3px;
+  border: 1px solid #ddd;
+}
+
+#filters .filter:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+#filters .filter .xme {
+  color: #ddd;
+  margin-left: 5px;
+}
+
+#filters .filter:hover .xme {
+  color: #333;
+}
+
 #search {
-  text-align: left;
   padding: 7px 0;
   margin-left: 100px;
 }
@@ -42,22 +103,6 @@
 #search label {
   font-size: 16px;
   padding-right: 0.5em;
-}
-
-#search .filters {
-  padding-top: 2em;
-}
-
-#search .filters .header {
-  margin: 0.3em;
-  font-size: 1.2em;
-  color: #999;
-}
-
-#search .filters .filter {
-  font-weight: bold;
-  cursor: pointer;
-  color: #333;
 }
 
 #search .dropdown {
@@ -137,10 +182,6 @@
   text-align: right;
   padding: 0.2em;
   font-size: 0.8em;
-}
-
-#filters {
-  padding: 5px;
 }
 
 #content-table {

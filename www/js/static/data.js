@@ -1,1 +1,1 @@
-[{"t":"Framework","d":[{i:32,n:"jQuery"},{i:30,n:"Firebug"},{i:29,n:"iPhone"},{i:28,n:"django"},{i:27,n:"Facebook API"},{i:26,n:"Zend"}]},{"t":"Language","d":[{i:9,n:"PHP"},{i:33,n:"Python 2.6.1"},{i:31,n:"Javascript"},{i:25,n:"CSS"},{i:24,n:"Python 3.0.1"}]}]
+var d=new Array({"t":"Framework","d":[{i:32,n:"jQuery"},{i:30,n:"Firebug"},{i:29,n:"iPhone"},{i:28,n:"django"},{i:27,n:"Facebook API"},{i:26,n:"Zend"}]},{"t":"Language","d":[{i:9,n:"PHP"},{i:33,n:"Python 2.6.1"},{i:31,n:"Javascript"},{i:25,n:"CSS"},{i:24,n:"Python 3.0.1"}]});Snap.Database.singleton.load_categories(d);

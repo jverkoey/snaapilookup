@@ -25,6 +25,9 @@ class BuildController extends SnaapiController {
       $new_contents = str_replace('"id"', 'i', $new_contents);
       $new_contents = str_replace('"name"', 'n', $new_contents);
       $new_contents = preg_replace('/"([0-9]+)"/', '$1', $new_contents);
+      
+      $new_contents = 'var d=new Array('.substr($new_contents, 1, strlen($new_contents)-2).');';
+      $new_contents.= 'Snap.Database.singleton.load_categories(d);';
 
       $revisions_changed = false;
       if( $contents != $new_contents ) {

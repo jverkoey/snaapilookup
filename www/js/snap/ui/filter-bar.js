@@ -16,6 +16,10 @@ Snap.FilterBar = function(elementIDs) {
     }
   }
 
+  this._elements.list = this._elements.filters.children('.list');
+  this._elements.list_button = this._elements.filters.children('.list-button');
+  this._elements.active = this._elements.filters.children('.active');
+
   // [type][category]
   this._active_filters = {};
   // [category]
@@ -79,8 +83,6 @@ Snap.FilterBar.prototype = {
         this._active_filters[window.sel.filter_type] = {};
       }
       this._active_filters[window.sel.filter_type][window.sel.category] = this._db.id_to_category(window.sel.category);
-      this._simplify_filters();
-      this._render_filters();
     } else if( $.cookie('filters') ) {
       var filters = $.cookie('filters').split(',');
       for( var i = 0; i < filters.length; ++i ) {
@@ -90,20 +92,19 @@ Snap.FilterBar.prototype = {
         }
         this._active_filters[type][filters[i]] = this._db.id_to_category(filters[i]);
       }
-      this._simplify_filters();
-      this._render_filters();
     }
+    this._simplify_filters();
+    this._render_filters();
   },
 
   _render_filters : function() {
     var html = [];
     var any_filters = false;
-    html.push('<div class="header">Filtering by ');
     var type_set = [];
     for( var filter_type in this._active_filters ) {
       var filter = this._active_filters[filter_type];
       var this_type = [];
-      this_type.push('<span class="type">',filter_type);
+      this_type.push('<div class="row">Filtering by <span class="type">',filter_type.toLowerCase());
       var filter_set = [];
       var count = 0;
       for( var filter_id in filter ) {
@@ -111,7 +112,7 @@ Snap.FilterBar.prototype = {
         filter_set.push(
           '<span class="filter" id="'+
           filter_type+'-'+filter_id+
-          '" title="Click to remove">'+item+'</span>');
+          '" title="Click to remove">'+item+'<span class="xme">X</span></span>');
         any_filters = true;
         count++;
       }
@@ -130,12 +131,9 @@ Snap.FilterBar.prototype = {
       }
       type_set.push(this_type.join(''));
     }
-    html.push(type_set.join(' and '),'</div>');
+    html.push(type_set.join('</div><div>'));
     if( any_filters ) {
-      this._elements.filters.html(html.join(''));
-      if( !this._displaying_frame ) {
-        this._elements.filters.show();
-      }
+      this._elements.active.html(html.join(''));
 
       var t = this;
       $(this._elementIDs.filters+' .filter').click(function() {
@@ -143,8 +141,9 @@ Snap.FilterBar.prototype = {
         var filter_id = this.id.substr(this.id.indexOf('-') + 1);
         t._remove_filter(filter_type, filter_id);
       });
+      this._elements.active.show();
     } else {
-      this._elements.filters.empty().hide();
+      this._elements.active.hide();
     }
   },
 

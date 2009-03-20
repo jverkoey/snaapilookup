@@ -24,12 +24,12 @@ Snap.Database = function() {
   this._function_cache = {};
 
   this._callbacks = {
-    receive_categories    : [],
-    receive_function      : [],
-    receive_social        : [],
-    receive_hier          : [],
-    receive_hierarchy     : [],
-    navigate_immediately  : []
+    receive_categories    : {callbacks: [], called: false},
+    receive_function      : {callbacks: [], called: false},
+    receive_social        : {callbacks: [], called: false},
+    receive_hier          : {callbacks: [], called: false},
+    receive_hierarchy     : {callbacks: [], called: false},
+    navigate_immediately  : {callbacks: [], called: false}
   };
 
   Snap.Database.singleton = this;
@@ -41,7 +41,11 @@ Snap.Database.prototype = {
 
   register_callbacks : function(callbacks) {
     for( var key in callbacks ) {
-      this._callbacks[key].push(callbacks[key]);
+      if( this._callbacks[key].called ) {
+        callbacks[key]();
+      }
+
+      this._callbacks[key].callbacks.push(callbacks[key]);
     }
   },
 
@@ -61,15 +65,23 @@ Snap.Database.prototype = {
     this._database.all[category] = data;
   },
 
-  load : function() {
-    $.ajax({
-      type    : 'GET',
-      url     : '/js/static/data.js?rev='+Revisions.static_js_build,
-      dataType: 'json',
-      success : this._receive_categories.bind(this),
-      failure : this._fail_to_receive_categories.bind(this)
-    });
+  load_categories : function(categories) {
+    this._database.filters = categories;
 
+    // Compile the data into an id=>category map for quick access.
+    for( var i = 0; i < categories.length; ++i ) {
+      var data = categories[i].d;
+      for( var i2 = 0; i2 < data.length; ++i2 ) {
+        var item = data[i2];
+        this._id_to_category[item.i] = item.n;
+        this._id_to_type[item.i] = categories[i].t;
+      }
+    }
+
+    this._notify_callbacks('receive_categories');
+  },
+
+  load : function() {
     $.ajax({
       type    : 'GET',
       url     : '/js/static/hier.js?rev='+Revisions.static_hier_build,
@@ -358,9 +370,10 @@ Snap.Database.prototype = {
     for( var i = 1; i < arguments.length; ++i ) {
       args.push(arguments[i]);
     }
-    for( var i = 0; i < this._callbacks[name].length; ++i ) {
-      this._callbacks[name][i].apply(null, args);
+    for( var i = 0; i < this._callbacks[name].callbacks.length; ++i ) {
+      this._callbacks[name].callbacks[i].apply(null, args);
     }
+    this._callbacks[name].called = true;
   },
 
   ensure_hierarchy_loaded : function(category, child) {
@@ -407,25 +420,6 @@ Snap.Database.prototype = {
   },
  
   _fail_to_receive_hierarchy : function(result, textStatus) {
-  },
-
-  _receive_categories : function(result, textStatus) {
-    this._database.filters = result;
-
-    // Compile the data into an id=>category map for quick access.
-    for( var i = 0; i < result.length; ++i ) {
-      var data = result[i].d;
-      for( var i2 = 0; i2 < data.length; ++i2 ) {
-        var item = data[i2];
-        this._id_to_category[item.i] = item.n;
-        this._id_to_type[item.i] = result[i].t;
-      }
-    }
-
-    this._notify_callbacks('receive_categories');
-  },
-
-  _fail_to_receive_categories : function(result, textStatus) {
   },
 
   _receive_hier : function(result, textStatus) {
