@@ -443,7 +443,9 @@ Snap.TypeAhead.prototype = {
             }
             html.push('</div>');
           }
-          html.push('<div class="row"><span class="title">Returns:</span><div class="value">',data.r, '</div></div>');
+          if( data.r ) {
+            html.push('<div class="row"><span class="title">Returns:</span><div class="value">',data.r, '</div></div>');
+          }
           break;
         case 29:  // iPhone
           if( data.i && data.t ) {

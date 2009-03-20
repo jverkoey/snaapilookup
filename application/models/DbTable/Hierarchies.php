@@ -22,8 +22,8 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
     34, @parentRight, @parentRight + 1, 0,
-'Status Methods',
-'http://apiwiki.twitter.com/REST+API+Documentation#StatusMethods'
+'Help Methods',
+'http://apiwiki.twitter.com/REST+API+Documentation#HelpMethods'
 );
 
   UNLOCK TABLES;

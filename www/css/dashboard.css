@@ -79,6 +79,8 @@
   padding: 3px;
   margin: 2px;
   float: left;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 
 #filters .list td .filter:hover {
@@ -129,6 +131,8 @@
   color: #333;
   padding: 3px;
   border: 1px solid #ddd;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 
 #filters .active .filter:hover {
