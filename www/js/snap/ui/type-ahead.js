@@ -631,7 +631,7 @@ Snap.TypeAhead.prototype = {
 
           this._elements.parent_table.css({position:'absolute'});
           if( new_url ) {
-            this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>thanks for using sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
+            this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>thanks for using sna<span class="snaapi">api</span></span></div><iframe src="'+url+'" width="100%" height="100%" frameborder="0"></iframe>');
           }
           this._elements.external.fadeIn(speed);
         }.bind(this));  
