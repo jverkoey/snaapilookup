@@ -7,16 +7,13 @@ new Snap.Database();
 $(function(){
   new Snap.GhostInput('#search .text', 'Languages, frameworks, or API function names');
   new Snap.TypeAhead({
-    search   : '#search',
-    input    : '#search .text',
-    dropdown : '#search .dropdown',
-    result   : '#result',
-    external_table : '#external_table',
-    external : '#external_page',
-    catch_phrase : '#catch-phrase',
-    logo     : '#logo',
-    small_logo : '#small-logo',
-    whyjoin  : '#whyjoin'
+    search        : '#search',
+    input         : '#search .text',
+    dropdown      : '#search .dropdown',
+    result        : '#result',
+    external      : '#external-page',
+    content_table : '#content-table',
+    parent_table  : '#page-table'
   }, new Snap.FilterBar({
     filters  : '#filters'
   }));

@@ -56,21 +56,27 @@ pageTracker._trackPageview();
 
 <div id="page">
 
-<div id="actions">
-  <ul>
-    <? if( Zend_Auth::getInstance()->hasIdentity() ) { ?>
-    <li><a href="/profile">Profile</a></li>
-    <li><a href="/logout">Log out</a></li>
-    <? } else { ?>
-      <li><a href="/login" title="Log in to snaapi with OpenID or a snaapi account">Log in</a></li>
-      <li><a href="/signup" title="Or log in using Google, myOpenID, or a number of other services">Sign up</a></li>
-    <? } ?>
-  </ul>
-</div>
-
 <?= $this->inlineScript() ?>
 
 <?= $this->layout()->content ?>
+
+<div id="spacer"></div>
+
+</div>
+
+<div id="footer">
+  <div class="wrapper">
+    <div class="links">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/indexof">Indices</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+    <div class="copyright">©2009 snaapi</div>
+  </div>
+</div>
 
 </body>
 </html>

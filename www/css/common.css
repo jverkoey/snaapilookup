@@ -87,7 +87,7 @@ b {
 }
 
 #spacer {
-  height: 8em;
+  height: 5em;
   padding-bottom: 4em;
 }
 
@@ -99,7 +99,7 @@ b {
 #footer .wrapper {
   margin: 0 auto;
   width: 480px;
-  min-width: 500px;
+  min-width: 700px;
 
   /* Safari fix for unclickable links */
   position: relative;

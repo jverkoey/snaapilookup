@@ -25,12 +25,6 @@ Snap.TypeAhead = function(elementIDs, filterbar) {
     .focus(this._gain_focus.bind(this))
     .blur(this._lose_focus.bind(this));
 
-  var t = this;
-  this._elements.small_logo
-    .click(function() {
-      t._hide_iframe();
-    });
-
   this._current_value = '';
 
   this._list = null;
@@ -327,10 +321,6 @@ Snap.TypeAhead.prototype = {
 
       html.push('<div class="result_info">');
 
-      if( !is_filter_list ) {
-        html.push('Press enter twice to jump to the reference page - ');
-      }
-
       if( this._list.length == 1 ) {
         html.push('The only entry');
       } else {
@@ -518,10 +508,6 @@ Snap.TypeAhead.prototype = {
     }
 
     if( !this._displaying_frame ) {
-      this._elements.external.hide();
-      if( this._elements.whyjoin ) {
-        this._elements.whyjoin.fadeOut('fast');
-      }
       this._elements.result
         .html(html.join(''))
         .fadeIn('fast');
@@ -613,36 +599,33 @@ Snap.TypeAhead.prototype = {
 
   _show_iframe : function(url) {
     if( !this._displaying_frame || this._frame_url != url ) {
+      var new_url = this._frame_url != url;
+
       var selection = this._list[this._selection];
-      $.ajax({
-        type    : 'POST',
-        url     : '/function/viewframe',
-        data    : {
-          category  : selection.category,
-          id        : selection.function_id
-        }
-      });
+
+      if( new_url ) {
+        $.ajax({
+          type    : 'POST',
+          url     : '/function/viewframe',
+          data    : {
+            category  : selection.category,
+            id        : selection.function_id
+          }
+        });
+      }
 
       this._frame_url = url;
       var speed = 'fast';
 
       if( !this._displaying_frame ) {
-        this._elements.logo.fadeOut(speed);
-        this._elements.catch_phrase.fadeOut(speed);
-        this._elements.filters.fadeOut(speed);
-        this._elements.result.fadeOut(speed);
-
-        this._elements.search.fadeOut(speed, function() {
+        this._elements.content_table.fadeOut(speed, function() {
           $('body').css({overflow:'hidden'});
           $('#footer').hide();
-          this._elements.external_table.css({position:'absolute'});
 
-          // Magic number of pixels to shift thanks to "back to snaapi"
-          this._elements.dropdown.css({marginLeft:'53px'});
-
-          this._elements.search.fadeIn(speed);
-          this._elements.small_logo.fadeIn(speed);
-          this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
+          this._elements.parent_table.css({position:'absolute'});
+          if( new_url ) {
+            this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
+          }
           this._elements.external.fadeIn(speed);
         }.bind(this));  
       } else {  
@@ -664,21 +647,12 @@ Snap.TypeAhead.prototype = {
       this._displaying_frame = false;
       var speed = 'fast';
 
-      this._elements.small_logo.fadeOut(speed);
-      this._elements.external.fadeOut(speed);
-
-      this._elements.search.fadeOut(speed, function() {
-        this._elements.logo.fadeIn(speed);
-        this._elements.catch_phrase.fadeIn(speed);
-        this._elements.filters.fadeIn(speed);
-        this._elements.result.fadeIn(speed);
-
-        this._elements.search.fadeIn(speed);
-
+      this._elements.external.fadeOut(speed, function() {
+        this._elements.content_table.fadeIn(speed);
         $('body').css({overflow:'visible'});
+
+        this._elements.parent_table.css({position:'static'});
         $('#footer').show();
-        this._elements.external_table.css({position:'static'});
-        this._elements.dropdown.css({marginLeft:''});
       }.bind(this));
     }
   },

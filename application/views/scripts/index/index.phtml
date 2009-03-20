@@ -1,3 +1,17 @@
+<table id="page-table"><tbody><tr id="topbar"><td>
+
+  <div id="actions">
+    <ul>
+      <? if( Zend_Auth::getInstance()->hasIdentity() ) { ?>
+      <li><a href="/profile">Profile</a></li>
+      <li><a href="/logout">Log out</a></li>
+      <? } else { ?>
+        <li><a href="/login" title="Log in to snaapi with OpenID or a snaapi account">Log in</a></li>
+        <li><a href="/signup" title="Or log in using Google, myOpenID, or a number of other services">Sign up</a></li>
+      <? } ?>
+    </ul>
+  </div>
+
 <div id="logo"><a href="/">sna<span class="snaapi">api</span></a></div>
 <div id="filters">
   <div class="list" style="display:none"></div>
@@ -7,16 +21,21 @@
 
 <div id="search">
   <form action="post" onsubmit="return false">
-    <span id="small-logo" style="display:none" title="Return to the short description">back to sna<span class="snaapi">api</span></span>
     <input type="text" class="text" size="50" maxlength="50" name="search" autocomplete="off" />
     <div class="dropdown" style="display:none"></div>
   </form>
 </div>
 <div class="hr"></div>
-<table id="content-table" cellpadding="0" cellspacing="0"><tbody><tr><td class="left">
-  <div id="tree-view"></div>
-</td><td class="right">
-  <div id="result"></div>
+</td></tr><tr><td id="bottom-pane">
+
+  <table id="content-table" cellpadding="0" cellspacing="0"><tbody><tr><td class="left">
+    <div id="tree-view"></div>
+  </td><td class="right">
+    <div id="result"></div>
+  </td></tr></tbody></table>
+
+  <div id="external-page" style="display:none"></div>
+
 </td></tr></tbody></table>
 
 <?php
