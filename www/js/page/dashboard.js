@@ -23,9 +23,7 @@ $(function(){
   if( !window.user_id ) {
     new Snap.OpenIdLogin('#auth .login');
   }
-  if( !window.sel ) {
-    $('#search .text').focus();
-  }
+  $('#search .text').focus();
 
   Snap.Database.singleton.load();
 });
