@@ -13,7 +13,8 @@ $(function(){
     result        : '#result',
     external      : '#external-page',
     content_table : '#content-table',
-    parent_table  : '#page-table'
+    parent_table  : '#page-table',
+    messages      : '#messages'
   }, new Snap.FilterBar({
     filters  : '#filters'
   }));

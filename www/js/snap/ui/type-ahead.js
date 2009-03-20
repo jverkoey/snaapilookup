@@ -214,6 +214,7 @@ Snap.TypeAhead.prototype = {
         if( function_info.url ) {
           this._show_iframe(function_info.url);
         } else {
+          this._elements.messages.html('Just a sec, once we\'ve loaded the details we\'ll send you off...').fadeIn('fast');
           function_info.navigate_immediately = true;
         }
       }
@@ -450,7 +451,7 @@ Snap.TypeAhead.prototype = {
     }
 
     if( this._active_function.navigate_immediately ) {
-      html.push('<div class="loading">Just a sec, once we\'ve loaded the details we\'ll send you off...</div>');
+      this._elements.messages.html('Just a sec, once we\'ve loaded the details we\'ll send you off...').fadeIn('fast');
     } else if( this._active_function.loading ) {
       html.push('<div class="loading">Loading function details...</div>');
     }
@@ -624,7 +625,7 @@ Snap.TypeAhead.prototype = {
 
           this._elements.parent_table.css({position:'absolute'});
           if( new_url ) {
-            this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
+            this._elements.external.html('<div id="eww"><span class="reason">Just a sec, we\'re loading the reference page.<br/>thanks for using sna<span class="snaapi">api</span></span></div><iframe src="'+url+'"></iframe>');
           }
           this._elements.external.fadeIn(speed);
         }.bind(this));  
@@ -676,6 +677,9 @@ Snap.TypeAhead.prototype = {
   },
 
   _navigate_immediately : function(url) {
+    this._elements.messages.fadeOut('fast', function() {
+      $(this).html('');
+    });
     this._show_iframe(url);
   },
 
