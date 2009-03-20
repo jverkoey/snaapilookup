@@ -127,14 +127,16 @@ Snap.TypeAhead.prototype = {
             this._hover_timer = null;
           }
           this._handle_selection(this._selection);
-          $.ajax({
-            type    : 'POST',
-            url     : '/function/select',
-            data    : {
-              category  : selection.category,
-              id        : selection.function_id
-            }
-          });
+          if( selection.function_id ) {
+            $.ajax({
+              type    : 'POST',
+              url     : '/function/select',
+              data    : {
+                category  : selection.category,
+                id        : selection.function_id
+              }
+            });
+          }
         }
       } else {
         var old_selection = this._selection;
@@ -254,7 +256,7 @@ Snap.TypeAhead.prototype = {
     if( trimmed_value == '' ) {
       this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks. Click the filter or hit enter to add it to the list.</b></div>');
     } else {
-      this._list = this._db.search(trimmed_value, this._filterbar.is_filtered.bind(this._filterbar));
+      this._list = this._db.search(trimmed_value, this._filterbar._is_category_filtered);
       this._selection = this._list ? 0 : -1;
       this._offset = 0;
 
