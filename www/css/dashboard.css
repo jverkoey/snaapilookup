@@ -20,6 +20,12 @@
   background-color: #bbcccc;
 }
 
+#twitter {
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
 #actions {
   z-index: auto;
   position: relative;
