@@ -13,7 +13,7 @@ Snap.Database = function() {
   // all: everything else
   this._database = {filters: {}, all: []};
 
-  this._id_to_category = {};
+  this._id_to_name = {};
   this._id_to_type = {};
 
   /**
@@ -53,7 +53,7 @@ Snap.Database.prototype = {
     for( var i = 0; i < data.length; ++i ) {
       data[i].l = data[i].n.toLowerCase();
       data[i].e = {
-          type      : this._id_to_category[category],
+          type      : this._id_to_name[category],
           category  : category,
           hierarchy : data[i].h,
           function_id : data[i].i,
@@ -73,7 +73,7 @@ Snap.Database.prototype = {
       var data = categories[i].d;
       for( var i2 = 0; i2 < data.length; ++i2 ) {
         var item = data[i2];
-        this._id_to_category[item.i] = item.n;
+        this._id_to_name[item.i] = item.n;
         this._id_to_type[item.i] = categories[i].t;
       }
     }
@@ -303,8 +303,8 @@ Snap.Database.prototype = {
     return list;
   },
 
-  id_to_category : function(id) {
-    return this._id_to_category[id];
+  id_to_name : function(id) {
+    return this._id_to_name[id];
   },
 
   id_to_type : function(id) {

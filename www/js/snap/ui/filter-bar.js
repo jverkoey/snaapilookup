@@ -43,7 +43,7 @@ Snap.FilterBar.prototype = {
       if( undefined == this._active_filters[type] ) {
         this._active_filters[type] = {};
       }
-      this._active_filters[type][id] = name;
+      this._active_filters[type][id] = this._db.id_to_name(id);
     }
 
     this._save_active_filters();
@@ -85,7 +85,7 @@ Snap.FilterBar.prototype = {
       if( undefined == this._active_filters[window.sel.filter_type] ) {
         this._active_filters[window.sel.filter_type] = {};
       }
-      this._active_filters[window.sel.filter_type][window.sel.category] = this._db.id_to_category(window.sel.category);
+      this._active_filters[window.sel.filter_type][window.sel.category] = this._db.id_to_name(window.sel.category);
     } else if( $.cookie('filters') ) {
       var filters = $.cookie('filters').split(',');
       for( var i = 0; i < filters.length; ++i ) {
@@ -93,7 +93,7 @@ Snap.FilterBar.prototype = {
         if( undefined == this._active_filters[type] ) {
           this._active_filters[type] = {};
         }
-        this._active_filters[type][filters[i]] = this._db.id_to_category(filters[i]);
+        this._active_filters[type][filters[i]] = this._db.id_to_name(filters[i]);
       }
     }
     this._simplify_filters();
@@ -117,16 +117,26 @@ Snap.FilterBar.prototype = {
     html.push('<div class="header">All languages and frameworks</div><table><tbody><tr>');
     var filters = this._db.get_filters();
     for( var i = 0; i < filters.length; ++i ) {
-      html.push('<td><div class="cat_header">',filters[i].t,'</div>');
+      var filter_type = filters[i].t;
+      html.push('<td><div class="cat_header">',filter_type,'</div>');
       var filter_list = filters[i].d;
       for( var i2 = 0; i2 < filter_list.length; ++i2 ) {
-        var toggle_class = this._is_category_filtered[filter_list[i2].i] ? 'hide' : 'show';
-        html.push('<div class="filter" title="Click to toggle"><span class="',toggle_class,'">+</span>',filter_list[i2].n,'</div>');
+        var filter_id = filter_list[i2].i;
+        var toggle_class = this._is_category_filtered[filter_id] ? 'hide' : 'show';
+        html.push('<div class="filter ',toggle_class,'" title="Click to toggle" id="toggle_',
+          filter_type,'-',filter_id,'">',filter_list[i2].n,'</div>');
       }
       html.push('</td>');
     }
-    html.push('</tr></tbody></table>');
+    html.push('</tr></tbody></table><div class="all-selected"></div>');
     this._elements.list.html(html.join(''));
+
+    var t = this;
+    $(this._elementIDs.list+' .filter').click(function() {
+      var filter_type = this.id.substr('toggle_'.length, this.id.indexOf('-') - 'toggle_'.length);
+      var filter_id = this.id.substr(this.id.indexOf('-') + 1);
+      t.toggle(filter_type, filter_id);
+    });
   },
 
   _render_filters : function() {

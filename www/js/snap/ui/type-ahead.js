@@ -206,7 +206,7 @@ Snap.TypeAhead.prototype = {
     this._elements.input.val(selection.name);
 
     if( selection.filter_id ) {
-      this._filterbar.toggle(selection.type, selection.filter_id, selection.name);
+      this._filterbar.toggle(selection.type, selection.filter_id);
       this.clear();
     } else if( selection.function_id ) {
       this._elements.dropdown.fadeOut('fast');
@@ -254,7 +254,7 @@ Snap.TypeAhead.prototype = {
   _do_search : function() {
     var trimmed_value = $.trim(this._current_value);
     if( trimmed_value == '' ) {
-      this._elements.dropdown.html('<div class="empty"><b>Tip: Use # to filter by languages or frameworks. Click the filter or hit enter to add it to the list.</b></div>');
+      this._elements.dropdown.html('<div class="empty"><b>Tip: Type # to filter by specific languages or frameworks.<br/>By default, all languages and frameworks are searched.</b></div>');
     } else {
       this._list = this._db.search(trimmed_value, this._filterbar._is_category_filtered);
       this._selection = this._list ? 0 : -1;

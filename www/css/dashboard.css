@@ -73,8 +73,10 @@
 }
 
 #filters .list td .filter {
+  border: 1px solid #ccc;
   cursor: pointer;
-  padding: 5px;
+  padding: 3px;
+  margin: 2px;
   float: left;
 }
 
@@ -83,22 +85,9 @@
   color: #fff;
 }
 
-#filters .list td .filter .hide,
-#filters .list td .filter .show {
-  color: #999;
-  margin-right: 4px;
-  padding: 0 3px;
-}
-
-#filters .list td .filter .hide {
+#filters .list td .hide {
+  background-color: #447799;
   color: #fff;
-  background-color: #6699AA;
-}
-
-#filters .list td .filter:hover .hide,
-#filters .list td .filter:hover .show {
-  color: #6699AA;
-  background-color: #eef;
 }
 
 #filters .list-button {
