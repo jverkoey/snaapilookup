@@ -14,7 +14,8 @@ $(function(){
     external      : '#external-page',
     content_table : '#content-table',
     parent_table  : '#page-table',
-    messages      : '#messages'
+    messages      : '#messages',
+    goback        : '#goback'
   }, new Snap.FilterBar({
     filters  : '#filters'
   }));

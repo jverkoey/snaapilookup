@@ -25,6 +25,8 @@ Snap.TypeAhead = function(elementIDs, filterbar) {
     .focus(this._gain_focus.bind(this))
     .blur(this._lose_focus.bind(this));
 
+  this._elements.goback.click(this._hide_iframe.bind(this));
+
   this._current_value = '';
 
   this._list = null;
@@ -619,6 +621,7 @@ Snap.TypeAhead.prototype = {
       var speed = 'fast';
 
       if( !this._displaying_frame ) {
+        this._elements.goback.fadeIn(speed);
         this._elements.content_table.fadeOut(speed, function() {
           $('body').css({overflow:'hidden'});
           $('#footer').hide();
@@ -647,7 +650,8 @@ Snap.TypeAhead.prototype = {
     if( this._displaying_frame ) {
       this._displaying_frame = false;
       var speed = 'fast';
-
+      
+      this._elements.goback.fadeOut(speed);
       this._elements.external.fadeOut(speed, function() {
         this._elements.content_table.fadeIn(speed);
         $('body').css({overflow:'visible'});

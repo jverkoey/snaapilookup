@@ -237,6 +237,21 @@
   font-size: 0.8em;
 }
 
+#goback {
+  border: 1px solid #ccc;
+  border-left: 0;
+  font-size: 16px;
+  padding: 5px;
+  cursor: pointer;
+  color: #999;
+}
+
+#goback:hover {
+  cursor: pointer;
+  background-color: #6699aa;
+  color: #fff;
+}
+
 #messages {
   margin-left: 5px;
 }
