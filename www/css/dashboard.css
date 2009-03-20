@@ -352,6 +352,17 @@
 #result .row .value_name {
   font-weight: bold;
   margin-right: 0.5em;
+  float: left;
+}
+
+#result .row .description {
+  display: block;
+  margin-left: 100px;
+}
+
+#result .row .optional {
+  margin-right: 5px;
+  font-style: italic;
 }
 
 #result .social {

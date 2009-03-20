@@ -49,6 +49,10 @@ class PermalinkController extends SnaapiController {
     $this->framework('jQuery');
   }
 
+  public function twitterAction() {
+    $this->framework('twitter');
+  }
+
 
   private function language($name) {
     $this->category($name, 'Language');

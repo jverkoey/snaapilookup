@@ -29469,7 +29469,49 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/Array.prototype</loc>
+  <loc>http://snaapi.com/Javascript/Boolean</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Date</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/String</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Array.constructor</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Array.index</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -29487,13 +29529,205 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/Array.index</loc>
+  <loc>http://snaapi.com/Javascript/Array.prototype</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/Array.constructor</loc>
+  <loc>http://snaapi.com/Javascript/Boolean.constructor</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Boolean.prototype</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Date.constructor</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Date.prototype</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.E</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.LN2</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.LN10</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.LOG2E</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.LOG10E</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.PI</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.SQRT1_2</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Math.SQRT2</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.constructor</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.MAX_VALUE</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.MIN_VALUE</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.NaN</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.NEGATIVE_INFINITY</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.POSITIVE_INFINITY</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/Number.prototype</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/String.constructor</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/String.length</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/String.prototype</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.global</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.ignoreCase</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.input</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.lastIndex</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.lastMatch</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.lastParen</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.leftContext</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.multiline</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.prototype</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.rightContext</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/RegExp.source</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -29577,24 +29811,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/Boolean</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Boolean.constructor</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Boolean.prototype</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/Boolean.toSource</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -29608,24 +29824,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/Boolean.valueOf</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Date</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Date.constructor</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Date.prototype</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -29919,60 +30117,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/Math</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.SQRT2</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.SQRT1_2</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.PI</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.LOG2E</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.LOG10E</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.LN10</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.LN2</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Math.E</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/Math.abs</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -30093,54 +30237,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/Number</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.prototype</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.POSITIVE_INFINITY</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.NEGATIVE_INFINITY</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.NaN</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.MAX_VALUE</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.MIN_VALUE</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/Number.constructor</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/Number.toExponential</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -30172,30 +30268,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/Number.valueOf</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/String</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/String.prototype</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/String.length</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/String.constructor</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -30376,78 +30448,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/String.valueOf</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.multiline</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.leftContext</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.lastParen</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.lastMatch</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.lastIndex</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.input</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.ignoreCase</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.global</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.prototype</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.rightContext</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/RegExp.source</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -30699,78 +30699,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/window.parent</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.personalbar</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.pageYOffset</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.pageXOffset</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.outerWidth</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.outerHeight</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.opener</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.name</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.location</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.length</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.history</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/window.document</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/window.frames</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -30784,6 +30712,78 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/window.defaultStatus</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.document</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.history</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.length</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.location</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.name</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.opener</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.outerHeight</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.outerWidth</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.pageXOffset</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.pageYOffset</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.parent</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/window.personalbar</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -31485,30 +31485,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/area.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/area.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/area.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/area.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/base.href</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -31600,30 +31576,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/button.value</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/button.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/button.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/button.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/button.title</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -31983,30 +31935,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/frame.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frame.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frame.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frame.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/frameset.cols</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -32020,30 +31948,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/frameset.rows</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frameset.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frameset.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frameset.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/frameset.dir</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -32116,36 +32020,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/iframe.width</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/iframe.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/iframe.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/iframe.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/iframe.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/image.className</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -32236,12 +32110,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/image.width</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/image.title</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -32487,12 +32355,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/inputhidden.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/inputhidden.alt</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -32524,24 +32386,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/inputhidden.value</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/inputhidden.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/inputhidden.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/inputhidden.lang</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -33027,18 +32871,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/link.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/link.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/meta.content</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -33183,30 +33015,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/object.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/object.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/object.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/object.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/option.defaultSelected</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -33256,30 +33064,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/option.value</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/option.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/option.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/option.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/option.title</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -34221,30 +34005,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/Javascript/tablecell.className</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/tablecell.dir</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/tablecell.lang</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/Javascript/tablecell.title</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/Javascript/tablerow.cells</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -34396,6 +34156,246 @@
 </url>
 <url>
   <loc>http://snaapi.com/Javascript/textarea.select</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/area.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/area.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/area.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/area.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/button.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/button.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/button.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/button.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frame.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frame.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frame.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frame.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frameset.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frameset.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frameset.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/frameset.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/iframe.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/iframe.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/iframe.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/iframe.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/image.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/image.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/inputhidden.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/inputhidden.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/inputhidden.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/inputhidden.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/link.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/link.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/object.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/object.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/object.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/object.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/option.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/option.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/option.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/option.title</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/tablecell.className</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/tablecell.dir</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/tablecell.lang</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Javascript/tablecell.title</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -36760,6 +36760,18 @@
 </url>
 <url>
   <loc>http://snaapi.com/Python 3.0.1/zlib</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/twitter/public_timeline</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/twitter/friends_timeline</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -40257,37 +40269,67 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage</loc>
+  <loc>http://snaapi.com/iPhone/UIImage stretchableImageWithLeftCapWidth:topCapHeight:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage CGImage</loc>
+  <loc>http://snaapi.com/iPhone/UIImage initWithData:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage imageOrientation</loc>
+  <loc>http://snaapi.com/iPhone/UIImage initWithContentsOfFile:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage leftCapWidth</loc>
+  <loc>http://snaapi.com/iPhone/UIImage initWithCGImage:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage size</loc>
+  <loc>http://snaapi.com/iPhone/UIImage drawInRect:blendMode:alpha:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage topCapHeight</loc>
+  <loc>http://snaapi.com/iPhone/UIImage drawInRect:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UIImage drawAtPoint:blendMode:alpha:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UIImage drawAtPoint:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UIImage drawAsPatternInRect:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UIImage imageWithData:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UIImage imageWithContentsOfFile:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -40305,169 +40347,43 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage imageWithContentsOfFile:</loc>
+  <loc>http://snaapi.com/iPhone/UIImage topCapHeight</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage imageWithData:</loc>
+  <loc>http://snaapi.com/iPhone/UIImage size</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage drawAsPatternInRect:</loc>
+  <loc>http://snaapi.com/iPhone/UIImage leftCapWidth</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage drawAtPoint:</loc>
+  <loc>http://snaapi.com/iPhone/UIImage imageOrientation</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage drawAtPoint:blendMode:alpha:</loc>
+  <loc>http://snaapi.com/iPhone/UIImage</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage drawInRect:</loc>
+  <loc>http://snaapi.com/iPhone/UIImage CGImage</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UIImage drawInRect:blendMode:alpha:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UIImage initWithCGImage:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UIImage initWithContentsOfFile:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UIImage initWithData:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UIImage stretchableImageWithLeftCapWidth:topCapHeight:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl momentary</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl numberOfSegments</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl segmentedControlStyle</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl selectedSegmentIndex</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl tintColor</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl contentOffsetForSegmentAtIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl imageForSegmentAtIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl initWithItems:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl insertSegmentWithImage:atIndex:animated:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl insertSegmentWithTitle:atIndex:animated:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl isEnabledForSegmentAtIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl removeAllSegments</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl removeSegmentAtIndex:animated:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl setContentOffset:forSegmentAtIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl setEnabled:forSegmentAtIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl setImage:forSegmentAtIndex:</loc>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl setWidth:forSegmentAtIndex:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -40479,7 +40395,103 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/UISegmentedControl setWidth:forSegmentAtIndex:</loc>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl setImage:forSegmentAtIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl setEnabled:forSegmentAtIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl setContentOffset:forSegmentAtIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl removeSegmentAtIndex:animated:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl removeAllSegments</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl isEnabledForSegmentAtIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl insertSegmentWithTitle:atIndex:animated:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl insertSegmentWithImage:atIndex:animated:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl initWithItems:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl imageForSegmentAtIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl contentOffsetForSegmentAtIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl tintColor</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl selectedSegmentIndex</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl segmentedControlStyle</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl numberOfSegments</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl momentary</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UISegmentedControl</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -41043,6 +41055,24 @@
   <priority>0.8</priority>
 </url>
 <url>
+  <loc>http://snaapi.com/iPhone/UITableViewDelegate tableView:accessoryTypeForRowWithIndexPath:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UITableViewDelegate tableView:viewForFooterInSection:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UITableViewDelegate tableView:viewForHeaderInSection:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
   <loc>http://snaapi.com/iPhone/UITextField</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -41200,6 +41230,12 @@
 </url>
 <url>
   <loc>http://snaapi.com/iPhone/UITextField textRectForBounds:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UITextField adjustsFontSizeToFitWidth</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -41613,6 +41649,12 @@
   <priority>0.8</priority>
 </url>
 <url>
+  <loc>http://snaapi.com/iPhone/UIView setNeedsDisplayInRect:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
   <loc>http://snaapi.com/iPhone/UIViewController</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -41626,6 +41668,12 @@
 </url>
 <url>
   <loc>http://snaapi.com/iPhone/UIViewController hidesBottomBarWhenPushed</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/UIViewController parentViewController</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -42124,42 +42172,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/iPhone/UITableViewDataSource tableView:titleForHeaderInSection:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UITableViewDelegate tableView:accessoryTypeForRowWithIndexPath:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UITableViewDelegate tableView:viewForFooterInSection:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UITableViewDelegate tableView:viewForHeaderInSection:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UITextField adjustsFontSizeToFitWidth</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UIView setNeedsDisplayInRect:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/UIViewController parentViewController</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -46785,954 +46797,6 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/iPhone/NSAutoreleasePool</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSAutoreleasePool addObject:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSAutoreleasePool autorelease</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSAutoreleasePool drain</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSAutoreleasePool release</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSAutoreleasePool retain</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter defaultFormatterBehavior</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setDefaultFormatterBehavior:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter allowsFloats</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter alwaysShowsDecimalSeparator</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencyCode</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencyDecimalSeparator</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencyGroupingSeparator</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencySymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter decimalSeparator</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter exponentSymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter formatterBehavior</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter formatWidth</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter generatesDecimalNumbers</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter getObjectValue:forString:range:error:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter groupingSeparator</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter groupingSize</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter internationalCurrencySymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter isLenient</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter isPartialStringValidationEnabled</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter locale</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximum</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximumFractionDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximumIntegerDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximumSignificantDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimum</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimumFractionDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimumIntegerDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimumSignificantDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter minusSign</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter multiplier</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativeFormat</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativeInfinitySymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativePrefix</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativeSuffix</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter nilSymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter notANumberSymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter numberFromString:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter numberStyle</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter paddingCharacter</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter paddingPosition</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter percentSymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter perMillSymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter plusSign</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter positiveFormat</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter positiveInfinitySymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter positivePrefix</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter positiveSuffix</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter roundingIncrement</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter roundingMode</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter secondaryGroupingSize</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setAllowsFloats:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setAlwaysShowsDecimalSeparator:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencyCode:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencyDecimalSeparator:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencyGroupingSeparator:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencySymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setDecimalSeparator:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setExponentSymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setFormatterBehavior:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setFormatWidth:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setGeneratesDecimalNumbers:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setGroupingSeparator:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setGroupingSize:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setInternationalCurrencySymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setLenient:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setLocale:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximum:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximumFractionDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximumIntegerDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximumSignificantDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimum:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimumFractionDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimumIntegerDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimumSignificantDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinusSign:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMultiplier:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativeFormat:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativeInfinitySymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativePrefix:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativeSuffix:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNilSymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNotANumberSymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNumberStyle:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPaddingCharacter:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPaddingPosition:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPartialStringValidationEnabled:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPercentSymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPerMillSymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPlusSign:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositiveFormat:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositiveInfinitySymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositivePrefix:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositiveSuffix:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setRoundingIncrement:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setRoundingMode:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setSecondaryGroupingSize:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNegativeInfinity:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNegativeValues:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNil:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNotANumber:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForPositiveInfinity:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForPositiveValues:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForZero:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setUsesGroupingSeparator:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setUsesSignificantDigits:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter setZeroSymbol:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter stringFromNumber:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNegativeInfinity</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNegativeValues</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNil</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNotANumber</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForPositiveInfinity</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForPositiveValues</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForZero</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter usesGroupingSeparator</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter usesSignificantDigits</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSNumberFormatter zeroSymbol</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation invocationWithMethodSignature:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation argumentsRetained</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation getArgument:atIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation getReturnValue:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation invoke</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation invokeWithTarget:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation methodSignature</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation retainArguments</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation selector</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation setArgument:atIndex:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation setReturnValue:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation setSelector:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation setTarget:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSInvocation target</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale autoupdatingCurrentLocale</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale availableLocaleIdentifiers</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale canonicalLocaleIdentifierFromString:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale commonISOCurrencyCodes</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale componentsFromLocaleIdentifier:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale currentLocale</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale ISOCountryCodes</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale ISOCurrencyCodes</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale ISOLanguageCodes</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale localeIdentifierFromComponents:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale preferredLanguages</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale systemLocale</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale displayNameForKey:value:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale initWithLocaleIdentifier:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale localeIdentifier</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSLocale objectForKey:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSFastEnumeration</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/iPhone/NSFastEnumeration countByEnumeratingWithState:objects:count:</loc>
-  <lastmod>2009-03-20</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
   <loc>http://snaapi.com/iPhone/NSString</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -49191,6 +48255,42 @@
   <priority>0.8</priority>
 </url>
 <url>
+  <loc>http://snaapi.com/iPhone/NSAutoreleasePool</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSAutoreleasePool addObject:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSAutoreleasePool autorelease</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSAutoreleasePool drain</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSAutoreleasePool release</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSAutoreleasePool retain</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
   <loc>http://snaapi.com/iPhone/NSObject</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -49306,6 +48406,714 @@
 </url>
 <url>
   <loc>http://snaapi.com/iPhone/NSObject zone</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter defaultFormatterBehavior</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setDefaultFormatterBehavior:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter allowsFloats</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter alwaysShowsDecimalSeparator</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencyCode</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencyDecimalSeparator</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencyGroupingSeparator</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter currencySymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter decimalSeparator</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter exponentSymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter formatterBehavior</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter formatWidth</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter generatesDecimalNumbers</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter getObjectValue:forString:range:error:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter groupingSeparator</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter groupingSize</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter internationalCurrencySymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter isLenient</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter isPartialStringValidationEnabled</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter locale</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximum</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximumFractionDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximumIntegerDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter maximumSignificantDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimum</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimumFractionDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimumIntegerDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter minimumSignificantDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter minusSign</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter multiplier</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativeFormat</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativeInfinitySymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativePrefix</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter negativeSuffix</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter nilSymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter notANumberSymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter numberFromString:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter numberStyle</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter paddingCharacter</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter paddingPosition</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter percentSymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter perMillSymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter plusSign</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter positiveFormat</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter positiveInfinitySymbol</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter positivePrefix</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter positiveSuffix</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter roundingIncrement</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter roundingMode</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter secondaryGroupingSize</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setAllowsFloats:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setAlwaysShowsDecimalSeparator:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencyCode:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencyDecimalSeparator:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencyGroupingSeparator:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setCurrencySymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setDecimalSeparator:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setExponentSymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setFormatterBehavior:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setFormatWidth:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setGeneratesDecimalNumbers:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setGroupingSeparator:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setGroupingSize:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setInternationalCurrencySymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setLenient:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setLocale:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximum:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximumFractionDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximumIntegerDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMaximumSignificantDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimum:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimumFractionDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimumIntegerDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinimumSignificantDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMinusSign:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setMultiplier:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativeFormat:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativeInfinitySymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativePrefix:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNegativeSuffix:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNilSymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNotANumberSymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setNumberStyle:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPaddingCharacter:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPaddingPosition:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPartialStringValidationEnabled:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPercentSymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPerMillSymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPlusSign:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositiveFormat:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositiveInfinitySymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositivePrefix:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setPositiveSuffix:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setRoundingIncrement:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setRoundingMode:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setSecondaryGroupingSize:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNegativeInfinity:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNegativeValues:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNil:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForNotANumber:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForPositiveInfinity:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForPositiveValues:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setTextAttributesForZero:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setUsesGroupingSeparator:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setUsesSignificantDigits:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter setZeroSymbol:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter stringFromNumber:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNegativeInfinity</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNegativeValues</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNil</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForNotANumber</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForPositiveInfinity</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForPositiveValues</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter textAttributesForZero</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter usesGroupingSeparator</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter usesSignificantDigits</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSNumberFormatter zeroSymbol</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -51189,6 +50997,96 @@
   <priority>0.8</priority>
 </url>
 <url>
+  <loc>http://snaapi.com/iPhone/NSInvocation</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation invocationWithMethodSignature:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation argumentsRetained</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation getArgument:atIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation getReturnValue:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation invoke</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation invokeWithTarget:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation methodSignature</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation retainArguments</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation selector</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation setArgument:atIndex:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation setReturnValue:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation setSelector:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation setTarget:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSInvocation target</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
   <loc>http://snaapi.com/iPhone/NSMethodSignature</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
@@ -52690,6 +52588,108 @@
 </url>
 <url>
   <loc>http://snaapi.com/iPhone/NSURLCache storeCachedResponse:forRequest:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale autoupdatingCurrentLocale</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale availableLocaleIdentifiers</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale canonicalLocaleIdentifierFromString:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale commonISOCurrencyCodes</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale componentsFromLocaleIdentifier:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale currentLocale</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale ISOCountryCodes</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale ISOCurrencyCodes</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale ISOLanguageCodes</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale localeIdentifierFromComponents:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale preferredLanguages</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale systemLocale</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale displayNameForKey:value:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale initWithLocaleIdentifier:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale localeIdentifier</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSLocale objectForKey:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -54802,6 +54802,18 @@
 </url>
 <url>
   <loc>http://snaapi.com/iPhone/NSFormatter stringForObjectValue:</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSFastEnumeration</loc>
+  <lastmod>2009-03-20</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/iPhone/NSFastEnumeration countByEnumeratingWithState:objects:count:</loc>
   <lastmod>2009-03-20</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>

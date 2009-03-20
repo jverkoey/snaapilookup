@@ -1,0 +1,1 @@
+var i=34;var d=new Array({i:1,n:"public_timeline",h:3},{i:2,n:"friends_timeline",h:3});Snap.Database.singleton.load_functions(i,d);

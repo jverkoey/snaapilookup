@@ -42,7 +42,8 @@ $categories = array(
   'firebug',
   'iphone',
   'javascript',
-  'jquery'
+  'jquery',
+  'twitter'
 );
 
 foreach( $categories as $category ) {

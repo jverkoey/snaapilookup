@@ -413,6 +413,10 @@ Snap.TypeAhead.prototype = {
       html.push('<div class="short-description">',this._active_function.short_description,'</div>');
     }
 
+    var pluralize = function(text, num, plural) {
+      return num == 1 ? text : text+plural;
+    }
+
     if( this._active_function.data ) {
       var data = this._active_function.data;
       switch( this._active_function.category ) {
@@ -421,6 +425,25 @@ Snap.TypeAhead.prototype = {
         case 28:  // django
         case 26:  // Zend
           html.push('<div class="signature">',data,'</div>');
+          break;
+        case 34:  // twitter
+          html.push('<div class="row"><span class="title">URL:</span><div class="value"><a href="',data.u,'">',data.u,'</a></div></div>');
+          html.push('<div class="row"><span class="title">',pluralize('Format', data.f.length, 's'),':</span><div class="value">',data.f.join(', '), '</div></div>');
+          html.push('<div class="row"><span class="title">',pluralize('Method', data.m.length, 's'),':</span><div class="value">',data.m.join(', '), '</div></div>');
+          html.push('<div class="row"><span class="title">API limit:</span><div class="value">',(data.l || 'Not applicable'), '</div></div>');
+          if( data.p ) {
+            html.push('<div class="row"><span class="title">Parameters:</span>');
+            for( var name in data.p ) {
+              var param = data.p[name];
+              html.push('<div class="value"><span class="value_name">',name,'</span><span class="description">');
+              if( param.o ) {
+                html.push('<span class="optional">(Optional)</span>');
+              }
+              html.push(param.d,'</span></div>');
+            }
+            html.push('</div>');
+          }
+          html.push('<div class="row"><span class="title">Returns:</span><div class="value">',data.r, '</div></div>');
           break;
         case 29:  // iPhone
           if( data.i && data.t ) {

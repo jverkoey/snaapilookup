@@ -497,6 +497,7 @@ Snap.Database.prototype = {
             function_info.data = function_info.data.replace(/<sp>/g, '<span class="methodarg">');
             break;
           case 29:  // iPhone
+          case 34:  // twitter
             function_info.data = window["eval"]("(" + function_info.data + ")");
             break;
           case 25:  // CSS

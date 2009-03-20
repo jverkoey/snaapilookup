@@ -15,15 +15,15 @@ class Model_DbTable_Hierarchies extends Zend_Db_Table_Abstract {
 
   LOCK TABLE hierarchies WRITE;
 
-  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 29 AND id = 3;
+  SELECT @parentRight := rgt FROM `hierarchies` WHERE category = 34 AND id = 2;
 
-  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 29;
-  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 29;
+  UPDATE hierarchies SET rgt = rgt + 2 WHERE rgt >= @parentRight AND category = 34;
+  UPDATE hierarchies SET lft = lft + 2 WHERE lft > @parentRight AND category = 34;
 
   INSERT INTO hierarchies( category, lft, rgt, scrapeable, name, source_url ) VALUES( 
-    29, @parentRight, @parentRight + 1, 0,
-'Audio Toolbox',
-'http://developer.apple.com/iphone/library/navigation/Frameworks/Media/AudioToolbox/index.html'
+    34, @parentRight, @parentRight + 1, 0,
+'Status Methods',
+'http://apiwiki.twitter.com/REST+API+Documentation#StatusMethods'
 );
 
   UNLOCK TABLES;
