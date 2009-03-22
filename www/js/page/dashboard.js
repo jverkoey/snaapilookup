@@ -6,6 +6,9 @@ new Snap.Database();
 
 $(function(){
   new Snap.GhostInput('#search .text', 'API lookups or #languages and #frameworks');
+  var filters = new Snap.FilterBar({
+    filters  : '#filters'
+  });
   new Snap.TypeAhead({
     search        : '#search',
     input         : '#search .text',
@@ -17,9 +20,12 @@ $(function(){
     messages      : '#messages',
     goback        : '#goback',
     whyjoin       : '#whyjoin'
-  }, new Snap.FilterBar({
-    filters  : '#filters'
-  }));
+  }, filters);
+
+  new Snap.TreeView({
+    view          : '#tree-view .list'
+  }, filters);
+
   if( !window.user_id ) {
     new Snap.OpenIdLogin('#auth .login');
   }
@@ -29,6 +35,8 @@ $(function(){
       $('#whyjoin .textish').fadeIn('fast');
     });
   });
+
+  //$('#search .text').focus();
 
   Snap.Database.singleton.load();
 });

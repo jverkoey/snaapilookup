@@ -28,6 +28,8 @@ Snap.FilterBar = function(elementIDs) {
 
   this._elements.list_button.click(this._toggle_filter_list.bind(this));
 
+  this._callbacks = [];
+
   this._db = Snap.Database.singleton;
   this._db.register_callbacks({
     receive_categories    : this._receive_categories.bind(this)
@@ -48,10 +50,28 @@ Snap.FilterBar.prototype = {
 
     this._save_active_filters();
     this._render_filters();
+    this._notify_callbacks();
   },
 
   is_filtered : function(id) {
     return this._is_category_filtered[id];
+  },
+
+  any_filtered : function() {
+    for( var key in this._is_category_filtered ) {
+      return true;
+    }
+    return false;
+  },
+
+  register_change_callback : function(fn) {
+    this._callbacks.push(fn);
+  },
+
+  _notify_callbacks : function() {
+    for( var i = 0; i < this._callbacks.length; ++i ) {
+      this._callbacks[i]();
+    }
   },
 
   _flatten_filters : function() {
@@ -210,6 +230,7 @@ Snap.FilterBar.prototype = {
 
     this._save_active_filters();
     this._render_filters();
+    this._notify_callbacks();
   }
 
 }

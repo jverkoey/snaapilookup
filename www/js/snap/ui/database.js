@@ -315,6 +315,10 @@ Snap.Database.prototype = {
     return this._hierarchy_cache != null;
   },
 
+  get_hierarchies : function() {
+    return this._hierarchy_cache;
+  },
+
   get_hierarchy : function(category, hierarchy) {
     return this._hierarchy_cache[category][hierarchy];
   },
