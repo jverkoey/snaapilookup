@@ -536,6 +536,12 @@
   padding: 2em;
 }
 
+#whyjoin .imagish,
+#whyjoin .imagish:hover {
+  text-align: center;
+  cursor: pointer;
+}
+
 #social_sites {
   padding: 10px;
   text-align: center;
