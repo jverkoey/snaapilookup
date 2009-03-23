@@ -44,6 +44,31 @@ class HierarchyController extends SnaapiController {
     $this->_helper->viewRenderer->setNoRender();
   }
 
+  public function listAction() {
+    $category = trim($this->_request->getParam('category'));
+    $id = trim($this->_request->getParam('id'));
+
+    if( empty($category) || empty($id) ) {
+      // Nothing to search!
+    } else {
+      $this->getLogsModel()->add(
+        'listhier',
+        'cat: '.$category.' id: '.$id
+      );
+
+      $results = $this->getFunctionsModel()->fetchDirectDescendants($category, $id);
+
+      $this->_helper->json(array(
+        's' => true,
+        'l' => $results,
+        'c' => $category,
+        'i' => $id
+      ));
+    }
+
+    $this->_helper->viewRenderer->setNoRender();
+  }
+
   public function infoAction() {
     $category = trim($this->_request->getParam('c'));
     $hierarchies = trim($this->_request->getParam('h'));

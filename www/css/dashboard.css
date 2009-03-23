@@ -269,7 +269,7 @@
 }
 
 #tree-view {
-  width: 200px;
+  width: 300px;
   float: left;
   max-height: 500px;
   border-right: 1px solid #999;
@@ -290,11 +290,6 @@
   margin-left: 0.5em;
 }
 
-#tree-view .list .node_text {
-  padding: 0.3em;
-  margin: 0.3em;
-}
-
 #tree-view .list .root_text {
   font-size: 1.1em;
   background-color: #cdd;
@@ -305,16 +300,41 @@
   font-size: 0.8em;
 }
 
+#tree-view .list .link_text {
+  cursor: pointer;
+  border: 1px solid #fff;
+  margin-right: 10px;
+  padding: 0.2em;
+}
+
+#tree-view .list .link_text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  border: 1px solid #ddd;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+#tree-view .list .loading {
+  margin-left: 25px;
+  font-size: 0.8em;
+}
+
 #tree-view .list .root_text:hover {
   background-color: #6699aa;
   color: #fff;
+}
+
+#tree-view .list .has_children {
+  padding: 0.3em;
+  margin: 0.3em;
 }
 
 #tree-view .list .has_children .expander {
   font-size: 0.8em;
   float: left;
   color: #ccc;
-  padding: 0px 4px;
+  padding: 0px 3px;
   margin: 0 4px;
   position: relative;
   top: -1px;
@@ -345,7 +365,7 @@
 }
 
 #content-table {
-  margin-left: 201px;
+  margin-left: 301px;
   padding: 1em;
 }
 
@@ -454,7 +474,7 @@
   width: 50px;
   border: 1px solid #ddf;
   -moz-border-radius: 10px;
-  -webkit-border-top-right:10px;
+  -webkit-border-radius: 10px;
   background-color: #447799;
   float: left;
 }
@@ -566,7 +586,7 @@
 }
 
 #external-page {
-  margin-left: 201px;
+  margin-left: 301px;
   height: 100%;
   overflow: hidden;
 }

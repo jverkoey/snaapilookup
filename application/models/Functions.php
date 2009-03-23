@@ -30,6 +30,7 @@ class Model_Functions {
         ->from($table, array('name', 'id'))
         ->where('category = ?', $category)  
         ->where('hierarchy = ?', $hierarchy)
+        ->order('name ASC')
     )->toArray();
     return empty($result) ? null : $result;
   }
