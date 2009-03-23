@@ -7,7 +7,6 @@ class FunctionController extends SnaapiController {
   public function indexAction() {
     $category = trim($this->_request->getParam('category'));
     $id = trim($this->_request->getParam('id'));
-    $silent = trim($this->_request->getParam('silent'));
 
     if( empty($category) || empty($id) ) {
       // Nothing to search!
@@ -16,7 +15,7 @@ class FunctionController extends SnaapiController {
     } else {
       $this->getLogsModel()->add(
         'function',
-        'cat: '.$category.' id: '.$id.' silent: '.($silent?'true':'false')
+        'cat: '.$category.' id: '.$id
       );
       $data = $this->getFunctionsModel()->fetch($category, $id);
       if( $data ) {
