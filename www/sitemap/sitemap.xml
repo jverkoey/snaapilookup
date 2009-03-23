@@ -36765,61 +36765,61 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/public_timeline</loc>
+  <loc>http://snaapi.com/twitter/statuses/public_timeline</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/friends_timeline</loc>
+  <loc>http://snaapi.com/twitter/statuses/friends_timeline</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/user_timeline</loc>
+  <loc>http://snaapi.com/twitter/statuses/user_timeline</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/show</loc>
+  <loc>http://snaapi.com/twitter/statuses/show</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update</loc>
+  <loc>http://snaapi.com/twitter/statuses/update</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/replies</loc>
+  <loc>http://snaapi.com/twitter/statuses/replies</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/destroy</loc>
+  <loc>http://snaapi.com/twitter/statuses/destroy</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/friends</loc>
+  <loc>http://snaapi.com/twitter/statuses/friends</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/followers</loc>
+  <loc>http://snaapi.com/twitter/statuses/followers</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/show</loc>
+  <loc>http://snaapi.com/twitter/users/show</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -36831,103 +36831,103 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/sent</loc>
+  <loc>http://snaapi.com/twitter/direct_messages/sent</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/new</loc>
+  <loc>http://snaapi.com/twitter/direct_messages/new</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/destroy</loc>
+  <loc>http://snaapi.com/twitter/direct_messages/destroy</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/create</loc>
+  <loc>http://snaapi.com/twitter/friendships/create</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/destroy</loc>
+  <loc>http://snaapi.com/twitter/friendships/destroy</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/exists</loc>
+  <loc>http://snaapi.com/twitter/friendships/exists</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/ids (friends)</loc>
+  <loc>http://snaapi.com/twitter/friends/ids</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/ids (followers)</loc>
+  <loc>http://snaapi.com/twitter/followers/ids</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/verify_credentials</loc>
+  <loc>http://snaapi.com/twitter/account/verify_credentials</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/end_session</loc>
+  <loc>http://snaapi.com/twitter/account/end_session</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update_location</loc>
+  <loc>http://snaapi.com/twitter/account/update_location</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update_delivery_service</loc>
+  <loc>http://snaapi.com/twitter/account/update_delivery_device</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update_profile_colors</loc>
+  <loc>http://snaapi.com/twitter/account/update_profile_colors</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update_profile_image</loc>
+  <loc>http://snaapi.com/twitter/account/update_profile_image</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update_profile_background_image</loc>
+  <loc>http://snaapi.com/twitter/account/update_profile_background_image</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/rate_limit_status</loc>
+  <loc>http://snaapi.com/twitter/account/rate_limit_status</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/update_profile</loc>
+  <loc>http://snaapi.com/twitter/account/update_profile</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -36939,43 +36939,43 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/create</loc>
+  <loc>http://snaapi.com/twitter/favorites/create</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/destroy</loc>
+  <loc>http://snaapi.com/twitter/favorites/destroy</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/follow</loc>
+  <loc>http://snaapi.com/twitter/notifications/follow</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/leave</loc>
+  <loc>http://snaapi.com/twitter/notifications/leave</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/create</loc>
+  <loc>http://snaapi.com/twitter/blocks/create</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/destroy</loc>
+  <loc>http://snaapi.com/twitter/blocks/destroy</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/twitter/test</loc>
+  <loc>http://snaapi.com/twitter/help/test</loc>
   <lastmod>2009-03-23</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>

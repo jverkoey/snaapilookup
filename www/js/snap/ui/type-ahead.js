@@ -668,12 +668,13 @@ Snap.TypeAhead.prototype = {
         }.bind(this));  
       } else {  
         var src_iframe = this._elements.external.children('iframe');
-        var t = this;
+        src_iframe.attr('src', url);
+/*        var t = this;
         src_iframe.fadeOut(speed, function() {
           $(this).after('<iframe src="'+url+'" style="display:none"></iframe>').remove();
           var dst_iframe = t._elements.external.children('iframe');
           dst_iframe.fadeIn('slow');
-        });
+        });*/
       }
 
       this._displaying_frame = true;

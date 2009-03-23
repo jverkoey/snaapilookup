@@ -271,7 +271,7 @@
 #tree-view {
   width: 300px;
   float: left;
-  max-height: 500px;
+  height: 500px;
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
   -moz-border-radius-bottomright: 5px;
@@ -296,6 +296,10 @@
 
 #tree-view .list .top {
   margin-left: 0.5em;
+}
+
+#tree-view .list .node_text {
+  margin: 2px 0;
 }
 
 #tree-view .list .the_text {
@@ -324,13 +328,11 @@
 
 #tree-view .list .root_text {
   font-size: 1.1em;
-  background-color: #cdd;
   margin-right: 10px;
 }
 
-#tree-view .list .root_text:hover {
-  background-color: #6699aa;
-  color: #fff;
+#tree-view .list .root_text .the_text {
+  font-weight: bold;
 }
 
 #tree-view .list .has_children {
@@ -361,10 +363,6 @@
   cursor: pointer;
   background-color: #fff;
   color: #6699aa;
-}
-
-#tree-view .list .root_text:hover .expander {
-  border-color: #fff;
 }
 
 #tree-view .list .child {
@@ -594,6 +592,7 @@
 
 #external-page {
   margin-left: 301px;
+  margin-right: -301px;
   height: 100%;
   overflow: hidden;
 }

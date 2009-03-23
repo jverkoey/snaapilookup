@@ -23,6 +23,8 @@ Snap.TreeView = function(elementIDs, filters, typeahead) {
   this._tree = [];
   this._tree_ui = [];
   this._tree_visibility = [];
+  // [category][hierarchy] => tree node
+  this._hierarchy_to_node = {};
 
   this._elements.view.html('<div class="initial_loading">Loading table of contents...</div>');
 
@@ -63,17 +65,13 @@ Snap.TreeView.prototype = {
   _create_ui : function() {
     var html = [];
     html.push('<ul class="top">');
-    function traverse_children(category, parent_node, className) {
-      var has_children = parent_node.children.length > 0 || parent_node.fun_count > 0;
-      var id = 'cat_' + category + (className == 'root' ? '-1' : '-'+parent_node.id);
-      html.push('<li id="',id,'" class="',className,'"');
-      if( className == 'root' ) {
-        html.push(' style="display:none"');
-      }
-      html.push('><div class="node_text');
-      if( className == 'root' ) {
-        html.push(' root_text');
-      }
+    for( var i = 0; i < this._tree.length; ++i ) {
+      var tree = this._tree[i];
+      this._tree_visibility.push(false);
+
+      var has_children = tree.children.length > 0 || tree.fun_count > 0;
+      var id = 'cat_' + tree.id + '-1';
+      html.push('<li id="',id,'" class="root" style="display:none"><div class="node_text root_text');
       if( has_children ) {
         html.push(' has_children');
       }
@@ -81,22 +79,11 @@ Snap.TreeView.prototype = {
       if( has_children ) {
         html.push('<div class="expander">+</div>');
       }
-      html.push('<div class="the_text">',parent_node.name, '</div></div>');
+      html.push('<div class="the_text">',tree.name, '</div></div>');
       if( has_children ) {
-        var children = parent_node.children;
-        html.push('<ul style="display:none">');
-        for( var i = 0; i < children.length; ++i ) {
-          traverse_children(category, children[i], 'child');
-        }
-        html.push('</ul>');
+        html.push('<ul style="display:none"></ul>');
       }
       html.push('</li>');
-    }
-
-    for( var i = 0; i < this._tree.length; ++i ) {
-      var tree = this._tree[i];
-      this._tree_visibility.push(false);
-      traverse_children(tree.id, tree, 'root');
     }
     html.push('</ul>');
     this._elements.view.html(html.join(''));
@@ -105,7 +92,7 @@ Snap.TreeView.prototype = {
       t._tree_ui[index] = $(this);
     });
 
-    $(this._elementIDs.view+' .has_children .expander').click(function() {
+    function handle_expand() {
       var parent = $(this).parent().parent();
       var id = parent.attr('id');
       var ul = parent.children('ul:first');
@@ -115,7 +102,32 @@ Snap.TreeView.prototype = {
         ul.fadeOut('fast', function() {
           $(this).css({display:'block', visibility:'hidden'}).slideUp('fast');
         });
-      } else {
+      } else {  
+        if( ul.children('.child').length == 0 ) {
+          // This node hasn't been rendered yet.
+          var node_children = t._hierarchy_to_node[category][hierarchy];
+
+          var html = [];
+          for( var i = 0; i < node_children.length; ++i ) {
+            var has_children = node_children[i].children.length > 0 || node_children[i].fun_count > 0;
+            var id = 'cat_' + category + '-' + node_children[i].id;
+            html.push('<li id="',id,'" class="child"><div class="node_text');
+            if( has_children ) {
+              html.push(' has_children');
+            }
+            html.push('">');
+            if( has_children ) {
+              html.push('<div class="expander">+</div>');
+            }
+            html.push('<div class="the_text">',node_children[i].name, '</div></div>');
+            if( has_children ) {
+              html.push('<ul style="display:none"></ul>');
+            }
+            html.push('</li>');
+          }
+          ul.html(html.join(''));
+          ul.children('.child').children('.has_children').children('.expander').click(handle_expand);
+        }
         if( !t._is_loaded(category, hierarchy) &&
             !t._is_loading(category, hierarchy) &&
             t._any_to_load(category, hierarchy) ) {
@@ -126,7 +138,9 @@ Snap.TreeView.prototype = {
           $(this).css({display:'none', visibility:'visible'}).fadeIn('fast');
         });
       }
-    });
+    }
+
+    $(this._elementIDs.view+' .has_children .expander').click(handle_expand);
   },
 
   _request : function(category, id, ul) {
@@ -198,6 +212,7 @@ Snap.TreeView.prototype = {
 
     for( var category in hier ) {
       this._function_cache[category] = {};
+      this._hierarchy_to_node[category] = {};
 
       var list = hier[category];
 
@@ -233,6 +248,7 @@ Snap.TreeView.prototype = {
           }
         }
 
+        var this_node = null;
         // Now that we've created the path, let's add this node.
         if( !parentnode ) {
           if( undefined != map[id] ) {
@@ -243,6 +259,7 @@ Snap.TreeView.prototype = {
             tree.push({name:node.name, id:id, fun_count:node.fun_count, map:{}, children:[]});
             map[id] = tree.length - 1;
           }
+          this_node = tree[map[id]];
         } else {
           if( undefined != parentnode.map[id] ) {
             parentnode.children[parentnode.map[id]].name = node.name;
@@ -252,8 +269,11 @@ Snap.TreeView.prototype = {
             parentnode.children.push({name:node.name, id:id, fun_count: node.fun_count, map:{}, children:[]});
             parentnode.map[id] = parentnode.children.length - 1;
           }
+          this_node = parentnode.children[parentnode.map[id]];
         }
+        this._hierarchy_to_node[category][id] = this_node.children;
       }
+      this._hierarchy_to_node[category][1] = tree;
 
       this._tree.push({id:category, name:this._db.id_to_name(category), children:tree});
     }
