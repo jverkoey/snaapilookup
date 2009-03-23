@@ -61,14 +61,18 @@ Snap.TreeView.prototype = {
     html.push('<ul class="top">');
     function traverse_children(parent_node, className) {
       var has_children = parent_node.children.length > 0;
-      html.push('<li class="',className,'" style="display:none"><div class="node_text');
+      html.push('<li class="',className,'"');
+      if( className == 'root' ) {
+        html.push(' style="display:none"');
+      }
+      html.push('><div class="node_text');
       if( has_children ) {
         html.push(' has_children');
       }
       html.push('"><span class="expander">+</span>', parent_node.name, '</div>');
       if( has_children ) {
         var children = parent_node.children;
-        html.push('<ul>');
+        html.push('<ul style="display:none">');
         for( var i = 0; i < children.length; ++i ) {
           traverse_children(children[i], 'child');
         }
