@@ -118,6 +118,7 @@ Snap.TreeView.prototype = {
   _receive_hier : function() {
     var hier = this._db.get_hierarchies();
 
+    console.log(hier);
     for( var category in hier ) {
       var list = hier[category];
 

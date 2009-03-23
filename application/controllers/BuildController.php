@@ -240,7 +240,7 @@ $REVISIONS[\'STATIC_SITEMAP_BUILD\'] = '.$new_revision.';');
     }
   }
 
-  private function get_children($hierarchies, $parent_index, &$num_at_level, $lineage = array()) {
+  private function get_children($category, $hierarchies, $parent_index, &$num_at_level, $lineage = array()) {
     $parent_depth = $hierarchies[$parent_index]['depth'];
     if( $hierarchies[$parent_index]['id'] != 1 ) {
       $lineage []= $hierarchies[$parent_index]['id'];
@@ -250,33 +250,17 @@ $REVISIONS[\'STATIC_SITEMAP_BUILD\'] = '.$new_revision.';');
 
     $index = $parent_index + 1;
 
-    // Depth:
-    //  0   - root: starting point
-    //  1   - ^- delta 1: get children and add this 
-    //  2   -    ^- delta 1: get children and add this
-    //  2   -      ^ delta zero, no children, return without adding anything
-    //           ^- delta 1: get children and add this
-    //  1   -    ^ delta -, no children, return without adding anything
-    //        ^- delta 1: get children and add this
-    //  1
-    //  2
-    //  2
-    //  2
-    //  3
-    //  3
-    //  3
-    //  1
-
     while( $index < count($hierarchies) ) {
       $delta = $hierarchies[$index]['depth'] - $parent_depth;
       if( $delta == 1 ) {
         $num_added = 0;
         $children []= array(
-          'c' => $this->get_children($hierarchies, $index, $num_added, $lineage),
+          'c' => $this->get_children($category, $hierarchies, $index, $num_added, $lineage),
           'd' => array(
             'h' => $lineage,
             'n' => $hierarchies[$index]['name'],
-            'i' => $hierarchies[$index]['id']
+            'i' => $hierarchies[$index]['id'],
+            'c' => count($this->getFunctionsModel()->fetchDirectDescendants($category, $hierarchies[$index]['id']))
           )
         );
         $index += $num_added + 1;
@@ -332,7 +316,7 @@ $REVISIONS[\'STATIC_SITEMAP_BUILD\'] = '.$new_revision.';');
 
       $index = 0;
       $num_added = 0;
-      $result[$category] = $this->get_children($hierarchies, $index, $num_added);
+      $result[$category] = $this->get_children($category, $hierarchies, $index, $num_added);
 
       $i++;
     }

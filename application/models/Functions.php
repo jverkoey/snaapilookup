@@ -20,6 +20,21 @@ class Model_Functions {
   }
 
   /**
+   * Fetch direct descendants of a hierarchy
+   */
+  public function fetchDirectDescendants($category, $hierarchy) {
+    $table = $this->getTable();
+    $result = $table->fetchAll(
+      $table
+        ->select()
+        ->from($table, array('name', 'id'))
+        ->where('category = ?', $category)  
+        ->where('hierarchy = ?', $hierarchy)
+    )->toArray();
+    return empty($result) ? null : $result;
+  }
+
+  /**
    * Fetch a function name by id.
    */
   public function fetchName($category, $id) {
