@@ -297,7 +297,6 @@
 }
 
 #tree-view .list .root_text {
-  background-color: #cdd;
   font-size: 1.1em;
 }
 
@@ -311,6 +310,7 @@
 }
 
 #tree-view .list .has_children {
+  background-color: #cdd;
   cursor: pointer;
 }
 

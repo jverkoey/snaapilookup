@@ -104,9 +104,13 @@ Snap.TreeView.prototype = {
     $(this._elementIDs.view+' .has_children').click(function() {
       var ul = $(this).parent().children('ul:first');
       if( ul.css('display') != 'none' ) {
-        ul.fadeOut('fast');
+        ul.fadeOut('fast', function() {
+          $(this).css({display:'block', visibility:'hidden'}).slideUp('fast');
+        });
       } else {
-        ul.fadeIn('fast');
+        ul.css({visibility:'hidden'}).slideDown('fast', function() {
+          $(this).css({display:'none', visibility:'visible'}).fadeIn('fast');
+        });
       }
     });
   },
