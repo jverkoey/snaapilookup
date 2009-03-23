@@ -298,25 +298,45 @@
 
 #tree-view .list .root_text {
   font-size: 1.1em;
+  background-color: #cdd;
+}
+
+#tree-view .list .the_text {
+  margin-left: 30px;
+}
+
+#tree-view .list .root_text:hover {
+  background-color: #6699aa;
+  color: #fff;
 }
 
 #tree-view .list .has_children .expander {
-  float: right;
-  display: none;
+  float: left;
+  color: #ccc;
+  padding: 0px 4px;
+  margin: 0 4px;
+  position: relative;
+  top: -1px;
+  border: 1px solid #ccc;
 }
 
 #tree-view .list .has_children:hover .expander {
-  display: inline;
+  color: #333;
+  border-color: #999;
 }
 
-#tree-view .list .has_children {
-  background-color: #cdd;
+#tree-view .list .has_children .expander {
   cursor: pointer;
 }
 
-#tree-view .list .has_children:hover {
-  background-color: #6699aa;
-  color: #fff;
+#tree-view .list .has_children .expander:hover {
+  cursor: pointer;
+  background-color: #fff;
+  color: #6699aa;
+}
+
+#tree-view .list .root_text:hover .expander {
+  border-color: #fff;
 }
 
 #tree-view .list .child {

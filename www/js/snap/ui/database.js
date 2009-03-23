@@ -445,6 +445,7 @@ Snap.Database.prototype = {
           }
           this._hierarchy_cache[category][item.d.i].name = item.d.n;
           this._hierarchy_cache[category][item.d.i].ancestors = item.d.h;
+          this._hierarchy_cache[category][item.d.i].fun_count = item.d.c;
           if( undefined != item.c ) {
             process_children.bind(this)(item.c);
           }

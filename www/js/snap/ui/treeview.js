@@ -60,7 +60,7 @@ Snap.TreeView.prototype = {
     var html = [];
     html.push('<ul class="top">');
     function traverse_children(category, parent_node, className) {
-      var has_children = parent_node.children.length > 0;
+      var has_children = parent_node.children.length > 0 || parent_node.fun_count > 0;
       var id = 'cat_' + category + (className == 'root' ? '' : '-'+parent_node.id);
       html.push('<li id="',id,'" class="',className,'"');
       if( className == 'root' ) {
@@ -75,9 +75,9 @@ Snap.TreeView.prototype = {
       }
       html.push('">');
       if( has_children ) {
-        html.push('<span class="expander">+</span>');
+        html.push('<div class="expander">+</div>');
       }
-      html.push(parent_node.name, '</div>');
+      html.push('<div class="the_text">',parent_node.name, '</div></div>');
       if( has_children ) {
         var children = parent_node.children;
         html.push('<ul style="display:none">');
@@ -101,8 +101,8 @@ Snap.TreeView.prototype = {
       t._tree_ui[index] = $(this);
     });
 
-    $(this._elementIDs.view+' .has_children').click(function() {
-      var ul = $(this).parent().children('ul:first');
+    $(this._elementIDs.view+' .has_children .expander').click(function() {
+      var ul = $(this).parent().parent().children('ul:first');
       if( ul.css('display') != 'none' ) {
         ul.fadeOut('fast', function() {
           $(this).css({display:'block', visibility:'hidden'}).slideUp('fast');
@@ -118,7 +118,6 @@ Snap.TreeView.prototype = {
   _receive_hier : function() {
     var hier = this._db.get_hierarchies();
 
-    console.log(hier);
     for( var category in hier ) {
       var list = hier[category];
 
@@ -129,6 +128,7 @@ Snap.TreeView.prototype = {
         var node = list[id];
         // node.name
         // node.ancestors
+        // node.fun_count  <- Number of functions in this category.
 
         // Traverse the ancestry, creating the path along the way.
         var parentnode = null;
@@ -153,17 +153,19 @@ Snap.TreeView.prototype = {
         if( !parentnode ) {
           if( undefined != map[id] ) {
             tree[map[id]].name = node.name;
+            tree[map[id]].fun_count = node.fun_count;
             tree[map[id]].id = id;
           } else {
-            tree.push({name:node.name, id:id, map:{}, children:[]});
+            tree.push({name:node.name, id:id, fun_count:node.fun_count, map:{}, children:[]});
             map[id] = tree.length - 1;
           }
         } else {
           if( undefined != parentnode.map[id] ) {
             parentnode.children[parentnode.map[id]].name = node.name;
+            parentnode.children[parentnode.map[id]].fun_count = node.fun_count;
             parentnode.children[parentnode.map[id]].id = id;
           } else {
-            parentnode.children.push({name:node.name, id:id, map:{}, children:[]});
+            parentnode.children.push({name:node.name, id:id, fun_count: node.fun_count, map:{}, children:[]});
             parentnode.map[id] = parentnode.children.length - 1;
           }
         }
@@ -181,18 +183,16 @@ Snap.TreeView.prototype = {
 
     this._tree = this._tree.sort(compare_names);
 
-/*    function traverse_tree(node) {
+    function traverse_tree(node) {
       for( var i = 0; i < node.children.length; ++i ) {
         traverse_tree(node.children[i]);
       }
       node.children = node.children.sort(compare_names);
     }
 
-    console.dir(this._tree);
     for( var i = 0; i < this._tree.length; ++i ) {
       traverse_tree(this._tree[i]);
     }
-    console.dir(this._tree);*/
 
     this._create_ui();
     this._render();
