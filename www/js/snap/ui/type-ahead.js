@@ -48,6 +48,8 @@ Snap.TypeAhead = function(elementIDs, filterbar) {
     this._elements.input.val(window.sel.name);
     this._load_function(window.sel);
     this._display_function(window.sel);
+    this._list = [window.sel];
+    this._selection = 0;
   }
 
   this._db.register_callbacks({
@@ -412,7 +414,7 @@ Snap.TypeAhead.prototype = {
     html.push('</div>');
 
     var permalink = '/'+this._active_function.type+'/'+this._active_function.name;
-    html.push('<div class="source"><a href="',permalink,'">snaapi.com',permalink,'</a></div>');
+    html.push('<div class="source"><a class="permalink" href="',permalink,'">snaapi.com',permalink,'</a></div>');
 
     if( this._active_function.short_description ) {
       html.push('<div class="short-description">',this._active_function.short_description,'</div>');
@@ -627,7 +629,7 @@ Snap.TypeAhead.prototype = {
     }
 
     var t = this;
-    $(this._elementIDs.result + ' a').click(function(event) {
+    $(this._elementIDs.result + ' a:not(.permalink)').click(function(event) {
       event.preventDefault();
       t._show_iframe($(this).attr('href'));
       return false;
