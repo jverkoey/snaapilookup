@@ -93,6 +93,11 @@ Snap.TreeView.prototype = {
     });
 
     function handle_expand() {
+      if( $(this).html() == '+' ) {
+        $(this).html('-');
+      } else {
+        $(this).html('+');
+      }
       var parent = $(this).parent().parent();
       var id = parent.attr('id');
       var ul = parent.children('ul:first');

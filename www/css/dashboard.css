@@ -284,6 +284,7 @@
   font-size: 1.2em;
   font-weight: bold;
   padding: 0.3em;
+  color: #999;
 }
 
 #tree-view .list .initial_loading {
@@ -343,20 +344,19 @@
   font-size: 0.8em;
   float: left;
   color: #ccc;
-  padding: 0px 3px;
   margin: 0 4px;
   position: relative;
   top: -1px;
   border: 1px solid #ccc;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  text-align: center;
 }
 
 #tree-view .list .has_children:hover .expander {
   color: #333;
   border-color: #999;
-}
-
-#tree-view .list .has_children .expander {
-  cursor: pointer;
 }
 
 #tree-view .list .has_children .expander:hover {
