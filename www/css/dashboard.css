@@ -281,6 +281,7 @@
 
 #tree-view .header {
   font-size: 1.2em;
+  font-weight: bold;
   padding: 0.3em;
 }
 
@@ -292,6 +293,15 @@
   padding: 0.3em;
   margin: 0.3em;
   font-size: 1.1em;
+}
+
+#tree-view .list .has_children .expander {
+  float: right;
+  display: none;
+}
+
+#tree-view .list .has_children:hover .expander {
+  display: inline;
 }
 
 #tree-view .list .has_children {

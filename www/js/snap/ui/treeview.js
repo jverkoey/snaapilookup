@@ -23,6 +23,8 @@ Snap.TreeView = function(elementIDs, filters) {
   this._tree_ui = [];
   this._tree_visibility = [];
 
+  this._elements.view.html('Loading table of contents...');
+
   this._db = Snap.Database.singleton;
 
   this._db.register_callbacks({
@@ -63,7 +65,7 @@ Snap.TreeView.prototype = {
       if( has_children ) {
         html.push(' has_children');
       }
-      html.push('">', parent_node.name, '</div>');
+      html.push('"><span class="expander">+</span>', parent_node.name, '</div>');
       if( has_children ) {
         var children = parent_node.children;
         html.push('<ul>');
