@@ -9,7 +9,7 @@ $(function(){
   var filters = new Snap.FilterBar({
     filters  : '#filters'
   });
-  new Snap.TypeAhead({
+  var typeahead = new Snap.TypeAhead({
     search        : '#search',
     input         : '#search .text',
     dropdown      : '#search .dropdown',
@@ -24,7 +24,7 @@ $(function(){
 
   new Snap.TreeView({
     view          : '#tree-view .list'
-  }, filters);
+  }, filters, typeahead);
 
   if( !window.user_id ) {
     new Snap.OpenIdLogin('#auth .login');

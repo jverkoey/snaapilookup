@@ -5,7 +5,7 @@
  * @requires database.js
  */
 
-Snap.TreeView = function(elementIDs, filters) {
+Snap.TreeView = function(elementIDs, filters, typeahead) {
   this._elementIDs = elementIDs;
   this._elements = {};
   for( var key in this._elementIDs ) {
@@ -16,6 +16,7 @@ Snap.TreeView = function(elementIDs, filters) {
     }
   }
   this._filters = filters;
+  this._typeahead = typeahead;
 
   this._filters.register_change_callback(this._filters_changed.bind(this));
 
@@ -23,7 +24,7 @@ Snap.TreeView = function(elementIDs, filters) {
   this._tree_ui = [];
   this._tree_visibility = [];
 
-  this._elements.view.html('Loading table of contents...');
+  this._elements.view.html('<div class="initial_loading">Loading table of contents...</div>');
 
   // [category][id] => List of functions
   this._function_cache = {};
@@ -148,23 +149,31 @@ Snap.TreeView.prototype = {
   _receive_list : function(result, textStatus) {
     if( result.s ) {
       var category = result.c;
-      var id = result.i;
+      var hierarchy = result.h;
       var list = result.l;
 
-      var cache = this._function_cache[category][id];
+      var cache = this._function_cache[category][hierarchy];
       cache.loading = false;
       cache.loaded = true;
       cache.list = list;
       var html = [];
       for( var i = 0; i < list.length; ++i ) {
         var item = list[i];
-        var id = 'fun_' + category + '' + item.id;
+        var id = 'fun_' + category + '-' + item.id;
         html.push('<li id="',id,'" class="child"><div class="node_text">');
         html.push('<div class="the_text link_text"><tt>',item.name, '</tt></div></div>');
         html.push('</li>');
       }
       cache.ul.children('.loading').remove();
       cache.ul.append(html.join(''));
+      var t = this;
+      cache.ul.children('.child').click(function() {
+        var id = $(this).attr('id');
+        var category = parseInt(id.substr(4, id.indexOf('-') - 4));
+        var function_id = parseInt(id.substr(id.indexOf('-')+1));
+        var name = $(this).children('.node_text').children('.the_text').children('tt').html();
+        t._typeahead.force_selection(category, hierarchy, function_id, name);
+      });
     }
   },
 

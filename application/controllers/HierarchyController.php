@@ -62,7 +62,7 @@ class HierarchyController extends SnaapiController {
         's' => true,
         'l' => $results,
         'c' => $category,
-        'i' => $id
+        'h' => $id
       ));
     }
 

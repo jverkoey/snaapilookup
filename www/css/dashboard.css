@@ -286,13 +286,16 @@
   padding: 0.3em;
 }
 
-#tree-view .list .top {
-  margin-left: 0.5em;
+#tree-view .list .initial_loading {
+  padding: 0.3em;
 }
 
-#tree-view .list .root_text {
-  font-size: 1.1em;
-  background-color: #cdd;
+#tree-view .list {
+  padding-bottom: 0.5em;
+}
+
+#tree-view .list .top {
+  margin-left: 0.5em;
 }
 
 #tree-view .list .the_text {
@@ -309,7 +312,6 @@
 
 #tree-view .list .link_text:hover {
   cursor: pointer;
-  text-decoration: underline;
   border: 1px solid #ddd;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -320,14 +322,19 @@
   font-size: 0.8em;
 }
 
+#tree-view .list .root_text {
+  font-size: 1.1em;
+  background-color: #cdd;
+  margin-right: 10px;
+}
+
 #tree-view .list .root_text:hover {
   background-color: #6699aa;
   color: #fff;
 }
 
 #tree-view .list .has_children {
-  padding: 0.3em;
-  margin: 0.3em;
+  padding: 0.1em;
 }
 
 #tree-view .list .has_children .expander {
@@ -600,11 +607,11 @@
 
 #eww {
   position: absolute;
-  width: 100%;
   z-index: -1000;
   text-align: center;
   font-size: 5em;
   color: #999;
+  padding: 1em;
 }
 
 #eww .reason {

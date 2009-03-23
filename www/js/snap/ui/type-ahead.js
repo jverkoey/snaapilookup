@@ -79,6 +79,11 @@ Snap.TypeAhead.prototype = {
     this._do_search();
   },
 
+  force_selection : function(category, hierarchy, id, name) {
+    this._list = [{name:name, type:this._db.id_to_name(category), category: category, function_id: id, hierarchy:hierarchy}];
+    this._handle_selection(0);
+  },
+
   _handle_key : function(event) {
     var keydown_type = 'keypress';
     if( $.browser.safari ) {
@@ -622,7 +627,8 @@ Snap.TypeAhead.prototype = {
     }
 
     var t = this;
-    $(this._elementIDs.result + ' a.external').click(function() {
+    $(this._elementIDs.result + ' a').click(function(event) {
+      event.preventDefault();
       t._show_iframe($(this).attr('href'));
       return false;
     });
