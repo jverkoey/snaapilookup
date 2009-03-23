@@ -133,6 +133,189 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function androidAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+      
+      //$this->scrapeAndroidPackageList();
+      //$this->scrapeAndroidPackages(2);
+      $this->scrapeAndroidFunctions();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeAndroidFunctions() {
+    $category = 'android';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $contents = file_get_contents($source_url);
+
+      if( !preg_match('/<td colspan="1" class="jd-inheritance-class-cell">(.+?)<\/td>/', $contents, $matches) ) {
+        $this->view->results .= 'No name found, skipping...' . "\n";
+        break;
+      }
+
+      $name = $matches[1];
+      $this->view->results .= $name ."\n";
+
+      $desc = '';
+
+      $OVERVIEW_TXT = '<h2>Class Overview</h2>';
+      $desc_start = strpos($contents, $OVERVIEW_TXT);
+      if( false !== $desc_start ) {
+        $desc_start += strlen($OVERVIEW_TXT);
+        $desc_end = strpos($contents, '</p>', $desc_start);
+        if( false !== $desc_end ) {
+          $desc = trim(strip_tags(str_replace("\n", ' ', substr($contents, $desc_start, $desc_end - $desc_start))));
+        }
+      }
+      if( $desc == '' ) {
+        $this->view->results .= 'No description found...'."\n";
+      } else {
+        $this->view->results .= $desc ."\n";
+      }
+
+      $this->getFunctionsModel()->insertOrUpdateFunction(array(
+        'category' => $category_id,
+        'hierarchy' => $hierarchy['id'],
+        'name' => $name,
+        'url' => $source_url,
+        'short_description' => $desc,
+        'scrapeable' => 1
+      ));
+      $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+    }
+  }
+
+  private function process_section($links, $name, $mode, $category_id, $hierarchy, $source_url) {
+    $interface_start = strpos($links, '<li><h2>'.$name.'</h2>');
+    if( $interface_start !== false ) {
+      if( $mode == 2 ) {
+        $interface_end = strpos($links, '    </li>', $interface_start);
+        $data = substr($links, $interface_start, $interface_end - $interface_start);
+
+        $sub_id = $this->getHierarchiesModel()->fetchByName($category_id, $hierarchy, $name);
+
+        if( !$sub_id ) {
+          $this->view->results .= $hierarchy."\n";
+          $this->view->results .= $name."\n";
+          $this->view->results .= 'Couldn\'t find any parent hierarchy, skipping...' . "\n";
+          return false;
+        }
+        if( !preg_match_all('/<li><a href="(.+?)">(.+?)<\/a>(?:&lt;T&gt;)?<\/li>/', $data, $matches) ) {
+          $this->view->results .= 'Couldn\'t find any members name, skipping...' . "\n";
+          return false;
+        }
+
+        for( $index = 0; $index < count($matches[0]); ++$index ) {
+          $name = $matches[2][$index];
+          $url = 'http://developer.android.com'.$matches[1][$index];
+          $this->view->results .= $this->getHierarchiesModel()->insert($category_id, $sub_id, $name, $url, 1)."\n";
+        }
+      } else if( $mode == 1 ) {
+        $this->view->results .= $this->getHierarchiesModel()->insert($category_id, $hierarchy, $name, $source_url, 0)."\n";
+      }
+    }
+
+    return true;
+  }
+
+  private function scrapeAndroidPackages($mode) {
+    $category = 'android';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+
+      $contents = file_get_contents($source_url);
+      
+      $start_index = strpos($contents, '</div> <!-- end resize-packages -->');
+      $links = substr($contents, $start_index);
+
+      $succeeded = true;
+      $succeeded = $succeeded && $this->process_section($links, 'Interfaces', $mode, $category_id, $hierarchy['id'], $source_url);
+      $succeeded = $succeeded && $this->process_section($links, 'Classes', $mode, $category_id, $hierarchy['id'], $source_url);
+      $succeeded = $succeeded && $this->process_section($links, 'Exceptions', $mode, $category_id, $hierarchy['id'], $source_url);
+      $succeeded = $succeeded && $this->process_section($links, 'Enums', $mode, $category_id, $hierarchy['id'], $source_url);
+      if( $mode == 2 && $succeeded) {
+        $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+      }
+    }
+  }
+
+  private function scrapeAndroidPackageList() {
+    $category = 'android';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $contents = file_get_contents('http://developer.android.com/reference/packages.html');
+
+    $start_index = strpos($contents, '<div id="packages-nav">');
+    if( $start_index === false ) {
+      $this->view->results .= 'Couldn\'t find the packages navigation, skipping...' . "\n";
+      return;
+    }
+
+    $links = substr($contents, $start_index);
+
+    if( !preg_match_all('/<a href="(.+?)">(.+?)<\/a><\/li>/', $links, $matches) ) {
+      $this->view->results .= 'Couldn\'t find any links, skipping...' . "\n";
+      return;
+    }
+
+    for( $index = 0; $index < count($matches[0]); ++$index ) {
+      $name = $matches[2][$index];
+      $url = 'http://developer.android.com'.$matches[1][$index];
+      $this->view->results .= $this->getHierarchiesModel()->insert($category_id, 1, $name, $url, 1)."\n";
+    }
+  }
+
   private function scrapejQuery2() {
     $category = 'jQuery';
 

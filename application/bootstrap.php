@@ -43,7 +43,8 @@ $categories = array(
   'iphone',
   'javascript',
   'jquery',
-  'twitter'
+  'twitter',
+  'android'
 );
 
 foreach( $categories as $category ) {

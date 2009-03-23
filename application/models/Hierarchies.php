@@ -124,3 +124,16 @@ UNLOCK TABLES;';
   }
 
 }
+/*
+
+Clear a layer of hierarchies.
+
+  update hierarchies set last_scraped='' where id in (SELECT id FROM (SELECT COUNT(parent.id)-1 AS depth, node.name AS name, node.id as id FROM
+             hierarchies AS node, 
+             hierarchies AS parent 
+             WHERE parent.category = 35 AND 
+             node.category = 35 AND 
+             node.lft BETWEEN parent.lft AND parent.rgt 
+            GROUP BY node.id 
+             ORDER BY node.lft) a WHERE a.depth = 3 and id >= 516)
+             */
