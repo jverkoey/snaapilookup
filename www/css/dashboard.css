@@ -275,6 +275,8 @@
   border-bottom: 1px solid #999;
   -moz-border-radius-bottomright: 5px;
   -webkit-border-radius-bottomright: 5px;
+  overflow: auto;
+  background-color: #fff;
 }
 
 #tree-view .header {
@@ -286,8 +288,28 @@
   margin-left: 0.5em;
 }
 
-#result {
-  margin-left: 200px;
+#tree-view .list .node_text {
+  padding: 0.3em;
+  margin: 0.3em;
+  font-size: 1.1em;
+}
+
+#tree-view .list .has_children {
+  cursor: pointer;
+}
+
+#tree-view .list .has_children:hover {
+  background-color: #6699aa;
+  color: #fff;
+}
+
+#tree-view .list .child {
+  margin-left: 0.5em;
+}
+
+#content-table {
+  margin-left: 201px;
+  padding: 1em;
 }
 
 #result .name {
@@ -507,7 +529,7 @@
 }
 
 #external-page {
-  width: 100%;
+  margin-left: 201px;
   height: 100%;
   overflow: hidden;
 }
