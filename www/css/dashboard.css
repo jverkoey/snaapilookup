@@ -271,6 +271,7 @@
 #tree-view {
   width: 200px;
   float: left;
+  max-height: 500px;
   border-right: 1px solid #999;
   border-bottom: 1px solid #999;
   -moz-border-radius-bottomright: 5px;
@@ -292,6 +293,11 @@
 #tree-view .list .node_text {
   padding: 0.3em;
   margin: 0.3em;
+  font-size: 0.9em;
+}
+
+#tree-view .list .root_text {
+  background-color: #cdd;
   font-size: 1.1em;
 }
 

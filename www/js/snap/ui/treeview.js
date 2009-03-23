@@ -45,12 +45,12 @@ Snap.TreeView.prototype = {
       if( !any_filters || this._filters.is_filtered(tree.id) ) {
         if( !this._tree_visibility[i] ) {
           this._tree_visibility[i] = true;
-          this._tree_ui[i].fadeIn('slow');
+          this._tree_ui[i].fadeIn('fast');
         }
       } else {
         if( this._tree_visibility[i] ) {
           this._tree_visibility[i] = false;
-          this._tree_ui[i].fadeOut('slow');
+          this._tree_ui[i].fadeOut('fast');
         }
       }
     }
@@ -59,22 +59,30 @@ Snap.TreeView.prototype = {
   _create_ui : function() {
     var html = [];
     html.push('<ul class="top">');
-    function traverse_children(parent_node, className) {
+    function traverse_children(category, parent_node, className) {
       var has_children = parent_node.children.length > 0;
-      html.push('<li class="',className,'"');
+      var id = 'cat_' + category + (className == 'root' ? '' : '-'+parent_node.id);
+      html.push('<li id="',id,'" class="',className,'"');
       if( className == 'root' ) {
         html.push(' style="display:none"');
       }
       html.push('><div class="node_text');
+      if( className == 'root' ) {
+        html.push(' root_text');
+      }
       if( has_children ) {
         html.push(' has_children');
       }
-      html.push('"><span class="expander">+</span>', parent_node.name, '</div>');
+      html.push('">');
+      if( has_children ) {
+        html.push('<span class="expander">+</span>');
+      }
+      html.push(parent_node.name, '</div>');
       if( has_children ) {
         var children = parent_node.children;
         html.push('<ul style="display:none">');
         for( var i = 0; i < children.length; ++i ) {
-          traverse_children(children[i], 'child');
+          traverse_children(category, children[i], 'child');
         }
         html.push('</ul>');
       }
@@ -84,13 +92,22 @@ Snap.TreeView.prototype = {
     for( var i = 0; i < this._tree.length; ++i ) {
       var tree = this._tree[i];
       this._tree_visibility.push(false);
-      traverse_children(tree, 'root');
+      traverse_children(tree.id, tree, 'root');
     }
     html.push('</ul>');
     this._elements.view.html(html.join(''));
     var t = this;
     $(this._elementIDs.view+' .root').each(function(index) {
       t._tree_ui[index] = $(this);
+    });
+
+    $(this._elementIDs.view+' .has_children').click(function() {
+      var ul = $(this).parent().children('ul:first');
+      if( ul.css('display') != 'none' ) {
+        ul.fadeOut('fast');
+      } else {
+        ul.fadeIn('fast');
+      }
     });
   },
 
