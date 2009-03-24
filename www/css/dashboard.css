@@ -277,9 +277,6 @@
   float: left;
   height: 500px;
   border-right: 1px solid #999;
-  border-bottom: 1px solid #999;
-  -moz-border-radius-bottomright: 5px;
-  -webkit-border-radius-bottomright: 5px;
   overflow: auto;
   background-color: #fff;
 }

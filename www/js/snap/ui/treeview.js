@@ -36,6 +36,9 @@ Snap.TreeView = function(elementIDs, filters, typeahead) {
   this._db.register_callbacks({
     receive_hier          : this._receive_hier.bind(this)
   });
+
+  $(window).bind('resize', this._resize_frame.bind(this));
+  this._resize_frame();
 };
 
 Snap.TreeView.prototype = {
@@ -60,6 +63,10 @@ Snap.TreeView.prototype = {
         }
       }
     }
+  },
+
+  _resize_frame : function() {
+    $('#tree-view').height(($(window).height() - $('#topbar').height()) + 'px');
   },
 
   _create_ui : function() {
