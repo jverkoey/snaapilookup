@@ -60,6 +60,8 @@ Snap.TypeAhead = function(elementIDs, filterbar) {
     receive_hierarchy     : this._receive_hierarchy.bind(this),
     navigate_immediately  : this._navigate_immediately.bind(this)
   });
+
+  $(window).bind('resize', this._resize_frame.bind(this));
 };
 
 Snap.TypeAhead.prototype = {
@@ -188,6 +190,13 @@ Snap.TypeAhead.prototype = {
     }
 
     return true;
+  },
+
+  _resize_frame : function() {
+    if( jQuery.browser.safari && this._displaying_frame ) {
+      $('iframe').width(($(window).width() - $('#tree-view').width()) + 'px');
+      $('iframe').height(($(window).height() - $('#topbar').height()) + 'px');
+    }
   },
 
   _hover : function() {
@@ -681,6 +690,7 @@ Snap.TypeAhead.prototype = {
         });*/
       }
 
+      this._resize_frame();
       this._displaying_frame = true;
     }
   },
