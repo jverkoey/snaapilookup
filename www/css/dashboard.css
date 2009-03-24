@@ -22,8 +22,12 @@
 
 #twitter {
   position: absolute;
-  margin-left: 15px;
-  margin-top: 10px;
+  top: 40px;
+  left: 15px;
+}
+
+#topbar {
+  background-color: #eff;
 }
 
 #actions {
@@ -60,7 +64,7 @@
   padding: 5px;
   font-size: 1.3em;
   text-align: center;
-  color: #ccc;
+  color: #999;
 }
 
 #filters .list table {
@@ -76,7 +80,7 @@
 #filters .list td .cat_header {
   font-size: 1.2em;
   text-align: center;
-  color: #ccc;
+  color: #999;
 }
 
 #filters .list td .filter {

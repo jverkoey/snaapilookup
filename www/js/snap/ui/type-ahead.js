@@ -101,7 +101,7 @@ Snap.TypeAhead.prototype = {
         this._hover_timer = setTimeout(this._hover.bind(this), 1000);
         this._current_value = new_val;
         this._elements.dropdown.fadeIn('fast');
-        this._do_search();
+        setTimeout(this._do_search.bind(this), 10);
         this._has_changed_since_selection = true;
       }
     }
