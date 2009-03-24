@@ -37,10 +37,7 @@
     $hide = ($this->category && $this->id && $this->type) ? ' style="display:none"' : '';
     if( !Zend_Auth::getInstance()->hasIdentity() ) { ?>
     <div id="whyjoin"<?=$hide?>>
-      <div class="imagish">
-        <img src="/gfx/snaapi.jpg" width="600" height="353" alt="Snaapi logo" title="Snap, son!"/>
-      </div>
-      <div class="textish" style="display:none">
+      <div class="textish">
         <div class="rhetorical">What is snaapi?</div>
         <div class="answer">It's Javascript-powered API search with a little social <i>spice</i>.</div>
         <div class="more-details"><p>The idea behind snaapi is simple: to <b>provide a simple interface for

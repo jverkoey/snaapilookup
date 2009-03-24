@@ -30,12 +30,6 @@ $(function(){
     new Snap.OpenIdLogin('#auth .login');
   }
 
-  $('#whyjoin .imagish').click(function() {
-    $(this).fadeOut('fast', function() {
-      $('#whyjoin .textish').fadeIn('fast');
-    });
-  });
-
   //$('#search .text').focus();
 
   Snap.Database.singleton.load();
