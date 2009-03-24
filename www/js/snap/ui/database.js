@@ -234,46 +234,64 @@ Snap.Database.prototype = {
       }
     }
 
-    // Calculate the score for each result.
-    // Score = sum total of matched characters.
-    for( var i = 0; i < results.length; ++i ) {
-      var entry = hash_results[results[i]];
+    if( results.length < 3000 ) {
+      // Calculate the score for each result.
+      // Score = sum total of matched characters.
+      for( var i = 0; i < results.length; ++i ) {
+        var entry = hash_results[results[i]];
 
-      var joined_areas = new Array(entry.name.length);
-      for( var i2 = 0; i2 < entry.name.length; ++i2 ) {
-        joined_areas[i2] = 0;
-      }
-      for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
-        var word = entry.matches[i2];
-        var offsets = entry.lower_name.gindexOf(word);
+        var joined_areas = new Array(entry.name.length);
+        for( var i2 = 0; i2 < entry.name.length; ++i2 ) {
+          joined_areas[i2] = 0;
+        }
+        for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
+          var word = entry.matches[i2];
+          var offsets = entry.lower_name.gindexOf(word);
 
-        for( var i3 = 0; i3 < offsets.length; ++i3 ) {
-          var start = offsets[i3];
-          joined_areas[start]++;
+          for( var i3 = 0; i3 < offsets.length; ++i3 ) {
+            var start = offsets[i3];
+            joined_areas[start]++;
 
-          var end = start + word.length;
-          if( end < joined_areas.length ) {
-            joined_areas[end]--;
+            var end = start + word.length;
+            if( end < joined_areas.length ) {
+              joined_areas[end]--;
+            }
           }
         }
-      }
 
-      entry.score = 0;
-      var on = 0;
-      var starts_with = joined_areas[0] > 0;
-      for( var i2 = 0; i2 < joined_areas.length; ++i2 ) {
-        on += joined_areas[i2];
-        if( on > 0 ) {
-          entry.score++;
-          if( starts_with ) {
-            entry.score++;    // Double up entries that start with the text.
+        entry.score = 0;
+        var on = 0;
+        var starts_with = joined_areas[0] > 0;
+        for( var i2 = 0; i2 < joined_areas.length; ++i2 ) {
+          on += joined_areas[i2];
+          if( on > 0 ) {
+            entry.score++;
+            if( starts_with ) {
+              entry.score++;    // Double up entries that start with the text.
+            }
+          } else {
+            starts_with = false;
           }
-        } else {
-          starts_with = false;
         }
-      }
 
-      entry.score /= entry.name.length;
+        entry.score /= entry.name.length;
+      }
+    } else {
+      // Calculate the score for each result.
+      // Score = 1 if matched at beginning.i
+      for( var i = 0; i < results.length; ++i ) {
+        var entry = hash_results[results[i]];
+
+        entry.score = 0;
+        for( var i2 = 0; i2 < entry.matches.length; ++i2 ) {
+          var word = entry.matches[i2];
+          if( entry.lower_name.indexOf(word) == 0 ) {
+            entry.score++;
+          }
+        }
+
+        entry.score /= entry.name.length;
+      }
     }
 
     // Sort by score.
@@ -282,9 +300,9 @@ Snap.Database.prototype = {
       var right_entry = hash_results[right];
       var result =
         (right_entry.score - left_entry.score) ||
-        (left_entry.name.toLowerCase() < right_entry.name.toLowerCase() ? -1 : 0) ||
-        (left_entry.name.toLowerCase() > right_entry.name.toLowerCase() ? 1 : 0) ||
-        0;
+        (left_entry.lower_name < right_entry.lower_name ?
+          -1 :
+          (left_entry.lower_name > right_entry.lower_name ? 1 : 0));
       return result;
     }
     results = results.sort(by);
