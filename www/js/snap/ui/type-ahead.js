@@ -61,7 +61,7 @@ Snap.TypeAhead = function(elementIDs, filterbar) {
     navigate_immediately  : this._navigate_immediately.bind(this)
   });
 
-  $(window).bind('resize', this._resize_frame.bind(this));
+  //$(window).bind('resize', this._resize_frame.bind(this));
 };
 
 Snap.TypeAhead.prototype = {
@@ -690,7 +690,7 @@ Snap.TypeAhead.prototype = {
         });*/
       }
 
-      this._resize_frame();
+      //this._resize_frame();
       this._displaying_frame = true;
     }
   },

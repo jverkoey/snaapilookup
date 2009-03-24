@@ -146,6 +146,113 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function mootoolsAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      $this->scrapeMootoolsFunctions();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeMootoolsFunctions() {
+    $category = 'mootools';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $scrapeable = $this->getHierarchiesModel()->fetchAllScrapeable($category_id);
+
+    if( empty($scrapeable) ) {
+      $this->nothing_to_scrape($category);
+      return;
+    }
+
+    foreach( $scrapeable as $hierarchy ) {
+      $this->view->results .= $hierarchy['name'] . "\n";
+      if( !$hierarchy['source_url'] ) {
+        $this->view->results .= 'No source URL specified, skipping...' . "\n";
+        continue;
+      }
+      $source_url = $hierarchy['source_url'];
+      $this->view->results .= '<a href="'.$source_url.'">'.$source_url."</a>\n";
+
+      $contents = file_get_contents($source_url);
+
+      $start_index = strpos($contents, '<h2 id="');
+      $data = substr($contents, $start_index);
+
+      if( !preg_match_all('/<h2 id=".+?"(?: class="description")?><a href="(.+?)">(?:(?:.+? )?(?:Function|Method|Property|Selector|Event)): (.+?)<\/a><\/h2>/', $data, $matches ) ) {
+        $this->view->results .= 'No functions found, checking for features...' . "\n";
+
+        if( !preg_match_all('/<li>(.+?) - \(<em>(.+?)<\/em>\) (.+?)<\/li>/', $contents, $matches) ) {
+          $this->view->results .= 'No features found, skipping...' . "\n";
+          continue;
+        }
+
+        for( $index = 0; $index < count($matches[0]); ++$index ) {
+          $url = $source_url;
+          $name = trim($matches[1][$index]);
+          $desc = trim(strip_tags($matches[3][$index]));
+          $this->view->results .= $name."\n";
+          $this->view->results .= $url."\n";
+          $this->view->results .= $desc."\n\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $hierarchy['id'],
+            'name' => $name,
+            'url' => $url,
+            'short_description' => $desc,
+            'scrapeable' => 0
+          ));
+        }
+        $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+        continue;
+      }
+
+      $functions = array_slice(explode('<h2 id="', $data), 1);
+
+      foreach( $functions as $function ) {
+        $desc = '';
+        if( preg_match('/<p class="description">(.+?)<\/p>/', str_replace("\n", ' ', $function), $matches) ) {
+          $desc = $matches[1];
+        }
+
+        if( !preg_match('/.+?"(?: class="description")?><a href="(.+?)">(?:(?:.+? )?(?:Function|Method|Property|Selector|Event)): (.+?)<\/a><\/h2>/', $function, $matches ) ) {
+          $this->view->results .= 'Couldn\'t find the function name, skipping...' . "\n";
+          continue;
+        }
+
+        $url = $source_url . $matches[1];
+        $name = trim($matches[2]);
+        if( $hierarchy['name'] != 'Core' && $name[0] != '$' ) {
+          $name = $hierarchy['name'].'.'.$name;
+        }
+        $desc = trim(strip_tags($desc));
+        $this->view->results .= $name."\n";
+        $this->view->results .= $url."\n";
+        $this->view->results .= $desc."\n\n";
+
+        $this->getFunctionsModel()->insertOrUpdateFunction(array(
+          'category' => $category_id,
+          'hierarchy' => $hierarchy['id'],
+          'name' => $name,
+          'url' => $url,
+          'short_description' => $desc,
+          'scrapeable' => 0
+        ));
+      }
+      $this->getHierarchiesModel()->touch($category_id, $hierarchy['id']);
+    }
+  }
+
   private function scrapeAndroidFunctions() {
     $category = 'android';
 

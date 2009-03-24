@@ -45,7 +45,8 @@ $categories = array(
   'javascript',
   'jquery',
   'twitter',
-  'android'
+  'android',
+  'mootools'
 );
 
 foreach( $categories as $category ) {
