@@ -65,6 +65,10 @@ class PermalinkController extends SnaapiController {
     $this->framework('mootools');
   }
 
+  public function clojureAction() {
+    $this->language('Clojure');
+  }
+
 
   private function language($name) {
     $this->category($name, 'Language');

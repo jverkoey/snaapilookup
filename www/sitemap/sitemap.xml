@@ -21,6 +21,3804 @@
     <priority>0.6</priority>
   </url>
 <url>
+  <loc>http://snaapi.com/Clojure/(* )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(* x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(* x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(* x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*1</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*2</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*3</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*agent*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*command-line-args*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*compile-files*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*compile-path*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*e</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*err*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*file*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*flush-on-newline*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*in*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*ns*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*out*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*print-dup*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*print-length*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*print-level*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*print-meta*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*print-readably*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/*warn-on-reflection*</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(+ )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(+ x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(+ x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(+ x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(- x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(- x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(- x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(-&gt; x form)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(-&gt; x form & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(.. x form)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(.. x form & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(/ x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(/ x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(/ x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&lt; x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&lt; x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&lt; x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&lt;= x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&lt;= x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&lt;= x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(= x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(= x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(= x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(== x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(== x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(== x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&gt; x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&gt; x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&gt; x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&gt;= x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&gt;= x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(&gt;= x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(accessor s key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aclone array)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(add-classpath url)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(add-watch reference key fn)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(add-watcher reference send-type watcher-agent action-fn)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(agent state)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(agent state & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(agent-errors a)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aget array idx)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aget array idx & idxs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(alength array)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(alias alias namespace-sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(all-ns )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(alter ref fun & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(alter-meta! iref f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(alter-var-root v f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(amap a idx ret expr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ancestors tag)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ancestors h tag)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(and )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(and x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(and x & next)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(apply f args* argseq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(areduce a idx ret init expr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(array-map )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(array-map & keyvals)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-boolean array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-boolean array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-byte array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-byte array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-char array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-char array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-double array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-double array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-float array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-float array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-int array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-int array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-long array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-long array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-short array idx val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(aset-short array idx idx2 & idxv)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(assert x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(assoc map key val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(assoc map key val & kvs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(assoc-in m [k & ks] v)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(associative? coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(atom x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(atom x & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(await & agents)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(await-for timeout-ms & agents)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bases c)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bean x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bigdec x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bigint x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(binding bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-and x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-and-not x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-clear x n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-flip x n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-not x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-or x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-set x n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-shift-left x n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-shift-right x n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-test x n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(bit-xor x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(boolean x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(butlast coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(byte x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(cast c x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(char x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/char-escape-string</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/char-name-string</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(class x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(class? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(clear-agent-errors a)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(coll? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(comment & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(commute ref fun & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(comp & fs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(comparator pred)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(compare x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(compare-and-set! atom oldval newval)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(compile lib)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(complement f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(concat )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(concat x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(concat x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(concat x y & zs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(cond & clauses)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(condp pred expr & clauses)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(conj coll x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(conj coll x & xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(cons x seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(constantly x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(construct-proxy c & ctor-args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(contains? coll key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(count coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(counted? coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(create-ns sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(create-struct & keys)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(cycle coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dec x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(decimal? n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(declare & names)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(definline name & decl)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defmacro name doc-string? attr-map? [params*] body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defmacro name doc-string? attr-map? ([params*] body) + attr-map?)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defmethod multifn dispatch-val & fn-tail)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defmulti name docstring? attr-map? dispatch-fn & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defn name doc-string? attr-map? [params*] body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defn name doc-string? attr-map? ([params*] body) + attr-map?)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defn- name & decls)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defonce name expr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(defstruct name & keys)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(delay & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(delay? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(deref ref)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(derive tag parent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(derive h tag parent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(descendants tag)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(descendants h tag)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(disj set)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(disj set key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(disj set key & ks)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dissoc map)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dissoc map key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dissoc map key & ks)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(distinct coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(distinct? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(distinct? x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(distinct? x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(doall coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(doall n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(doc name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dorun coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dorun n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(doseq seq-exprs & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dosync & exprs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(dotimes bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(doto x & forms)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(double x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(double-array size-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(double-array size init-val-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(doubles xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(drop n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(drop-last s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(drop-last n s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(drop-while pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(empty coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(empty? coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ensure ref)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(enumeration-seq e)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(eval form)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(even? n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(every? pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(false? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ffirst x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(file-seq dir)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(filter pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(find map key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(find-doc re-string-or-pattern)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(find-ns sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(find-var sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(first coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(float x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(float-array size-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(float-array size init-val-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(float? n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(floats xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(flush )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(fn & sigs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(fn? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(fnext x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(for seq-exprs body-expr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(force x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(format fmt & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(future & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(future-call f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(gen-class & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(gen-interface & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(gensym )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(gensym prefix-string)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(get map key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(get map key not-found)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(get-in m ks)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(get-proxy-class & bases)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(get-validator iref)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(hash x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(hash-map )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(hash-map & keyvals)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(hash-set )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(hash-set & keys)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(identical? x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(identity x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(if-let bindings then)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(if-let bindings then else & oldform)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(if-not test then)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(if-not test then else)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ifn? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(import & import-symbols-or-lists)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(in-ns name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(inc x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(init-proxy proxy mappings)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(instance? c x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(int x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(int-array size-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(int-array size init-val-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(integer? n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(interleave & colls)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(intern ns name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(intern ns name val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(interpose sep coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(into to from)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(into-array aseq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(into-array type aseq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ints xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(io! & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(isa? child parent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(isa? h child parent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(iterate f x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(iterator-seq iter)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(key e)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(keys map)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(keyword name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(keyword ns name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(keyword? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(last coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(lazy-cat & colls)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(lazy-seq & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(let bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(letfn fnspecs & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(line-seq rdr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(list & items)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(list* item & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(list? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(load & paths)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(load-file name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(load-reader rdr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(load-string s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(loaded-libs )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(locking x & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(long x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(long-array size-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(long-array size init-val-or-seq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(longs xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(loop bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(macroexpand form)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(macroexpand-1 form)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(make-array type len)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(make-array type dim & more-dims)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(make-hierarchy )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(map f coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(map f c1 c2)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(map f c1 c2 c3)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(map f c1 c2 c3 & colls)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(map? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(mapcat f & colls)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(max x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(max x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(max x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(max-key k x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(max-key k x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(max-key k x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(memfn name & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(memoize f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(merge & maps)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(merge-with f & maps)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(meta obj)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(methods multifn)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(min x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(min x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(min x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(min-key k x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(min-key k x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(min-key k x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(mod num div)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(name x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(namespace x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(neg? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(newline )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(next coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(nfirst x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(nil? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(nnext x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not-any? pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not-empty coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not-every? pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not= x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not= x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(not= x y & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns name & references)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-aliases ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-imports ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-interns ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-map ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-name ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-publics ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-refers ns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-resolve ns sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-unalias ns sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ns-unmap ns sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(nth coll index)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(nth coll index not-found)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(nthnext coll n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(num x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(number? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(odd? n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(or )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(or x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(or x & next)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(parents tag)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(parents h tag)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(partial f arg1)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(partial f arg1 arg2)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(partial f arg1 arg2 arg3)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(partial f arg1 arg2 arg3 & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(partition n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(partition n step coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pcalls & fns)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(peek coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pmap f coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pmap f coll & colls)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pop coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pos? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pr )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pr x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pr x & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pr-str & xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(prefer-method multifn dispatch-val-x dispatch-val-y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(prefers multifn)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(print & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(print-namespace-doc nspace)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(print-str & xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(printf fmt & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(println & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(println-str & xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(prn & more)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(prn-str & xs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(proxy class-and-interfaces args & fs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(proxy-mappings proxy)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(proxy-super meth & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pvalues & exprs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(quot num div)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rand )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rand n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rand-int n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(range end)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(range start end)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(range start end step)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ratio? n)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rationalize num)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-find m)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-find re s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-groups m)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-matcher re s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-matches re s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-pattern s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(re-seq re s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(read )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(read stream)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(read stream eof-error? eof-value)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(read stream eof-error? eof-value recursive?)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(read-line )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(read-string s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(reduce f coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(reduce f val coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ref x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ref x & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(ref-set ref val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(refer ns-sym & filters)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(refer-clojure & filters)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(release-pending-sends )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rem num div)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(remove pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(remove-method multifn dispatch-val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(remove-ns sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(remove-watch reference key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(remove-watcher reference watcher-agent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repeat x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repeat n x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repeatedly f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(replace smap coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(replicate n x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(require & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(reset! atom newval)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(reset-meta! iref metadata-map)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(resolve sym)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rest coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(resultset-seq rs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(reverse coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(reversible? coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rseq rev)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rsubseq sc test key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rsubseq sc start-test start-key end-test end-key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(second x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(select-keys map keyseq)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(send a f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(send-off a f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(seq coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(seq? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(seque s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(seque n-or-q s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sequence coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sequential? coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(set coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(set-validator! iref validator-fn)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(set? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(short x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(shutdown-agents )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(slurp f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(some pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sort coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sort comp coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sort-by keyfn coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sort-by keyfn comp coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sorted-map & keyvals)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sorted-map-by comparator & keyvals)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sorted-set & keys)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sorted? coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(special-form-anchor x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(special-symbol? s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(split-at n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(split-with pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(str )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(str x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(str x & ys)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(string? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(struct s & vals)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(struct-map s & inits)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(subs s start)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(subs s start end)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(subseq sc test key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(subseq sc start-test start-key end-test end-key)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(subvec v start)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(subvec v start end)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(supers class)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(swap! atom f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(swap! atom f x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(swap! atom f x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(swap! atom f x y & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(symbol name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(symbol ns name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(symbol? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(sync flags-ignored-for-now & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(syntax-symbol-anchor x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(take n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(take-nth n coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(take-while pred coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(test v)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(the-ns x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(time expr)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(to-array coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(to-array-2d coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(trampoline f)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(trampoline f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(tree-seq branch? children root)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(true? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(type x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-add x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-dec x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-divide x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-inc x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-multiply x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-negate x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-remainder x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(unchecked-subtract x y)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(underive tag parent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(underive h tag parent)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(update-in m [k & ks] f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(update-proxy proxy mappings)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(use & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(val e)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vals map)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(var-get x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(var-set x val)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(var? v)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vary-meta obj f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vec coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vector )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vector & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vector? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(when test & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(when-first bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(when-let bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(when-not test & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(while test & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-in-str s & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-local-vars name-vals-vec & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-meta obj m)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-open bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-out-str & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-precision precision & exprs)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(xml-seq root)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(zero? x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(zipmap keys vals)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(inspect x)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(inspect-table data)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(inspect-tree data)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(load-script path)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(main & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repl & options)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repl-caught e)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repl-exception throwable)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repl-prompt )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(repl-read request-prompt request-exit)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(skip-if-eol s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(skip-whitespace s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(with-bindings & body)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pany coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(par coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(par coll & ops)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pdistinct coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pfilter-dupes coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pfilter-nils coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pmax coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pmax coll comp)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pmin coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pmin coll comp)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(preduce f base coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(psort coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(psort coll comp)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(psummary coll)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(psummary coll comp)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(pvec pa)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(difference s1)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(difference s1 s2)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(difference s1 s2 & sets)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(index xrel ks)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(intersection s1)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(intersection s1 s2)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(intersection s1 s2 & sets)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(join xrel yrel)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(join xrel yrel km)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(map-invert m)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(project xrel ks)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rename xrel kmap)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rename-keys map kmap)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(select pred xset)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(union )</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(union s1)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(union s1 s2)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(union s1 s2 & sets)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(parse s)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(parse s startparse)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(append-child loc item)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(branch? loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(children loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(down loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(edit loc f & args)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(end? loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(insert-child loc item)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(insert-left loc item)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(insert-right loc item)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(left loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(leftmost loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(lefts loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(make-node loc node children)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(next loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(node loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(path loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(prev loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(remove loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(replace loc node)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(right loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rightmost loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(rights loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(root loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(seq-zip root)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(up loc)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(vector-zip root)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(xml-zip root)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/Clojure/(zipper branch? children make-node root)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
   <loc>http://snaapi.com/PHP/basename</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
@@ -49791,61 +53589,67 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/jQuery(expression,context)</loc>
+  <loc>http://snaapi.com/jQuery/jQuery.extend(object)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/jQuery(html,ownerDocument)</loc>
+  <loc>http://snaapi.com/jQuery/jQuery.noConflict()</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/jQuery(elements)</loc>
+  <loc>http://snaapi.com/jQuery/jQuery.fn.extend(object)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/jQuery(callback)</loc>
+  <loc>http://snaapi.com/jQuery/dequeue(name)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/each(callback)</loc>
+  <loc>http://snaapi.com/jQuery/queue(name,queue)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/size()</loc>
+  <loc>http://snaapi.com/jQuery/queue(name,callback)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/length</loc>
+  <loc>http://snaapi.com/jQuery/queue(name)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/selector</loc>
+  <loc>http://snaapi.com/jQuery/removeData(name)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/context</loc>
+  <loc>http://snaapi.com/jQuery/data(name,value)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/eq(position)</loc>
+  <loc>http://snaapi.com/jQuery/data(name)</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/index(subject)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -49863,67 +53667,61 @@
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/index(subject)</loc>
+  <loc>http://snaapi.com/jQuery/eq(position)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/data(name)</loc>
+  <loc>http://snaapi.com/jQuery/context</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/data(name,value)</loc>
+  <loc>http://snaapi.com/jQuery/selector</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/removeData(name)</loc>
+  <loc>http://snaapi.com/jQuery/size()</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/queue(name)</loc>
+  <loc>http://snaapi.com/jQuery/length</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/queue(name,callback)</loc>
+  <loc>http://snaapi.com/jQuery/each(callback)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/queue(name,queue)</loc>
+  <loc>http://snaapi.com/jQuery/jQuery(callback)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/dequeue(name)</loc>
+  <loc>http://snaapi.com/jQuery/jQuery(elements)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/jQuery.fn.extend(object)</loc>
+  <loc>http://snaapi.com/jQuery/jQuery(html,ownerDocument)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 <url>
-  <loc>http://snaapi.com/jQuery/jQuery.extend(object)</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/jQuery.noConflict()</loc>
+  <loc>http://snaapi.com/jQuery/jQuery(expression,context)</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
@@ -52083,6 +55881,108 @@
   <priority>0.8</priority>
 </url>
 <url>
+  <loc>http://snaapi.com/jQuery/accordion active</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion animated</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion autoHeight</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion clearStyle</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion collapsible</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion event</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion fillSpace</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion header</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion icons</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion navigation</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion navigationFilter</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion change</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion('destroy')</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion('disable')</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion('enable')</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion('option')</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>http://snaapi.com/jQuery/accordion('activate')</loc>
+  <lastmod>2009-03-24</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
   <loc>http://snaapi.com/jQuery/datepicker altField</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
@@ -52972,108 +56872,6 @@
 </url>
 <url>
   <loc>http://snaapi.com/jQuery/tabs('rotate')</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion active</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion animated</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion autoHeight</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion clearStyle</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion collapsible</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion event</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion fillSpace</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion header</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion icons</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion navigation</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion navigationFilter</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion change</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion('destroy')</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion('disable')</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion('enable')</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion('option')</loc>
-  <lastmod>2009-03-24</lastmod>
-  <changefreq>weekly</changefreq>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>http://snaapi.com/jQuery/accordion('activate')</loc>
   <lastmod>2009-03-24</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>

@@ -157,6 +157,103 @@ class ScrapeController extends SnaapiController {
     }
   }
 
+  public function clojureAction() {
+    if( 'development' == $this->getInvokeArg('env') ) {
+      $this->view->results = '';
+      $this->_pages_scraped = 0;
+
+      //$this->scrapeClojureHierarchies();
+      $this->scrapeClojureFunctions();
+    } else {
+      $this->_forward('error', 'error');
+    }
+  }
+
+  private function scrapeClojureFunctions() {
+    $category = 'Clojure';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $contents = file_get_contents(APPLICATION_PATH . '/scraper/clojure/api.html');
+
+    $hierarchies = array_slice(explode('<h2 id="', $contents), 1);
+    foreach( $hierarchies as $hierarchy ) {
+      if( !preg_match('/(.+?)">(.+?)<\/h2>/', $hierarchy, $matches) ) {
+        $this->view->results .= 'No name found, skipping...' . "\n";
+        continue;
+      }
+
+      $name = trim($matches[2]);
+      $sub_id = $this->getHierarchiesModel()->fetchByName($category_id, 1, $name);
+
+      $functions = array_slice(explode('<hr>', $hierarchy), 1);
+
+      foreach( $functions as $function ) {
+        if( !preg_match_all('/<h3 id="(.+?)">(.+?)<\/h3>/', $function, $matches) ) {
+          $this->view->results .= 'No function info found, skipping...' . "\n";
+          $this->view->results .= $function . "\n\n";
+          continue;
+        }
+
+        if( !preg_match('/(?:.+<\/h3>) (.+?)<br>/', str_replace("\n", ' ', $function), $desc_matches) ) {
+          $this->view->results .= 'No desc found, skipping...' . "\n";
+          $this->view->results .= $function . "\n\n";
+          continue;
+        }
+        
+        $desc = trim(strip_tags($desc_matches[1]));
+        
+        for( $index = 0; $index < count($matches[0]); ++$index ) {
+          $url = 'http://clojure.org/api#'.$matches[1][$index];
+          $name = trim(str_replace('&amp;', '&', strip_tags($matches[2][$index])));
+          $this->view->results .= $sub_id ."\n";
+          $this->view->results .= $name ."\n";
+          $this->view->results .= $url ."\n";
+          $this->view->results .= $desc ."\n\n";
+
+          $this->getFunctionsModel()->insertOrUpdateFunction(array(
+            'category' => $category_id,
+            'hierarchy' => $sub_id,
+            'name' => $name,
+            'url' => $url,
+            'short_description' => $desc,
+            'scrapeable' => 0
+          ));
+        }
+      }
+    }
+  }
+
+  private function scrapeClojureHierarchies() {
+    $category = 'Clojure';
+
+    $category_id = $this->getCategoriesModel()->fetchCategoryByName($category);
+
+    if( !$category_id ) {
+      $this->invalid_category($category);
+      return;
+    }
+
+    $contents = file_get_contents(APPLICATION_PATH . '/scraper/clojure/api.html');
+
+    $hierarchies = array_slice(explode('<h2 id="', $contents), 1);
+    foreach( $hierarchies as $hierarchy ) {
+      if( !preg_match('/(.+?)">(.+?)<\/h2>/', $hierarchy, $matches) ) {
+        $this->view->results .= 'No name found, skipping...' . "\n";
+        continue;
+      }
+
+      $name = trim($matches[2]);
+      $url = 'http://clojure.org/api#'.$matches[1];
+      $this->view->results .= $this->getHierarchiesModel()->insert($category_id, 1, $name, $url, 0)."\n";
+    }
+  }
+
   private function scrapeMootoolsFunctions() {
     $category = 'mootools';
 
