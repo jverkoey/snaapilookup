@@ -33,11 +33,12 @@ $router = $frontController->getRouter();
 
 $categories = array(
   'php',
+  'python',
   'python 3.0.1',
   'python 2.6.1',
   'css',
   'zend',
-  'facebook api',
+  'facebook',
   'django',
   'firebug',
   'iphone',

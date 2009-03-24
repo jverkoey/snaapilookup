@@ -17,6 +17,10 @@ class PermalinkController extends SnaapiController {
     $this->language('Python 2.6.1');
   }
 
+  public function pythonAction() {
+    $this->language('Python 2.6.1');
+  }
+
   public function cssAction() {
     $this->language('CSS');
   }
@@ -29,8 +33,8 @@ class PermalinkController extends SnaapiController {
     $this->framework('Zend');
   }
 
-  public function facebookApiAction() {
-    $this->framework('Facebook API');
+  public function facebookAction() {
+    $this->framework('Facebook');
   }
 
   public function djangoAction() {
