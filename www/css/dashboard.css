@@ -272,11 +272,18 @@
   margin-left: 5px;
 }
 
+#tree-view-sizer {
+  width: 5px;
+  height: 500px;
+  float: left;
+  background-color: #999;
+  cursor: e-resize;
+}
+
 #tree-view {
-  width: 300px;
+  width: 200px;
   float: left;
   height: 500px;
-  border-right: 1px solid #999;
   overflow: auto;
   background-color: #fff;
 }
@@ -371,7 +378,7 @@
 }
 
 #content-table {
-  margin-left: 301px;
+  margin-left: 205px;
   padding: 1em;
 }
 
@@ -592,8 +599,8 @@
 }
 
 #external-page {
-  margin-left: 301px;
-  margin-right: -301px;
+  margin-left: 205px;
+  margin-right: -205px;
   height: 100%;
   overflow: hidden;
 }

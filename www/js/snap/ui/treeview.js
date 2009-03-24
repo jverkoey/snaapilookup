@@ -36,9 +36,24 @@ Snap.TreeView = function(elementIDs, filters, typeahead) {
   this._db.register_callbacks({
     receive_hier          : this._receive_hier.bind(this)
   });
+  
+  var width = $.cookie('resizer-x-pos');
+  if( width ) {
+    width = parseInt(width);
+    $('#tree-view').width(width + 'px');
+    var sizer_width = $('#tree-view-sizer').width();
+    $('#content-table').css('marginLeft', (width + sizer_width) + 'px');
+    $('#external-page').css('marginLeft', (width + sizer_width) + 'px');
+    $('#external-page').css('marginRight', -(width + sizer_width) + 'px');
+  }
 
   $(window).bind('resize', this._resize_frame.bind(this));
   this._resize_frame();
+
+	$(document)
+		.bind('mousedown', this._mouseDown.bind(this))
+		.bind('mousemove', this._mouseMove.bind(this))
+		.bind('mouseup', this._mouseUp.bind(this));
 };
 
 Snap.TreeView.prototype = {
@@ -66,7 +81,44 @@ Snap.TreeView.prototype = {
   },
 
   _resize_frame : function() {
-    $('#tree-view').height(($(window).height() - $('#topbar').height()) + 'px');
+    var height = ($(window).height() - $('#topbar').height()) + 'px';
+    $('#tree-view').height(height);
+    $('#tree-view-sizer').height(height);
+  },
+
+  _mouseDown : function(event) {
+    if( $(event.target).attr('id') == $('#tree-view-sizer').attr('id') ) {
+      this._mouse_dragging = true;
+      this._mouse_start = {x: event.screenX, y: event.screenY};
+      this._mouse_last = {x: event.screenX, y: event.screenY};
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  },
+
+  _mouseMove : function(event) {
+    if( this._mouse_dragging ) {
+      var delta = {x: (event.screenX - this._mouse_last.x), y: (event.screenY - this._mouse_last.y)};
+      this._mouse_last = {x: event.screenX, y: event.screenY};
+      var new_width = $('#tree-view').width() + delta.x;
+      if( new_width < 400 && new_width > 100 ) {
+        $('#tree-view').width(($('#tree-view').width() + delta.x) + 'px');
+        $('#content-table').css('marginLeft', (parseInt($('#content-table').css('marginLeft')) + delta.x) + 'px');
+        $('#external-page').css('marginLeft', (parseInt($('#external-page').css('marginLeft')) + delta.x) + 'px');
+        $('#external-page').css('marginRight', (parseInt($('#external-page').css('marginRight')) - delta.x) + 'px');
+      }
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  },
+
+  _mouseUp : function(event) {
+    if( this._mouse_dragging ) {
+      this._mouse_dragging = false;
+      event.stopPropagation();
+      event.preventDefault();
+      $.cookie('resizer-x-pos', $('#tree-view').width());
+    }
   },
 
   _create_ui : function() {

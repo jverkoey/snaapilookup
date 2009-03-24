@@ -194,7 +194,7 @@ Snap.TypeAhead.prototype = {
 
   _resize_frame : function() {
     if( jQuery.browser.safari && this._displaying_frame ) {
-      $('iframe').width(($(window).width() - $('#tree-view').width()) + 'px');
+      $('iframe').width(($(window).width() - $('#tree-view').width() - $('#tree-view-sizer').width()) + 'px');
       $('iframe').height(($(window).height() - $('#topbar').height()) + 'px');
     }
   },
