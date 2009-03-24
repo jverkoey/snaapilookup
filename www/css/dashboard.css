@@ -619,6 +619,7 @@
   font-size: 5em;
   color: #999;
   padding: 1em;
+  opacity: 0.5;
 }
 
 #eww .reason {
