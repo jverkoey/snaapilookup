@@ -18,6 +18,29 @@ Snap.FilterBar = function(elementIDs) {
       this._elements[key] = $('#'+this._elementIDs[key]);
     }
   }
+/*
+  37 	language 	Clojure
+  	Edit 	Delete 	35 	framework 	android
+  	Edit 	Delete 	9 	language 	PHP
+  	Edit 	Delete 	34 	framework 	twitter
+  	Edit 	Delete 	33 	language 	Python 2.6.1
+  	Edit 	Delete 	32 	framework 	jQuery
+  	Edit 	Delete 	31 	language 	Javascript
+  	Edit 	Delete 	30 	framework 	Firebug
+  	Edit 	Delete 	29 	framework 	iPhone
+  	Edit 	Delete 	28 	framework 	django
+  	Edit 	Delete 	36 	framework 	mootools
+  	Edit 	Delete 	27 	framework 	Facebook
+  	Edit 	Delete 	26 	framework 	Zend
+  	Edit 	Delete 	25 	language 	CSS
+  	Edit 	Delete 	24 	language 	Python 3.0.1*/
+
+  this._packages = [
+    {name: 'Web (jQuery)', filters: [31, 25, 32, 30]},
+    {name: 'Web (mootools)', filters: [31, 25, 36, 30]},
+    {name: 'Web (Zend)', filters: [9, 26]},
+    {name: 'Web (Django)', filters: [33, 28]}
+  ];
 
   this._filter_list_shown = false;
 
@@ -38,7 +61,7 @@ Snap.FilterBar = function(elementIDs) {
 
 Snap.FilterBar.prototype = {
 
-  toggle    : function(type, id, name) {
+  toggle    : function(type, id) {
     if( this._is_category_filtered[id] ) {
       this._remove_filter(type, id);
     } else {
@@ -48,6 +71,21 @@ Snap.FilterBar.prototype = {
       this._active_filters[type][id] = this._db.id_to_name(id);
     }
 
+    this.refresh();
+  },
+
+  clearAll    : function() {
+    this._active_filters = {};
+  },
+
+  enable      : function(type, id) {
+    if( undefined == this._active_filters[type] ) {
+      this._active_filters[type] = {};
+    }
+    this._active_filters[type][id] = this._db.id_to_name(id);
+  },
+
+  refresh     : function() {
     this._save_active_filters();
     this._render_filters();
     this._notify_callbacks();
@@ -123,7 +161,7 @@ Snap.FilterBar.prototype = {
   _toggle_filter_list : function() {
     if( this._filter_list_shown ) {
       this._elements.list.slideUp('fast');
-      this._elements.list_button.html('View all currently supported languages and frameworks');
+      this._elements.list_button.html('View all currently supported frameworks and languages');
     } else {
       this._elements.list.slideDown('fast');
       this._elements.list_button.html('Hide');
@@ -134,11 +172,11 @@ Snap.FilterBar.prototype = {
 
   _render_filter_list : function() {
     var html = [];
-    html.push('<div class="header">All languages and frameworks</div><table><tbody><tr>');
+    html.push('<div class="header">All frameworks and languages</div><table><tbody><tr>');
     var filters = this._db.get_filters();
     for( var i = 0; i < filters.length; ++i ) {
       var filter_type = filters[i].t;
-      html.push('<td><div class="cat_header">',filter_type,'</div>');
+      html.push('<td class="col',i,'"><div class="cat_header">',filter_type,'</div>');
       var filter_list = filters[i].d;
       for( var i2 = 0; i2 < filter_list.length; ++i2 ) {
         var filter_id = filter_list[i2].i;
@@ -148,14 +186,36 @@ Snap.FilterBar.prototype = {
       }
       html.push('</td>');
     }
-    html.push('</tr></tbody></table><div class="all-selected"></div>');
+    html.push('</tr></tbody></table>');
+    html.push('<div class="packages"><div class="header">Packages</div>');
+
+    for( var i = 0; i < this._packages.length; ++i ) {
+      var package = this._packages[i];
+      var toggle_class = 'show';
+      html.push('<div class="filter ',toggle_class,'" title="Click to use this package" id="package_',
+        i,'">',package.name,'</div>');
+    }
+
+    html.push('</div><div class="clearfix"></div><div class="all-selected"></div>');
     this._elements.list.html(html.join(''));
 
     var t = this;
     $(this._elementIDs.list+' .filter').click(function() {
-      var filter_type = this.id.substr('toggle_'.length, this.id.indexOf('-') - 'toggle_'.length);
-      var filter_id = this.id.substr(this.id.indexOf('-') + 1);
-      t.toggle(filter_type, filter_id);
+      var toggle_prefix = 'toggle_';
+      var package_prefix = 'package_';
+      if( this.id.indexOf(toggle_prefix) >= 0 ) {
+        var filter_type = this.id.substr(toggle_prefix.length, this.id.indexOf('-') - toggle_prefix.length);
+        var filter_id = this.id.substr(this.id.indexOf('-') + 1);
+        t.toggle(filter_type, filter_id);
+      } else if( this.id.indexOf(package_prefix) >= 0 ){
+        var package = t._packages[this.id.substr(package_prefix.length)];
+        t.clearAll();
+        for( var i = 0; i < package.filters.length; ++i ) {
+          var filter_id = package.filters[i];
+          t.enable(t._db._id_to_type[filter_id], filter_id);
+        }
+        t.refresh();
+      }
     });
   },
 

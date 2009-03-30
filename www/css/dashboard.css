@@ -75,6 +75,11 @@
 #filters .list td {
   vertical-align: top;
   width: 50%;
+  padding: 0.5em;
+}
+
+#filters .list .col0 {
+  border-right: 1px solid #ccc;
 }
 
 #filters .list td .cat_header {
@@ -83,7 +88,7 @@
   color: #999;
 }
 
-#filters .list td .filter {
+#filters .list .filter {
   border: 1px solid #ccc;
   cursor: pointer;
   padding: 3px;
@@ -93,14 +98,23 @@
   -webkit-border-radius: 4px;
 }
 
-#filters .list td .filter:hover {
+#filters .list .filter:hover {
   background-color: #6699AA;
   color: #fff;
 }
 
-#filters .list td .hide {
+#filters .list .hide {
   background-color: #447799;
   color: #fff;
+}
+
+#filters .list .packages {
+  width: 500px;
+  margin: 0 auto;
+}
+
+#filters .list .clearfix {
+  clear: both;
 }
 
 #filters .list-button {
