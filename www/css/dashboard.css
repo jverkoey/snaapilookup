@@ -291,7 +291,7 @@
   height: 500px;
   float: left;
   background-color: #999;
-  cursor: e-resize;
+  cursor: ew-resize;
 }
 
 #tree-view {
