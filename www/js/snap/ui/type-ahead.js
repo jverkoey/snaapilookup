@@ -553,6 +553,10 @@ Snap.TypeAhead.prototype = {
       html.push('</div>');
     }
 
+    if( !this._active_function.loading_social && undefined == window.user_id) {
+      html.push('<div style="text-align:center"><h2>How to use snaapi</h2><object width="380" height="300"><param name="movie" value="http://www.youtube.com/v/A8tm9DkuU2E&hl=en&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/A8tm9DkuU2E&hl=en&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="380" height="300"></embed></object></div>');
+    }
+
     if( !this._displaying_frame ) {
       var t = this;
       this._elements.whyjoin.fadeOut('fast', function() {
